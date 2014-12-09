@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelExperts
+namespace Team3_CMPP248_Workshop_1
 {
     class Product
     {
@@ -78,5 +78,7 @@ namespace TravelExperts
         {
             return "The package name is " + prodName;
         }
+
+
     }
 }

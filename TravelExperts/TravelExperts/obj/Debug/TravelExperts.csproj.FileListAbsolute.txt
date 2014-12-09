@@ -1,1 +1,2 @@
 c:\users\677958\documents\visual studio 2013\Projects\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe.config
+C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe.config
