@@ -29,7 +29,7 @@ namespace TravelExperts
             StartDate = sD;
             EndDate = eD;
             Description = d;
-            basePrice = bP;
+            BasePrice = bP;
             AgencyCommission = aC;
         }
 
@@ -100,11 +100,37 @@ namespace TravelExperts
         public decimal BasePrice
         {
             get { return basePrice; }
+            set
+            {
+                if (value < 0m)
+                { //negative base price gets 0
+                    basePrice = 0m;
+                }
+                else
+                { //valid baseprice
+                    basePrice = value;
+                }
+            }
         }
         public decimal AgencyCommission
         {
             get { return agencyCommission; }
-            set { agencyCommission = value; }
+            set
+            {
+                if (value < 0m)
+                { //negative commision gets 0
+                    agencyCommission = 0m;
+                }
+                else if (value > basePrice)
+                { //if commission is greater than base price,
+                  //commission gets baseprice
+                    agencyCommission = basePrice;
+                }
+                else
+                { //valid commission
+                    agencyCommission = value;
+                }
+            }
         }
 
         //methods

@@ -23,7 +23,7 @@ namespace TravelExperts
             Package pkg2 = new Package(10);
             Package pkg3 = new Package(20,"Carribean");
             Package pkg4 = new Package(30,"SAIT");
-            Package pkg5 = new Package(40,"BubbleMania","","","Unlimited drinks");
+            Package pkg5 = new Package(40,"BubbleMania","","","Unlimited drinks",0m,100m);
             Package pkg6 = new Package(50,"Earl's","","","",100m);
 
             //add pkgX to List
