@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TravelExperts
+namespace Team3_CMPP248_Workshop_1
 {
     // Author: John Nguyen
     // Date Created: December 9, 2014

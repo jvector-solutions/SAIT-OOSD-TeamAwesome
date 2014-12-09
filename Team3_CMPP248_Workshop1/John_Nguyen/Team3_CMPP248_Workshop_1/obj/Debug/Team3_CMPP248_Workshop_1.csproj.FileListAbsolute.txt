@@ -1,0 +1,6 @@
+c:\users\427521\documents\visual studio 2013\Projects\Team3_CMPP248_Workshop_1\Team3_CMPP248_Workshop_1\bin\Debug\Team3_CMPP248_Workshop_1.exe.config
+c:\users\427521\documents\visual studio 2013\Projects\Team3_CMPP248_Workshop_1\Team3_CMPP248_Workshop_1\obj\Debug\Team3_CMPP248_Workshop_1.csprojResolveAssemblyReference.cache
+c:\users\427521\documents\visual studio 2013\Projects\Team3_CMPP248_Workshop_1\Team3_CMPP248_Workshop_1\bin\Debug\Team3_CMPP248_Workshop_1.exe
+c:\users\427521\documents\visual studio 2013\Projects\Team3_CMPP248_Workshop_1\Team3_CMPP248_Workshop_1\bin\Debug\Team3_CMPP248_Workshop_1.pdb
+c:\users\427521\documents\visual studio 2013\Projects\Team3_CMPP248_Workshop_1\Team3_CMPP248_Workshop_1\obj\Debug\Team3_CMPP248_Workshop_1.exe
+c:\users\427521\documents\visual studio 2013\Projects\Team3_CMPP248_Workshop_1\Team3_CMPP248_Workshop_1\obj\Debug\Team3_CMPP248_Workshop_1.pdb
