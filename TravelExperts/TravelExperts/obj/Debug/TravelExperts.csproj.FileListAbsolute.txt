@@ -1,2 +1,10 @@
 c:\users\677958\documents\visual studio 2013\Projects\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe.config
 C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe.config
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.exe
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.pdb
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.pdb
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csprojResolveAssemblyReference.cache
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.Form1.resources
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.Properties.Resources.resources
+C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csproj.GenerateResource.Cache
