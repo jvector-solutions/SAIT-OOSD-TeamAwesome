@@ -11,12 +11,16 @@ using System.Threading.Tasks;
 
 namespace TravelExperts
 {
+    // Author: John Nguyen
+    // Date Created: December 9, 2014
+    // Purpose: This class is used to determine the name of the product by entering the product ID
+
     class Product
     {
         private int prodID;
         private string prodName;
 
-        // Public Properties
+        // Set public properties. They are both read-only
         public int ProductID
         {
             get
@@ -32,12 +36,14 @@ namespace TravelExperts
             }
         }
 
+        // Constructor
         public Product(int i = 0)
         {
             prodID = i;
             getProductName(prodID);
         }
 
+        // Function to match a product name to each product ID
         public void getProductName(int i)
         {
             int selector = i;
@@ -79,6 +85,8 @@ namespace TravelExperts
             }
         }
 
+        // Used for testing, this overwrites the string to print the product name after
+        // the user has entered a product ID
         public override string ToString()
         {
             return "The package name is " + prodName;
