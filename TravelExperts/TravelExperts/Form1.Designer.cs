@@ -57,6 +57,10 @@
             this.lblSupplier = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnPackages = new System.Windows.Forms.Button();
+            this.btnAgents = new System.Windows.Forms.Button();
+            this.btnProducts = new System.Windows.Forms.Button();
+            this.btnSuppliers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btbSubmit
@@ -324,11 +328,55 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
+            // btnPackages
+            // 
+            this.btnPackages.Location = new System.Drawing.Point(756, 163);
+            this.btnPackages.Name = "btnPackages";
+            this.btnPackages.Size = new System.Drawing.Size(94, 38);
+            this.btnPackages.TabIndex = 35;
+            this.btnPackages.Text = "Pakcages";
+            this.btnPackages.UseVisualStyleBackColor = true;
+            this.btnPackages.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnAgents
+            // 
+            this.btnAgents.Location = new System.Drawing.Point(756, 216);
+            this.btnAgents.Name = "btnAgents";
+            this.btnAgents.Size = new System.Drawing.Size(94, 38);
+            this.btnAgents.TabIndex = 36;
+            this.btnAgents.Text = "Agents";
+            this.btnAgents.UseVisualStyleBackColor = true;
+            this.btnAgents.Click += new System.EventHandler(this.btnAgents_Click);
+            // 
+            // btnProducts
+            // 
+            this.btnProducts.Location = new System.Drawing.Point(756, 265);
+            this.btnProducts.Name = "btnProducts";
+            this.btnProducts.Size = new System.Drawing.Size(94, 38);
+            this.btnProducts.TabIndex = 37;
+            this.btnProducts.Text = "Products";
+            this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.Location = new System.Drawing.Point(756, 316);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Size = new System.Drawing.Size(94, 38);
+            this.btnSuppliers.TabIndex = 38;
+            this.btnSuppliers.Text = "Suppliers";
+            this.btnSuppliers.UseVisualStyleBackColor = true;
+            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 562);
+            this.Controls.Add(this.btnSuppliers);
+            this.Controls.Add(this.btnProducts);
+            this.Controls.Add(this.btnAgents);
+            this.Controls.Add(this.btnPackages);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.cmbSupplier);
             this.Controls.Add(this.label15);
@@ -396,6 +444,10 @@
         private System.Windows.Forms.Label lblSupplier;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnPackages;
+        private System.Windows.Forms.Button btnAgents;
+        private System.Windows.Forms.Button btnProducts;
+        private System.Windows.Forms.Button btnSuppliers;
     }
 }
 
