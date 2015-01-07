@@ -35,6 +35,8 @@
             this.rdbPackage = new System.Windows.Forms.RadioButton();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.rdbProduct = new System.Windows.Forms.RadioButton();
+            this.rdbSupplier = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // btbSubmit
@@ -49,7 +51,7 @@
             // lblAgentInfo
             // 
             this.lblAgentInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblAgentInfo.Location = new System.Drawing.Point(753, 43);
+            this.lblAgentInfo.Location = new System.Drawing.Point(656, 54);
             this.lblAgentInfo.Name = "lblAgentInfo";
             this.lblAgentInfo.Size = new System.Drawing.Size(287, 75);
             this.lblAgentInfo.TabIndex = 1;
@@ -57,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(753, 23);
+            this.label1.Location = new System.Drawing.Point(656, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 17);
             this.label1.TabIndex = 2;
@@ -94,16 +96,40 @@
             // 
             this.btnSearch.Location = new System.Drawing.Point(268, 79);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.Size = new System.Drawing.Size(138, 38);
             this.btnSearch.TabIndex = 39;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // rdbProduct
+            // 
+            this.rdbProduct.AutoSize = true;
+            this.rdbProduct.Location = new System.Drawing.Point(69, 135);
+            this.rdbProduct.Name = "rdbProduct";
+            this.rdbProduct.Size = new System.Drawing.Size(78, 21);
+            this.rdbProduct.TabIndex = 42;
+            this.rdbProduct.TabStop = true;
+            this.rdbProduct.Text = "Product";
+            this.rdbProduct.UseVisualStyleBackColor = true;
+            // 
+            // rdbSupplier
+            // 
+            this.rdbSupplier.AutoSize = true;
+            this.rdbSupplier.Location = new System.Drawing.Point(69, 162);
+            this.rdbSupplier.Name = "rdbSupplier";
+            this.rdbSupplier.Size = new System.Drawing.Size(81, 21);
+            this.rdbSupplier.TabIndex = 43;
+            this.rdbSupplier.TabStop = true;
+            this.rdbSupplier.Text = "Supplier";
+            this.rdbSupplier.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 562);
+            this.Controls.Add(this.rdbSupplier);
+            this.Controls.Add(this.rdbProduct);
             this.Controls.Add(this.rdbPackage);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnSearch);
@@ -127,6 +153,8 @@
         private System.Windows.Forms.RadioButton rdbPackage;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.RadioButton rdbProduct;
+        private System.Windows.Forms.RadioButton rdbSupplier;
     }
 }
 
