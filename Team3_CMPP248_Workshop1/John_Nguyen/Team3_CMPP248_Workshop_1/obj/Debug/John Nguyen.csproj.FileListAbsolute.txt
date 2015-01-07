@@ -4,3 +4,6 @@ C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\J
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\John_Nguyen\Team3_CMPP248_Workshop_1\bin\Debug\Team3_CMPP248_Workshop_1.exe.config
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\John_Nguyen\Team3_CMPP248_Workshop_1\obj\Debug\Team3_CMPP248_Workshop_1.exe
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\John_Nguyen\Team3_CMPP248_Workshop_1\obj\Debug\Team3_CMPP248_Workshop_1.pdb
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\John_Nguyen\Team3_CMPP248_Workshop_1\bin\Debug\Team3_CMPP248_Workshop_1.exe
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\John_Nguyen\Team3_CMPP248_Workshop_1\bin\Debug\Team3_CMPP248_Workshop_1.pdb
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\Team3_CMPP248_Workshop1\John_Nguyen\Team3_CMPP248_Workshop_1\obj\Debug\John Nguyen.csprojResolveAssemblyReference.cache
