@@ -13,7 +13,11 @@ C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExper
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.pdb
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csprojResolveAssemblyReference.cache
-C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.Form1.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.Properties.Resources.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csproj.GenerateResource.Cache
 C:\Users\677958\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmMain.resources
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmLogin.resources
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmMain.resources
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmPackage.resources
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmProduct.resources
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmSupplier.resources
