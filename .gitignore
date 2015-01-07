@@ -155,3 +155,6 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 Team3_CMPP248_Workshop1/John_Nguyen/Travel Experts.v12.suo
+TravelExperts/TravelExperts/obj/Debug/TravelExperts.csproj.FileListAbsolute.txt
+TravelExperts/TravelExperts/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+TravelExperts/TravelExperts.v12.suo
