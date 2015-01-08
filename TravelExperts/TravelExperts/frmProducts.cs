@@ -25,7 +25,7 @@ namespace TravelExperts
 
         private void frmProduct_Load(object sender, EventArgs e)
         {
-            // Connect to database and populate the list
+            // Connect to database and populate the Data Grid
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement =
                 "Select ProductSupplierId AS ID,ProdName AS Product,SupName AS Supplier " +
@@ -37,9 +37,9 @@ namespace TravelExperts
             try
             {
                 connection.Open();
-                var myTable = new DataTable();
-                adapter.Fill(myTable);
-                dgvProducts.DataSource = myTable;
+                var itemTable = new DataTable();
+                adapter.Fill(itemTable);
+                dgvProducts.DataSource = itemTable;
                 dgvProducts.Columns[0].Width = 53;
                 dgvProducts.Columns[1].Width = 140;
                 dgvProducts.Columns[2].Width = 310;
@@ -52,12 +52,42 @@ namespace TravelExperts
             {
                 connection.Close();
             }
-            
+
+            // Data binding for the Supplier drop-down list
+            this.productsTableAdapter.Fill(this.travelExpertsDataSet.Products);
+
+            // Data binding for the Product drop-down list
+            this.suppliersTableAdapter.Fill(this.travelExpertsDataSet.Suppliers);
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnModifyProductSupplier_Click(object sender, EventArgs e)
+        {
+            frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
+            DialogResult result = modifyPSForm.ShowDialog();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Delete ?","Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    foreach (DataGridViewRow item in dgvProducts.SelectedRows)
+                    {
+                        dgvProducts.Rows.RemoveAt(item.Index);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace TravelExperts
             if (rdbPackage.Checked)
             {
                 string searchMe = txtSearch.Text;
-                dgvMainPage.DataSource = Package.GetPackages(searchMe);
+                //dgvMainPage.DataSource = Package.GetPackages(searchMe);
             }
             //search for Products
             //search for Suppliers

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TravelExperts
 {
-    public partial class frmProductsModify : Form
+    public partial class frmModifyProductSupplier : Form
     {
-        public frmProductsModify()
+        public frmModifyProductSupplier()
         {
             InitializeComponent();
         }

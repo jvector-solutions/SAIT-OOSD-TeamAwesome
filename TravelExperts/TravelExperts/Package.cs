@@ -23,7 +23,7 @@ namespace TravelExperts
         public decimal PkgAgencyCommission { get; set; } //19.4
 
         //constructors
-        public Package(int i=0, string n="default", string sD="default", string eD="default", string d="default",decimal bP=0m,decimal aC=0m) {
+       /* public Package(int i=0, string n="default", string sD="default", string eD="default", string d="default",decimal bP=0m,decimal aC=0m) {
             PackageId = i;
             PkgName = n;
             PkgStartDate = sD;
@@ -31,7 +31,7 @@ namespace TravelExperts
             PkgDesc = d;
             PkgBasePrice = bP;
             PkgAgencyCommission = aC;
-        }
+        } */
 
         /*
         //public properties
