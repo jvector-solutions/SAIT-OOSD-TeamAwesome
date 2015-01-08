@@ -28,56 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btbSubmit = new System.Windows.Forms.Button();
-            this.lblAgentInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.rdbPackage = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.rdbProduct = new System.Windows.Forms.RadioButton();
             this.rdbSupplier = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnProduct = new System.Windows.Forms.Button();
+            this.btnAgent = new System.Windows.Forms.Button();
+            this.btnSuppliers = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnAddPackage = new System.Windows.Forms.Button();
+            this.dgvMainPage = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rdbAgents = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btbSubmit
-            // 
-            this.btbSubmit.Location = new System.Drawing.Point(512, 458);
-            this.btbSubmit.Name = "btbSubmit";
-            this.btbSubmit.Size = new System.Drawing.Size(139, 38);
-            this.btbSubmit.TabIndex = 0;
-            this.btbSubmit.Text = "Submit";
-            this.btbSubmit.UseVisualStyleBackColor = true;
-            // 
-            // lblAgentInfo
-            // 
-            this.lblAgentInfo.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblAgentInfo.Location = new System.Drawing.Point(656, 54);
-            this.lblAgentInfo.Name = "lblAgentInfo";
-            this.lblAgentInfo.Size = new System.Drawing.Size(287, 75);
-            this.lblAgentInfo.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(656, 34);
+            this.label1.Location = new System.Drawing.Point(76, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 17);
+            this.label1.Size = new System.Drawing.Size(235, 17);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Agent";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(659, 458);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(139, 38);
-            this.btnClear.TabIndex = 34;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.label1.Text = "Agent Info Goes here. Thanks Leisy";
             // 
             // rdbPackage
             // 
             this.rdbPackage.AutoSize = true;
-            this.rdbPackage.Location = new System.Drawing.Point(69, 108);
+            this.rdbPackage.Checked = true;
+            this.rdbPackage.Location = new System.Drawing.Point(12, 11);
             this.rdbPackage.Name = "rdbPackage";
             this.rdbPackage.Size = new System.Drawing.Size(84, 21);
             this.rdbPackage.TabIndex = 41;
@@ -85,76 +70,178 @@
             this.rdbPackage.Text = "Package";
             this.rdbPackage.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(69, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 22);
-            this.textBox1.TabIndex = 40;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(268, 79);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(138, 38);
-            this.btnSearch.TabIndex = 39;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.txtSearch.Location = new System.Drawing.Point(19, 35);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(429, 22);
+            this.txtSearch.TabIndex = 40;
+            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // rdbProduct
             // 
             this.rdbProduct.AutoSize = true;
-            this.rdbProduct.Location = new System.Drawing.Point(69, 135);
+            this.rdbProduct.Location = new System.Drawing.Point(123, 11);
             this.rdbProduct.Name = "rdbProduct";
             this.rdbProduct.Size = new System.Drawing.Size(78, 21);
             this.rdbProduct.TabIndex = 42;
-            this.rdbProduct.TabStop = true;
             this.rdbProduct.Text = "Product";
             this.rdbProduct.UseVisualStyleBackColor = true;
             // 
             // rdbSupplier
             // 
             this.rdbSupplier.AutoSize = true;
-            this.rdbSupplier.Location = new System.Drawing.Point(69, 162);
+            this.rdbSupplier.Location = new System.Drawing.Point(231, 11);
             this.rdbSupplier.Name = "rdbSupplier";
             this.rdbSupplier.Size = new System.Drawing.Size(81, 21);
             this.rdbSupplier.TabIndex = 43;
-            this.rdbSupplier.TabStop = true;
             this.rdbSupplier.Text = "Supplier";
             this.rdbSupplier.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.txtSearch);
+            this.groupBox1.Location = new System.Drawing.Point(27, 26);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(478, 139);
+            this.groupBox1.TabIndex = 44;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Location = new System.Drawing.Point(536, 26);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(490, 189);
+            this.groupBox2.TabIndex = 45;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Agent";
+            // 
+            // btnProduct
+            // 
+            this.btnProduct.Location = new System.Drawing.Point(452, 551);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(139, 38);
+            this.btnProduct.TabIndex = 46;
+            this.btnProduct.Text = "&Product";
+            this.btnProduct.UseVisualStyleBackColor = true;
+            // 
+            // btnAgent
+            // 
+            this.btnAgent.Location = new System.Drawing.Point(597, 551);
+            this.btnAgent.Name = "btnAgent";
+            this.btnAgent.Size = new System.Drawing.Size(139, 38);
+            this.btnAgent.TabIndex = 47;
+            this.btnAgent.Text = "&Agent";
+            this.btnAgent.UseVisualStyleBackColor = true;
+            // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.Location = new System.Drawing.Point(742, 551);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Size = new System.Drawing.Size(139, 38);
+            this.btnSuppliers.TabIndex = 48;
+            this.btnSuppliers.Text = "&Suppliers";
+            this.btnSuppliers.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(887, 551);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(139, 38);
+            this.btnExit.TabIndex = 49;
+            this.btnExit.Text = "&Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPackage
+            // 
+            this.btnAddPackage.Location = new System.Drawing.Point(307, 551);
+            this.btnAddPackage.Name = "btnAddPackage";
+            this.btnAddPackage.Size = new System.Drawing.Size(139, 38);
+            this.btnAddPackage.TabIndex = 50;
+            this.btnAddPackage.Text = "A&dd Package";
+            this.btnAddPackage.UseVisualStyleBackColor = true;
+            // 
+            // dgvMainPage
+            // 
+            this.dgvMainPage.AllowUserToAddRows = false;
+            this.dgvMainPage.AllowUserToDeleteRows = false;
+            this.dgvMainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMainPage.Location = new System.Drawing.Point(27, 252);
+            this.dgvMainPage.Name = "dgvMainPage";
+            this.dgvMainPage.ReadOnly = true;
+            this.dgvMainPage.RowTemplate.Height = 24;
+            this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
+            this.dgvMainPage.TabIndex = 51;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rdbAgents);
+            this.panel1.Controls.Add(this.rdbSupplier);
+            this.panel1.Controls.Add(this.rdbPackage);
+            this.panel1.Controls.Add(this.rdbProduct);
+            this.panel1.Location = new System.Drawing.Point(19, 77);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(429, 45);
+            this.panel1.TabIndex = 44;
+            // 
+            // rdbAgents
+            // 
+            this.rdbAgents.AutoSize = true;
+            this.rdbAgents.Location = new System.Drawing.Point(332, 11);
+            this.rdbAgents.Name = "rdbAgents";
+            this.rdbAgents.Size = new System.Drawing.Size(73, 21);
+            this.rdbAgents.TabIndex = 44;
+            this.rdbAgents.Text = "Agents";
+            this.rdbAgents.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1052, 562);
-            this.Controls.Add(this.rdbSupplier);
-            this.Controls.Add(this.rdbProduct);
-            this.Controls.Add(this.rdbPackage);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblAgentInfo);
-            this.Controls.Add(this.btbSubmit);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1052, 601);
+            this.Controls.Add(this.dgvMainPage);
+            this.Controls.Add(this.btnAddPackage);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnSuppliers);
+            this.Controls.Add(this.btnAgent);
+            this.Controls.Add(this.btnProduct);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "frmMain";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Travel Experts";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btbSubmit;
-        private System.Windows.Forms.Label lblAgentInfo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.RadioButton rdbPackage;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.RadioButton rdbProduct;
         private System.Windows.Forms.RadioButton rdbSupplier;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnProduct;
+        private System.Windows.Forms.Button btnAgent;
+        private System.Windows.Forms.Button btnSuppliers;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnAddPackage;
+        private System.Windows.Forms.DataGridView dgvMainPage;
+        private System.Windows.Forms.RadioButton rdbAgents;
     }
 }
 
