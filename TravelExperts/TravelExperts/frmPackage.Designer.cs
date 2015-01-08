@@ -210,7 +210,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Name = "frmPackage";
-            this.Text = "frmPackage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Packages";
             this.ResumeLayout(false);
             this.PerformLayout();
 

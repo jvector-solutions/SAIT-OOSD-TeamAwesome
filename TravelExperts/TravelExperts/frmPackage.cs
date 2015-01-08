@@ -12,8 +12,10 @@ namespace TravelExperts
 {
     public partial class frmPackage : Form
     {
-        public frmPackage()
+        Package package;
+        public frmPackage(Package newPackage)
         {
+            package = newPackage;
             InitializeComponent();
         }
     }

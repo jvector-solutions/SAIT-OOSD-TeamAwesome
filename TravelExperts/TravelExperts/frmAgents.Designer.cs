@@ -151,6 +151,7 @@
             this.Controls.Add(this.btnAdd);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmAgents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Agents";
             this.Load += new System.EventHandler(this.frmAgents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).EndInit();
