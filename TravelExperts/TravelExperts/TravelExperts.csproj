@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="Agent.cs" />
     <Compile Include="AgentDB.cs" />
+    <Compile Include="frmAgentModify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgentModify.Designer.cs">
+      <DependentUpon>frmAgentModify.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAgents.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,7 +76,6 @@
     <Compile Include="frmPackage.Designer.cs">
       <DependentUpon>frmPackage.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProduct.Designer.cs" />
     <Compile Include="frmProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +109,9 @@
     </Compile>
     <Compile Include="TravelExpertsDB.cs" />
     <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="frmAgentModify.resx">
+      <DependentUpon>frmAgentModify.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAgents.resx">
       <DependentUpon>frmAgents.cs</DependentUpon>
     </EmbeddedResource>

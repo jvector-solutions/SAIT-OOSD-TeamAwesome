@@ -18,12 +18,15 @@ namespace TravelExperts
             InitializeComponent();
         }
 
+        //To be used when calling the Agent form
+        private Agent agent;
+
         private void SearchFor() {
             //search for Packages
             if (rdbPackage.Checked)
             {
                 string searchMe = txtSearch.Text;
-                dgvMainPage.DataSource = Package.GetPackages(searchMe);
+                //dgvMainPage.DataSource = Package.GetPackages(searchMe);
             }
             //search for Products
             //search for Suppliers
@@ -32,6 +35,25 @@ namespace TravelExperts
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        //Display the Agent form
+        private void btnAgent_Click(object sender, EventArgs e)
+        {
+            frmAgentModify callAgentForm = new frmAgentModify();
+            //callAgentForm.addAgent = true;
+            DialogResult result = callAgentForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                agent = callAgentForm.agent;
+                //txtProductCode.Text = product.ProductCode.ToString();
+                //this.DisplayProduct();
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

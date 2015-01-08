@@ -16,10 +16,11 @@ namespace TravelExperts
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            // Application.Run(new frmMain());         // Runs the main program
+            Application.Run(new frmMain());// Runs the main program
 
-            Application.Run(new frmProducts());      // Runs the Product form
-            // Application.Run(new frmSupplier());     // Runs the Supplier form
+            //Application.Run(new frmAgents());      // Runs the Agent form
+            //Application.Run(new frmProducts());      // Runs the Product form
+            //Application.Run(new frmSupplier());     // Runs the Supplier form
         }
     }
 }
