@@ -24,11 +24,20 @@ namespace TravelExperts
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //create sql command
-            string selectStatement = "SELECT * FROM Packages "+
-                "WHERE PkgName like '%" + findMe + "%' OR "+
+            string selectStatement = "SELECT * FROM Packages ";
+               
+            //search for something
+            if (findMe.Trim().Length != 0)
+            {
+                selectStatement += "WHERE PkgName like '%" + findMe + "%' OR " +
                 "PkgDesc like '%" + findMe + "%'";
 
-            //PackageId like '%" + findMe + "%' OR "+
+                string msg = "";
+                if (Validator.inputIsInteger(findMe, out msg))
+                {
+                    selectStatement += " OR PackageId ='" + findMe + "'";
+                }
+            }
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
             //open connection

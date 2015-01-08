@@ -185,6 +185,7 @@
             // 
             this.dgvMainPage.AllowUserToAddRows = false;
             this.dgvMainPage.AllowUserToDeleteRows = false;
+            this.dgvMainPage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvMainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMainPage.Location = new System.Drawing.Point(27, 252);
             this.dgvMainPage.Name = "dgvMainPage";
