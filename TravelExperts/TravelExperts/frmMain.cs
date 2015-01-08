@@ -40,12 +40,12 @@ namespace TravelExperts
         //Display the Agent form
         private void btnAgent_Click(object sender, EventArgs e)
         {
-            frmAgentModify callAgentForm = new frmAgentModify();
+            frmAgents callAgentForm = new frmAgents();
             //callAgentForm.addAgent = true;
             DialogResult result = callAgentForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                agent = callAgentForm.agent;
+                //agent = callAgentForm.agent;
                 //txtProductCode.Text = product.ProductCode.ToString();
                 //this.DisplayProduct();
             }
