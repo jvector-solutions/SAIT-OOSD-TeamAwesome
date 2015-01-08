@@ -26,26 +26,55 @@ namespace TravelExperts
             if (rdbPackage.Checked)
             {
                 string searchMe = txtSearch.Text;
-                //dgvMainPage.DataSource = Package.GetPackages(searchMe);
+                dgvMainPage.DataSource = PackageDB.GetPackages(searchMe);
             }
             //search for Products
             //search for Suppliers
             //search for Agents
         }
+        private void FocusSelectAllSearchBox()
+        {
+            txtSearch.Focus();
+            txtSearch.SelectAll();
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            SearchFor();
+        }
+        private void txtSearch_MouseClick(object sender, MouseEventArgs e)
+        {
+            SearchFor();
+        }
+        private void rdbPackage_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+        private void rdbProduct_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+        private void rdbSupplier_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+        private void rdbAgents_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
         }
 
         //Display the Agent form
         private void btnAgent_Click(object sender, EventArgs e)
         {
-            frmAgentModify callAgentForm = new frmAgentModify();
+            frmAgents callAgentForm = new frmAgents();
             //callAgentForm.addAgent = true;
             DialogResult result = callAgentForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                agent = callAgentForm.agent;
+                //agent = callAgentForm.agent;
                 //txtProductCode.Text = product.ProductCode.ToString();
                 //this.DisplayProduct();
             }
