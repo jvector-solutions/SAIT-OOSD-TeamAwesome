@@ -1,6 +1,6 @@
 ﻿namespace TravelExperts
 {
-    partial class frmSupplier
+    partial class frmSupplierModify
     {
         /// <summary>
         /// Required designer variable.
@@ -186,7 +186,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Name = "frmSupplier";
-            this.Text = "frmSupplier";
+            this.Text = "Suppliers";
             this.ResumeLayout(false);
             this.PerformLayout();
 
