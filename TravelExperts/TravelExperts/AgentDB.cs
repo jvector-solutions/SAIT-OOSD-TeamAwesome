@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -9,20 +10,18 @@ namespace TravelExperts
 {
     class AgentDB
     {
-        public static Product GetProduct(string productCode)
-        {
-            /*
-            //Define conection
-            SqlConnection connection = MMABooksDB.GetConnection();
+        
 
+        public static Product GetAgent(string productCode)
+        {
             //Build select statement 
             string selectStatement
                 = "SELECT ProductCode, Description, UnitPrice, OnHandQuantity "
                 + "FROM Products "
                 + "WHERE ProductCode = @ProductCode";
 
-            //Build SQL command
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            SqlCommand selectCommand = TravelExpertsDB.GetAndDefineConnection(selectStatement);
+    
             //Patch previous statement
             selectCommand.Parameters.AddWithValue("@ProductCode", productCode);
 
@@ -96,7 +95,7 @@ namespace TravelExperts
             }
         }
 
-        //Method for updating product if new info
+        //Method for updating product if new informarion
         public static bool UpdateProduct(Product oldProduct, Product newProduct)
         {
             SqlConnection connection = MMABooksDB.GetConnection();
@@ -176,6 +175,6 @@ namespace TravelExperts
             {
                 connection.Close();
             }
-        }*/
+        }
     }
 }
