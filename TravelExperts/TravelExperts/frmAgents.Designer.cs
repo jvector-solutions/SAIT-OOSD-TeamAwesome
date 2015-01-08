@@ -34,16 +34,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvAgents = new System.Windows.Forms.DataGridView();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGetAgent
             // 
             this.btnGetAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetAgent.Location = new System.Drawing.Point(693, 46);
+            this.btnGetAgent.Location = new System.Drawing.Point(864, 44);
             this.btnGetAgent.Name = "btnGetAgent";
             this.btnGetAgent.Size = new System.Drawing.Size(117, 32);
             this.btnGetAgent.TabIndex = 34;
@@ -53,12 +53,13 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(693, 407);
+            this.btnExit.Location = new System.Drawing.Point(903, 407);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(117, 44);
             this.btnExit.TabIndex = 33;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnDelete
             // 
@@ -74,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(436, 56);
+            this.label1.Location = new System.Drawing.Point(607, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 18);
             this.label1.TabIndex = 28;
@@ -102,21 +103,24 @@
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvAgents
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 125);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(777, 250);
-            this.dataGridView1.TabIndex = 39;
+            this.dgvAgents.AllowUserToAddRows = false;
+            this.dgvAgents.AllowUserToDeleteRows = false;
+            this.dgvAgents.AllowUserToResizeColumns = false;
+            this.dgvAgents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAgents.Location = new System.Drawing.Point(33, 125);
+            this.dgvAgents.Name = "dgvAgents";
+            this.dgvAgents.ReadOnly = true;
+            this.dgvAgents.RowHeadersVisible = false;
+            this.dgvAgents.RowTemplate.Height = 24;
+            this.dgvAgents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAgents.Size = new System.Drawing.Size(987, 250);
+            this.dgvAgents.TabIndex = 39;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(502, 50);
+            this.textBox1.Location = new System.Drawing.Point(673, 48);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(185, 24);
             this.textBox1.TabIndex = 40;
@@ -135,10 +139,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 479);
+            this.ClientSize = new System.Drawing.Size(1044, 479);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvAgents);
             this.Controls.Add(this.btnGetAgent);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
@@ -147,8 +151,10 @@
             this.Controls.Add(this.btnAdd);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmAgents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Agents";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmAgents_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,7 +168,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvAgents;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
     }

@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace TravelExperts
 {
-    public partial class frmLogin : Form
+    public partial class frmAgentModify : Form
     {
-        public frmLogin()
+        public frmAgentModify()
         {
             InitializeComponent();
         }
+
+     
     }
 }

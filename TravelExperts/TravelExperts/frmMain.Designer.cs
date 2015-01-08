@@ -34,6 +34,8 @@
             this.rdbProduct = new System.Windows.Forms.RadioButton();
             this.rdbSupplier = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rdbAgents = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnProduct = new System.Windows.Forms.Button();
             this.btnAgent = new System.Windows.Forms.Button();
@@ -41,12 +43,10 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.dgvMainPage = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rdbAgents = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -109,6 +109,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rdbAgents);
+            this.panel1.Controls.Add(this.rdbSupplier);
+            this.panel1.Controls.Add(this.rdbPackage);
+            this.panel1.Controls.Add(this.rdbProduct);
+            this.panel1.Location = new System.Drawing.Point(19, 77);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(429, 45);
+            this.panel1.TabIndex = 44;
+            // 
+            // rdbAgents
+            // 
+            this.rdbAgents.AutoSize = true;
+            this.rdbAgents.Location = new System.Drawing.Point(332, 11);
+            this.rdbAgents.Name = "rdbAgents";
+            this.rdbAgents.Size = new System.Drawing.Size(73, 21);
+            this.rdbAgents.TabIndex = 44;
+            this.rdbAgents.Text = "Agents";
+            this.rdbAgents.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label1);
@@ -136,6 +157,7 @@
             this.btnAgent.TabIndex = 47;
             this.btnAgent.Text = "&Agent";
             this.btnAgent.UseVisualStyleBackColor = true;
+            this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
             // 
             // btnSuppliers
             // 
@@ -154,6 +176,7 @@
             this.btnExit.TabIndex = 49;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnAddPackage
             // 
@@ -163,11 +186,13 @@
             this.btnAddPackage.TabIndex = 50;
             this.btnAddPackage.Text = "A&dd Package";
             this.btnAddPackage.UseVisualStyleBackColor = true;
+            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
             // dgvMainPage
             // 
             this.dgvMainPage.AllowUserToAddRows = false;
             this.dgvMainPage.AllowUserToDeleteRows = false;
+            this.dgvMainPage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvMainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMainPage.Location = new System.Drawing.Point(27, 252);
             this.dgvMainPage.Name = "dgvMainPage";
@@ -175,27 +200,6 @@
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
             this.dgvMainPage.TabIndex = 51;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rdbAgents);
-            this.panel1.Controls.Add(this.rdbSupplier);
-            this.panel1.Controls.Add(this.rdbPackage);
-            this.panel1.Controls.Add(this.rdbProduct);
-            this.panel1.Location = new System.Drawing.Point(19, 77);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(429, 45);
-            this.panel1.TabIndex = 44;
-            // 
-            // rdbAgents
-            // 
-            this.rdbAgents.AutoSize = true;
-            this.rdbAgents.Location = new System.Drawing.Point(332, 11);
-            this.rdbAgents.Name = "rdbAgents";
-            this.rdbAgents.Size = new System.Drawing.Size(73, 21);
-            this.rdbAgents.TabIndex = 44;
-            this.rdbAgents.Text = "Agents";
-            this.rdbAgents.UseVisualStyleBackColor = true;
             // 
             // frmMain
             // 
@@ -214,13 +218,14 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }

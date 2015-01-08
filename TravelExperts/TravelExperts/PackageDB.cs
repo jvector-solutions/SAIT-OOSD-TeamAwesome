@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TravelExperts
 {
@@ -23,10 +24,20 @@ namespace TravelExperts
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //create sql command
-            string selectStatement = "SELECT * FROM Packages "+
-                "WHERE PackageId like '%" + findMe + "%' OR "+
-                "PkgName like '%" + findMe + "%' OR "+
-                "PkgDesc like '%" + findMe + "%' OR ";
+            string selectStatement = "SELECT * FROM Packages ";
+               
+            //search for something
+            if (findMe.Trim().Length != 0)
+            {
+                selectStatement += "WHERE PkgName like '%" + findMe + "%' OR " +
+                "PkgDesc like '%" + findMe + "%'";
+
+                string msg = "";
+                if (Validator.inputIsInteger(findMe, out msg))
+                {
+                    selectStatement += " OR PackageId ='" + findMe + "'";
+                }
+            }
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
             //open connection
@@ -50,20 +61,31 @@ namespace TravelExperts
                     //add package details
                     newPackage.PackageId = (int)reader["PackageId"];
                     newPackage.PkgName = reader["PkgName"].ToString();
-                    newPackage.PkgStartDate = reader["PackageId"].ToString();
-                    newPackage.PkgEndDate = (int)reader["PackageId"].ToString();
-                    newPackage.PkgDesc = (int)reader["PackageId"];
-                    newPackage.PkgBasePrice = (int)reader["PackageId"];
-                    newPackage.PkgAgencyCommission = (int)reader["PackageId"];
+                    newPackage.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
+                    newPackage.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]);
+                    newPackage.PkgDesc = reader["PkgDesc"].ToString();
+                    newPackage.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+                    newPackage.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
                     
                     //add book to list
-                    books.Add(newBook);
+                    listOfPackages.Add(newPackage);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Execute Reader Error: " + ex.Message);
+                throw ex;
             }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return listOfPackages;
         }
     }
 }
