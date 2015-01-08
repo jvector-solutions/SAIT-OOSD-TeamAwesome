@@ -37,8 +37,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdbAgents = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnProductSupplier = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.btnAgent = new System.Windows.Forms.Button();
+            this.btnSuppliers = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.dgvMainPage = new System.Windows.Forms.DataGridView();
@@ -68,7 +69,6 @@
             this.rdbPackage.TabStop = true;
             this.rdbPackage.Text = "Package";
             this.rdbPackage.UseVisualStyleBackColor = true;
-            this.rdbPackage.Click += new System.EventHandler(this.rdbPackage_Click);
             // 
             // txtSearch
             // 
@@ -76,7 +76,6 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(429, 22);
             this.txtSearch.TabIndex = 40;
-            this.txtSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtSearch_MouseClick);
             this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // rdbProduct
@@ -88,7 +87,6 @@
             this.rdbProduct.TabIndex = 42;
             this.rdbProduct.Text = "Product";
             this.rdbProduct.UseVisualStyleBackColor = true;
-            this.rdbProduct.Click += new System.EventHandler(this.rdbProduct_Click);
             // 
             // rdbSupplier
             // 
@@ -99,7 +97,6 @@
             this.rdbSupplier.TabIndex = 43;
             this.rdbSupplier.Text = "Supplier";
             this.rdbSupplier.UseVisualStyleBackColor = true;
-            this.rdbSupplier.Click += new System.EventHandler(this.rdbSupplier_Click);
             // 
             // groupBox1
             // 
@@ -132,7 +129,6 @@
             this.rdbAgents.TabIndex = 44;
             this.rdbAgents.Text = "Agents";
             this.rdbAgents.UseVisualStyleBackColor = true;
-            this.rdbAgents.Click += new System.EventHandler(this.rdbAgents_Click);
             // 
             // groupBox2
             // 
@@ -144,14 +140,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Agent";
             // 
-            // btnProductSupplier
+            // btnProduct
             // 
-            this.btnProductSupplier.Location = new System.Drawing.Point(452, 551);
-            this.btnProductSupplier.Name = "btnProductSupplier";
-            this.btnProductSupplier.Size = new System.Drawing.Size(139, 38);
-            this.btnProductSupplier.TabIndex = 46;
-            this.btnProductSupplier.Text = "&Product / &Supplier";
-            this.btnProductSupplier.UseVisualStyleBackColor = true;
+            this.btnProduct.Location = new System.Drawing.Point(452, 551);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Size = new System.Drawing.Size(139, 38);
+            this.btnProduct.TabIndex = 46;
+            this.btnProduct.Text = "&Product";
+            this.btnProduct.UseVisualStyleBackColor = true;
             // 
             // btnAgent
             // 
@@ -161,6 +157,16 @@
             this.btnAgent.TabIndex = 47;
             this.btnAgent.Text = "&Agent";
             this.btnAgent.UseVisualStyleBackColor = true;
+            this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
+            // 
+            // btnSuppliers
+            // 
+            this.btnSuppliers.Location = new System.Drawing.Point(742, 551);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Size = new System.Drawing.Size(139, 38);
+            this.btnSuppliers.TabIndex = 48;
+            this.btnSuppliers.Text = "&Suppliers";
+            this.btnSuppliers.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
@@ -204,8 +210,9 @@
             this.Controls.Add(this.dgvMainPage);
             this.Controls.Add(this.btnAddPackage);
             this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnSuppliers);
             this.Controls.Add(this.btnAgent);
-            this.Controls.Add(this.btnProductSupplier);
+            this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmMain";
@@ -233,8 +240,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnProductSupplier;
+        private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button btnAgent;
+        private System.Windows.Forms.Button btnSuppliers;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.DataGridView dgvMainPage;
