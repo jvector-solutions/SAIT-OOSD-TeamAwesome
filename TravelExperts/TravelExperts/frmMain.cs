@@ -67,5 +67,17 @@ namespace TravelExperts
         {
             this.Close();
         }
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            frmPackage newForm = new frmPackage(null);
+            DialogResult result = newForm.ShowDialog();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
     }
 }
