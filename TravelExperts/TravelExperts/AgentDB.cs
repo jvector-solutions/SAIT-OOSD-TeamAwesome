@@ -13,8 +13,6 @@ namespace TravelExperts
         public static Agent GetAgent(string agentId)
         {
 
-            //AgentId, AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword
-
             //Define conection
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
