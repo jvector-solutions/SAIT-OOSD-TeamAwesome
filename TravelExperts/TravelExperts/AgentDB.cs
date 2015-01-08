@@ -10,20 +10,24 @@ namespace TravelExperts
 {
     class AgentDB
     {
-        
-
-        public static Product GetAgent(string productCode)
+        public static Agent GetAgent(string agentId)
         {
+
+            //AgentId, AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword
+
+            //Define conection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
             //Build select statement 
             string selectStatement
-                = "SELECT ProductCode, Description, UnitPrice, OnHandQuantity "
-                + "FROM Products "
-                + "WHERE ProductCode = @ProductCode";
+                = "SELECT AgentId, AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword "
+                + "FROM Agents "
+                + "WHERE AgentId = @AgentId";
 
-            SqlCommand selectCommand = TravelExpertsDB.GetAndDefineConnection(selectStatement);
-    
+            //Build SQL command
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             //Patch previous statement
-            selectCommand.Parameters.AddWithValue("@ProductCode", productCode);
+            selectCommand.Parameters.AddWithValue("@AgentId", agentId);
 
             //Exception handling
             try
@@ -33,17 +37,20 @@ namespace TravelExperts
                 SqlDataReader custReader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (custReader.Read())
                 {
-                    Product product = new Product();
+                    Agent agent = new Agent();
                     //Fill with data from reader
-                    product.ProductCode = custReader["ProductCode"].ToString();
-                    product.Description = custReader["Description"].ToString();
-                    product.UnitPrice = custReader["UnitPrice"].ToString();
-                    product.OnHandQuantity = custReader["OnHandQuantity"].ToString();
+                    agent.AgentId = Convert.ToInt32(custReader["agentId"]);
+                    agent.AgtMiddleInitial = custReader["MiddleInitial"].ToString();
+                    agent.AgtLastName = custReader["LastName"].ToString();
+                    agent.AgtBusPhone = custReader["BusPhone"].ToString();
+                    agent.AgtEmail = custReader["Email"].ToString();
+                    agent.AgtPosition = custReader["Position"].ToString();
+                    agent.AgtPassword = custReader["Password"].ToString();
 
-                    //Returns product
-                    return product;
+                    //Returns agent
+                    return agent;
                 }
-                else //product does not exist
+                else //agent does not exist
                 {
                     return null;
                 }
@@ -59,19 +66,24 @@ namespace TravelExperts
             }
         }
 
-        public static string AddProduct(Product product)
+        public static string AddProduct(Agent agent)
         {
-            SqlConnection connection = MMABooksDB.GetConnection();
+            SqlConnection connection = TravelExpertsDB.GetConnection();
             string insertStatement =
-                "INSERT Products " +
-                "(ProductCode, Description, UnitPrice, OnHandQuantity) " +
-                "VALUES (@ProductCode, @Description, @UnitPrice, @OnHandQuantity)";
+                "INSERT Agents " +
+                "(AgentId, AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword) " +
+                "VALUES (@AgentId, @AgtFirstName, @AgtMiddleInitial, @AgtLastName, @AgtBusPhone, @AgtEmail, @AgtPosition, @AgencyId, @AgtPassword)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@ProductCode", product.ProductCode);
-            insertCommand.Parameters.AddWithValue("@Description", product.Description);
-            insertCommand.Parameters.AddWithValue("@UnitPrice", product.UnitPrice);
-            insertCommand.Parameters.AddWithValue("@OnHandQuantity", product.OnHandQuantity);
+            insertCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
+            insertCommand.Parameters.AddWithValue("@AgtFirstName", agent.AgtFirstName);
+            insertCommand.Parameters.AddWithValue("@AgtMiddleInitial", agent.AgtMiddleInitial);
+            insertCommand.Parameters.AddWithValue("@AgtLastName", agent.AgtLastName);
+            insertCommand.Parameters.AddWithValue("@AgtBusPhone", agent.AgtBusPhone);
+            insertCommand.Parameters.AddWithValue("@AgtEmail", agent.AgtEmail);
+            insertCommand.Parameters.AddWithValue("@AgtPosition", agent.AgtPosition);
+            insertCommand.Parameters.AddWithValue("@AgtEmail", agent.AgencyId);
+            insertCommand.Parameters.AddWithValue("@AgtPosition", agent.AgtPassword);
 
             //Exception handling
             try
@@ -79,7 +91,7 @@ namespace TravelExperts
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
                 string selectStatement =
-                    "SELECT IDENT_CURRENT('Products') FROM Products";
+                    "SELECT IDENT_CURRENT('Agents') FROM Agents";
 
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
                 string productName = Convert.ToString(selectCommand.ExecuteScalar());
@@ -95,31 +107,52 @@ namespace TravelExperts
             }
         }
 
-        //Method for updating product if new informarion
-        public static bool UpdateProduct(Product oldProduct, Product newProduct)
+        //Method for updating product if new info
+        public static bool UpdateProduct(Agent oldAgent, Agent newAgent)
         {
-            SqlConnection connection = MMABooksDB.GetConnection();
+            SqlConnection connection = TravelExpertsDB.GetConnection();
             string updateStatement =
                 "UPDATE Products SET " +
-                "ProductCode = @NewProductCode, " +
-                "Description = @NewDescription, " +
-                "UnitPrice = @NewUnitPrice, " +
-                "OnHandQuantity = @NewOnHandQuantity " +
-                "WHERE ProductCode = @OldProductCode " +
-                "AND Description = @OldDescription " +
-                "AND UnitPrice = @OldUnitPrice " +
-                "AND OnHandQuantity = @OldOnHandQuantity";
+                "AgentId = @NewAgentId, " +
+                "AgtFirstName = @NewAgtFirstName, " +
+                "AgtMiddleInitial = @NewAgtMiddleInitial, " +
+                "AgtLastName = @NewAgtLastName " +
+                "AgtBusPhone = @NewAgtBusPhone, " +
+                "AgtEmail = @NewAgtEmail, " +
+                "AgtPosition = @NewAgtPosition, " +
+                "AgencyId = @NewAgencyId " +
+                "AgtPassword = @NewAgtPassword " +
+
+                "WHERE @AgentId = @OldAgentId, " +
+                "AND AgtFirstName = @OldAgtFirstName, " +
+                "AND AgtMiddleInitial = @OldAgtMiddleInitial, " +
+                "AND AgtLastName = @OldAgtLastName " +
+                "AND AgtBusPhone = @OldAgtBusPhone, " +
+                "AND AgtEmail = @OldAgtEmail, " +
+                "AND AgtPosition = @OldAgtPosition, " +
+                "AND AgencyId = @OldAgencyId " +
+                "AND AgtPassword = @OldAgtPassword";
 
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewProductCode", newProduct.ProductCode);
-            updateCommand.Parameters.AddWithValue("@NewDescription", newProduct.Description);
-            updateCommand.Parameters.AddWithValue("@NewUnitPrice", newProduct.UnitPrice);
-            updateCommand.Parameters.AddWithValue("@NewOnHandQuantity", newProduct.OnHandQuantity);
+            updateCommand.Parameters.AddWithValue("@NewAgentId", newAgent.AgentId);
+            updateCommand.Parameters.AddWithValue("@NewAgtFirstName", newAgent.AgtFirstName);
+            updateCommand.Parameters.AddWithValue("@NewAgtMiddleInitial", newAgent.AgtMiddleInitial);
+            updateCommand.Parameters.AddWithValue("@NewAgtLastName", newAgent.AgtLastName);
+            updateCommand.Parameters.AddWithValue("@NewAgtBusPhone", newAgent.AgtBusPhone);
+            updateCommand.Parameters.AddWithValue("@NewAgtEmail", newAgent.AgtEmail);
+            updateCommand.Parameters.AddWithValue("@NewAgtPosition", newAgent.AgtPosition);
+            updateCommand.Parameters.AddWithValue("@NewAgencyId", newAgent.AgencyId);
+            updateCommand.Parameters.AddWithValue("@NewAgtPassword", newAgent.AgtPassword);
 
-            updateCommand.Parameters.AddWithValue("@OldProductCode", oldProduct.ProductCode);
-            updateCommand.Parameters.AddWithValue("@OldDescription", oldProduct.Description);
-            updateCommand.Parameters.AddWithValue("@OldUnitPrice", oldProduct.UnitPrice);
-            updateCommand.Parameters.AddWithValue("@OldOnHandQuantity", oldProduct.OnHandQuantity);
+            updateCommand.Parameters.AddWithValue("@OldAgentId", oldAgent.AgentId);
+            updateCommand.Parameters.AddWithValue("@OldAgtFirstName", oldAgent.AgtFirstName);
+            updateCommand.Parameters.AddWithValue("@OldAgtMiddleInitial", oldAgent.AgtMiddleInitial);
+            updateCommand.Parameters.AddWithValue("@OldAgtLastName", oldAgent.AgtLastName);
+            updateCommand.Parameters.AddWithValue("@OldAgtBusPhone", oldAgent.AgtBusPhone);
+            updateCommand.Parameters.AddWithValue("@OldAgtEmail", oldAgent.AgtEmail);
+            updateCommand.Parameters.AddWithValue("@OldAgtPosition", oldAgent.AgtPosition);
+            updateCommand.Parameters.AddWithValue("@OldAgencyId", oldAgent.AgencyId);
+            updateCommand.Parameters.AddWithValue("@OldAgtPassword", oldAgent.AgtPassword);
 
             //Exception handling
             try
@@ -141,21 +174,31 @@ namespace TravelExperts
             }
         }
 
-        public static bool DeleteProduct(Product product)
+        public static bool DeleteProduct(Agent agent)
         {
-            SqlConnection connection = MMABooksDB.GetConnection();
+            SqlConnection connection = TravelExpertsDB.GetConnection();
             string deleteStatement =
-                "DELETE FROM Products " +
-                "WHERE ProductCode = @ProductCode " +
-                "AND Description = @Description " +
-                "AND UnitPrice = @UnitPrice " +
-                "AND OnHandQuantity = @OnHandQuantity ";
+                "DELETE FROM Agents " +
+                "WHERE AgentId = @AgentId, " +
+                "AND AgtFirstName = @AgtFirstName, " +
+                "AND AgtMiddleInitial = @AgtMiddleInitial, " +
+                "AND AgtLastName = @AgtLastName " +
+                "AND AgtBusPhone = @AgtBusPhone, " +
+                "AND AgtEmail = @AgtEmail, " +
+                "AND AgtPosition = @AgtPosition, " +
+                "AND AgencyId = @AgencyId " +
+                "AND AgtPassword = @AgtPassword";
 
             SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
-            deleteCommand.Parameters.AddWithValue("@ProductCode", product.ProductCode);
-            deleteCommand.Parameters.AddWithValue("@Description", product.Description);
-            deleteCommand.Parameters.AddWithValue("@UnitPrice", product.UnitPrice);
-            deleteCommand.Parameters.AddWithValue("@OnHandQuantity", product.OnHandQuantity);
+            deleteCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
+            deleteCommand.Parameters.AddWithValue("@AgtFirstName", agent.AgtFirstName);
+            deleteCommand.Parameters.AddWithValue("@AgtMiddleInitial", agent.AgtMiddleInitial);
+            deleteCommand.Parameters.AddWithValue("@AgtLastName", agent.AgtLastName);
+            deleteCommand.Parameters.AddWithValue("@AgtBusPhone", agent.AgtBusPhone);
+            deleteCommand.Parameters.AddWithValue("@AgtEmail", agent.AgtEmail);
+            deleteCommand.Parameters.AddWithValue("@AgtPosition", agent.AgtPosition);
+            deleteCommand.Parameters.AddWithValue("@AgtEmail", agent.AgencyId);
+            deleteCommand.Parameters.AddWithValue("@AgtPosition", agent.AgtPassword);
 
             //Exception handling
             try

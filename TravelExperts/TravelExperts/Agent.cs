@@ -9,83 +9,83 @@ namespace TravelExperts
     class Agent
     {
         //private properties
-        private int id;
-        private string firstName;
-        private string middleInitial;
-        private string lastName;
-        private string busPhone;
-        private string email;
-        private string position;
+        private int agentId;
+        private string agtFirstName;
+        private string agtMiddleInitial;
+        private string agtLastName;
+        private string agtBusPhone;
+        private string agtEmail;
+        private string agtPosition;
         private string agencyId;
-        private string password;
+        private string agtPassword;
 
         //Constructor with parameters and default values
         public Agent(int i=0, string fN="", string mI="", string lN="", 
             string bP="", string e="", string p="", string aI="", string pass="")
         {
-            id = i;
-            firstName = fN;
-            middleInitial = mI;
-            lastName = lN;
-            busPhone = bP;
-            email = e;
-            position = p;
+            agentId = i;
+            agtFirstName = fN;
+            agtMiddleInitial = mI;
+            agtLastName = lN;
+            agtBusPhone = bP;
+            agtEmail = e;
+            agtPosition = p;
             agencyId = aI;
-            password = pass;
+            agtPassword = pass;
         }
   
         //Setters and getters
-        public int Id 
+        public int AgentId
         {
-            get { return id; }
-            set { id = value;}
-        } 
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value;}
-        } 
-        public string MiddleInitial
-        {
-            get { return middleInitial; }
-            set { middleInitial = value;}
-        } 
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value;}
+            get { return agentId; }
+            set { agentId = value;}
         }
-        public string BusPhone
+        public string AgtFirstName
         {
-            get { return busPhone; }
-            set { busPhone = value;}
+            get { return agtFirstName; }
+            set { agtFirstName = value;}
+        } 
+        public string AgtMiddleInitial
+        {
+            get { return agtMiddleInitial; }
+            set { agtMiddleInitial = value;}
+        } 
+        public string AgtLastName
+        {
+            get { return agtLastName; }
+            set { agtLastName = value;}
         }
-        public string Email
+        public string AgtBusPhone
         {
-            get { return email; }
-            set { email = value;}
+            get { return agtBusPhone; }
+            set { agtBusPhone = value;}
         }
-        public string Position
+        public string AgtEmail
         {
-            get { return position; }
-            set { position = value;}
+            get { return agtEmail; }
+            set { agtEmail = value;}
+        }
+        public string AgtPosition
+        {
+            get { return agtPosition; }
+            set { agtPosition = value;}
         }
         public string AgencyId
         {
             get { return agencyId; }
             set { agencyId = value;}
         }
-        public string Password
+        public string AgtPassword
         {
-            get { return password; }
-            set { password = value;}
+            get { return agtPassword; }
+            set { agtPassword = value;}
         }
 
         //methods
         //returns string with object's data values
         public override string ToString() //override the parent method 
         {
-            return id + " " + firstName + " " + middleInitial + " " + lastName + "\n" + busPhone + "\n" +email + "\n" + position + "\n" + agencyId;
+            return agentId + " " + agtFirstName + " " + agtMiddleInitial + " " + agtLastName + "\n" + agtBusPhone + "\n" +agtEmail + "\n" + agtPosition + "\n" + agencyId;
         }
     }
 }
