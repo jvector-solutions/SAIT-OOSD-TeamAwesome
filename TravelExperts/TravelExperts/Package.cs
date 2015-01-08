@@ -11,26 +11,26 @@ using System.Threading.Tasks;
 
 namespace TravelExperts
 {
-    class Package
+    public class Package
     {
         //private properties
-        private int id; //11
-        private string name; //max of 50 char
-        private string startDate;
-        private string endDate;
-        private string description;//max of 50 char
-        private decimal basePrice; //19.4
-        private decimal agencyCommission; //19.4
+        public int PackageId { get; set; } //11
+        public string PkgName { get; set; } //max of 50 char
+        public string PkgStartDate { get; set; }
+        public string PkgEndDate { get; set; }
+        public string PkgDesc { get; set; }//max of 50 char
+        public decimal PkgBasePrice { get; set; } //19.4
+        public decimal PkgAgencyCommission { get; set; } //19.4
 
         //constructors
         public Package(int i=0, string n="default", string sD="default", string eD="default", string d="default",decimal bP=0m,decimal aC=0m) {
-            id = i;
-            name = n;
-            StartDate = sD;
-            EndDate = eD;
-            Description = d;
-            BasePrice = bP;
-            AgencyCommission = aC;
+            PackageId = i;
+            PkgName = n;
+            PkgStartDate = sD;
+            PkgEndDate = eD;
+            PkgDesc = d;
+            PkgBasePrice = bP;
+            PkgAgencyCommission = aC;
         }
 
         //public properties
