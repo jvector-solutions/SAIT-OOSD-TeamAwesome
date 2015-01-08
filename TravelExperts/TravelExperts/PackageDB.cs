@@ -25,9 +25,10 @@ namespace TravelExperts
 
             //create sql command
             string selectStatement = "SELECT * FROM Packages "+
-                "WHERE PackageId like '%" + findMe + "%' OR "+
-                "PkgName like '%" + findMe + "%' OR "+
-                "PkgDesc like '%" + findMe + "%' OR ";
+                "WHERE PkgName like '%" + findMe + "%' OR "+
+                "PkgDesc like '%" + findMe + "%'";
+
+            //PackageId like '%" + findMe + "%' OR "+
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
             //open connection
@@ -54,8 +55,8 @@ namespace TravelExperts
                     newPackage.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
                     newPackage.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]);
                     newPackage.PkgDesc = reader["PkgDesc"].ToString();
-                    newPackage.PkgBasePrice = (int)reader["PkgBasePrice"];
-                    newPackage.PkgAgencyCommission = (int)reader["PkgAgencyCommission"];
+                    newPackage.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+                    newPackage.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
                     
                     //add book to list
                     listOfPackages.Add(newPackage);

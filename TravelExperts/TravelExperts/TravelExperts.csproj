@@ -52,12 +52,6 @@
     <Compile Include="frmAgents.Designer.cs">
       <DependentUpon>frmAgents.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLogin.Designer.cs">
-      <DependentUpon>frmLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,7 +64,6 @@
     <Compile Include="frmPackage.Designer.cs">
       <DependentUpon>frmPackage.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProduct.Designer.cs" />
     <Compile Include="frmProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,9 +99,6 @@
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="frmAgents.resx">
       <DependentUpon>frmAgents.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
-      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
