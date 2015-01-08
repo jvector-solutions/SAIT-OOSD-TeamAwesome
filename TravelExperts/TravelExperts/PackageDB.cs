@@ -48,7 +48,13 @@ namespace TravelExperts
                     //create a package
                     Package newPackage = new Package();
                     //add package details
-                    newPackage.Id = myReader["ProductCode"].ToString();
+                    newPackage.PackageId = (int)reader["PackageId"];
+                    newPackage.PkgName = reader["PkgName"].ToString();
+                    newPackage.PkgStartDate = reader["PackageId"].ToString();
+                    newPackage.PkgEndDate = (int)reader["PackageId"].ToString();
+                    newPackage.PkgDesc = (int)reader["PackageId"];
+                    newPackage.PkgBasePrice = (int)reader["PackageId"];
+                    newPackage.PkgAgencyCommission = (int)reader["PackageId"];
                     
                     //add book to list
                     books.Add(newBook);

@@ -16,8 +16,8 @@ namespace TravelExperts
         //private properties
         public int PackageId { get; set; } //11
         public string PkgName { get; set; } //max of 50 char
-        public string PkgStartDate { get; set; }
-        public string PkgEndDate { get; set; }
+        public DateTime PkgStartDate { get; set; }
+        public DateTime PkgEndDate { get; set; }
         public string PkgDesc { get; set; }//max of 50 char
         public decimal PkgBasePrice { get; set; } //19.4
         public decimal PkgAgencyCommission { get; set; } //19.4
@@ -33,6 +33,7 @@ namespace TravelExperts
             PkgAgencyCommission = aC;
         }
 
+        /*
         //public properties
         public int Id
         {
@@ -132,17 +133,18 @@ namespace TravelExperts
                 }
             }
         }
-
+        */
+        
         //methods
         public override string ToString()
         {
-            return "\nID: " + id + 
-                "\nName: " + name +
-                "\nStart Date: " + startDate +
-                "\nEnd Date: " + endDate +
-                "\nDescritpion: " + description +
-                "\nBase Price: " + basePrice.ToString("c") +
-                "\nAgency Commission: " + agencyCommission.ToString("c");
+            return "\nID: " + PackageId +
+                "\nName: " + PkgName +
+                "\nStart Date: " + PkgStartDate +
+                "\nEnd Date: " + PkgEndDate +
+                "\nDescritpion: " + PkgDesc +
+                "\nBase Price: " + PkgBasePrice.ToString("c") +
+                "\nAgency Commission: " + PkgAgencyCommission.ToString("c");
         }
     }
 }
