@@ -46,6 +46,12 @@
   <ItemGroup>
     <Compile Include="Agent.cs" />
     <Compile Include="AgentDB.cs" />
+    <Compile Include="frmAgents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgents.Designer.cs">
+      <DependentUpon>frmAgents.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <Compile Include="TravelExpertsDB.cs" />
     <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="frmAgents.resx">
+      <DependentUpon>frmAgents.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
