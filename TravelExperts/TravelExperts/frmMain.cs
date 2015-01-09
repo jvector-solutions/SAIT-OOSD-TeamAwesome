@@ -18,53 +18,89 @@ namespace TravelExperts
             InitializeComponent();
         }
 
+        //To be used when calling the Agent form
+        private Agent agent;
+
         private void SearchFor() {
             //search for Packages
             if (rdbPackage.Checked)
             {
                 string searchMe = txtSearch.Text;
-                //dgvMainPage.DataSource = Package.GetPackages(searchMe);
+                dgvMainPage.DataSource = PackageDB.GetPackages(searchMe, chbIncludeExpiredPackages.Checked);
             }
             //search for Products
             //search for Suppliers
             //search for Agents
         }
+        private void FocusSelectAllSearchBox()
+        {
+            txtSearch.Focus();
+            txtSearch.SelectAll();
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            SearchFor();
         }
-
-        private void btnAddPackage_Click(object sender, EventArgs e)
+        private void txtSearch_MouseClick(object sender, MouseEventArgs e)
         {
-
+            SearchFor();
         }
-
-        private void btnProduct_Click(object sender, EventArgs e)
+        private void rdbPackage_Click(object sender, EventArgs e)
         {
-
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+        private void rdbProduct_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+        private void rdbSupplier_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+        private void rdbAgents_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
         }
 
+        //Display the Agent form
         private void btnAgent_Click(object sender, EventArgs e)
         {
-            frmAgents addAgentForm = new frmAgents();
-            //addAgentForm.addAgent = true;
-            DialogResult result = addAgentForm.ShowDialog();
-            /*if (result == DialogResult.OK)
+            frmAgents callAgentForm = new frmAgents();
+            //callAgentForm.addAgent = true;
+            DialogResult result = callAgentForm.ShowDialog();
+            if (result == DialogResult.OK)
             {
-                //product = addAgentForm.product;
+                //agent = callAgentForm.agent;
                 //txtProductCode.Text = product.ProductCode.ToString();
                 //this.DisplayProduct();
-            }*/
-        }
-
-        private void btnSuppliers_Click(object sender, EventArgs e)
-        {
-
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+            frmPackage newForm = new frmPackage(null);
+            DialogResult result = newForm.ShowDialog();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
+        }
+
+        private void chbIncludeExpiredPackages_Click(object sender, EventArgs e)
+        {
+            SearchFor();
+            FocusSelectAllSearchBox();
         }
     }
 }

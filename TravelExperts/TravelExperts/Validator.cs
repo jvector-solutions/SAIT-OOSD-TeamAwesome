@@ -3,36 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace TravelExperts
 {
     class Validator
     {
-        private static string title = "Entry Error";
-        //The title that will appear in dialog boxes.
-        public static string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
-        //Checks whether the user entered data into a text box.
-        public static bool IsPresent(Control control)
-        {
-            if (control.GetType().ToString() == "System.Windows.Forms.TextBox")
-            {
-                TextBox textBox = (TextBox)control;
-                if (textBox.Text == "")
-                {
-                    MessageBox.Show(textBox.Tag + " is a required field.", Title);
-                    textBox.Focus();
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         //check if the string is an int
         public static bool inputIsInteger(string input, out string msg)
         {
@@ -71,7 +46,5 @@ namespace TravelExperts
             msg = "Please dont leave this field blank";
             return false;
         }
-
-        
     }
 }

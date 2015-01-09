@@ -14,24 +14,18 @@ namespace TravelExperts
     public class Package
     {
         //private properties
-        public int PackageId { get; set; } //11
-        public string PkgName { get; set; } //max of 50 char
-        public DateTime PkgStartDate { get; set; }
-        public DateTime PkgEndDate { get; set; }
-        public string PkgDesc { get; set; }//max of 50 char
-        public decimal PkgBasePrice { get; set; } //19.4
-        public decimal PkgAgencyCommission { get; set; } //19.4
+        public int ID { get; set; } //11
+        public string Name { get; set; } //max of 50 char
+        public DateTime Start_Date { get; set; }
+        public DateTime End_Date { get; set; }
+        public string Description { get; set; }//max of 50 char
+        public decimal Base_Price { get; set; } //19.4
+        public decimal Agency_Commission { get; set; } //19.4
 
         //constructors
-       /* public Package(int i=0, string n="default", string sD="default", string eD="default", string d="default",decimal bP=0m,decimal aC=0m) {
-            PackageId = i;
-            PkgName = n;
-            PkgStartDate = sD;
-            PkgEndDate = eD;
-            PkgDesc = d;
-            PkgBasePrice = bP;
-            PkgAgencyCommission = aC;
-        } */
+        public Package()
+        {
+        }
 
         /*
         //public properties
@@ -134,16 +128,17 @@ namespace TravelExperts
             }
         }
         */
+        
         //methods
         public override string ToString()
         {
-            return "\nID: " + PackageId +
-                "\nName: " + PkgName +
-                "\nStart Date: " + PkgStartDate +
-                "\nEnd Date: " + PkgEndDate +
-                "\nDescritpion: " + PkgDesc +
-                "\nBase Price: " + PkgBasePrice.ToString("c") +
-                "\nAgency Commission: " + PkgAgencyCommission.ToString("c");
+            return "\nID: " + ID +
+                "\nName: " + Name +
+                "\nStart Date: " + Start_Date +
+                "\nEnd Date: " + End_Date +
+                "\nDescritpion: " + Description +
+                "\nBase Price: " + Base_Price.ToString("c") +
+                "\nAgency Commission: " + Agency_Commission.ToString("c");
         }
     }
 }

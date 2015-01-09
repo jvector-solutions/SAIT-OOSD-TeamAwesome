@@ -13,6 +13,8 @@ namespace TravelExperts
         {
             string connectionString =
                 "Data Source=localhost\\sqlexpress;Initial Catalog=TravelExperts;Integrated Security=True";
+            /*
+             */
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }

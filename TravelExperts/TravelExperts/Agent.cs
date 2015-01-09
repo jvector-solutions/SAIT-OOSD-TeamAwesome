@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelExperts
 {
-    public class Agent
+    class Agent
     {
         //private properties
         private int agentId;

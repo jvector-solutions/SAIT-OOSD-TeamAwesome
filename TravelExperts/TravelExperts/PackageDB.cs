@@ -16,7 +16,7 @@ namespace TravelExperts
     public static class PackageDB
     {
         //find packages that has the findMe string
-        public static List<Package> GetPackages(string findMe) {
+        public static List<Package> GetPackages(string findMe, bool showAll) {
 
             List<Package> listOfPackages = new List<Package>();
 
@@ -37,6 +37,11 @@ namespace TravelExperts
                 {
                     selectStatement += " OR PackageId ='" + findMe + "'";
                 }
+            }
+            if (!showAll)
+            {
+                selectStatement = "SELECT * FROM ("+selectStatement+")as x "+
+                    "WHERE PkgEndDate > GETDATE()";
             }
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
@@ -59,13 +64,13 @@ namespace TravelExperts
                     //create a package
                     Package newPackage = new Package();
                     //add package details
-                    newPackage.PackageId = (int)reader["PackageId"];
-                    newPackage.PkgName = reader["PkgName"].ToString();
-                    newPackage.PkgStartDate = Convert.ToDateTime(reader["PkgStartDate"]);
-                    newPackage.PkgEndDate = Convert.ToDateTime(reader["PkgEndDate"]);
-                    newPackage.PkgDesc = reader["PkgDesc"].ToString();
-                    newPackage.PkgBasePrice = (decimal)reader["PkgBasePrice"];
-                    newPackage.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+                    newPackage.ID = (int)reader["PackageId"];
+                    newPackage.Name = reader["PkgName"].ToString();
+                    newPackage.Start_Date = Convert.ToDateTime(reader["PkgStartDate"]);
+                    newPackage.End_Date = Convert.ToDateTime(reader["PkgEndDate"]);
+                    newPackage.Description = reader["PkgDesc"].ToString();
+                    newPackage.Base_Price = (decimal)reader["PkgBasePrice"];
+                    newPackage.Agency_Commission = (decimal)reader["PkgAgencyCommission"];
                     
                     //add book to list
                     listOfPackages.Add(newPackage);
