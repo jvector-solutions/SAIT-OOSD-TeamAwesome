@@ -37,3 +37,4 @@ C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExper
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmProducts.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmModifyProductSupplier.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmSupplierModify.resources
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csprojResolveAssemblyReference.cache
