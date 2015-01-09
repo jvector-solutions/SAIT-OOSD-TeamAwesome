@@ -148,6 +148,7 @@
             this.btnProduct.TabIndex = 46;
             this.btnProduct.Text = "&Product";
             this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnAgent
             // 
@@ -167,6 +168,7 @@
             this.btnSuppliers.TabIndex = 48;
             this.btnSuppliers.Text = "&Suppliers";
             this.btnSuppliers.UseVisualStyleBackColor = true;
+            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             // 
             // btnExit
             // 
@@ -218,7 +220,6 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

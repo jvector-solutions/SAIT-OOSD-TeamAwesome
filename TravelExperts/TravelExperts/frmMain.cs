@@ -33,5 +33,38 @@ namespace TravelExperts
         {
 
         }
+
+        private void btnAddPackage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgent_Click(object sender, EventArgs e)
+        {
+            frmAgents addAgentForm = new frmAgents();
+            //addAgentForm.addAgent = true;
+            DialogResult result = addAgentForm.ShowDialog();
+            /*if (result == DialogResult.OK)
+            {
+                //product = addAgentForm.product;
+                //txtProductCode.Text = product.ProductCode.ToString();
+                //this.DisplayProduct();
+            }*/
+        }
+
+        private void btnSuppliers_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
