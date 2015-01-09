@@ -15,7 +15,6 @@ namespace TravelExperts
         public frmModifyProductSupplier()
         {
             InitializeComponent();
-
         }
 
         private void frmModifyProductSupplier_Load(object sender, EventArgs e)
@@ -50,20 +49,24 @@ namespace TravelExperts
             {
                 string selectedProd = lstProductList.GetItemText(lstProductList.SelectedItem);
                 string editedProd = txtModifyProduct.Text;
-                DialogResult update =
+
+                if (selectedProd != editedProd) 
+                {
+                    DialogResult update =
                     MessageBox.Show("Change '" + selectedProd + "' to '" + editedProd + "'?"
                     , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (update == DialogResult.OK)
-                {
-                    ProductDB.UpdateProduct(selectedProd, editedProd);
-                    // Refresh table adapter to display updated list
-                    this.frmModifyProductSupplier_Load(this, null);
-
-                    // Select the item that was just updated
-                    int index = lstProductList.FindString(editedProd, -1);
-                    if (index != -1)
+                    if (update == DialogResult.OK)
                     {
-                        lstProductList.SetSelected(index, true);
+                        ProductDB.UpdateProduct(selectedProd, editedProd);
+                        // Refresh table adapter to display updated list
+                        this.frmModifyProductSupplier_Load(this, null);
+
+                        // Select the item that was just updated
+                        int index = lstProductList.FindString(editedProd, -1);
+                        if (index != -1)
+                        {
+                            lstProductList.SetSelected(index, true);
+                        }
                     }
                 }
             }  
@@ -81,21 +84,25 @@ namespace TravelExperts
             {
                 string selectedSup = lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
                 string editedSup = txtModifySupplier.Text;
-                DialogResult update =
-                    MessageBox.Show("Change '" + selectedSup + "' to '" + editedSup + "'?"
-                    , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (update == DialogResult.OK)
-                {
-                    SupplierDB.UpdateSupplier(selectedSup, editedSup);
-                    // Refresh table adapter to display updated list
-                    this.frmModifyProductSupplier_Load(this, null);
-                    lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
 
-                    // Select the item that was just updated
-                    int index = lstSupplierList.FindString(editedSup, -1);
-                    if (index != -1)
+                if (selectedSup != editedSup)
+                {
+                    DialogResult update =
+                        MessageBox.Show("Change '" + selectedSup + "' to '" + editedSup + "'?"
+                        , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (update == DialogResult.OK)
                     {
-                        lstSupplierList.SetSelected(index, true);
+                        SupplierDB.UpdateSupplier(selectedSup, editedSup);
+                        // Refresh table adapter to display updated list
+                        this.frmModifyProductSupplier_Load(this, null);
+                        lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
+
+                        // Select the item that was just updated
+                        int index = lstSupplierList.FindString(editedSup, -1);
+                        if (index != -1)
+                        {
+                            lstSupplierList.SetSelected(index, true);
+                        }
                     }
                 }
             }

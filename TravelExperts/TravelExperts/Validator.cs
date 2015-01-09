@@ -53,7 +53,7 @@ namespace TravelExperts
         {
             if (textBox.Text == "")
             {
-                MessageBox.Show("Please enter a " + textBox.Tag + ".", "Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Please select a " + textBox.Tag + ".", "Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 textBox.Focus();
                 return false;
             }

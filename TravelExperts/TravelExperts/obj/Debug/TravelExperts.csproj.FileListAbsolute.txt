@@ -35,3 +35,4 @@ C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExper
 C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csproj.GenerateResource.Cache
 C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.exe
 C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.pdb
+C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csprojResolveAssemblyReference.cache
