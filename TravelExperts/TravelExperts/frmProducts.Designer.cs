@@ -35,14 +35,11 @@
             this.travelExpertsDataSet = new TravelExperts.TravelExpertsDataSet();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.supplierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.cboProductList = new System.Windows.Forms.ComboBox();
@@ -53,6 +50,8 @@
             this.btnModifyProductSupplier = new System.Windows.Forms.Button();
             this.productsTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.ProductsTableAdapter();
             this.suppliersTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.SuppliersTableAdapter();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.travelExpertsDataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
@@ -63,18 +62,18 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(344, 313);
+            this.btnEdit.Location = new System.Drawing.Point(350, 345);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(89, 38);
+            this.btnEdit.Size = new System.Drawing.Size(89, 30);
             this.btnEdit.TabIndex = 45;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(435, 19);
+            this.btnAdd.Location = new System.Drawing.Point(435, 25);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 45);
+            this.btnAdd.Size = new System.Drawing.Size(75, 34);
             this.btnAdd.TabIndex = 44;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -82,7 +81,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(395, 430);
+            this.btnClose.Location = new System.Drawing.Point(395, 454);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(139, 38);
             this.btnClose.TabIndex = 46;
@@ -99,8 +98,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.productsToolStripMenuItem,
-            this.supplierToolStripMenuItem});
+            this.productsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(546, 28);
@@ -110,73 +108,52 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // refreshToolStripMenuItem
+            // 
+            this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
+            this.refreshToolStripMenuItem.Text = "Refresh";
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(114, 24);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
             this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // productsToolStripMenuItem
             // 
             this.productsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.editToolStripMenuItem1,
-            this.deleteToolStripMenuItem});
+            this.productToolStripMenuItem,
+            this.supplierToolStripMenuItem});
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
-            this.productsToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.productsToolStripMenuItem.Text = "Products";
+            this.productsToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.productsToolStripMenuItem.Text = "Update";
             // 
-            // addToolStripMenuItem
+            // productToolStripMenuItem
             // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.addToolStripMenuItem.Text = "Add";
-            // 
-            // editToolStripMenuItem1
-            // 
-            this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(122, 24);
-            this.editToolStripMenuItem1.Text = "Edit";
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Enabled = false;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
-            this.deleteToolStripMenuItem.Text = "Delete";
+            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.productToolStripMenuItem.Text = "Products";
+            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // supplierToolStripMenuItem
             // 
-            this.supplierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem1,
-            this.editToolStripMenuItem});
             this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
-            this.supplierToolStripMenuItem.Text = "Supplier";
-            // 
-            // addToolStripMenuItem1
-            // 
-            this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(106, 24);
-            this.addToolStripMenuItem1.Text = "Add";
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
+            this.supplierToolStripMenuItem.Text = "Suppliers";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(439, 313);
+            this.btnDelete.Location = new System.Drawing.Point(445, 345);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 38);
+            this.btnDelete.Size = new System.Drawing.Size(89, 30);
             this.btnDelete.TabIndex = 49;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -187,8 +164,9 @@
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.AllowUserToResizeColumns = false;
             this.dgvProducts.AllowUserToResizeRows = false;
+            this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Location = new System.Drawing.Point(12, 32);
+            this.dgvProducts.Location = new System.Drawing.Point(12, 74);
             this.dgvProducts.MultiSelect = false;
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.ReadOnly = true;
@@ -196,7 +174,7 @@
             this.dgvProducts.RowTemplate.Height = 24;
             this.dgvProducts.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(522, 267);
+            this.dgvProducts.Size = new System.Drawing.Size(522, 265);
             this.dgvProducts.TabIndex = 50;
             // 
             // cboProductList
@@ -220,7 +198,7 @@
             this.groupBox1.Controls.Add(this.cboSupplierList);
             this.groupBox1.Controls.Add(this.cboProductList);
             this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Location = new System.Drawing.Point(12, 352);
+            this.groupBox1.Location = new System.Drawing.Point(12, 376);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(522, 72);
             this.groupBox1.TabIndex = 55;
@@ -245,11 +223,11 @@
             // 
             // btnModifyProductSupplier
             // 
-            this.btnModifyProductSupplier.Location = new System.Drawing.Point(12, 430);
+            this.btnModifyProductSupplier.Location = new System.Drawing.Point(12, 454);
             this.btnModifyProductSupplier.Name = "btnModifyProductSupplier";
             this.btnModifyProductSupplier.Size = new System.Drawing.Size(184, 38);
             this.btnModifyProductSupplier.TabIndex = 56;
-            this.btnModifyProductSupplier.Text = "Modify Product/Supplier";
+            this.btnModifyProductSupplier.Text = "Update Product/Supplier";
             this.btnModifyProductSupplier.UseVisualStyleBackColor = true;
             this.btnModifyProductSupplier.Click += new System.EventHandler(this.btnModifyProductSupplier_Click);
             // 
@@ -261,11 +239,29 @@
             // 
             this.suppliersTableAdapter.ClearBeforeFill = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(113, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(421, 22);
+            this.textBox1.TabIndex = 57;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 17);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Type to Filter:";
+            // 
             // frmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(546, 478);
+            this.ClientSize = new System.Drawing.Size(546, 502);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnModifyProductSupplier);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvProducts);
@@ -300,16 +296,12 @@
         private TravelExpertsDataSet travelExpertsDataSet;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem refreshToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem supplierToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem1;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvProducts;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ComboBox cboProductList;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cboSupplierList;
@@ -318,5 +310,8 @@
         private TravelExpertsDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
         private System.Windows.Forms.BindingSource suppliersBindingSource;
         private TravelExpertsDataSetTableAdapters.SuppliersTableAdapter suppliersTableAdapter;
+        private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

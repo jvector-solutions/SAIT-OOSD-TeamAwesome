@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TravelExperts
 {
@@ -45,6 +46,18 @@ namespace TravelExperts
             //input is empty
             msg = "Please dont leave this field blank";
             return false;
+        }
+
+        // Checks to see if the textbox has a value
+        public static bool IsPresent(TextBox textBox)
+        {
+            if (textBox.Text == "")
+            {
+                MessageBox.Show("Please enter a " + textBox.Tag + ".", "Error",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                textBox.Focus();
+                return false;
+            }
+            return true;
         }
     }
 }
