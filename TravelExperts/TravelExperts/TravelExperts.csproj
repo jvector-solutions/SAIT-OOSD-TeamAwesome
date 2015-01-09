@@ -89,6 +89,7 @@
       <DependentUpon>frmSupplierModify.cs</DependentUpon>
     </Compile>
     <Compile Include="Package.cs" />
+    <Compile Include="PackageDB.cs" />
     <Compile Include="ProductDB.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />

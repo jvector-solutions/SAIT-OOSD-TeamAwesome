@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace TravelExperts
 {
     public class Package
-    {
+    {/*
         //private properties
         public int PackageId { get; set; } //11
         public string PkgName { get; set; } //max of 50 char
@@ -134,7 +134,7 @@ namespace TravelExperts
             }
         }
         */
-        
+        /*
         //methods
         public override string ToString()
         {
@@ -145,6 +145,6 @@ namespace TravelExperts
                 "\nDescritpion: " + PkgDesc +
                 "\nBase Price: " + PkgBasePrice.ToString("c") +
                 "\nAgency Commission: " + PkgAgencyCommission.ToString("c");
-        }
+        }*/
     }
 }
