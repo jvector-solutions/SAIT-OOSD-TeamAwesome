@@ -25,11 +25,25 @@ namespace TravelExperts
             if(package != null){
 
             }
+            FillProductComboBox();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void FillProductComboBox()
+        {
+            List<Product> products;
+            products = PackageDB.GetProducts("");
+
+            foreach (Product p in products)
+            {
+                //ComboBoxItem item = new ComboBoxItem();
+                //item.Text = "Item text1";
+                //item.Value = 12;
+                cbxProductList.Items.Add(p);
+            }
         }
     }
 }

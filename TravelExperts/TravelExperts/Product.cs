@@ -15,32 +15,24 @@ namespace TravelExperts
     // Date Created: December 9, 2014
     // Purpose: This class is used to determine the name of the product by entering the product ID
 
-    class Product
+    public class Product
     {
-        private int prodID;
-        private string prodName;
+        public int prodID;
+        public string prodName;
 
         // Set public properties. They are both read-only
-        public int ProductID
-        {
-            get
-            {
-                return prodID;
-            }
-        }
-        public string ProdName
-        {
-            get
-            {
-                return prodName;
-            }
-        }
+        public int ProductID { get; set;}
+        
+        public string ProdName { get; set; }
 
         // Constructor
-        public Product(int i = 0)
+        //public Product(int i = 0)
+        //{
+        //    prodID = i;
+        //    getProductName(prodID);
+        //}
+        public Product()
         {
-            prodID = i;
-            getProductName(prodID);
         }
 
         // Function to match a product name to each product ID

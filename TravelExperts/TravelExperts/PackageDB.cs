@@ -92,5 +92,68 @@ namespace TravelExperts
             }
             return listOfPackages;
         }
+        //get all products
+        public static List<Product> GetProducts(string findMe)
+        {
+
+            List<Product> listOfProducts = new List<Product>();
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string selectStatement = "SELECT * FROM Products ";
+
+            //search for something
+            if (findMe.Trim().Length != 0)
+            {
+                selectStatement += "WHERE ProductID='"+findMe+"'";
+
+            }
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //create reader
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    //create a product
+                    Product newProduct = new Product();
+                    //add product details
+                    newProduct.prodID = (int)reader["ProductID"];
+                    newProduct.prodName = reader["ProdName"].ToString();
+                    
+
+                    //add product to list
+                    listOfProducts.Add(newProduct);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return listOfProducts;
+        }
     }
 }
