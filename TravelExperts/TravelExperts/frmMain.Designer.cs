@@ -34,16 +34,15 @@
             this.rdbProduct = new System.Windows.Forms.RadioButton();
             this.rdbSupplier = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chbIncludeExpiredPackages = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.rdbAgents = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnProduct = new System.Windows.Forms.Button();
             this.btnAgent = new System.Windows.Forms.Button();
-            this.btnSuppliers = new System.Windows.Forms.Button();
+            this.btnProductSuppliers = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.dgvMainPage = new System.Windows.Forms.DataGridView();
-            this.chbIncludeExpiredPackages = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -111,6 +110,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
+            // chbIncludeExpiredPackages
+            // 
+            this.chbIncludeExpiredPackages.AutoSize = true;
+            this.chbIncludeExpiredPackages.Location = new System.Drawing.Point(19, 129);
+            this.chbIncludeExpiredPackages.Name = "chbIncludeExpiredPackages";
+            this.chbIncludeExpiredPackages.Size = new System.Drawing.Size(192, 21);
+            this.chbIncludeExpiredPackages.TabIndex = 45;
+            this.chbIncludeExpiredPackages.Text = "Include Expired Packages";
+            this.chbIncludeExpiredPackages.UseVisualStyleBackColor = true;
+            this.chbIncludeExpiredPackages.Click += new System.EventHandler(this.chbIncludeExpiredPackages_Click);
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.rdbAgents);
@@ -142,18 +152,9 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Agent";
             // 
-            // btnProduct
-            // 
-            this.btnProduct.Location = new System.Drawing.Point(452, 551);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(139, 38);
-            this.btnProduct.TabIndex = 46;
-            this.btnProduct.Text = "&Product";
-            this.btnProduct.UseVisualStyleBackColor = true;
-            // 
             // btnAgent
             // 
-            this.btnAgent.Location = new System.Drawing.Point(597, 551);
+            this.btnAgent.Location = new System.Drawing.Point(486, 551);
             this.btnAgent.Name = "btnAgent";
             this.btnAgent.Size = new System.Drawing.Size(139, 38);
             this.btnAgent.TabIndex = 47;
@@ -161,14 +162,15 @@
             this.btnAgent.UseVisualStyleBackColor = true;
             this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
             // 
-            // btnSuppliers
+            // btnProductSuppliers
             // 
-            this.btnSuppliers.Location = new System.Drawing.Point(742, 551);
-            this.btnSuppliers.Name = "btnSuppliers";
-            this.btnSuppliers.Size = new System.Drawing.Size(139, 38);
-            this.btnSuppliers.TabIndex = 48;
-            this.btnSuppliers.Text = "&Suppliers";
-            this.btnSuppliers.UseVisualStyleBackColor = true;
+            this.btnProductSuppliers.Location = new System.Drawing.Point(631, 551);
+            this.btnProductSuppliers.Name = "btnProductSuppliers";
+            this.btnProductSuppliers.Size = new System.Drawing.Size(250, 38);
+            this.btnProductSuppliers.TabIndex = 48;
+            this.btnProductSuppliers.Text = "Product and &Suppliers";
+            this.btnProductSuppliers.UseVisualStyleBackColor = true;
+            this.btnProductSuppliers.Click += new System.EventHandler(this.btnProductSuppliers_Click);
             // 
             // btnExit
             // 
@@ -182,7 +184,7 @@
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(307, 551);
+            this.btnAddPackage.Location = new System.Drawing.Point(336, 551);
             this.btnAddPackage.Name = "btnAddPackage";
             this.btnAddPackage.Size = new System.Drawing.Size(139, 38);
             this.btnAddPackage.TabIndex = 50;
@@ -203,17 +205,6 @@
             this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
             this.dgvMainPage.TabIndex = 51;
             // 
-            // chbIncludeExpiredPackages
-            // 
-            this.chbIncludeExpiredPackages.AutoSize = true;
-            this.chbIncludeExpiredPackages.Location = new System.Drawing.Point(19, 129);
-            this.chbIncludeExpiredPackages.Name = "chbIncludeExpiredPackages";
-            this.chbIncludeExpiredPackages.Size = new System.Drawing.Size(192, 21);
-            this.chbIncludeExpiredPackages.TabIndex = 45;
-            this.chbIncludeExpiredPackages.Text = "Include Expired Packages";
-            this.chbIncludeExpiredPackages.UseVisualStyleBackColor = true;
-            this.chbIncludeExpiredPackages.Click += new System.EventHandler(this.chbIncludeExpiredPackages_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -223,9 +214,8 @@
             this.Controls.Add(this.dgvMainPage);
             this.Controls.Add(this.btnAddPackage);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnSuppliers);
+            this.Controls.Add(this.btnProductSuppliers);
             this.Controls.Add(this.btnAgent);
-            this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmMain";
@@ -253,9 +243,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Button btnAgent;
-        private System.Windows.Forms.Button btnSuppliers;
+        private System.Windows.Forms.Button btnProductSuppliers;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.DataGridView dgvMainPage;

@@ -102,5 +102,11 @@ namespace TravelExperts
             SearchFor();
             FocusSelectAllSearchBox();
         }
+
+        private void btnProductSuppliers_Click(object sender, EventArgs e)
+        {
+            frmProducts newForm = new frmProducts();
+            DialogResult result = newForm.ShowDialog();
+        }
     }
 }
