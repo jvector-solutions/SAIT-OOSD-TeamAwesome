@@ -23,41 +23,65 @@ namespace TravelExperts
             this.Close();
         }
 
+        private void productToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
+            DialogResult result = modifyPSForm.ShowDialog();
+            if (result == DialogResult.OK)
+                this.frmProduct_Load(this, null);
+        }
+
         private void frmProduct_Load(object sender, EventArgs e)
         {
-            // Connect to database and populate the list
-            SqlConnection connection = TravelExpertsDB.GetConnection();
-            string selectStatement =
-                "Select ProductSupplierId AS ID,ProdName AS Product,SupName AS Supplier " +
-                "FROM Products p,Suppliers s,Products_Suppliers ps " +
-                "WHERE p.ProductId = ps.ProductId AND s.SupplierId = ps.SupplierId";
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            var adapter = new SqlDataAdapter(selectCommand);
+            // Fills the dataviewgrid with table data pulled from the database
+            dgvProducts.DataSource = ProductDB.ListProducts();
 
-            try
-            {
-                connection.Open();
-                var myTable = new DataTable();
-                adapter.Fill(myTable);
-                dgvProducts.DataSource = myTable;
-                dgvProducts.Columns[0].Width = 53;
-                dgvProducts.Columns[1].Width = 140;
-                dgvProducts.Columns[2].Width = 310;
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            
+            dgvProducts.Columns[0].Width = 42;
+            dgvProducts.Columns[1].Width = 145;
+            dgvProducts.Columns[2].Width = 316;
+
+            // Data binding for the Products & Suppliers drop-down lists
+            this.productsTableAdapter.Fill(this.travelExpertsDataSet.Products);
+            this.suppliersTableAdapter.Fill(this.travelExpertsDataSet.Suppliers);
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
+            string selProd = cboProductList.Text;
+            string selSupp = cboSupplierList.Text;
+            ProductDB.AddProduct(selProd,selSupp);
+            dgvProducts.DataSource = ProductDB.ListProducts();
+        }
 
+        private void btnModifyProductSupplier_Click(object sender, EventArgs e)
+        {
+            frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
+            DialogResult result = modifyPSForm.ShowDialog();
+            if (result == DialogResult.OK)
+                this.frmProduct_Load(this, null);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string prodValue = dgvProducts.SelectedRows[0].Cells[1].Value.ToString();   // Gets the product of the selected row
+            string suppValue = dgvProducts.SelectedRows[0].Cells[2].Value.ToString();   // Gets the supplier of the selected row
+            DialogResult result = 
+                MessageBox.Show("Delete this item (" + prodValue + " - " + suppValue + ")?"
+                ,"Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    foreach (DataGridViewRow item in dgvProducts.SelectedRows)
+                    {
+                        dgvProducts.Rows.RemoveAt(item.Index);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)

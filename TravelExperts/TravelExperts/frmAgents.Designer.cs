@@ -35,7 +35,7 @@
             this.btnModify = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvAgents = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtAgentId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +63,6 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Enabled = false;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(280, 407);
             this.btnDelete.Name = "btnDelete";
@@ -71,6 +70,7 @@
             this.btnDelete.TabIndex = 32;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // label1
             // 
@@ -84,7 +84,6 @@
             // 
             // btnModify
             // 
-            this.btnModify.Enabled = false;
             this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModify.Location = new System.Drawing.Point(156, 407);
             this.btnModify.Name = "btnModify";
@@ -92,6 +91,7 @@
             this.btnModify.TabIndex = 27;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnAdd
             // 
@@ -102,25 +102,29 @@
             this.btnAdd.TabIndex = 26;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvAgents
             // 
             this.dgvAgents.AllowUserToAddRows = false;
             this.dgvAgents.AllowUserToDeleteRows = false;
+            this.dgvAgents.AllowUserToResizeColumns = false;
             this.dgvAgents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgents.Location = new System.Drawing.Point(33, 125);
             this.dgvAgents.Name = "dgvAgents";
             this.dgvAgents.ReadOnly = true;
+            this.dgvAgents.RowHeadersVisible = false;
             this.dgvAgents.RowTemplate.Height = 24;
+            this.dgvAgents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAgents.Size = new System.Drawing.Size(987, 250);
             this.dgvAgents.TabIndex = 39;
             // 
-            // textBox1
+            // txtAgentId
             // 
-            this.textBox1.Location = new System.Drawing.Point(673, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(185, 24);
-            this.textBox1.TabIndex = 40;
+            this.txtAgentId.Location = new System.Drawing.Point(673, 48);
+            this.txtAgentId.Name = "txtAgentId";
+            this.txtAgentId.Size = new System.Drawing.Size(185, 24);
+            this.txtAgentId.TabIndex = 40;
             // 
             // label2
             // 
@@ -138,7 +142,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 479);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtAgentId);
             this.Controls.Add(this.dgvAgents);
             this.Controls.Add(this.btnGetAgent);
             this.Controls.Add(this.btnExit);
@@ -166,7 +170,7 @@
         private System.Windows.Forms.Button btnModify;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvAgents;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtAgentId;
         private System.Windows.Forms.Label label2;
     }
 }

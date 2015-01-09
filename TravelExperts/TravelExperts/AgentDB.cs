@@ -10,7 +10,7 @@ namespace TravelExperts
 {
     class AgentDB
     {
-        public static Agent GetAgent(string agentId)
+        public static Agent GetAgent(int agentId)
         {
 
             //Define conection
@@ -64,24 +64,24 @@ namespace TravelExperts
             }
         }
 
-        public static string AddProduct(Agent agent)
+        public static int AddAgent(Agent agent)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string insertStatement =
                 "INSERT Agents " +
-                "(AgentId, AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword) " +
-                "VALUES (@AgentId, @AgtFirstName, @AgtMiddleInitial, @AgtLastName, @AgtBusPhone, @AgtEmail, @AgtPosition, @AgencyId, @AgtPassword)";
+                "(AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword) " +
+                "VALUES (@AgtFirstName, @AgtMiddleInitial, @AgtLastName, @AgtBusPhone, @AgtEmail, @AgtPosition, @AgencyId, @AgtPassword)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
+            //insertCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
             insertCommand.Parameters.AddWithValue("@AgtFirstName", agent.AgtFirstName);
             insertCommand.Parameters.AddWithValue("@AgtMiddleInitial", agent.AgtMiddleInitial);
             insertCommand.Parameters.AddWithValue("@AgtLastName", agent.AgtLastName);
             insertCommand.Parameters.AddWithValue("@AgtBusPhone", agent.AgtBusPhone);
             insertCommand.Parameters.AddWithValue("@AgtEmail", agent.AgtEmail);
             insertCommand.Parameters.AddWithValue("@AgtPosition", agent.AgtPosition);
-            insertCommand.Parameters.AddWithValue("@AgtEmail", agent.AgencyId);
-            insertCommand.Parameters.AddWithValue("@AgtPosition", agent.AgtPassword);
+            insertCommand.Parameters.AddWithValue("@AgencyId", agent.AgencyId);
+            insertCommand.Parameters.AddWithValue("@AgtPassword", agent.AgtPassword);
 
             //Exception handling
             try
@@ -92,8 +92,8 @@ namespace TravelExperts
                     "SELECT IDENT_CURRENT('Agents') FROM Agents";
 
                 SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-                string productName = Convert.ToString(selectCommand.ExecuteScalar());
-                return productName;
+                int agentName = Convert.ToInt32(selectCommand.ExecuteScalar());
+                return agentName;
             }
             catch (SqlException ex)
             {
@@ -106,12 +106,12 @@ namespace TravelExperts
         }
 
         //Method for updating product if new info
-        public static bool UpdateProduct(Agent oldAgent, Agent newAgent)
+        public static bool UpdateAgent(Agent oldAgent, Agent newAgent)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string updateStatement =
                 "UPDATE Products SET " +
-                "AgentId = @NewAgentId, " +
+                //"AgentId = @NewAgentId, " +
                 "AgtFirstName = @NewAgtFirstName, " +
                 "AgtMiddleInitial = @NewAgtMiddleInitial, " +
                 "AgtLastName = @NewAgtLastName " +
@@ -121,8 +121,8 @@ namespace TravelExperts
                 "AgencyId = @NewAgencyId " +
                 "AgtPassword = @NewAgtPassword " +
 
-                "WHERE @AgentId = @OldAgentId, " +
-                "AND AgtFirstName = @OldAgtFirstName, " +
+                //"WHERE @AgentId = @OldAgentId, " +
+                "WHERE AgtFirstName = @OldAgtFirstName, " +
                 "AND AgtMiddleInitial = @OldAgtMiddleInitial, " +
                 "AND AgtLastName = @OldAgtLastName " +
                 "AND AgtBusPhone = @OldAgtBusPhone, " +
@@ -132,7 +132,7 @@ namespace TravelExperts
                 "AND AgtPassword = @OldAgtPassword";
 
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewAgentId", newAgent.AgentId);
+            //updateCommand.Parameters.AddWithValue("@NewAgentId", newAgent.AgentId);
             updateCommand.Parameters.AddWithValue("@NewAgtFirstName", newAgent.AgtFirstName);
             updateCommand.Parameters.AddWithValue("@NewAgtMiddleInitial", newAgent.AgtMiddleInitial);
             updateCommand.Parameters.AddWithValue("@NewAgtLastName", newAgent.AgtLastName);
@@ -142,7 +142,7 @@ namespace TravelExperts
             updateCommand.Parameters.AddWithValue("@NewAgencyId", newAgent.AgencyId);
             updateCommand.Parameters.AddWithValue("@NewAgtPassword", newAgent.AgtPassword);
 
-            updateCommand.Parameters.AddWithValue("@OldAgentId", oldAgent.AgentId);
+            //updateCommand.Parameters.AddWithValue("@OldAgentId", oldAgent.AgentId);
             updateCommand.Parameters.AddWithValue("@OldAgtFirstName", oldAgent.AgtFirstName);
             updateCommand.Parameters.AddWithValue("@OldAgtMiddleInitial", oldAgent.AgtMiddleInitial);
             updateCommand.Parameters.AddWithValue("@OldAgtLastName", oldAgent.AgtLastName);
@@ -172,13 +172,13 @@ namespace TravelExperts
             }
         }
 
-        public static bool DeleteProduct(Agent agent)
+        public static bool DeleteAgent(Agent agent)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string deleteStatement =
                 "DELETE FROM Agents " +
-                "WHERE AgentId = @AgentId, " +
-                "AND AgtFirstName = @AgtFirstName, " +
+                //"WHERE AgentId = @AgentId, " +
+                "WHERE AgtFirstName = @AgtFirstName, " +
                 "AND AgtMiddleInitial = @AgtMiddleInitial, " +
                 "AND AgtLastName = @AgtLastName " +
                 "AND AgtBusPhone = @AgtBusPhone, " +
@@ -188,7 +188,7 @@ namespace TravelExperts
                 "AND AgtPassword = @AgtPassword";
 
             SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
-            deleteCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
+            //deleteCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
             deleteCommand.Parameters.AddWithValue("@AgtFirstName", agent.AgtFirstName);
             deleteCommand.Parameters.AddWithValue("@AgtMiddleInitial", agent.AgtMiddleInitial);
             deleteCommand.Parameters.AddWithValue("@AgtLastName", agent.AgtLastName);

@@ -76,11 +76,11 @@
     <Compile Include="frmProducts.Designer.cs">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProductsModify.cs">
+    <Compile Include="frmModifyProductSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmProductsModify.Designer.cs">
-      <DependentUpon>frmProductsModify.cs</DependentUpon>
+    <Compile Include="frmModifyProductSupplier.Designer.cs">
+      <DependentUpon>frmModifyProductSupplier.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSupplierModify.cs">
       <SubType>Form</SubType>
@@ -91,7 +91,7 @@
     <Compile Include="Package.cs" />
     <Compile Include="PackageDB.cs" />
     <Compile Include="ProductDB.cs" />
-    <Compile Include="Products.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Supplier.cs" />
@@ -118,8 +118,8 @@
     <EmbeddedResource Include="frmProducts.resx">
       <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProductsModify.resx">
-      <DependentUpon>frmProductsModify.cs</DependentUpon>
+    <EmbeddedResource Include="frmModifyProductSupplier.resx">
+      <DependentUpon>frmModifyProductSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSupplierModify.resx">
       <DependentUpon>frmSupplierModify.cs</DependentUpon>

@@ -43,7 +43,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.dgvMainPage = new System.Windows.Forms.DataGridView();
-            this.chbIncludeExpiredPackages = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -101,12 +100,11 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.chbIncludeExpiredPackages);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Location = new System.Drawing.Point(27, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(478, 165);
+            this.groupBox1.Size = new System.Drawing.Size(478, 139);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -159,7 +157,7 @@
             this.btnAgent.TabIndex = 47;
             this.btnAgent.Text = "&Agent";
             this.btnAgent.UseVisualStyleBackColor = true;
-            this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
+            //this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
             // 
             // btnSuppliers
             // 
@@ -178,7 +176,7 @@
             this.btnExit.TabIndex = 49;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            //this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnAddPackage
             // 
@@ -188,7 +186,7 @@
             this.btnAddPackage.TabIndex = 50;
             this.btnAddPackage.Text = "A&dd Package";
             this.btnAddPackage.UseVisualStyleBackColor = true;
-            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
+            //this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
             // dgvMainPage
             // 
@@ -202,17 +200,6 @@
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
             this.dgvMainPage.TabIndex = 51;
-            // 
-            // chbIncludeExpiredPackages
-            // 
-            this.chbIncludeExpiredPackages.AutoSize = true;
-            this.chbIncludeExpiredPackages.Location = new System.Drawing.Point(19, 129);
-            this.chbIncludeExpiredPackages.Name = "chbIncludeExpiredPackages";
-            this.chbIncludeExpiredPackages.Size = new System.Drawing.Size(192, 21);
-            this.chbIncludeExpiredPackages.TabIndex = 45;
-            this.chbIncludeExpiredPackages.Text = "Include Expired Packages";
-            this.chbIncludeExpiredPackages.UseVisualStyleBackColor = true;
-            this.chbIncludeExpiredPackages.Click += new System.EventHandler(this.chbIncludeExpiredPackages_Click);
             // 
             // frmMain
             // 
@@ -231,7 +218,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
-            this.Load += new System.EventHandler(this.frmMain_Load);
+            //this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -260,7 +247,6 @@
         private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.DataGridView dgvMainPage;
         private System.Windows.Forms.RadioButton rdbAgents;
-        private System.Windows.Forms.CheckBox chbIncludeExpiredPackages;
     }
 }
 

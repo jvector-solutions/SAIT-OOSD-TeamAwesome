@@ -18,18 +18,5 @@ namespace TravelExperts
             package = newPackage;
             InitializeComponent();
         }
-
-        private void frmPackage_Load(object sender, EventArgs e)
-        {
-            //load info if modify is clicked
-            if(package != null){
-
-            }
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }

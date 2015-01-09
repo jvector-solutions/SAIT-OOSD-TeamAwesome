@@ -15,7 +15,7 @@ namespace TravelExperts
     // Date Created: December 9, 2014
     // Purpose: This class is used to determine the name of the product by entering the product ID
 
-    class Products
+    class Product
     {
         private int prodID;
         private string prodName;
@@ -37,7 +37,7 @@ namespace TravelExperts
         }
 
         // Constructor
-        public Products(int i = 0)
+        public Product(int i = 0)
         {
             prodID = i;
             getProductName(prodID);
