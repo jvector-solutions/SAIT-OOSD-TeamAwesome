@@ -158,7 +158,6 @@
             this.btnAgent.TabIndex = 47;
             this.btnAgent.Text = "&Agent";
             this.btnAgent.UseVisualStyleBackColor = true;
-            this.btnAgent.Click += new System.EventHandler(this.btnAgent_Click);
             // 
             // btnSuppliers
             // 
@@ -178,7 +177,6 @@
             this.btnExit.TabIndex = 49;
             this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnAddPackage
             // 
