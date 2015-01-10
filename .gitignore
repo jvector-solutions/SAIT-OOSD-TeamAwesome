@@ -156,3 +156,7 @@ $RECYCLE.BIN/
 .DS_Store
 Team3_CMPP248_Workshop1/John_Nguyen/Travel Experts.v12.suo
 TravelExperts/TravelExperts.v12.suo
+*.suo
+TravelExperts/TravelExperts.v12.suo
+TravelExperts/TravelExperts/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+TravelExperts/TravelExperts/obj/Debug/TravelExperts.csproj.FileListAbsolute.txt
