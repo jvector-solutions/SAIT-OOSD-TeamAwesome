@@ -21,7 +21,6 @@ namespace TravelExperts
 
         private void frmPackage_Load(object sender, EventArgs e)
         {
-            //load info if modify is clicked
             if(package != null){
 
             }
@@ -37,13 +36,40 @@ namespace TravelExperts
             List<Product> products;
             products = PackageDB.GetProducts("");
 
-            foreach (Product p in products)
-            {
-                //ComboBoxItem item = new ComboBoxItem();
-                //item.Text = "Item text1";
-                //item.Value = 12;
-                cbxProductList.Items.Add(p);
-            }
+            //foreach (Product p in products)
+            //{
+            //    cbxProductList.Items.Add(p);
+            //}
+            cbxProductList.DataSource = products;
+            //cbxProductList.ValueMember = "prodID";
+            //cbxProductList.DisplayMember = "prodName";
+        }
+        private void FillSupplierCombobox()
+        {
+            List<Supplier> suppliers;
+            int productID = ((Product)cbxProductList.SelectedItem).prodID;
+            suppliers = PackageDB.GetSuppliers(productID.ToString());
+
+            cbxSuppliers.DataSource = suppliers;
+            //cbxSuppliers.ValueMember = "SupplierId";
+            //cbxSuppliers.DisplayMember = "SupName";
+        }
+        //add product and supplier to package
+        private void btnAddToPackage_Click(object sender, EventArgs e)
+        {
+            int prodID = ((Product)cbxProductList.SelectedItem).prodID;
+            string prodName = ((Product)cbxProductList.SelectedItem).prodName;
+            int supID = ((Supplier)cbxSuppliers.SelectedItem).SupplierId;
+            string supName = ((Supplier)cbxSuppliers.SelectedItem).SupName;
+            int ID = PackageDB.GetProductSupplierID(prodID, supID);
+
+            //add row to datagridview
+            dgvProductSuppliers.Rows.Add(ID.ToString(),prodName,supName);
+        }
+        
+        private void cbxProductList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillSupplierCombobox();
         }
     }
 }

@@ -81,7 +81,7 @@ namespace TravelExperts
         // the user has entered a product ID
         public override string ToString()
         {
-            return "The package name is " + prodName;
+            return prodName;
         }
     }
 }

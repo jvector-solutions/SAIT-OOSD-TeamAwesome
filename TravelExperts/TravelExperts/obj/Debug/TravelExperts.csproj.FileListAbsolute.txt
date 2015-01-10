@@ -26,7 +26,6 @@ C:\Users\427521\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExper
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe.config
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.exe
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\bin\Debug\TravelExperts.pdb
-C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csprojResolveAssemblyReference.cache
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmAgentModify.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmAgents.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmMain.resources

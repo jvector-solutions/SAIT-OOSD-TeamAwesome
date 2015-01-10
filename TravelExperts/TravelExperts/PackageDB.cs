@@ -5,6 +5,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -24,14 +25,13 @@ namespace TravelExperts
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //create sql command
-            string selectStatement = "SELECT * FROM Packages ";
+            string selectStatement = "SELECT * FROM Packages "+
+                "WHERE PkgName like '%" + findMe.Trim() + "%' OR " +
+                "PkgDesc like '%" + findMe.Trim() + "%'";
                
             //search for something
             if (findMe.Trim().Length != 0)
             {
-                selectStatement += "WHERE PkgName like '%" + findMe + "%' OR " +
-                "PkgDesc like '%" + findMe + "%'";
-
                 string msg = "";
                 if (Validator.inputIsInteger(findMe, out msg))
                 {
@@ -92,7 +92,7 @@ namespace TravelExperts
             }
             return listOfPackages;
         }
-        //get all products
+        //get products
         public static List<Product> GetProducts(string findMe)
         {
 
@@ -102,12 +102,13 @@ namespace TravelExperts
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //create sql command
-            string selectStatement = "SELECT * FROM Products ";
+            string selectStatement = "SELECT * FROM Products " +
+                "WHERE ProdName like '%" + findMe.Trim() + "%'";
 
             //search for something
             if (findMe.Trim().Length != 0)
             {
-                selectStatement += "WHERE ProductID='"+findMe+"'";
+                selectStatement += " OR ProductID='"+findMe+"'";
 
             }
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -154,6 +155,122 @@ namespace TravelExperts
                 throw ex;
             }
             return listOfProducts;
+        }
+        //get suppliers of a product
+        public static List<Supplier> GetSuppliers(string findMe)
+        {
+
+            List<Supplier> listOfSuppliers = new List<Supplier>();
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //search for something
+            string selectStatement;
+            if (findMe.Trim().Length != 0)
+            {
+                selectStatement = "SELECT * FROM Suppliers " +
+                    "WHERE SupplierId in " +
+                        "(SELECT SupplierId FROM Products_Suppliers "+
+                        "WHERE ProductId=" + findMe + ")";
+            }
+            else
+            {
+                return null;
+            }
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //create reader
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    //create a supplier
+                    Supplier newSupplier = new Supplier();
+                    //add supplier details
+                    newSupplier.SupplierId = (int)reader["SupplierId"];
+                    newSupplier.SupName = reader["SupName"].ToString();
+
+
+                    //add supplier to list
+                    listOfSuppliers.Add(newSupplier);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return listOfSuppliers;
+        }
+        public static int GetProductSupplierID(int prodID, int supID)
+        {
+            int ID=0;
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //search for something
+            string selectStatement = "SELECT * FROM Products_Suppliers "+
+                "WHERE ProductId="+prodID.ToString()+" AND "+
+                    "SupplierId="+supID.ToString();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //create reader
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    //getID
+                    ID =(int) reader["ProductSupplierId"];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return ID;
         }
     }
 }

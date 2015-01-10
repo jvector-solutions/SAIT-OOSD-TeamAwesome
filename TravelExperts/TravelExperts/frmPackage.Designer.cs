@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label9 = new System.Windows.Forms.Label();
             this.txtCommission = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -46,15 +47,28 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRemove = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvProductSuppliers = new System.Windows.Forms.DataGridView();
             this.btnAddToPackage = new System.Windows.Forms.Button();
             this.cbxSuppliers = new System.Windows.Forms.ComboBox();
             this.cbxProductList = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.travelExpertsDataSet = new TravelExperts.TravelExpertsDataSet();
+            this.productsSuppliersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.products_SuppliersTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.Products_SuppliersTableAdapter();
+            this.travelExpertsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productsTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.ProductsTableAdapter();
+            this.ProductSupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductSuppliers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.travelExpertsDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsSuppliersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.travelExpertsDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label9
@@ -207,7 +221,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnRemove);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dgvProductSuppliers);
             this.groupBox2.Controls.Add(this.btnAddToPackage);
             this.groupBox2.Controls.Add(this.cbxSuppliers);
             this.groupBox2.Controls.Add(this.cbxProductList);
@@ -229,14 +243,22 @@
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvProductSuppliers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 104);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(579, 267);
-            this.dataGridView1.TabIndex = 5;
+            this.dgvProductSuppliers.AllowUserToAddRows = false;
+            this.dgvProductSuppliers.AllowUserToDeleteRows = false;
+            this.dgvProductSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvProductSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductSupplierId,
+            this.ProductId,
+            this.SupplierId});
+            this.dgvProductSuppliers.Location = new System.Drawing.Point(9, 104);
+            this.dgvProductSuppliers.Name = "dgvProductSuppliers";
+            this.dgvProductSuppliers.ReadOnly = true;
+            this.dgvProductSuppliers.RowTemplate.Height = 24;
+            this.dgvProductSuppliers.Size = new System.Drawing.Size(579, 267);
+            this.dgvProductSuppliers.TabIndex = 5;
             // 
             // btnAddToPackage
             // 
@@ -246,9 +268,11 @@
             this.btnAddToPackage.TabIndex = 4;
             this.btnAddToPackage.Text = "Add";
             this.btnAddToPackage.UseVisualStyleBackColor = true;
+            this.btnAddToPackage.Click += new System.EventHandler(this.btnAddToPackage_Click);
             // 
             // cbxSuppliers
             // 
+            this.cbxSuppliers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSuppliers.FormattingEnabled = true;
             this.cbxSuppliers.Location = new System.Drawing.Point(69, 60);
             this.cbxSuppliers.Name = "cbxSuppliers";
@@ -257,11 +281,13 @@
             // 
             // cbxProductList
             // 
+            this.cbxProductList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxProductList.FormattingEnabled = true;
             this.cbxProductList.Location = new System.Drawing.Point(69, 30);
             this.cbxProductList.Name = "cbxProductList";
             this.cbxProductList.Size = new System.Drawing.Size(266, 24);
             this.cbxProductList.TabIndex = 2;
+            this.cbxProductList.SelectedIndexChanged += new System.EventHandler(this.cbxProductList_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -281,6 +307,55 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Product";
             // 
+            // travelExpertsDataSet
+            // 
+            this.travelExpertsDataSet.DataSetName = "TravelExpertsDataSet";
+            this.travelExpertsDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // productsSuppliersBindingSource
+            // 
+            this.productsSuppliersBindingSource.DataMember = "Products_Suppliers";
+            this.productsSuppliersBindingSource.DataSource = this.travelExpertsDataSet;
+            // 
+            // products_SuppliersTableAdapter
+            // 
+            this.products_SuppliersTableAdapter.ClearBeforeFill = true;
+            // 
+            // travelExpertsDataSetBindingSource
+            // 
+            this.travelExpertsDataSetBindingSource.DataSource = this.travelExpertsDataSet;
+            this.travelExpertsDataSetBindingSource.Position = 0;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataMember = "Products";
+            this.productsBindingSource.DataSource = this.travelExpertsDataSetBindingSource;
+            // 
+            // productsTableAdapter
+            // 
+            this.productsTableAdapter.ClearBeforeFill = true;
+            // 
+            // ProductSupplierId
+            // 
+            this.ProductSupplierId.HeaderText = "ID";
+            this.ProductSupplierId.Name = "ProductSupplierId";
+            this.ProductSupplierId.ReadOnly = true;
+            this.ProductSupplierId.Width = 46;
+            // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "Product";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Width = 82;
+            // 
+            // SupplierId
+            // 
+            this.SupplierId.HeaderText = "Supplier";
+            this.SupplierId.Name = "SupplierId";
+            this.SupplierId.ReadOnly = true;
+            this.SupplierId.Width = 85;
+            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -299,7 +374,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductSuppliers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.travelExpertsDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsSuppliersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.travelExpertsDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -324,11 +403,20 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvProductSuppliers;
         private System.Windows.Forms.Button btnAddToPackage;
         private System.Windows.Forms.ComboBox cbxSuppliers;
         private System.Windows.Forms.ComboBox cbxProductList;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private TravelExpertsDataSet travelExpertsDataSet;
+        private System.Windows.Forms.BindingSource productsSuppliersBindingSource;
+        private TravelExpertsDataSetTableAdapters.Products_SuppliersTableAdapter products_SuppliersTableAdapter;
+        private System.Windows.Forms.BindingSource travelExpertsDataSetBindingSource;
+        private System.Windows.Forms.BindingSource productsBindingSource;
+        private TravelExpertsDataSetTableAdapters.ProductsTableAdapter productsTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductSupplierId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierId;
     }
 }

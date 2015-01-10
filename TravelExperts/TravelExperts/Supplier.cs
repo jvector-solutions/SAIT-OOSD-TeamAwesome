@@ -10,11 +10,11 @@ namespace TravelExperts
     // Date Created: January 5, 2015
     // Purpose: This console was written to test the "Supplier" class for Workshop 1
 
-    class Supplier
+    public class Supplier
     {
-        private int SupplierId;
-        private string SupName;
-
+        public int SupplierId;
+        public string SupName;
+        /*
         // Set public properties. They are both read-only
         public int ProductID
         {
@@ -37,7 +37,7 @@ namespace TravelExperts
             SupplierId = i;
             getSupplierName(SupplierId);
         }
-
+        
         // Function to match a product name to each product ID
         public void getSupplierName(int i)
         {
@@ -124,12 +124,12 @@ namespace TravelExperts
                     break;
             }
         }
-
+        */
         // Used for testing, this overwrites the string to print the product name after
         // the user has entered a product ID
         public override string ToString()
         {
-            return "The supplier name is " + SupName;
+            return SupName;
         }
     }
 }
