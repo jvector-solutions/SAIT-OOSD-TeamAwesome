@@ -41,13 +41,15 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btnClear = new System.Windows.Forms.Button();
             this.btbSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.dgvProductSuppliers = new System.Windows.Forms.DataGridView();
+            this.ProductSupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAddToPackage = new System.Windows.Forms.Button();
             this.cbxSuppliers = new System.Windows.Forms.ComboBox();
             this.cbxProductList = new System.Windows.Forms.ComboBox();
@@ -59,9 +61,6 @@
             this.travelExpertsDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productsTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.ProductsTableAdapter();
-            this.ProductSupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductSuppliers)).BeginInit();
@@ -169,23 +168,15 @@
             this.txtName.Size = new System.Drawing.Size(275, 22);
             this.txtName.TabIndex = 26;
             // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(323, 743);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(139, 38);
-            this.btnClear.TabIndex = 40;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
             // btbSubmit
             // 
-            this.btbSubmit.Location = new System.Drawing.Point(178, 743);
+            this.btbSubmit.Location = new System.Drawing.Point(323, 743);
             this.btbSubmit.Name = "btbSubmit";
             this.btbSubmit.Size = new System.Drawing.Size(139, 38);
             this.btbSubmit.TabIndex = 39;
             this.btbSubmit.Text = "Submit";
             this.btbSubmit.UseVisualStyleBackColor = true;
+            this.btbSubmit.Click += new System.EventHandler(this.btbSubmit_Click);
             // 
             // btnCancel
             // 
@@ -242,6 +233,7 @@
             this.btnRemove.TabIndex = 6;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // dgvProductSuppliers
             // 
@@ -257,8 +249,30 @@
             this.dgvProductSuppliers.Name = "dgvProductSuppliers";
             this.dgvProductSuppliers.ReadOnly = true;
             this.dgvProductSuppliers.RowTemplate.Height = 24;
+            this.dgvProductSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductSuppliers.Size = new System.Drawing.Size(579, 267);
             this.dgvProductSuppliers.TabIndex = 5;
+            // 
+            // ProductSupplierId
+            // 
+            this.ProductSupplierId.HeaderText = "ID";
+            this.ProductSupplierId.Name = "ProductSupplierId";
+            this.ProductSupplierId.ReadOnly = true;
+            this.ProductSupplierId.Width = 46;
+            // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "Product";
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Width = 82;
+            // 
+            // SupplierId
+            // 
+            this.SupplierId.HeaderText = "Supplier";
+            this.SupplierId.Name = "SupplierId";
+            this.SupplierId.ReadOnly = true;
+            this.SupplierId.Width = 85;
             // 
             // btnAddToPackage
             // 
@@ -335,27 +349,6 @@
             // 
             this.productsTableAdapter.ClearBeforeFill = true;
             // 
-            // ProductSupplierId
-            // 
-            this.ProductSupplierId.HeaderText = "ID";
-            this.ProductSupplierId.Name = "ProductSupplierId";
-            this.ProductSupplierId.ReadOnly = true;
-            this.ProductSupplierId.Width = 46;
-            // 
-            // ProductId
-            // 
-            this.ProductId.HeaderText = "Product";
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
-            this.ProductId.Width = 82;
-            // 
-            // SupplierId
-            // 
-            this.SupplierId.HeaderText = "Supplier";
-            this.SupplierId.Name = "SupplierId";
-            this.SupplierId.ReadOnly = true;
-            this.SupplierId.Width = 85;
-            // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -364,7 +357,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btbSubmit);
             this.Name = "frmPackage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -397,7 +389,6 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btbSubmit;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox1;

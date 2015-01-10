@@ -202,6 +202,7 @@
             this.dgvMainPage.Name = "dgvMainPage";
             this.dgvMainPage.ReadOnly = true;
             this.dgvMainPage.RowTemplate.Height = 24;
+            this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
             this.dgvMainPage.TabIndex = 51;
             // 

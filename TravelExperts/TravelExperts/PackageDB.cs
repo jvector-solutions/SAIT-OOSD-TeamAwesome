@@ -223,17 +223,21 @@ namespace TravelExperts
             }
             return listOfSuppliers;
         }
-        public static int GetProductSupplierID(int prodID, int supID)
+        public static string[] GetProductSupplier(int prodID, int supID)
         {
-            int ID=0;
+            string[] record = new string[3];
 
             //create connection
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //search for something
-            string selectStatement = "SELECT * FROM Products_Suppliers "+
-                "WHERE ProductId="+prodID.ToString()+" AND "+
-                    "SupplierId="+supID.ToString();
+            //string selectStatement = "SELECT * FROM Products_Suppliers "+
+            //    "WHERE ProductId="+prodID.ToString()+" AND "+
+            //        "SupplierId="+supID.ToString();
+            string selectStatement = "Select ProductSupplierId, ProdName, SupName " +
+                "FROM " +
+                    "(SELECT * FROM Products_Suppliers WHERE ProductId=" + prodID.ToString() + " and SupplierId=" + supID.ToString() + ")as x, Products, Suppliers " +
+                "WHERE x.ProductId=Products.ProductId AND x.SupplierId=Suppliers.SupplierId";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
             //open connection
@@ -253,7 +257,9 @@ namespace TravelExperts
                 if (reader.Read())
                 {
                     //getID
-                    ID =(int) reader["ProductSupplierId"];
+                    record[0] = reader["ProductSupplierId"].ToString();
+                    record[1] = reader["ProdName"].ToString();
+                    record[2] = reader["SupName"].ToString();
                 }
             }
             catch (Exception ex)
@@ -270,7 +276,78 @@ namespace TravelExperts
             {
                 throw ex;
             }
-            return ID;
+            return record;
+        }
+        public static bool AddPackage(Package packageToAdd)
+        {
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string insertStatement =
+                "INSERT Packages " +
+                "(PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, PkgAgencyCommission) " +
+                "VALUES (@PkgName, @PkgStartDate, @PkgEndDate, @PkgDesc, @PkgBasePrice, @PkgAgencyCommission)";
+
+            SqlCommand insertCommand =
+                new SqlCommand(insertStatement, connection);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgName", packageToAdd.Name);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgStartDate", packageToAdd.Start_Date);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgEndDate", packageToAdd.End_Date);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgDesc", packageToAdd.Description);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgBasePrice", packageToAdd.Base_Price);
+            insertCommand.Parameters.AddWithValue(
+                "@PkgAgencyCommission", packageToAdd.Agency_Commission);
+
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                return false;
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
+        }
+        public static bool AddPackageProductSupplier(int ProductsSuppliers)
+        {
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string insertStatement =
+                "INSERT Packages_Products_Suppliers " +
+                "(PackageId, ProductSupplierId) " +
+                "VALUES ((SELECT MAX(packageID) FROM Packages), "+ProductsSuppliers+")";
+
+            SqlCommand insertCommand =
+                new SqlCommand(insertStatement, connection);
+            try
+            {
+                connection.Open();
+                insertCommand.ExecuteNonQuery();
+            }
+            catch (SqlException ex)
+            {
+                return false;
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return true;
         }
     }
 }

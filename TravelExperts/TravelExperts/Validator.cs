@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace TravelExperts
 {
-    class Validator
+    public static class Validator
     {
         private static string title = "Entry Error";
         //The title that will appear in dialog boxes.
@@ -71,7 +71,43 @@ namespace TravelExperts
             msg = "Please dont leave this field blank";
             return false;
         }
-
-        
+        //check if positive
+        public static bool inputIsPositive(string input, out string msg)
+        {
+            decimal value;
+            if (decimal.TryParse(input, out value))//input is greater than 0
+            {
+                msg = "";
+                return true;
+            }
+            //input is negative
+            msg = "Input is Negative";
+            return false;
+        }
+        //check if the string is decimal
+        public static bool InputIsDecimal(string input, out string msg)
+        {
+            decimal value;
+            msg = "";
+            if (decimal.TryParse(input, out value))
+            { //input is decimal
+                return true;
+            }
+            //input is not decimal
+            msg = "Not Decimal";
+            return false;
+        }
+        //check if  min <= input <= max
+        public static bool inputRangeIsValid(decimal input, decimal min, decimal max, out string msg)
+        {
+            if (input >= min && input <= max) //input is in range
+            {
+                msg = "";
+                return true;
+            }
+            //input is out of range
+            msg = "Please use numbers between " + min + " and " + max;
+            return false;
+        }
     }
 }
