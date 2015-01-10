@@ -21,8 +21,8 @@ namespace TravelExperts
                 "WHERE p.ProductId = ps.ProductId AND s.SupplierId = ps.SupplierId " +
                 "ORDER BY Product,Supplier";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            var adapter = new SqlDataAdapter(selectCommand);
-            var itemTable = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
+            DataTable itemTable = new DataTable();
             try
             {
                 connection.Open();
