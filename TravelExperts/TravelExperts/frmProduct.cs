@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace TravelExperts
 {
-    public partial class frmProducts : Form
+    public partial class frmProduct : Form
     {
-        public frmProducts()
+        public frmProduct()
         {
             InitializeComponent();
         }
