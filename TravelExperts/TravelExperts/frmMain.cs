@@ -105,7 +105,7 @@ namespace TravelExperts
 
         private void btnProductSuppliers_Click(object sender, EventArgs e)
         {
-            frmProducts newForm = new frmProducts();
+            frmProduct newForm = new frmProduct();
             DialogResult result = newForm.ShowDialog();
         }
     }
