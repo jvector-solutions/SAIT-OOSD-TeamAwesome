@@ -12,8 +12,9 @@ namespace TravelExperts
 
     public class Supplier
     {
-        public int SupplierId;
-        public string SupName;
+        public Supplier() { }
+        public int SupplierId { get; set; }
+        public string SupName { get; set; }
         /*
         // Set public properties. They are both read-only
         public int ProductID
