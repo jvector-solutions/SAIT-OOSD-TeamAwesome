@@ -49,6 +49,7 @@
             this.btnGetAgent.TabIndex = 34;
             this.btnGetAgent.Text = "Get Agent";
             this.btnGetAgent.UseVisualStyleBackColor = true;
+            this.btnGetAgent.Click += new System.EventHandler(this.btnGetAgent_Click);
             // 
             // btnExit
             // 

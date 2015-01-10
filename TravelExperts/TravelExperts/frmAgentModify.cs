@@ -29,7 +29,7 @@ namespace TravelExperts
             txtAgtBusPhone.Text = agent.AgtBusPhone;
             txtAgtEmail.Text = agent.AgtEmail;
             txtAgtPosition.Text = agent.AgtPosition;
-            txtAgencyId.Text = agent.AgencyId;
+            txtAgencyId.Text = Convert.ToString(agent.AgencyId);
             txtAgtPassword.Text = agent.AgtPassword;
         }
 
@@ -54,7 +54,7 @@ namespace TravelExperts
             agent.AgtBusPhone = txtAgtBusPhone.Text;
             agent.AgtEmail = txtAgtEmail.Text;
             agent.AgtPosition = txtAgtPosition.Text;
-            agent.AgencyId = txtAgencyId.Text;
+            agent.AgencyId = Convert.ToInt32(txtAgencyId.Text);
             agent.AgtPassword = txtAgtPassword.Text;
         }
 
@@ -90,7 +90,7 @@ namespace TravelExperts
                         if (!AgentDB.UpdateAgent(agent, newAgent))
                         {
                             MessageBox.Show("Another user has updated or " +
-                                "deleted that product.", "Database Error");
+                                "deleted that agent.", "Database Error");
                             this.DialogResult = DialogResult.Retry;
                         }
                         else

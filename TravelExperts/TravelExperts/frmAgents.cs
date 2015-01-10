@@ -26,10 +26,6 @@ namespace TravelExperts
             fillDataTable();
         }
 
-        
-
-        
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             frmAgentModify addAgentForm = new frmAgentModify();
@@ -45,9 +41,13 @@ namespace TravelExperts
 
         private void btnModify_Click(object sender, EventArgs e)
         {
+            //Get agent from selection
+            this.GetAgent(Convert.ToInt32(dgvAgents.SelectedRows[0].Cells[0].Value));
+
             frmAgentModify modifyAgentForm = new frmAgentModify();
             modifyAgentForm.addAgent = false;
             modifyAgentForm.agent = agent;
+            
             DialogResult result = modifyAgentForm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -67,22 +67,72 @@ namespace TravelExperts
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+ 
+            DialogResult result =
+                MessageBox.Show("Do you want to delete "
+                + dgvAgents.SelectedRows[0].Cells[1].Value.ToString() + " "
+                + dgvAgents.SelectedRows[0].Cells[3].Value.ToString() + "?",
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    //Get agent from selection
+                    this.GetAgent(Convert.ToInt32(dgvAgents.SelectedRows[0].Cells[0].Value));
+
+                    if (!AgentDB.DeleteAgent(agent))
+                    {
+                        MessageBox.Show("Another user has updated or deleted that agent", "Database Error");
+                        this.GetAgent(agent.AgentId);
+
+                        if (agent != null)
+                            this.fillDataTable();///check this exception later//this.DisplayProduct();
+                        else
+                        { 
+                            ReloadGridView();//reload gridView 
+                        }
+                    }
+                    else
+                    {
+                        ReloadGridView();//reload gridView
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, ex.GetType().ToString());
+                }
+            }
+        }
+
+        private void btnGetAgent_Click(object sender, EventArgs e)
+        {
+            string searchMe = txtAgentId.Text;
+            dgvAgents.DataSource = AgentDB.GetAgent(searchMe);
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-       //Additional methods
+
+        //Additional methods
         private void fillDataTable()
         {
-            // Connect to database and populate the list
+            //Connect to database and populate the list
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement = "SELECT * FROM Agents";
 
-            /*AgentId AS ID, AgtFirstName AS NAME, AgtMiddleInitial AS Middle Initial, "
-            + "AgtLastName AS Last Name, AgtBusPhone AS Phone, AgtEmail AS Email, AgtPosition, "
-            + "AgencyId AS Agency ID, AgtPassword AS Password  "
-            + "FROM Agents";*/
+
+            /*
+             * "SELECT AgentId AS ID, AgtFirstName AS Name, AgtMiddleInitial AS [Middle Initial], "
+                + "AgtLastName AS [Last Name], AgtBusPhone AS Phone, AgtEmail AS Email, AgtPosition AS Position, "
+                + "AgencyId AS Agency ID "
+                + "FROM Agents";
+             */
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(selectStatement, connection); //c.con is the connection string
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -99,8 +149,7 @@ namespace TravelExperts
                 dataAdapter.Fill(agentTable);
                 dgvAgents.DataSource = agentTable;
 
-                //Define the width for each column
-                dgvAgents.Columns[0].Width = 60;
+                dgvAgents.Columns[0].Width = 60;//Define the width for each column
                 dgvAgents.Columns[1].Width = 100;
                 dgvAgents.Columns[2].Width = 60;
                 dgvAgents.Columns[3].Width = 100;
@@ -118,7 +167,7 @@ namespace TravelExperts
             {
                 connection.Close();
             }
-        }
+        } //Method to fill data table
 
         private void GetAgent(int agentId)
         {
@@ -132,38 +181,11 @@ namespace TravelExperts
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void ReloadGridView()
         {
-            //deetermine id for column to populate agent////////////////////////////////////
-            DialogResult result = MessageBox.Show("Delete " + agent.AgtFirstName + "?",
-                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    if (!AgentDB.DeleteAgent(agent))
-                    {
-                        MessageBox.Show("Another user has updated or deleted " +
-                            "that customer.", "Database Error");
-                        this.GetAgent(agent.AgentId);
-                        if (agent != null)
-                            fillDataTable();
-                        //this.DisplayCustomer();
-                        else
-                            fillDataTable();
-                            //this.ClearControls();
-                    }
-                    else
-                        fillDataTable();
-                        //this.ClearControls();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
-                }
-            }
-        }
+            foreach (DataGridViewRow item in dgvAgents.SelectedRows)
+            { dgvAgents.Rows.RemoveAt(item.Index); }
+        } //Reload the GridView after updates
 
     }
 }

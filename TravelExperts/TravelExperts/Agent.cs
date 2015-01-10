@@ -8,84 +8,27 @@ namespace TravelExperts
 {
     public class Agent
     {
-        //private properties
-        private int agentId;
-        private string agtFirstName;
-        private string agtMiddleInitial;
-        private string agtLastName;
-        private string agtBusPhone;
-        private string agtEmail;
-        private string agtPosition;
-        private string agencyId;
-        private string agtPassword;
+        //Constructor
+        public Agent() { }
 
-        //Constructor with parameters and default values
-        public Agent(int i=0, string fN="", string mI="", string lN="", 
-            string bP="", string e="", string p="", string aI="", string pass="")
-        {
-            agentId = i;
-            agtFirstName = fN;
-            agtMiddleInitial = mI;
-            agtLastName = lN;
-            agtBusPhone = bP;
-            agtEmail = e;
-            agtPosition = p;
-            agencyId = aI;
-            agtPassword = pass;
-        }
-  
-        //Setters and getters
-        public int AgentId
-        {
-            get { return agentId; }
-            set { agentId = value;}
-        }
-        public string AgtFirstName
-        {
-            get { return agtFirstName; }
-            set { agtFirstName = value;}
-        } 
-        public string AgtMiddleInitial
-        {
-            get { return agtMiddleInitial; }
-            set { agtMiddleInitial = value;}
-        } 
-        public string AgtLastName
-        {
-            get { return agtLastName; }
-            set { agtLastName = value;}
-        }
-        public string AgtBusPhone
-        {
-            get { return agtBusPhone; }
-            set { agtBusPhone = value;}
-        }
-        public string AgtEmail
-        {
-            get { return agtEmail; }
-            set { agtEmail = value;}
-        }
-        public string AgtPosition
-        {
-            get { return agtPosition; }
-            set { agtPosition = value;}
-        }
-        public string AgencyId
-        {
-            get { return agencyId; }
-            set { agencyId = value;}
-        }
-        public string AgtPassword
-        {
-            get { return agtPassword; }
-            set { agtPassword = value;}
-        }
+        //Properties
+        public int AgentId { get; set; }
 
-        //methods
-        //returns string with object's data values
-        public override string ToString() //override the parent method 
-        {
-            return agentId + " " + agtFirstName + " " + agtMiddleInitial + " " + agtLastName + "\n" + agtBusPhone + "\n" +agtEmail + "\n" + agtPosition + "\n" + agencyId;
-        }
+        public string AgtFirstName { get; set; }
+
+        public string AgtMiddleInitial { get; set; }
+
+        public string AgtLastName { get; set; }
+
+        public string AgtBusPhone { get; set; }
+
+        public string AgtEmail { get; set; }
+
+        public string AgtPosition { get; set; }
+
+        public int AgencyId { get; set; }
+
+        public string AgtPassword { get; set; }
+
     }
 }
