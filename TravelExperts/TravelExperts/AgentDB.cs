@@ -12,12 +12,10 @@ namespace TravelExperts
     {
         public static Agent GetAgent(int agentId)
         {
-
             //Define conection
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //Build select statement 
-            //AgentId, AgtFirstName, AgtMiddleInitial, AgtLastName, AgtBusPhone, AgtEmail, AgtPosition, AgencyId, AgtPassword 
             string selectStatement
                 = "SELECT * FROM Agents "
                 + "WHERE AgentId = @AgentId";
@@ -216,7 +214,7 @@ namespace TravelExperts
             }
         }
 
-        public static List<Agent> GetAgent(string agentId)
+        public static List<Agent> SearchAgents(string agentId)
         {
 
             List<Agent> agentList = new List<Agent>();

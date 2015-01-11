@@ -110,6 +110,9 @@
             this.dgvAgents.AllowUserToAddRows = false;
             this.dgvAgents.AllowUserToDeleteRows = false;
             this.dgvAgents.AllowUserToResizeColumns = false;
+            this.dgvAgents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAgents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgents.Location = new System.Drawing.Point(33, 125);
             this.dgvAgents.Name = "dgvAgents";

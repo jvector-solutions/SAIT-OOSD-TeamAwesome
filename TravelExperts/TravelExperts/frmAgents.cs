@@ -110,7 +110,7 @@ namespace TravelExperts
         private void btnGetAgent_Click(object sender, EventArgs e)
         {
             string searchMe = txtAgentId.Text;
-            dgvAgents.DataSource = AgentDB.GetAgent(searchMe);
+            dgvAgents.DataSource = AgentDB.SearchAgents(searchMe);
         }
 
         private void btnExit_Click(object sender, EventArgs e)

@@ -71,6 +71,7 @@
             this.rdbPackage.TabStop = true;
             this.rdbPackage.Text = "Package";
             this.rdbPackage.UseVisualStyleBackColor = true;
+            this.rdbPackage.CheckedChanged += new System.EventHandler(this.rdbPackage_CheckedChanged);
             // 
             // txtSearch
             // 
@@ -89,6 +90,7 @@
             this.rdbProduct.TabIndex = 42;
             this.rdbProduct.Text = "Product";
             this.rdbProduct.UseVisualStyleBackColor = true;
+            this.rdbProduct.CheckedChanged += new System.EventHandler(this.rdbProduct_CheckedChanged);
             // 
             // rdbSupplier
             // 
@@ -99,6 +101,7 @@
             this.rdbSupplier.TabIndex = 43;
             this.rdbSupplier.Text = "Supplier";
             this.rdbSupplier.UseVisualStyleBackColor = true;
+            this.rdbSupplier.CheckedChanged += new System.EventHandler(this.rdbSupplier_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -143,6 +146,7 @@
             this.rdbAgents.TabIndex = 44;
             this.rdbAgents.Text = "Agents";
             this.rdbAgents.UseVisualStyleBackColor = true;
+            this.rdbAgents.CheckedChanged += new System.EventHandler(this.rdbAgents_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -198,11 +202,16 @@
             // 
             this.dgvMainPage.AllowUserToAddRows = false;
             this.dgvMainPage.AllowUserToDeleteRows = false;
+            this.dgvMainPage.AllowUserToResizeColumns = false;
+            this.dgvMainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMainPage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvMainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMainPage.Location = new System.Drawing.Point(27, 252);
             this.dgvMainPage.Name = "dgvMainPage";
             this.dgvMainPage.ReadOnly = true;
+            this.dgvMainPage.RowHeadersVisible = false;
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
@@ -249,7 +258,6 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
