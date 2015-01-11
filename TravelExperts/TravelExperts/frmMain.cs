@@ -145,21 +145,12 @@ namespace TravelExperts
             //search for Products
             if (rdbProduct.Checked)
             {
-                //--------->>>>>>> John are we modifiying Product.cs so it does not include the switch statement?
-                //--------->>>>>>> the instance for the class Product is never created when running the degguger
-                //--------->>>>>>> and i think it may be because the entity class needs to have a similar format 
-                //--------->>>>>>> to the one used on supplier.cs. Then we need to make the reference and the switch 
-                //--------->>>>>>> statement using Product.DB, so it links to the database information 
-                //--------->>>>>>> Its hard to explain here but if you run the degugger step by step on this page it will make sense
-                //--------->>>>>>> But maybe you are keeping this class like that for a reason :) 
-                //--------->>>>>>> all the code i added will work if you change the format to match Supplier.cs
-                //--------->>>>>>> and im done with frmMain for now so feel free to add as much as you want or need :)
-                dgvMainPage.DataSource = ProductDB.SearchProductSupplier(txtSearch.Text);
+                dgvMainPage.DataSource = ProductDB.SearchProducts(txtSearch.Text);
             }
             //search for Suppliers
             if (rdbSupplier.Checked)
             {
-                //dgvMainPage.DataSource = SupplierDB.SearchSuppliers(txtSearch.Text);
+                dgvMainPage.DataSource = SupplierDB.SearchSuppliers(txtSearch.Text);
             }
             //search for Agents
             if (rdbAgents.Checked)

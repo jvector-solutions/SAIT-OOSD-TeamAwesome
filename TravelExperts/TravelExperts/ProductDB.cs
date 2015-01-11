@@ -146,5 +146,65 @@ namespace TravelExperts
                 connection.Close();
             }
         }
+
+        /////Performs search on main page////
+        public static List<Product> SearchProducts(string charactersToSearch)
+        {
+
+            List<Product> productList = new List<Product>();
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string selectStatement = "SELECT * FROM Products " +
+                "WHERE ProductId like '%" + charactersToSearch.Trim() + "%' OR " +
+                "ProdName like '%" + charactersToSearch.Trim() + "%'";
+
+            //search for something
+            if (charactersToSearch.Trim().Length != 0)
+            {
+                string msg = "";
+                if (Validator.inputIsInteger(charactersToSearch, out msg))
+                {
+                    selectStatement += " OR ProductId ='" + charactersToSearch + "'";
+                }
+            }
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Product newProduct = new Product();//create a Product
+                    newProduct.prodID = Convert.ToInt32(reader["ProductId"]);//add package details
+                    newProduct.prodName = reader["ProdName"].ToString();
+
+                    productList.Add(newProduct);//add Product to list
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return productList;
+        }
     }
 }

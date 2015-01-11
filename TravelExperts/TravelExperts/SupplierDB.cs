@@ -71,5 +71,67 @@ namespace TravelExperts
                 connection.Close();
             }
         }
+
+
+        /////Performs search on main page////
+        public static List<Supplier> SearchSuppliers(string charactersToSearch)
+        {
+
+            List<Supplier> supplierList = new List<Supplier>();
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string selectStatement = "SELECT * FROM Suppliers " +
+                "WHERE SupplierId like '%" + charactersToSearch.Trim() + "%' OR " +
+                "SupName like '%" + charactersToSearch.Trim() + "%'";
+
+            //search for something
+            if (charactersToSearch.Trim().Length != 0)
+            {
+                string msg = "";
+                if (Validator.inputIsInteger(charactersToSearch, out msg))
+                {
+                    selectStatement += " OR SupplierId ='" + charactersToSearch + "'";
+                }
+            }
+
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Supplier newSupplier = new Supplier();//create a Supplier
+                    newSupplier.SupplierId = Convert.ToInt32(reader["SupplierId"]);//add Supplier details
+                    var supRead = reader["SupName"].ToString();
+                    newSupplier.SupName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(supRead.ToLower());
+
+                    supplierList.Add(newSupplier);//add Supplier to list
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return supplierList;
+        }
     }
 }
