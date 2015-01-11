@@ -34,7 +34,7 @@ namespace TravelExperts
         private void frmProduct_Load(object sender, EventArgs e)
         {
             // Fills the dataviewgrid with table data pulled from the database
-            dgvProducts.DataSource = ProductDB.ListProducts();
+            dgvProducts.DataSource = ProductDB.GetProducts();
 
             dgvProducts.Columns[0].Width = 42;
             dgvProducts.Columns[1].Width = 145;
@@ -42,7 +42,30 @@ namespace TravelExperts
 
             // Data binding for the Products & Suppliers drop-down lists
             this.productsTableAdapter.Fill(this.travelExpertsDataSet.Products);
-            this.suppliersTableAdapter.Fill(this.travelExpertsDataSet.Suppliers);
+            //this.suppliersTableAdapter.Fill(this.travelExpertsDataSet.Suppliers);
+            this.LoadSupplierComboBox();
+        }
+
+        private void txtProductSupplierSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchBoxText = txtProductSupplierSearch.Text;
+            dgvProducts.DataSource = ProductDB.SearchProductSupplier(searchBoxText);
+        }
+
+        private void LoadSupplierComboBox()
+        {
+            List<Supplier> supList = new List<Supplier>();
+            try
+            {
+                supList = SupplierDB.GetSupplier();
+                cboSupplierList.DataSource = supList;
+                cboSupplierList.DisplayMember = "SupName";
+                cboSupplierList.ValueMember = "SupplierId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
+            }
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)
@@ -50,7 +73,7 @@ namespace TravelExperts
             string selProd = cboProductList.Text;
             string selSupp = cboSupplierList.Text;
             ProductDB.AddProduct(selProd,selSupp);
-            dgvProducts.DataSource = ProductDB.ListProducts();
+            dgvProducts.DataSource = ProductDB.GetProducts();
         }
 
         private void btnModifyProductSupplier_Click(object sender, EventArgs e)

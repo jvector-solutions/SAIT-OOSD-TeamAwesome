@@ -50,7 +50,7 @@
             this.btnModifyProductSupplier = new System.Windows.Forms.Button();
             this.productsTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.ProductsTableAdapter();
             this.suppliersTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.SuppliersTableAdapter();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtProductSupplierSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.travelExpertsDataSet)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -139,7 +139,7 @@
             // productToolStripMenuItem
             // 
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
-            this.productToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
             this.productToolStripMenuItem.Text = "Products";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
@@ -239,12 +239,13 @@
             // 
             this.suppliersTableAdapter.ClearBeforeFill = true;
             // 
-            // textBox1
+            // txtProductSupplierSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(421, 22);
-            this.textBox1.TabIndex = 57;
+            this.txtProductSupplierSearch.Location = new System.Drawing.Point(113, 40);
+            this.txtProductSupplierSearch.Name = "txtProductSupplierSearch";
+            this.txtProductSupplierSearch.Size = new System.Drawing.Size(421, 22);
+            this.txtProductSupplierSearch.TabIndex = 57;
+            this.txtProductSupplierSearch.TextChanged += new System.EventHandler(this.txtProductSupplierSearch_TextChanged);
             // 
             // label1
             // 
@@ -255,13 +256,13 @@
             this.label1.TabIndex = 58;
             this.label1.Text = "Type to Filter:";
             // 
-            // frmProducts
+            // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(546, 502);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtProductSupplierSearch);
             this.Controls.Add(this.btnModifyProductSupplier);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvProducts);
@@ -272,7 +273,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "frmProducts";
+            this.Name = "frmProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Travel Experts Products";
             this.Load += new System.EventHandler(this.frmProduct_Load);
@@ -311,7 +312,7 @@
         private System.Windows.Forms.BindingSource suppliersBindingSource;
         private TravelExpertsDataSetTableAdapters.SuppliersTableAdapter suppliersTableAdapter;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtProductSupplierSearch;
         private System.Windows.Forms.Label label1;
     }
 }

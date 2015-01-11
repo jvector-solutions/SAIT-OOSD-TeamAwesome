@@ -154,12 +154,12 @@ namespace TravelExperts
                 //--------->>>>>>> But maybe you are keeping this class like that for a reason :) 
                 //--------->>>>>>> all the code i added will work if you change the format to match Supplier.cs
                 //--------->>>>>>> and im done with frmMain for now so feel free to add as much as you want or need :)
-                dgvMainPage.DataSource = ProductDB.SearchProducts(txtSearch.Text);
+                dgvMainPage.DataSource = ProductDB.SearchProductSupplier(txtSearch.Text);
             }
             //search for Suppliers
             if (rdbSupplier.Checked)
             {
-                dgvMainPage.DataSource = SupplierDB.SearchSuppliers(txtSearch.Text);
+                //dgvMainPage.DataSource = SupplierDB.SearchSuppliers(txtSearch.Text);
             }
             //search for Agents
             if (rdbAgents.Checked)

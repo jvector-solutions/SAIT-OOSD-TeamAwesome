@@ -27,8 +27,9 @@ namespace TravelExperts
                 while (reader.Read())
                 {
                     Supplier s = new Supplier();
-                    s.SupName = reader["SupName"].ToString();
-                    s.SupplierId = (int) reader["SupplierId"];
+                    var supRead = reader["SupName"].ToString();
+                    s.SupName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(supRead.ToLower());
+                    s.SupplierId = (int)reader["SupplierId"];
                     supList.Add(s);
                 }
                 reader.Close();

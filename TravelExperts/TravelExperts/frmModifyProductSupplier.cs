@@ -21,7 +21,9 @@ namespace TravelExperts
         {
             // Data binding for the Products & Suppliers lists
             this.productsTableAdapter.Fill(this.travelExpertsDataSet.Products);
-            this.suppliersTableAdapter.Fill(this.travelExpertsDataSet.Suppliers);
+            // Popluate the supplier list box with list information taken from the SupplierDB class
+            lstSupplierList.DataSource = SupplierDB.GetSupplier();
+            
             lstProductList.ClearSelected();
             lstSupplierList.ClearSelected();
         }
@@ -33,7 +35,7 @@ namespace TravelExperts
         }
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
+            //this.DialogResult = DialogResult.OK;
             this.Close();
         }
 
@@ -45,12 +47,23 @@ namespace TravelExperts
 
         private void btnSaveProduct_Click(object sender, EventArgs e)
         {
+            string selectedProd = lstProductList.GetItemText(lstProductList.SelectedItem);
+            string editedProd = txtModifyProduct.Text;
+
             if (Validator.IsPresent(txtModifyProduct)) 
             {
-                string selectedProd = lstProductList.GetItemText(lstProductList.SelectedItem);
-                string editedProd = txtModifyProduct.Text;
-
-                if (selectedProd != editedProd) 
+                // Test for saving
+                if (selectedProd == "")
+                {
+                    DialogResult result = MessageBox.Show("Save '" + editedProd + "' as a new product?", "Confirm Add",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.OK)
+                    {
+                        ProductDB.AddProductName(editedProd);
+                        this.frmModifyProductSupplier_Load(this, null);
+                    }
+                }
+                else if (selectedProd != editedProd) 
                 {
                     DialogResult update =
                     MessageBox.Show("Change '" + selectedProd + "' to '" + editedProd + "'?"
