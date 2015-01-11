@@ -20,6 +20,7 @@ namespace TravelExperts
 
         //To be used when calling the Agent form
         private Agent agent;
+        private Package package;
 
         private void SearchFor() {
             //search for Packages
@@ -29,8 +30,21 @@ namespace TravelExperts
                 dgvMainPage.DataSource = PackageDB.GetPackages(searchMe, chbIncludeExpiredPackages.Checked);
             }
             //search for Products
+            if (rdbProduct.Checked)
+            {
+                string searchMe = txtSearch.Text;
+                dgvMainPage.DataSource = PackageDB.GetProducts(searchMe, false);
+            }
             //search for Suppliers
+            if (rdbSupplier.Checked)
+            {
+
+            }
             //search for Agents
+            if (rdbAgents.Checked)
+            {
+
+            }
         }
         private void FocusSelectAllSearchBox()
         {
@@ -87,8 +101,10 @@ namespace TravelExperts
 
         private void btnAddPackage_Click(object sender, EventArgs e)
         {
-            frmPackage newForm = new frmPackage(null);
+            package = null;
+            frmPackage newForm = new frmPackage(package);
             DialogResult result = newForm.ShowDialog();
+            SearchFor();
         }
 
         private void frmMain_Load(object sender, EventArgs e)
@@ -107,6 +123,69 @@ namespace TravelExperts
         {
             frmProduct newForm = new frmProduct();
             DialogResult result = newForm.ShowDialog();
+        }
+        private bool OneRowIsSelected()
+        {
+            int count = 0;
+            foreach (DataGridViewRow item in this.dgvMainPage.SelectedRows)
+            {
+                count++;
+            }
+            if (count == 1)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void dgvMainPage_Click(object sender, EventArgs e)
+        {
+            if (OneRowIsSelected() && rdbPackage.Checked)
+            {
+                if (rdbPackage.Checked)//package
+                {
+                    btnEdit.Enabled = true;
+                    btnDelete.Enabled = true;
+                }
+            }//multiple items are selected
+            else
+            {
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (rdbPackage.Checked)//delete the package
+            {
+                int row = this.dgvMainPage.CurrentCell.RowIndex;
+                int col = 0;
+                int pkgid = (int)dgvMainPage.Rows[row].Cells[col].Value;
+                if (PackageDB.DeletePackage(pkgid))
+                {
+                    MessageBox.Show("Package was deleted");
+                    SearchFor();
+                }
+                else
+                {
+                    MessageBox.Show("Failed deleting Package");
+                }
+            }
+        }
+        //edit package
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            //get selected package
+            int row = this.dgvMainPage.CurrentCell.RowIndex;
+            int col = 0;
+            int pkgid = (int)dgvMainPage.Rows[row].Cells[col].Value;
+            package = PackageDB.GetPackage(pkgid);
+
+            //open modify form and pass selected package
+            frmPackage newForm = new frmPackage(package);
+            DialogResult result = newForm.ShowDialog();
+            SearchFor();
         }
     }
 }

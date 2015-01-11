@@ -21,10 +21,30 @@ namespace TravelExperts
 
         private void frmPackage_Load(object sender, EventArgs e)
         {
-            if(package != null){
-
+            if(package != null){//edit was selected
+                //populate form
+                PopulateForm();
             }
             FillProductComboBox();
+        }
+        private void PopulateForm()
+        {
+            txtName.Text = package.Name;
+            txtDescription.Text = package.Description;
+            txtPrice.Text = package.Base_Price.ToString();
+            txtCommission.Text = package.Agency_Commission.ToString();
+            dtpStart.Value = package.Start_Date;
+            dtpEnd.Value = package.End_Date;
+
+            //fill dgvProductSupplier
+            List<string[]> listPkgProdSup = new List<string[]>();
+            listPkgProdSup = PackageDB.GetPackageProductSupplier(package.ID);
+
+            //add to datagridview if no duplicate
+            foreach (string[] list in listPkgProdSup)
+            {
+                dgvProductSuppliers.Rows.Add(list[0], list[1], list[2]);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -125,14 +145,15 @@ namespace TravelExperts
                     {
                         //get list of added products and suppliers
                         List<int> list = new List<int>();
-                        foreach (DataGridViewRow item in dgvProductSuppliers.SelectedRows)
+                        foreach (DataGridViewRow item in dgvProductSuppliers.Rows)
                         {
                             int id = Convert.ToInt32(item.Cells[0].Value);
                             list.Add(id);
                         }
+                        p.ID = PackageDB.GetMaxPackageID();
                         //insert products suppliers
                         foreach(int l in list){
-                            PackageDB.AddPackageProductSupplier(l);
+                            PackageDB.AddPackageProductSupplier(p.ID, l);
                         }
                         MessageBox.Show("The Package was Added.",
                             "Package was Added");
@@ -153,7 +174,60 @@ namespace TravelExperts
             //update package
             else
             {
+                string msg="";
+                //validate data
+                if (Validator.notEmpty(txtName.Text, out msg) &&
+                    Validator.notEmpty(txtDescription.Text, out msg) &&
+                    (DateTime.Compare(dtpEnd.Value, DateTime.Now) < 0) &&
+                    Validator.InputIsDecimal(txtPrice.Text, out msg) &&
+                    Validator.inputIsPositive(txtPrice.Text, out msg) &&
+                    Validator.InputIsDecimal(txtCommission.Text, out msg) &&
+                    Validator.inputRangeIsValid
+                        (Convert.ToDecimal(txtCommission.Text), 0, Convert.ToDecimal(txtPrice.Text), out msg))
+                {
+                    //edit package class
+                    package.Name=txtName.Text;
+                    package.Description=txtDescription.Text;
+                    package.Base_Price=Convert.ToDecimal(txtPrice.Text);
+                    package.Agency_Commission=Convert.ToDecimal(txtCommission.Text);
+                    package.Start_Date=dtpStart.Value;
+                    package.End_Date=dtpEnd.Value;
 
+                    //update db
+                    if (PackageDB.UpdatePackage(package))
+                    {
+                        //delete or add PackageProductSupplier Records
+                        //get list of products and suppliers
+                        List<int> list = new List<int>();
+                        foreach (DataGridViewRow item in dgvProductSuppliers.Rows)
+                        {
+                            int prodSupID = Convert.ToInt32(item.Cells[0].Value);
+                            list.Add(prodSupID);
+                        }
+                        //delete packageproductsupplier
+                        if (PackageDB.DeletePackageProductSupplier(package.ID, list))
+                        {
+                            
+                        }
+                        //insert packageproductsupplier
+                        foreach (int l in list)
+                        {
+                            PackageDB.AddPackageProductSupplier(package.ID, l);
+                        }
+                        MessageBox.Show("The Package was Added.",
+                            "Package was Added");
+                        Close();
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error occured when saving package");
+                    }
+                }
+                else//invalid data
+                {
+                    MessageBox.Show("Invalid data: " + msg);
+                }
             }
         }
     }

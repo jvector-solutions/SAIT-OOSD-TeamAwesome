@@ -43,6 +43,8 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAddPackage = new System.Windows.Forms.Button();
             this.dgvMainPage = new System.Windows.Forms.DataGridView();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -154,7 +156,7 @@
             // 
             // btnAgent
             // 
-            this.btnAgent.Location = new System.Drawing.Point(486, 551);
+            this.btnAgent.Location = new System.Drawing.Point(486, 676);
             this.btnAgent.Name = "btnAgent";
             this.btnAgent.Size = new System.Drawing.Size(139, 38);
             this.btnAgent.TabIndex = 47;
@@ -164,7 +166,7 @@
             // 
             // btnProductSuppliers
             // 
-            this.btnProductSuppliers.Location = new System.Drawing.Point(631, 551);
+            this.btnProductSuppliers.Location = new System.Drawing.Point(631, 676);
             this.btnProductSuppliers.Name = "btnProductSuppliers";
             this.btnProductSuppliers.Size = new System.Drawing.Size(250, 38);
             this.btnProductSuppliers.TabIndex = 48;
@@ -174,7 +176,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(887, 551);
+            this.btnExit.Location = new System.Drawing.Point(887, 676);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 38);
             this.btnExit.TabIndex = 49;
@@ -184,7 +186,7 @@
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(336, 551);
+            this.btnAddPackage.Location = new System.Drawing.Point(336, 676);
             this.btnAddPackage.Name = "btnAddPackage";
             this.btnAddPackage.Size = new System.Drawing.Size(139, 38);
             this.btnAddPackage.TabIndex = 50;
@@ -205,13 +207,38 @@
             this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
             this.dgvMainPage.TabIndex = 51;
+            this.dgvMainPage.Click += new System.EventHandler(this.dgvMainPage_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(923, 529);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(103, 30);
+            this.btnDelete.TabIndex = 52;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(814, 529);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(103, 30);
+            this.btnEdit.TabIndex = 53;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1052, 601);
+            this.ClientSize = new System.Drawing.Size(1052, 726);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.dgvMainPage);
             this.Controls.Add(this.btnAddPackage);
             this.Controls.Add(this.btnExit);
@@ -251,6 +278,8 @@
         private System.Windows.Forms.DataGridView dgvMainPage;
         private System.Windows.Forms.RadioButton rdbAgents;
         private System.Windows.Forms.CheckBox chbIncludeExpiredPackages;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

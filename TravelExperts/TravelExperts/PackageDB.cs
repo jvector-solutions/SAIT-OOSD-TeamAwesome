@@ -320,16 +320,18 @@ namespace TravelExperts
             }
             return true;
         }
-        public static bool AddPackageProductSupplier(int ProductsSuppliers)
+        public static bool AddPackageProductSupplier(int pkgID, int ProductsSuppliers)
         {
             //create connection
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //create sql command
             string insertStatement =
-                "INSERT Packages_Products_Suppliers " +
-                "(PackageId, ProductSupplierId) " +
-                "VALUES ((SELECT MAX(packageID) FROM Packages), "+ProductsSuppliers+")";
+                "IF NOT EXISTS (SELECT * FROM Packages_Products_Suppliers "+
+                "WHERE PackageId = "+pkgID.ToString()+" AND ProductSupplierId = "+
+                    ProductsSuppliers.ToString()+") "+
+                    "INSERT INTO Packages_Products_Suppliers (PackageId, ProductSupplierId) "+
+                    "VALUES (" + pkgID.ToString() + "," + ProductsSuppliers.ToString() + ")";
 
             SqlCommand insertCommand =
                 new SqlCommand(insertStatement, connection);
@@ -348,6 +350,349 @@ namespace TravelExperts
                 connection.Close();
             }
             return true;
+        }
+        //delete package
+        public static bool DeletePackage(int pkgID)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            string deleteLinkingTableStatement=
+                "delete from Packages_Products_Suppliers "+
+                "where PackageId= "+pkgID.ToString();
+            string deletePkgStatement =
+                "DELETE FROM Packages " +
+                "WHERE PackageId = "+pkgID.ToString();
+
+            SqlCommand deleteLinkingTableCommand =
+                new SqlCommand(deleteLinkingTableStatement, connection);
+            SqlCommand deletePkgCommand =
+                new SqlCommand(deletePkgStatement, connection);
+
+            try
+            {
+                connection.Open();
+                deleteLinkingTableCommand.ExecuteNonQuery();
+                int count = deletePkgCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        //get a package
+        public static Package GetPackage(int id)
+        {
+
+            Package pkg = new Package();
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string selectStatement = "SELECT * FROM Packages " +
+                "WHERE PackageId =" + id.ToString();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //create reader
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                while (reader.Read())
+                {
+                    //add package details
+                    pkg.ID = (int)reader["PackageId"];
+                    pkg.Name = reader["PkgName"].ToString();
+                    pkg.Start_Date = Convert.ToDateTime(reader["PkgStartDate"]);
+                    pkg.End_Date = Convert.ToDateTime(reader["PkgEndDate"]);
+                    pkg.Description = reader["PkgDesc"].ToString();
+                    pkg.Base_Price = (decimal)reader["PkgBasePrice"];
+                    pkg.Agency_Commission = (decimal)reader["PkgAgencyCommission"];
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return pkg;
+        }
+        public static List<string[]> GetPackageProductSupplier(int pkgID)
+        {
+            List<string[]> records = new List<string[]>();
+            
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            string selectStatement = "select Packages_Products_Suppliers.productsupplierid, "+
+                "prodname, supname "+
+                "from Packages_Products_Suppliers, Products_Suppliers, Products, Suppliers "+
+                "where Packages_Products_Suppliers.ProductSupplierId=Products_Suppliers.ProductSupplierId and "+
+                "Products.ProductId=Products_Suppliers.ProductId and "+
+                "Suppliers.SupplierId=Products_Suppliers.SupplierId and "+
+                "Packages_Products_Suppliers.PackageId="+pkgID.ToString();
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //create reader
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    string[] record = new string[3];
+                    
+                    record[0] = reader["ProductSupplierId"].ToString();
+                    record[1] = reader["ProdName"].ToString();
+                    record[2] = reader["SupName"].ToString();
+                    records.Add(record);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return records;
+        }
+        public static bool UpdatePackage(Package editPackage)
+        {
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string updateStatement =
+                "UPDATE Packages SET " +
+                "PkgName = @PkgName, " +
+                "PkgStartDate = @PkgStartDate, " +
+                "PkgEndDate = @PkgEndDate, " +
+                "PkgDesc = @PkgDesc, " +
+                "PkgBasePrice = @PkgBasePrice, " +
+                "PkgAgencyCommission = @PkgAgencyCommission " +
+                "WHERE PackageId = @PackageId ";
+            SqlCommand updateCommand =
+                new SqlCommand(updateStatement, connection);
+            updateCommand.Parameters.AddWithValue(
+                "@PackageId", editPackage.ID);
+            updateCommand.Parameters.AddWithValue(
+                "@PkgName", editPackage.Name);
+            updateCommand.Parameters.AddWithValue(
+                "@PkgStartDate", editPackage.Start_Date);
+            updateCommand.Parameters.AddWithValue(
+                "@PkgEndDate", editPackage.End_Date);
+            updateCommand.Parameters.AddWithValue(
+                "@PkgDesc", editPackage.Description);
+            updateCommand.Parameters.AddWithValue(
+                "@PkgBasePrice", editPackage.Base_Price);
+            updateCommand.Parameters.AddWithValue(
+                "@PkgAgencyCommission", editPackage.Agency_Commission);
+
+            try
+            {
+                connection.Open();
+                int count = updateCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        //delete records that are not in the list
+        public static bool DeletePackageProductSupplier(int pkgID, List<int> prodSupID)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string stringProdSupId = "";
+            foreach (int n in prodSupID)
+            {
+                stringProdSupId += n.ToString()+",";
+            }
+            if (stringProdSupId.Length > 0)
+            {
+                stringProdSupId = stringProdSupId.Remove(stringProdSupId.Length - 1);
+            }
+            string deleteStatement =
+                "IF EXISTS (SELECT * FROM Packages_Products_Suppliers "+
+                "WHERE PackageId = "+pkgID.ToString()+" AND ProductSupplierId NOT in "+
+                "("+stringProdSupId+")) "+
+                "delete from Packages_Products_Suppliers "+
+                "where PackageID=" + pkgID.ToString() + " AND ProductSupplierId NOT in " +
+                "(" + stringProdSupId + ")";
+            SqlCommand deleteCommand =
+                new SqlCommand(deleteStatement, connection);
+            try
+            {
+                connection.Open();
+                int count = deleteCommand.ExecuteNonQuery();
+                if (count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+        public static int GetMaxPackageID()
+        {
+            int id;
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string selectStatement = "select MAX(packageID) from Packages";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            try
+            {
+                id = (int) selectCommand.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return id;
+        }
+        //find products that has the findMe string
+        public static List<Product> GetProducts(string findMe, bool showAll)
+        {
+
+            List<Product> listOfProducts = new List<Product>();
+
+            //create connection
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+
+            //create sql command
+            string selectStatement = "SELECT * FROM Products " +
+                "WHERE prodname like '%" + findMe.Trim() + "%'";
+
+            //search for something
+            if (findMe.Trim().Length != 0)
+            {
+                string msg = "";
+                if (Validator.inputIsInteger(findMe, out msg))
+                {
+                    selectStatement += " OR ProductId ='" + findMe + "'";
+                }
+            }
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+
+            //open connection
+            try
+            {
+                connection.Open();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //create reader
+            try
+            {
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    //create a package
+                    Product newProduct = new Product();
+                    //add package details
+                    newProduct.prodID = (int)reader["ProductId"];
+                    newProduct.prodName = reader["prodName"].ToString();
+                    //add book to list
+                    listOfProducts.Add(newProduct);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            //close connection
+            try
+            {
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return listOfProducts;
         }
     }
 }
