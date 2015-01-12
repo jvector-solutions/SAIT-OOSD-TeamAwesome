@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* CMPP248 Part 2 Workshop 2
+ * Class for Packages
+ * Created by: MB, and Leisy
+ * January 12, 2015
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

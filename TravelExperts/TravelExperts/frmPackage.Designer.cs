@@ -124,7 +124,7 @@
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(271, 22);
             this.dtpStart.TabIndex = 31;
-            this.dtpStart.Value = new System.DateTime(2015, 1, 9, 8, 49, 10, 0);
+            this.dtpStart.Value = new System.DateTime(2015, 1, 12, 0, 0, 0, 0);
             // 
             // label6
             // 

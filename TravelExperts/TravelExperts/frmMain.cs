@@ -1,4 +1,9 @@
-﻿using System;
+﻿/* CMPP248 Part 2 Workshop 2
+ * Class for Packages
+ * Created by: MB, Leisy, and John
+ * January 12, 2015
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,7 +49,8 @@ namespace TravelExperts
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (rdbPackage.Checked)//delete the package
+            //delete the package
+            if (rdbPackage.Checked)
             {
                 int row = this.dgvMainPage.CurrentCell.RowIndex;
                 int col = 0;
@@ -59,21 +65,24 @@ namespace TravelExperts
                     MessageBox.Show("Failed deleting Package");
                 }
             }
-        }        //edit package from main form
+        }        
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //get selected package
-            int row = this.dgvMainPage.CurrentCell.RowIndex;
-            int col = 0;
-            int pkgid = (int)dgvMainPage.Rows[row].Cells[col].Value;
-            package = PackageDB.GetPackage(pkgid);
+            //edit package from main form
+            if (rdbPackage.Checked)
+            {
+                //get selected package
+                int row = this.dgvMainPage.CurrentCell.RowIndex;
+                int col = 0;
+                int pkgid = (int)dgvMainPage.Rows[row].Cells[col].Value;
+                package = PackageDB.GetPackage(pkgid);
 
-            //open modify form and pass selected package
-            frmPackage newForm = new frmPackage(package);
-            DialogResult result = newForm.ShowDialog();
-            SearchFor();
-
-        }//delete package from main form
+                //open modify form and pass selected package
+                frmPackage newForm = new frmPackage(package);
+                DialogResult result = newForm.ShowDialog();
+                SearchFor();
+            }
+        }
 
         //Main form controls --------------------------------
          private void btnExit_Click(object sender, EventArgs e)
@@ -83,6 +92,10 @@ namespace TravelExperts
 
         //DataGridView Controls  --------------------------------
         private void dgvMainPage_Click(object sender, EventArgs e)
+        {
+            EnableDisableEditButton();
+        }
+        private void EnableDisableEditButton()
         {
             if (OneRowIsSelected() && rdbPackage.Checked)
             {
@@ -101,7 +114,7 @@ namespace TravelExperts
         private bool OneRowIsSelected()
         {
             int count = 0;
-            foreach (DataGridViewRow item in this.dgvMainPage.SelectedRows)
+            foreach (DataGridViewRow item in dgvMainPage.SelectedRows)
             {
                 count++;
             }
@@ -135,7 +148,7 @@ namespace TravelExperts
             //--------->>>>>>> default? :) not a big thing but i noticed... 
 
             bool isIncludeExpiredPackagesEnabled = false;
-
+            dgvMainPage.DataSource = null;
             //search for Packages
             if (rdbPackage.Checked)
             {
@@ -160,6 +173,7 @@ namespace TravelExperts
 
             chbIncludeExpiredPackages.Enabled = isIncludeExpiredPackagesEnabled;//enable 'IncludeExpiredPackages' box or not
             this.Refresh();
+            EnableDisableEditButton();
         }
         private void FocusSelectAllSearchBox()
         {
@@ -191,6 +205,11 @@ namespace TravelExperts
         private void rdbAgents_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = "";//empty text field if user changes search parameters
+            SearchFor();
+        }
+
+        private void chbIncludeExpiredPackages_CheckedChanged(object sender, EventArgs e)
+        {
             SearchFor();
         }
     }

@@ -124,6 +124,7 @@
             this.chbIncludeExpiredPackages.TabIndex = 45;
             this.chbIncludeExpiredPackages.Text = "Include Expired Packages";
             this.chbIncludeExpiredPackages.UseVisualStyleBackColor = true;
+            this.chbIncludeExpiredPackages.CheckedChanged += new System.EventHandler(this.chbIncludeExpiredPackages_CheckedChanged);
             this.chbIncludeExpiredPackages.Click += new System.EventHandler(this.chbIncludeExpiredPackages_Click);
             // 
             // panel1

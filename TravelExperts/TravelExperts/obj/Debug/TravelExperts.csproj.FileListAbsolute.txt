@@ -32,7 +32,6 @@ C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExper
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmPackage.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmProduct.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmModifyProductSupplier.resources
-C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmSupplierModify.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.Properties.Resources.resources
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csproj.GenerateResource.Cache
 C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.exe
@@ -50,3 +49,4 @@ C:\Users\677958\Documents\GitHub\TravelExperts\TravelExperts\TravelExperts\obj\D
 C:\Users\677958\Documents\GitHub\TravelExperts\TravelExperts\TravelExperts\obj\Debug\TravelExperts.frmSupplierModify.resources
 C:\Users\677958\Documents\GitHub\TravelExperts\TravelExperts\TravelExperts\obj\Debug\TravelExperts.Properties.Resources.resources
 C:\Users\677958\Documents\GitHub\TravelExperts\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csproj.GenerateResource.Cache
+C:\Users\680402\Documents\GitHub\SAIT-OOSD-TeamAwesome\TravelExperts\TravelExperts\obj\Debug\TravelExperts.csprojResolveAssemblyReference.cache

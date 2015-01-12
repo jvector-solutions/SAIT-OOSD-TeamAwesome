@@ -1,6 +1,5 @@
-﻿/*
- * Created By: Leisy
- * Edited By: MB
+﻿/* CMPP248 Part 2 Workshop 2
+ * Created By: Leisy, and MB
  * January 8, 2015
  */
 using System;
