@@ -137,9 +137,16 @@ namespace TravelExperts
         public static void DeleteSupplierName(string delSupplier)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
-            string deleteStatement = "DELETE FROM Products_Suppliers " +
+            string deleteStatement =
+                "DELETE FROM Packages_Products_Suppliers " +
+                "WHERE ProductSupplierId IN " +
+                "(SELECT pps.ProductSupplierId FROM Packages_Products_Suppliers pps, Products_Suppliers ps,Suppliers s " +
+                "WHERE pps.ProductSupplierId = ps.ProductSupplierId AND ps.SupplierId = s.SupplierId AND s.SupName = @delSup); " +
+                
+                "DELETE FROM Products_Suppliers " +
                 "WHERE SupplierId IN " +
                 "(SELECT SupplierId FROM Suppliers WHERE SupName = @delSup); " +
+                
                 "DELETE FROM Suppliers " +
                 "WHERE SupName = @delSup";
             SqlCommand insertCommand = new SqlCommand(deleteStatement, connection);

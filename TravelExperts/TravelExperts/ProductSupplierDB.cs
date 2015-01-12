@@ -130,11 +130,21 @@ namespace TravelExperts
             }
         }
 
-        // Delete a ProductSupplierId and Product + Supplier combination from the database
+        // Delete a ProductSupplierId from the database
         public static void DeleteProductSupplier(string selProd, string selSup)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
+            
+            // Delete the ProductSupplierID from the Packages_Products_Suppliers table first
+            // and then delete it from the Products_Suppliers
             string deleteStatement =
+                "DELETE FROM Packages_Products_Suppliers " +
+                "WHERE ProductSupplierId IN " +
+                "(SELECT pps.ProductSupplierId FROM Packages_Products_Suppliers pps, Products_Suppliers ps,Products p,Suppliers s " +
+                "WHERE pps.ProductSupplierId = ps.ProductSupplierId " +
+                "AND ps.ProductId = p.ProductId AND p.ProdName = @selProd " +
+                "AND ps.SupplierId = s.SupplierId AND s.SupName = @selSup); " +
+
                 "DELETE FROM Products_Suppliers " +
                 "WHERE ProductSupplierId IN " +
                 "(SELECT ProductSupplierId FROM Products_Suppliers ps " +

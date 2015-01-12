@@ -101,9 +101,15 @@ namespace TravelExperts
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string deleteStatement = 
+                "DELETE FROM Packages_Products_Suppliers " +
+                "WHERE ProductSupplierId IN " +
+                "(SELECT pps.ProductSupplierId FROM Packages_Products_Suppliers pps, Products_Suppliers ps,Products p " +
+                "WHERE pps.ProductSupplierId = ps.ProductSupplierId AND ps.ProductId = p.ProductId AND p.ProdName = @delprod); " +
+                
                 "DELETE FROM Products_Suppliers " +
                 "WHERE ProductId IN " +
                 "(SELECT ProductId FROM Products WHERE ProdName = @delProd); " +
+                
                 "DELETE FROM Products " +
                 "WHERE ProdName = @delProd";
             SqlCommand insertCommand = new SqlCommand(deleteStatement, connection);
