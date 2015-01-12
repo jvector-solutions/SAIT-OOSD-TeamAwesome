@@ -103,7 +103,7 @@ namespace TravelExperts
         }
 
         // Get a list of products to be deleted for a selected supplier
-        public static List<string> GetDeleteList(string delSupplier)
+        public static List<string> GetDeleteList(string delSup)
         {
             // Create a list of the items being deleted and display in a message box
             List<string> delList = new List<string>();
@@ -112,17 +112,17 @@ namespace TravelExperts
                 "SELECT DISTINCT ProdName " +
                 "FROM Products p,Suppliers s,Products_Suppliers ps " +
                 "WHERE p.ProductId = ps.ProductId AND s.SupplierId = ps.SupplierId " +
-                "AND SupName = @SupName " +
+                "AND s.SupName = @delSup " +
                 "ORDER BY ProdName";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@SupName", delSupplier);
+            selectCommand.Parameters.AddWithValue("@delSup", delSup);
             try
             {
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    delList.Add(reader["SupName"].ToString());
+                    delList.Add(reader["ProdName"].ToString());
                 }
                 reader.Close();
             }
