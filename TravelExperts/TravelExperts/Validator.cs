@@ -64,8 +64,9 @@ namespace TravelExperts
             return false;
         }
         //checks if string is not empty
-        public static bool notEmpty(string input, out string msg)
+        public static bool notEmpty(TextBox txtBox, out string msg)
         {
+            string input = txtBox.Text;
 
             if (input.Length != 0 && input.Trim().Length != 0)//input is not empty
             {
@@ -73,12 +74,15 @@ namespace TravelExperts
                 return true;
             }
             //input is empty
-            msg = "Please dont leave this field blank";
+            msg = "Empty Field";
+            txtBox.Focus();
+            txtBox.SelectAll();
             return false;
         }
         //check if positive
-        public static bool inputIsPositive(string input, out string msg)
+        public static bool inputIsPositive(TextBox txtBox, out string msg)
         {
+            string input = txtBox.Text;
             decimal value;
             if (decimal.TryParse(input, out value))//input is greater than 0
             {
@@ -87,11 +91,14 @@ namespace TravelExperts
             }
             //input is negative
             msg = "Input is Negative";
+            txtBox.Focus();
+            txtBox.SelectAll();
             return false;
         }
         //check if the string is decimal
-        public static bool InputIsDecimal(string input, out string msg)
+        public static bool InputIsDecimal(TextBox txtBox, out string msg)
         {
+            string input = txtBox.Text;
             decimal value;
             msg = "";
             if (decimal.TryParse(input, out value))
@@ -100,18 +107,47 @@ namespace TravelExperts
             }
             //input is not decimal
             msg = "Not Decimal";
+            txtBox.Focus();
+            txtBox.SelectAll();
             return false;
         }
         //check if  min <= input <= max
-        public static bool inputRangeIsValid(decimal input, decimal min, decimal max, out string msg)
+        public static bool inputRangeIsValid(TextBox txtBox, decimal min, decimal max, out string msg)
         {
+            decimal input = Convert.ToDecimal(txtBox.Text);
+
             if (input >= min && input <= max) //input is in range
             {
                 msg = "";
                 return true;
             }
             //input is out of range
-            msg = "Please use numbers between " + min + " and " + max;
+            msg = "Please use numbers " + min + " to " + max;
+            txtBox.Focus();
+            txtBox.SelectAll();
+            return false;
+        }
+        public static bool DateIsValid(DateTimePicker dtpBox, out string msg)
+        {
+            DateTime date = dtpBox.Value;
+            if (DateTime.Compare(date, DateTime.Now) > 0)
+            {
+                msg = "";
+                return true;
+            }
+            msg = "Please use dates after today";
+            dtpBox.Focus();
+            return false;
+        }
+        public static bool StartAndEndDateIsValid(DateTimePicker startDate, DateTimePicker endDate, out string msg)
+        {
+            if (DateTime.Compare(endDate.Value, startDate.Value) > 0)
+            {
+                msg = "";
+                return true;
+            }
+            msg = "Start Date is Later than End Date";
+            startDate.Focus();
             return false;
         }
     }

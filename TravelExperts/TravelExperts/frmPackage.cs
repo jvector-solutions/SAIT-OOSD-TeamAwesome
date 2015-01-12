@@ -120,21 +120,32 @@ namespace TravelExperts
             }
             dgvProductSuppliers.ClearSelection();
         }
+        private bool ValidatePackageDataInput()
+        {
+            string msg="not set";
+                //valid data
+                if(Validator.notEmpty(txtName, out msg) &&
+                    Validator.notEmpty(txtDescription, out msg) &&
+                    Validator.StartAndEndDateIsValid(dtpStart,dtpEnd, out msg) &&
+                    Validator.DateIsValid(dtpEnd, out msg) &&
+                    Validator.InputIsDecimal(txtPrice, out msg) &&
+                    Validator.inputIsPositive(txtPrice, out msg) &&
+                    Validator.InputIsDecimal(txtCommission, out msg) &&
+                    Validator.inputRangeIsValid
+                        (txtCommission, 0, Convert.ToDecimal(txtPrice.Text), out msg))
+                {
+                    return true;
+                }
+            //invalid data
+                MessageBox.Show("Invalid Input: " + msg);
+                return false;
+        }
         private void btbSubmit_Click(object sender, EventArgs e)
         {
             //create package
             if (package == null)
             {
-                string msg="";
-                //validate data
-                if(Validator.notEmpty(txtName.Text, out msg) &&
-                    Validator.notEmpty(txtDescription.Text, out msg) &&
-                    (DateTime.Compare(dtpEnd.Value, DateTime.Now) < 0) &&
-                    Validator.InputIsDecimal(txtPrice.Text, out msg) &&
-                    Validator.inputIsPositive(txtPrice.Text, out msg) &&
-                    Validator.InputIsDecimal(txtCommission.Text, out msg) &&
-                    Validator.inputRangeIsValid
-                        (Convert.ToDecimal(txtCommission.Text), 0, Convert.ToDecimal(txtPrice.Text),out msg))
+                if(ValidatePackageDataInput())
                 {
                     //create package object
                     Package p = new Package();
@@ -170,25 +181,11 @@ namespace TravelExperts
                             "Package was NOT Added");
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Invalid Input "+msg+"this");
-                }
-
             }
             //update package
             else
             {
-                string msg="";
-                //validate data
-                if (Validator.notEmpty(txtName.Text, out msg) &&
-                    Validator.notEmpty(txtDescription.Text, out msg) &&
-                    (DateTime.Compare(dtpEnd.Value, DateTime.Now) < 0) &&
-                    Validator.InputIsDecimal(txtPrice.Text, out msg) &&
-                    Validator.inputIsPositive(txtPrice.Text, out msg) &&
-                    Validator.InputIsDecimal(txtCommission.Text, out msg) &&
-                    Validator.inputRangeIsValid
-                        (Convert.ToDecimal(txtCommission.Text), 0, Convert.ToDecimal(txtPrice.Text), out msg))
+                if (ValidatePackageDataInput())
                 {
                     //edit package class
                     package.Name=txtName.Text;
@@ -228,10 +225,6 @@ namespace TravelExperts
                     {
                         MessageBox.Show("Error occured when saving package");
                     }
-                }
-                else//invalid data
-                {
-                    MessageBox.Show("Invalid data: " + msg);
                 }
             }
         }
