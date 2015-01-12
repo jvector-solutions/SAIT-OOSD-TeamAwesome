@@ -124,14 +124,12 @@ namespace TravelExperts
             //Connect to database and populate the list
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement = "SELECT * FROM Agents";
-
-
-            /*
-             * "SELECT AgentId AS ID, AgtFirstName AS Name, AgtMiddleInitial AS [Middle Initial], "
+            
+            /*string selectStatement = "SELECT AgentId AS ID, AgtFirstName AS Name, AgtMiddleInitial AS [Middle Initial], "
                 + "AgtLastName AS [Last Name], AgtBusPhone AS Phone, AgtEmail AS Email, AgtPosition AS Position, "
                 + "AgencyId AS Agency ID "
-                + "FROM Agents";
-             */
+                + "FROM Agents";*/
+             
 
             SqlDataAdapter dataAdapter = new SqlDataAdapter(selectStatement, connection); //c.con is the connection string
             SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
@@ -148,15 +146,15 @@ namespace TravelExperts
                 dataAdapter.Fill(agentTable);
                 dgvAgents.DataSource = agentTable;
 
-                dgvAgents.Columns[0].Width = 60;//Define the width for each column
-                dgvAgents.Columns[1].Width = 100;
-                dgvAgents.Columns[2].Width = 60;
-                dgvAgents.Columns[3].Width = 100;
-                dgvAgents.Columns[4].Width = 150;
-                dgvAgents.Columns[5].Width = 300;
-                dgvAgents.Columns[6].Width = 100;
-                dgvAgents.Columns[7].Width = 60;
-                dgvAgents.Columns[8].Width = 100;
+                /*dgvAgents.Columns[0].FillWeight = 6;//Define the width for each column
+                dgvAgents.Columns[1].FillWeight = 100;
+                dgvAgents.Columns[2].FillWeight = 60;
+                dgvAgents.Columns[3].FillWeight = 100;
+                dgvAgents.Columns[4].FillWeight = 100;
+                dgvAgents.Columns[5].FillWeight = 100;
+                dgvAgents.Columns[6].FillWeight = 100;
+                dgvAgents.Columns[7].FillWeight = 60;
+                dgvAgents.Columns[8].FillWeight = 100;*/
             }
             catch (SqlException ex)
             {

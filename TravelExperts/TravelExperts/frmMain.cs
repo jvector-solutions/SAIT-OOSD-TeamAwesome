@@ -142,7 +142,7 @@ namespace TravelExperts
             SearchFor();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             SearchFor();
         }
@@ -155,23 +155,32 @@ namespace TravelExperts
             //search for Packages
             if (rdbPackage.Checked)
             {
+                grpListOf.Text = "List Of Package";
                 isIncludeExpiredPackagesEnabled = true;
                 dgvMainPage.DataSource = PackageDB.GetPackages(txtSearch.Text, chbIncludeExpiredPackages.Checked);
+                dgvMainPage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             //search for Products
             if (rdbProduct.Checked)
             {
+                grpListOf.Text = "List Of Products";
                 dgvMainPage.DataSource = ProductDB.SearchProducts(txtSearch.Text);
+                dgvMainPage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             //search for Suppliers
             if (rdbSupplier.Checked)
             {
+                grpListOf.Text = "List Of Suppliers";
                 dgvMainPage.DataSource = SupplierDB.SearchSuppliers(txtSearch.Text);
+                dgvMainPage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             //search for Agents
             if (rdbAgents.Checked)
             {
+                grpListOf.Text = "List Of Agents";
                 dgvMainPage.DataSource = AgentDB.SearchAgents(txtSearch.Text);
+                dgvMainPage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                hideColumn(8);
             }
 
             chbIncludeExpiredPackages.Enabled = isIncludeExpiredPackagesEnabled;//enable 'IncludeExpiredPackages' box or not
@@ -214,5 +223,11 @@ namespace TravelExperts
         {
             SearchFor();
         }
+
+        private void hideColumn(int columNo)
+        {
+            dgvMainPage.Columns[columNo].Visible = false;
+        }
+   
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.rdbPackage = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -45,20 +47,24 @@
             this.dgvMainPage = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.grpListOf = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).BeginInit();
+            this.grpListOf.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(76, 86);
+            this.label1.Location = new System.Drawing.Point(71, 58);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(235, 17);
+            this.label1.Size = new System.Drawing.Size(288, 51);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Agent Info Goes here. Thanks Leisy";
+            this.label1.Text = "To display information for logged agent after\r\nhe or she logged into the system. " +
+    "\r\n(To be implemented)";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rdbPackage
             // 
@@ -79,7 +85,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(429, 22);
             this.txtSearch.TabIndex = 40;
-            this.txtSearch.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // rdbProduct
             // 
@@ -108,7 +114,7 @@
             this.groupBox1.Controls.Add(this.chbIncludeExpiredPackages);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Location = new System.Drawing.Point(27, 26);
+            this.groupBox1.Location = new System.Drawing.Point(31, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(478, 165);
             this.groupBox1.TabIndex = 44;
@@ -152,16 +158,16 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(536, 26);
+            this.groupBox2.Location = new System.Drawing.Point(540, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(490, 189);
+            this.groupBox2.Size = new System.Drawing.Size(466, 165);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Agent";
             // 
             // btnAgent
             // 
-            this.btnAgent.Location = new System.Drawing.Point(486, 676);
+            this.btnAgent.Location = new System.Drawing.Point(466, 623);
             this.btnAgent.Name = "btnAgent";
             this.btnAgent.Size = new System.Drawing.Size(139, 38);
             this.btnAgent.TabIndex = 47;
@@ -171,7 +177,7 @@
             // 
             // btnProductSuppliers
             // 
-            this.btnProductSuppliers.Location = new System.Drawing.Point(631, 676);
+            this.btnProductSuppliers.Location = new System.Drawing.Point(611, 623);
             this.btnProductSuppliers.Name = "btnProductSuppliers";
             this.btnProductSuppliers.Size = new System.Drawing.Size(250, 38);
             this.btnProductSuppliers.TabIndex = 48;
@@ -181,7 +187,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(887, 676);
+            this.btnExit.Location = new System.Drawing.Point(867, 623);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 38);
             this.btnExit.TabIndex = 49;
@@ -191,7 +197,7 @@
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(336, 676);
+            this.btnAddPackage.Location = new System.Drawing.Point(316, 623);
             this.btnAddPackage.Name = "btnAddPackage";
             this.btnAddPackage.Size = new System.Drawing.Size(139, 38);
             this.btnAddPackage.TabIndex = 50;
@@ -204,25 +210,35 @@
             this.dgvMainPage.AllowUserToAddRows = false;
             this.dgvMainPage.AllowUserToDeleteRows = false;
             this.dgvMainPage.AllowUserToResizeColumns = false;
-            this.dgvMainPage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMainPage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvMainPage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvMainPage.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvMainPage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMainPage.Location = new System.Drawing.Point(27, 252);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMainPage.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvMainPage.Location = new System.Drawing.Point(21, 35);
             this.dgvMainPage.Name = "dgvMainPage";
             this.dgvMainPage.ReadOnly = true;
             this.dgvMainPage.RowHeadersVisible = false;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMainPage.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMainPage.Size = new System.Drawing.Size(999, 271);
+            this.dgvMainPage.Size = new System.Drawing.Size(932, 255);
             this.dgvMainPage.TabIndex = 51;
             this.dgvMainPage.Click += new System.EventHandler(this.dgvMainPage_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(923, 529);
+            this.btnDelete.Location = new System.Drawing.Point(905, 554);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 30);
             this.btnDelete.TabIndex = 52;
@@ -233,7 +249,7 @@
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(814, 529);
+            this.btnEdit.Location = new System.Drawing.Point(796, 554);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(103, 30);
             this.btnEdit.TabIndex = 53;
@@ -241,21 +257,31 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
+            // grpListOf
+            // 
+            this.grpListOf.Controls.Add(this.dgvMainPage);
+            this.grpListOf.Location = new System.Drawing.Point(31, 222);
+            this.grpListOf.Name = "grpListOf";
+            this.grpListOf.Size = new System.Drawing.Size(975, 310);
+            this.grpListOf.TabIndex = 54;
+            this.grpListOf.TabStop = false;
+            this.grpListOf.Text = "List Of Packages";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1052, 726);
+            this.ClientSize = new System.Drawing.Size(1039, 692);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.dgvMainPage);
             this.Controls.Add(this.btnAddPackage);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnProductSuppliers);
             this.Controls.Add(this.btnAgent);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpListOf);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
@@ -266,6 +292,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).EndInit();
+            this.grpListOf.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -289,6 +316,7 @@
         private System.Windows.Forms.CheckBox chbIncludeExpiredPackages;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.GroupBox grpListOf;
     }
 }
 

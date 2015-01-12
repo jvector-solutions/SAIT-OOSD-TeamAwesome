@@ -112,7 +112,7 @@ namespace TravelExperts
                 Validator.IsPresent(txtAgtPosition) &&
                 Validator.IsPresent(txtAgencyId) &&
                 Validator.inputIsInteger(txtAgencyId.Text, out msg) &&
-               // Validator.inputRangeIsValid(txtAgencyID, 1, 3) &&
+                Validator.inputRangeIsValid(txtAgencyId, 1, 3, out msg) &&
                 Validator.IsPresent(txtAgtPassword);
         }
 

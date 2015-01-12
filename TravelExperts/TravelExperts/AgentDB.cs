@@ -16,8 +16,9 @@ namespace TravelExperts
 
             //Build select statement 
             string selectStatement
-                = "SELECT * FROM Agents "
-                + "WHERE AgentId = @AgentId";
+                = "SELECT * INTO  #TempTable"
+                + "FROM Agents "
+                + "WHERE AgentId = @AgentId";  //Get the data into a temp table 
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);//Build SQL command
             selectCommand.Parameters.AddWithValue("@AgentId", agentId);//Patch previous statement
