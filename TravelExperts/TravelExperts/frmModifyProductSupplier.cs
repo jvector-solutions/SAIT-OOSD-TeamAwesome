@@ -62,46 +62,55 @@ namespace TravelExperts
             string selectedProd = lstProductList.GetItemText(lstProductList.SelectedItem);
             string editedProd = txtModifyProduct.Text;
 
-            // Test for saving
-            if (lstProductList.Enabled == false && editedProd != "") // Test if adding product
+            // Validation to see if the typed product is already in the list
+            int index = lstProductList.FindString(editedProd, -1);
+            if (index != -1)
             {
-                DialogResult result = MessageBox.Show("Save '" + editedProd + "' as a new product?", "Confirm Add",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.OK)
+                MessageBox.Show("Warning: Product already exists.","Duplicate Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            else 
+            { 
+                // Test for saving
+                if (lstProductList.Enabled == false && editedProd != "") // Test if adding product
                 {
-                    ProductDB.AddProductName(editedProd);
-                    this.frmModifyProductSupplier_Load(this, null);
+                    DialogResult result = MessageBox.Show("Save '" + editedProd + "' as a new product?", "Confirm Add",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.OK)
+                    {
+                        ProductDB.AddProductName(editedProd);
+                        this.frmModifyProductSupplier_Load(this, null);
 
-                    // Select the item that was just saved
-                    SelectItem(editedProd, lstProductList);
+                        // Select the item that was just saved
+                        SelectItem(editedProd, lstProductList);
+                    }
                 }
-            }
-            else if (lstProductList.Enabled == false && editedProd == "")   // If adding product, check if textbox is empty
-            {
-                MessageBox.Show("Please enter a new product name.", "Entry Error", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtModifyProduct.Focus();
-            }
-            else if (lstProductList.Enabled == true && selectedProd != editedProd) // Test if editing a selected product
-            {
-                DialogResult update =
-                MessageBox.Show("Change '" + selectedProd + "' to '" + editedProd + "'?"
-                , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (update == DialogResult.OK)
+                else if (lstProductList.Enabled == false && editedProd == "")   // If adding product, check if textbox is empty
                 {
-                    ProductDB.UpdateProduct(selectedProd, editedProd);
-                    // Refresh table adapter to display updated list
-                    this.frmModifyProductSupplier_Load(this, null);
-
-                    // Select the item that was just updated
-                    SelectItem(editedProd, lstProductList);
+                    MessageBox.Show("Please enter a new product name.", "Entry Error", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtModifyProduct.Focus();
                 }
-            }
-            else if (lstProductList.Enabled == true && selectedProd == "") // Test if editing a product but nothing is selected
-            {
-                MessageBox.Show("Please select a product to edit.", "Item Not Selected",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtModifyProduct.Focus();
+                else if (lstProductList.Enabled == true && selectedProd != editedProd) // Test if editing a selected product
+                {
+                    DialogResult update =
+                    MessageBox.Show("Change '" + selectedProd + "' to '" + editedProd + "'?"
+                    , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (update == DialogResult.OK)
+                    {
+                        ProductDB.UpdateProduct(selectedProd, editedProd);
+                        // Refresh table adapter to display updated list
+                        this.frmModifyProductSupplier_Load(this, null);
+
+                        // Select the item that was just updated
+                        SelectItem(editedProd, lstProductList);
+                    }
+                }
+                else if (lstProductList.Enabled == true && selectedProd == "") // Test if editing a product but nothing is selected
+                {
+                    MessageBox.Show("Please select a product to edit.", "Item Not Selected",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtModifyProduct.Focus();
+                }
             }
         }
 
@@ -121,47 +130,56 @@ namespace TravelExperts
             string selectedSup = lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
             string editedSup = txtModifySupplier.Text;
 
-            // Test for saving or editing
-            if (lstSupplierList.Enabled == false && editedSup != "")
+            // Validation to see if the typed item is already in the list
+            int index = lstSupplierList.FindString(editedSup, -1);
+            if (index != -1)
             {
-                DialogResult result = MessageBox.Show("Save '" + editedSup + "' as a new supplier?", "Confirm Add",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.OK)
+                MessageBox.Show("Warning: Supplier already exists.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                // Test for saving or editing
+                if (lstSupplierList.Enabled == false && editedSup != "")
                 {
-                    SupplierDB.AddSupplierName(editedSup);
-                    this.frmModifyProductSupplier_Load(this, null);
+                    DialogResult result = MessageBox.Show("Save '" + editedSup + "' as a new supplier?", "Confirm Add",
+                        MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.OK)
+                    {
+                        SupplierDB.AddSupplierName(editedSup);
+                        this.frmModifyProductSupplier_Load(this, null);
 
-                    // Select the item that was just saved
-                    SelectItem(editedSup, lstSupplierList);
+                        // Select the item that was just saved
+                        SelectItem(editedSup, lstSupplierList);
+                    }
                 }
-            }
-            else if (lstSupplierList.Enabled == false && editedSup == "")
-            {
-                MessageBox.Show("Please enter a new supplier name.", "Entry Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtModifySupplier.Focus();
-            }
-            else if (lstSupplierList.Enabled == true && selectedSup != editedSup)
-            {
-                DialogResult update =
-                    MessageBox.Show("Change '" + selectedSup + "' to '" + editedSup + "'?"
-                    , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (update == DialogResult.OK)
+                else if (lstSupplierList.Enabled == false && editedSup == "")
                 {
-                    SupplierDB.UpdateSupplier(selectedSup, editedSup);
-                    // Refresh table adapter to display updated list
-                    this.frmModifyProductSupplier_Load(this, null);
-                    lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
-
-                    // Select the item that was just updated
-                    SelectItem(editedSup, lstSupplierList);
+                    MessageBox.Show("Please enter a new supplier name.", "Entry Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtModifySupplier.Focus();
                 }
-            }
-            else if (lstSupplierList.Enabled == true && selectedSup == "")
-            {
-                MessageBox.Show("Please select a supplier name to edit.", "Item Not Selected",
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtModifySupplier.Focus();
+                else if (lstSupplierList.Enabled == true && selectedSup != editedSup)
+                {
+                    DialogResult update =
+                        MessageBox.Show("Change '" + selectedSup + "' to '" + editedSup + "'?"
+                        , "Confirm Change", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    if (update == DialogResult.OK)
+                    {
+                        SupplierDB.UpdateSupplier(selectedSup, editedSup);
+                        // Refresh table adapter to display updated list
+                        this.frmModifyProductSupplier_Load(this, null);
+                        lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
+
+                        // Select the item that was just updated
+                        SelectItem(editedSup, lstSupplierList);
+                    }
+                }
+                else if (lstSupplierList.Enabled == true && selectedSup == "")
+                {
+                    MessageBox.Show("Please select a supplier name to edit.", "Item Not Selected",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtModifySupplier.Focus();
+                }
             }
         }
 
@@ -269,11 +287,11 @@ namespace TravelExperts
         // Method to select an item that was just saved or edited
         public static void SelectItem(string selected, ListBox list)
         {
-            // Select the item that was just updated
             int index = list.FindString(selected, -1);
             if (index != -1)
             {
                 list.SetSelected(index, true);
+
             }
         }
     }

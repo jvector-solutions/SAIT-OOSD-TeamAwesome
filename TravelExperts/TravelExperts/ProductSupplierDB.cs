@@ -65,8 +65,8 @@ namespace TravelExperts
             return searchTable;
         }
 
-        // Method to check if the submitted product + supplier combination already exists in the database
-        public static bool CheckProductExists(string prodName, string supName)
+        // Check if the submitted product + supplier combination already exists in the database
+        public static bool CheckProductSupplierExists(string prodName, string supName)
         {
             bool doesExist;
             SqlConnection connection = TravelExpertsDB.GetConnection();

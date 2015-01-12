@@ -5,6 +5,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,9 @@ namespace TravelExperts
     public class Product
     {
         public Product() { }
+        [DisplayName("Product ID")]
         public int prodID { get; set; }
+        [DisplayName ("Product Name")]
         public string prodName { get; set; }
 
         public override string ToString()

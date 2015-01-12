@@ -159,7 +159,7 @@ namespace TravelExperts
             }
         }
 
-        /////Performs search on main page////
+        // Performs search on main page
         public static List<Supplier> SearchSuppliers(string charactersToSearch)
         {
 

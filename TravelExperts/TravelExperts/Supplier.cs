@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,9 @@ namespace TravelExperts
     public class Supplier
     {
         public Supplier() { }
+        [DisplayName("Supplier ID")]
         public int SupplierId { get; set; }
+        [DisplayName("Supplier Name")]
         public string SupName { get; set; }
 
         public override string ToString()

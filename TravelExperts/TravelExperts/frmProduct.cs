@@ -23,12 +23,25 @@ namespace TravelExperts
             this.Close();
         }
 
+        // Open the modify product tab in a new form from the menu bar
         private void productToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
             DialogResult result = modifyPSForm.ShowDialog();
             if (result == DialogResult.OK)
                 this.frmProduct_Load(this, null);
+            }
+
+        // Open the modify supplier tab in a new form from the menu bar
+        private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
+            DialogResult result = modifyPSForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                this.frmProduct_Load(this, null);
+                modifyPSForm.productTab = false;
+            }
         }
 
         private void frmProduct_Load(object sender, EventArgs e)
@@ -75,9 +88,9 @@ namespace TravelExperts
         {
             string selProd = cboProductList.Text;
             string selSup = cboSupplierList.Text;
-            if (ProductSupplierDB.CheckProductExists(selProd,selSup)) // Combination exists in the database, warn the user
+            if (ProductSupplierDB.CheckProductSupplierExists(selProd,selSup)) // Combination exists in the database, warn the user
             {
-                MessageBox.Show("Warning: Product already exists.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Warning: Item already exists.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else   // Combination is not in database, add product
             {
