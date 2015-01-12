@@ -42,7 +42,8 @@ namespace TravelExperts
 
             // Data binding for the Products & Suppliers drop-down lists
             this.productsTableAdapter.Fill(this.travelExpertsDataSet.Products);
-            //this.suppliersTableAdapter.Fill(this.travelExpertsDataSet.Suppliers);
+            
+            // Load the suppliers combo box
             this.LoadSupplierComboBox();
         }
 
@@ -52,6 +53,7 @@ namespace TravelExperts
             dgvProducts.DataSource = ProductDB.SearchProductSupplier(searchBoxText);
         }
 
+        // Creates an ordered list of the Suppliers
         private void LoadSupplierComboBox()
         {
             List<Supplier> supList = new List<Supplier>();
@@ -68,12 +70,20 @@ namespace TravelExperts
             }
         }
 
+        // Add a new product + supplier combination
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
             string selProd = cboProductList.Text;
-            string selSupp = cboSupplierList.Text;
-            ProductDB.AddProduct(selProd,selSupp);
-            dgvProducts.DataSource = ProductDB.GetProducts();
+            string selSup = cboSupplierList.Text;
+            if (ProductDB.CheckProductExists(selProd,selSup)) // Combination exists in the database, warn the user
+            {
+                MessageBox.Show("Warning: Product already exists.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else   // Combination is not in database, add product
+            {
+                ProductDB.AddProduct(selProd, selSup);
+                dgvProducts.DataSource = ProductDB.GetProducts();
+            }
         }
 
         private void btnModifyProductSupplier_Click(object sender, EventArgs e)
@@ -87,9 +97,9 @@ namespace TravelExperts
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string prodValue = dgvProducts.SelectedRows[0].Cells[1].Value.ToString();   // Gets the product of the selected row
-            string suppValue = dgvProducts.SelectedRows[0].Cells[2].Value.ToString();   // Gets the supplier of the selected row
+            string supValue = dgvProducts.SelectedRows[0].Cells[2].Value.ToString();   // Gets the supplier of the selected row
             DialogResult result = 
-                MessageBox.Show("Delete this item (" + prodValue + " - " + suppValue + ")?"
+                MessageBox.Show("Delete this item (" + prodValue + " - " + supValue + ")?"
                 ,"Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
@@ -98,6 +108,8 @@ namespace TravelExperts
                     foreach (DataGridViewRow item in dgvProducts.SelectedRows)
                     {
                         dgvProducts.Rows.RemoveAt(item.Index);
+                        ProductDB.DeleteProductSupplier(prodValue, supValue);
+                        this.frmProduct_Load(this, null);
                     }
                 }
                 catch (Exception ex)

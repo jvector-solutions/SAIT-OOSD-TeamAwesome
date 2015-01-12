@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.btnSaveProduct = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnDone = new System.Windows.Forms.Button();
             this.tabModifyProductSupplier = new System.Windows.Forms.TabControl();
             this.tabProduct = new System.Windows.Forms.TabPage();
@@ -50,6 +50,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productsTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.ProductsTableAdapter();
             this.suppliersTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.SuppliersTableAdapter();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.tabModifyProductSupplier.SuspendLayout();
             this.tabProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -69,23 +70,26 @@
             this.btnSaveProduct.UseVisualStyleBackColor = true;
             this.btnSaveProduct.Click += new System.EventHandler(this.btnSaveProduct_Click);
             // 
-            // btnCreate
+            // btnAdd
             // 
-            this.btnCreate.Location = new System.Drawing.Point(12, 268);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(68, 32);
-            this.btnCreate.TabIndex = 46;
-            this.btnCreate.Text = "Create";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(12, 268);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(68, 32);
+            this.btnAdd.TabIndex = 46;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.Location = new System.Drawing.Point(86, 268);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(68, 32);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(160, 268);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(68, 32);
+            this.btnDelete.TabIndex = 54;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnDone
             // 
@@ -94,7 +98,7 @@
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(89, 32);
             this.btnDone.TabIndex = 55;
-            this.btnDone.Text = "Done";
+            this.btnDone.Text = "Close";
             this.btnDone.UseVisualStyleBackColor = true;
             // 
             // tabModifyProductSupplier
@@ -163,7 +167,7 @@
             this.tabSupplier.Location = new System.Drawing.Point(4, 25);
             this.tabSupplier.Name = "tabSupplier";
             this.tabSupplier.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSupplier.Size = new System.Drawing.Size(287, 203);
+            this.tabSupplier.Size = new System.Drawing.Size(336, 203);
             this.tabSupplier.TabIndex = 1;
             this.tabSupplier.Text = "Supplier";
             this.tabSupplier.UseVisualStyleBackColor = true;
@@ -228,14 +232,14 @@
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(127, 24);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
@@ -247,15 +251,27 @@
             // 
             this.suppliersTableAdapter.ClearBeforeFill = true;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Enabled = false;
+            this.btnCancel.Location = new System.Drawing.Point(86, 268);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(68, 32);
+            this.btnCancel.TabIndex = 58;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // frmModifyProductSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 310);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.tabModifyProductSupplier);
             this.Controls.Add(this.btnDone);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
@@ -282,8 +298,8 @@
         #endregion
 
         private System.Windows.Forms.Button btnSaveProduct;
-        private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.TabControl tabModifyProductSupplier;
         private System.Windows.Forms.TabPage tabProduct;
@@ -302,5 +318,6 @@
         private TravelExpertsDataSetTableAdapters.SuppliersTableAdapter suppliersTableAdapter;
         private System.Windows.Forms.Button btnSaveSupplier;
         private System.Windows.Forms.TextBox txtModifySupplier;
+        private System.Windows.Forms.Button btnCancel;
     }
 }
