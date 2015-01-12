@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace TravelExperts
 {
-    public static class SupplierDB
+    public class SupplierDB
     {
         // Get all supplier values in the database, sorted, and only first-letter capitalized
         public static List<Supplier> GetSupplier()

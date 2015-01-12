@@ -34,7 +34,7 @@ namespace TravelExperts
         private void frmProduct_Load(object sender, EventArgs e)
         {
             // Fills the dataviewgrid with table data pulled from the database
-            dgvProducts.DataSource = ProductDB.GetProducts();
+            dgvProducts.DataSource = ProductSupplierDB.GetProducts();
 
             dgvProducts.Columns[0].Width = 42;
             dgvProducts.Columns[1].Width = 145;
@@ -50,7 +50,7 @@ namespace TravelExperts
         private void txtProductSupplierSearch_TextChanged(object sender, EventArgs e)
         {
             string searchBoxText = txtProductSupplierSearch.Text;
-            dgvProducts.DataSource = ProductDB.SearchProductSupplier(searchBoxText);
+            dgvProducts.DataSource = ProductSupplierDB.SearchProductSupplier(searchBoxText);
         }
 
         // Creates an ordered list of the Suppliers
@@ -75,14 +75,14 @@ namespace TravelExperts
         {
             string selProd = cboProductList.Text;
             string selSup = cboSupplierList.Text;
-            if (ProductDB.CheckProductExists(selProd,selSup)) // Combination exists in the database, warn the user
+            if (ProductSupplierDB.CheckProductExists(selProd,selSup)) // Combination exists in the database, warn the user
             {
                 MessageBox.Show("Warning: Product already exists.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else   // Combination is not in database, add product
             {
-                ProductDB.AddProduct(selProd, selSup);
-                dgvProducts.DataSource = ProductDB.GetProducts();
+                ProductSupplierDB.AddProduct(selProd, selSup);
+                dgvProducts.DataSource = ProductSupplierDB.GetProducts();
             }
         }
 
@@ -108,7 +108,7 @@ namespace TravelExperts
                     foreach (DataGridViewRow item in dgvProducts.SelectedRows)
                     {
                         dgvProducts.Rows.RemoveAt(item.Index);
-                        ProductDB.DeleteProductSupplier(prodValue, supValue);
+                        ProductSupplierDB.DeleteProductSupplier(prodValue, supValue);
                         this.frmProduct_Load(this, null);
                     }
                 }
