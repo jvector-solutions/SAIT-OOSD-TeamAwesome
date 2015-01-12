@@ -96,6 +96,22 @@ namespace TravelExperts
             {
                 ProductSupplierDB.AddProduct(selProd, selSup);
                 dgvProducts.DataSource = ProductSupplierDB.GetProducts();
+
+                var MaxID = dgvProducts.Rows.Cast<DataGridViewRow>()
+                        .Max(r => Convert.ToInt32(r.Cells["ID"].Value));
+                int rowIndex = 0;
+
+                foreach (DataGridViewRow row in dgvProducts.Rows)
+                {
+                    if (row.Cells["ID"].Value.ToString() != MaxID.ToString())
+                        rowIndex++;
+                    else
+                    {
+                        dgvProducts.Rows[rowIndex].Selected = true;
+                        dgvProducts.FirstDisplayedScrollingRowIndex = rowIndex;
+                        break;
+                    }
+                }
             }
         }
 

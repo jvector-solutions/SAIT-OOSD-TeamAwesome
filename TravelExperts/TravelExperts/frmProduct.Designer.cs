@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.travelExpertsDataSet = new TravelExperts.TravelExpertsDataSet();
@@ -59,15 +58,6 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.suppliersBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(350, 345);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(89, 30);
-            this.btnEdit.TabIndex = 45;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
@@ -139,14 +129,14 @@
             // productToolStripMenuItem
             // 
             this.productToolStripMenuItem.Name = "productToolStripMenuItem";
-            this.productToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
             this.productToolStripMenuItem.Text = "Products";
             this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // supplierToolStripMenuItem
             // 
             this.supplierToolStripMenuItem.Name = "supplierToolStripMenuItem";
-            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.supplierToolStripMenuItem.Size = new System.Drawing.Size(139, 24);
             this.supplierToolStripMenuItem.Text = "Suppliers";
             this.supplierToolStripMenuItem.Click += new System.EventHandler(this.supplierToolStripMenuItem_Click);
             // 
@@ -165,6 +155,8 @@
             this.dgvProducts.AllowUserToAddRows = false;
             this.dgvProducts.AllowUserToResizeColumns = false;
             this.dgvProducts.AllowUserToResizeRows = false;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Location = new System.Drawing.Point(12, 74);
@@ -269,7 +261,6 @@
             this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
@@ -292,7 +283,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnClose;
         private TravelExpertsDataSet travelExpertsDataSet;

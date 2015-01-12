@@ -199,7 +199,7 @@ namespace TravelExperts
                     Supplier newSupplier = new Supplier();
                     //add supplier details
                     newSupplier.SupplierId = (int)reader["SupplierId"];
-                    newSupplier.SupName = reader["SupName"].ToString();
+                    newSupplier.SupName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(reader["SupName"].ToString().ToLower());
 
 
                     //add supplier to list

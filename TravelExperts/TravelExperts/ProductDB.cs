@@ -100,7 +100,8 @@ namespace TravelExperts
         public static void DeleteProductName(string delProduct)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
-            string deleteStatement = "DELETE FROM Products_Suppliers " +
+            string deleteStatement = 
+                "DELETE FROM Products_Suppliers " +
                 "WHERE ProductId IN " +
                 "(SELECT ProductId FROM Products WHERE ProdName = @delProd); " +
                 "DELETE FROM Products " +
