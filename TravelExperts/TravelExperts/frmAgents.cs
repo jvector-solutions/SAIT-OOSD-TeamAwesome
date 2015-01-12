@@ -22,8 +22,7 @@ namespace TravelExperts
 
         private void frmAgents_Load(object sender, EventArgs e)
         {
-            //fills table with current information
-            fillDataTable();
+            fillDataTable();//fills table with current information
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -35,7 +34,6 @@ namespace TravelExperts
             {
                 agent = addAgentForm.agent;
                 txtAgentId.Text = agent.AgentId.ToString();
-                //this.DisplayAgent();
             }
         }
 
@@ -119,7 +117,7 @@ namespace TravelExperts
         }
 
 
-        //Additional methods
+        //Additional methods --------------------------------
         private void fillDataTable()
         {
             //Connect to database and populate the list

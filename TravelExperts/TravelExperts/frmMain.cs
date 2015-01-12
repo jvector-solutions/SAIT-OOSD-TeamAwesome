@@ -18,16 +18,12 @@ namespace TravelExperts
 {
     public partial class frmMain : Form
     {
-        //--------->>>>>>> Feel free to break it por favor :)
-        //--------->>>>>>> Let me know if i got to fix something. There are details here and there but i did not 
-        //--------->>>>>>> find anything that make the thing explode :)
-
         public frmMain()
         {
             InitializeComponent();
         }
-
         private Package package;
+
 
         //Display individual forms according to button pressed --------------------------------
         private void btnAddPackage_Click(object sender, EventArgs e)
@@ -37,16 +33,19 @@ namespace TravelExperts
             DialogResult result = newForm.ShowDialog();
             SearchFor();
         }
+
         private void btnAgent_Click(object sender, EventArgs e)
         {
             frmAgents callAgentForm = new frmAgents();
             callAgentForm.ShowDialog();
         }
+
         private void btnProductSuppliers_Click(object sender, EventArgs e)
         {
             frmProduct newForm = new frmProduct();
             DialogResult result = newForm.ShowDialog();
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //delete the package
@@ -66,6 +65,7 @@ namespace TravelExperts
                 }
             }
         }        
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             //edit package from main form
@@ -84,17 +84,20 @@ namespace TravelExperts
             }
         }
 
+
         //Main form controls --------------------------------
          private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+
         //DataGridView Controls  --------------------------------
         private void dgvMainPage_Click(object sender, EventArgs e)
         {
             EnableDisableEditButton();
         }
+
         private void EnableDisableEditButton()
         {
             if (OneRowIsSelected() && rdbPackage.Checked)
@@ -111,6 +114,7 @@ namespace TravelExperts
                 btnDelete.Enabled = false;
             }
         }
+
         private bool OneRowIsSelected()
         {
             int count = 0;
@@ -124,31 +128,30 @@ namespace TravelExperts
             }
             return false;
         }
+
         private void chbIncludeExpiredPackages_Click(object sender, EventArgs e)
         {
             SearchFor();
             FocusSelectAllSearchBox();
         }
 
+
         //Methods/Actions for interaction with radio buttons and search --------------------------------
         private void txtSearch_MouseClick(object sender, MouseEventArgs e)
         {
             SearchFor();
         }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             SearchFor();
         }
+
         private void SearchFor()
         {
-            //--------->>>>>>> MB I disabled this checkbox unless "produt" radio button is active. Also we need to 
-            //--------->>>>>>> fix the 'edit' and 'delete' buttons because they dont become enabled until the user
-            //--------->>>>>>> selects the second row on the dgvMainPage. Maybe placing the enable property were 
-            //--------->>>>>>> it will load sooner? or maybe loading the dataTable w/o an initial selected row by
-            //--------->>>>>>> default? :) not a big thing but i noticed... 
-
             bool isIncludeExpiredPackagesEnabled = false;
             dgvMainPage.DataSource = null;
+            
             //search for Packages
             if (rdbPackage.Checked)
             {
@@ -175,16 +178,12 @@ namespace TravelExperts
             this.Refresh();
             EnableDisableEditButton();
         }
+
         private void FocusSelectAllSearchBox()
         {
             txtSearch.Focus();
             txtSearch.SelectAll();
         }
-
-        //--------->>>>>>> MB i changed the method below from 'Selected' to 'CheckedChanged' so the loading 
-        //--------->>>>>>> of the tables is done as soon as the user changes the option on the radio button 
-        //--------->>>>>>> but if you have a better idea goooooooooooo ahead :) so far i think this one works 
-        //--------->>>>>>> pretty well, before the tables would not update until data was entered on the search box
 
         private void rdbPackage_CheckedChanged(object sender, EventArgs e)
         {
@@ -192,16 +191,19 @@ namespace TravelExperts
             SearchFor();
             FocusSelectAllSearchBox();
         }
+
         private void rdbProduct_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = "";//empty text field if user changes search parameters
             SearchFor();
         }
+
         private void rdbSupplier_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = "";//empty text field if user changes search parameters
             SearchFor();
         }
+
         private void rdbAgents_CheckedChanged(object sender, EventArgs e)
         {
             txtSearch.Text = "";//empty text field if user changes search parameters
