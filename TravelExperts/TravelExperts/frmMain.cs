@@ -53,15 +53,24 @@ namespace TravelExperts
             {
                 int row = this.dgvMainPage.CurrentCell.RowIndex;
                 int col = 0;
-                int pkgid = (int)dgvMainPage.Rows[row].Cells[col].Value;
-                if (PackageDB.DeletePackage(pkgid))
+
+                DialogResult result =
+                MessageBox.Show("Do you want to delete "
+                + dgvMainPage.SelectedRows[0].Cells[1].Value.ToString() + "?",
+                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show("Package was deleted");
-                    SearchFor();
-                }
-                else
-                {
-                    MessageBox.Show("Failed deleting Package");
+                    int pkgid = (int)dgvMainPage.Rows[row].Cells[col].Value;
+                    if (PackageDB.DeletePackage(pkgid))
+                    {
+                        MessageBox.Show("Package was deleted");
+                        SearchFor();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed deleting Package");
+                    }
                 }
             }
         }        
@@ -158,6 +167,8 @@ namespace TravelExperts
                 grpListOf.Text = "List Of Package";
                 isIncludeExpiredPackagesEnabled = true;
                 dgvMainPage.DataSource = PackageDB.GetPackages(txtSearch.Text, chbIncludeExpiredPackages.Checked);
+                hideColumn(5);
+                hideColumn(6);
                 dgvMainPage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
             //search for Products
@@ -227,6 +238,11 @@ namespace TravelExperts
         private void hideColumn(int columNo)
         {
             dgvMainPage.Columns[columNo].Visible = false;
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            SearchFor();
         }
    
     }
