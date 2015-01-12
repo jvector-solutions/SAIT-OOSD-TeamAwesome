@@ -65,8 +65,8 @@ namespace TravelExperts
                     //add package details
                     newPackage.ID = (int)reader["PackageId"];
                     newPackage.Name = reader["PkgName"].ToString();
-                    newPackage.Start_Date = Convert.ToDateTime(reader["PkgStartDate"]);
-                    newPackage.End_Date = Convert.ToDateTime(reader["PkgEndDate"]);
+                    newPackage.Start_Date = Convert.ToDateTime(reader["PkgStartDate"]).Date;
+                    newPackage.End_Date = Convert.ToDateTime(reader["PkgEndDate"]).Date;
                     newPackage.Description = reader["PkgDesc"].ToString();
                     newPackage.Base_Price = (decimal)reader["PkgBasePrice"];
                     newPackage.Agency_Commission = (decimal)reader["PkgAgencyCommission"];
