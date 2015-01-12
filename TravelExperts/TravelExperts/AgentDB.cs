@@ -12,18 +12,15 @@ namespace TravelExperts
     {
         public static Agent GetAgent(int agentId)
         {
-            //Define conection
-            SqlConnection connection = TravelExpertsDB.GetConnection();
+            SqlConnection connection = TravelExpertsDB.GetConnection();//Define conection
 
             //Build select statement 
             string selectStatement
                 = "SELECT * FROM Agents "
                 + "WHERE AgentId = @AgentId";
 
-            //Build SQL command
-            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            //Patch previous statement
-            selectCommand.Parameters.AddWithValue("@AgentId", agentId);
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);//Build SQL command
+            selectCommand.Parameters.AddWithValue("@AgentId", agentId);//Patch previous statement
 
             //Exception handling
             try
@@ -106,6 +103,7 @@ namespace TravelExperts
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string updateStatement =
+
                 "UPDATE Agents SET " +
                 //"AgentId = @NewAgentId, " +
                 "AgtFirstName = @NewAgtFirstName, " +
@@ -117,18 +115,19 @@ namespace TravelExperts
                 "AgencyId = @NewAgencyId, " +
                 "AgtPassword = @NewAgtPassword " +
 
-                "WHERE AgtFirstName = @OldAgtFirstName " +
+                "WHERE AgentId = @NewAgentId ";
+                /*"AND AgtFirstName = @OldAgtFirstName " +
                 "AND AgtMiddleInitial = @OldAgtMiddleInitial " +
                 "AND AgtLastName = @OldAgtLastName " +
                 "AND AgtBusPhone = @OldAgtBusPhone " +
                 "AND AgtEmail = @OldAgtEmail " +
                 "AND AgtPosition = @OldAgtPosition " +
                 "AND AgencyId = @OldAgencyId " +
-                "AND AgtPassword = @OldAgtPassword ";
+                "AND AgtPassword = @OldAgtPassword ";*/
 
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
 
-            //updateCommand.Parameters.AddWithValue("@NewAgentId", newAgent.AgentId);
+            updateCommand.Parameters.AddWithValue("@NewAgentId", newAgent.AgentId);
             updateCommand.Parameters.AddWithValue("@NewAgtFirstName", newAgent.AgtFirstName);
             updateCommand.Parameters.AddWithValue("@NewAgtMiddleInitial", newAgent.AgtMiddleInitial);
             updateCommand.Parameters.AddWithValue("@NewAgtLastName", newAgent.AgtLastName);
@@ -138,15 +137,7 @@ namespace TravelExperts
             updateCommand.Parameters.AddWithValue("@NewAgencyId", newAgent.AgencyId);
             updateCommand.Parameters.AddWithValue("@NewAgtPassword", newAgent.AgtPassword);
 
-            //updateCommand.Parameters.AddWithValue("@OldAgentId", oldAgent.AgentId);
-            updateCommand.Parameters.AddWithValue("@OldAgtFirstName", oldAgent.AgtFirstName);
-            updateCommand.Parameters.AddWithValue("@OldAgtMiddleInitial", oldAgent.AgtMiddleInitial);
-            updateCommand.Parameters.AddWithValue("@OldAgtLastName", oldAgent.AgtLastName);
-            updateCommand.Parameters.AddWithValue("@OldAgtBusPhone", oldAgent.AgtBusPhone);
-            updateCommand.Parameters.AddWithValue("@OldAgtEmail", oldAgent.AgtEmail);
-            updateCommand.Parameters.AddWithValue("@OldAgtPosition", oldAgent.AgtPosition);
-            updateCommand.Parameters.AddWithValue("@OldAgencyId", oldAgent.AgencyId);
-            updateCommand.Parameters.AddWithValue("@OldAgtPassword", oldAgent.AgtPassword);
+
 
             //Exception handling
             try
@@ -218,17 +209,14 @@ namespace TravelExperts
         {
 
             List<Agent> agentList = new List<Agent>();
-
-            //create connection
-            SqlConnection connection = TravelExpertsDB.GetConnection();
+            SqlConnection connection = TravelExpertsDB.GetConnection(); //create connection
 
             //create sql command
             string selectStatement = "SELECT * FROM Agents " +
                 "WHERE AgtFirstName like '%" + agentId.Trim() + "%' OR " +
                 "AgtLastName like '%" + agentId.Trim() + "%'";
 
-            //search for something
-            if (agentId.Trim().Length != 0)
+            if (agentId.Trim().Length != 0)//search for something
             {
                 string msg = "";
                 if (Validator.inputIsInteger(agentId, out msg))
@@ -254,9 +242,9 @@ namespace TravelExperts
                 SqlDataReader reader = selectCommand.ExecuteReader();
                 while (reader.Read())
                 {
-                    //create a package
+                    //create an agent
                     Agent newAgent = new Agent();
-                    //add package details
+                    //add agent details
                     newAgent.AgentId = Convert.ToInt32(reader["AgentId"]);
                     newAgent.AgtFirstName = reader["AgtFirstName"].ToString();
                     newAgent.AgtMiddleInitial = reader["AgtMiddleInitial"].ToString();
@@ -267,7 +255,7 @@ namespace TravelExperts
                     newAgent.AgencyId = Convert.ToInt32(reader["AgencyId"]);
                     newAgent.AgtPassword = reader["AgtPassword"].ToString();
 
-                    //add book to list
+                    //add agent to list
                     agentList.Add(newAgent);
                 }
             }

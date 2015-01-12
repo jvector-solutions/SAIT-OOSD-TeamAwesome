@@ -20,6 +20,7 @@ namespace TravelExperts
 
         private Agent agent;
 
+        //Form Methods --------------------------------
         private void frmAgents_Load(object sender, EventArgs e)
         {
             fillDataTable();//fills table with current information
@@ -105,7 +106,7 @@ namespace TravelExperts
             }
         }
 
-        private void btnGetAgent_Click(object sender, EventArgs e)
+        private void txtAgentId_TextChanged(object sender, EventArgs e)
         {
             string searchMe = txtAgentId.Text;
             dgvAgents.DataSource = AgentDB.SearchAgents(searchMe);
@@ -117,7 +118,7 @@ namespace TravelExperts
         }
 
 
-        //Additional methods --------------------------------
+        //Supporting methods --------------------------------
         private void fillDataTable()
         {
             //Connect to database and populate the list
@@ -183,7 +184,9 @@ namespace TravelExperts
         {
             foreach (DataGridViewRow item in dgvAgents.SelectedRows)
             { dgvAgents.Rows.RemoveAt(item.Index); }
-        } //Reload the GridView after updates
+        }
+
+        //Reload the GridView after updates
 
     }
 }

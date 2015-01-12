@@ -88,7 +88,7 @@ namespace TravelExperts
         //Main form controls --------------------------------
          private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
 

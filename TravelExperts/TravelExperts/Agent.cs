@@ -8,10 +8,10 @@ namespace TravelExperts
 {
     public class Agent
     {
-        //Constructor
+        //Constructor --------------------------------
         public Agent() { }
 
-        //Properties
+        //Properties --------------------------------
         public int AgentId { get; set; }
 
         public string AgtFirstName { get; set; }

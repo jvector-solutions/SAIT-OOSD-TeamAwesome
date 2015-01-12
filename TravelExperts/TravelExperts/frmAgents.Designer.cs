@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGetAgent = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,17 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnGetAgent
-            // 
-            this.btnGetAgent.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGetAgent.Location = new System.Drawing.Point(864, 44);
-            this.btnGetAgent.Name = "btnGetAgent";
-            this.btnGetAgent.Size = new System.Drawing.Size(117, 32);
-            this.btnGetAgent.TabIndex = 34;
-            this.btnGetAgent.Text = "Get Agent";
-            this.btnGetAgent.UseVisualStyleBackColor = true;
-            this.btnGetAgent.Click += new System.EventHandler(this.btnGetAgent_Click);
             // 
             // btnExit
             // 
@@ -76,7 +64,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(607, 54);
+            this.label1.Location = new System.Drawing.Point(769, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 18);
             this.label1.TabIndex = 28;
@@ -125,10 +113,11 @@
             // 
             // txtAgentId
             // 
-            this.txtAgentId.Location = new System.Drawing.Point(673, 48);
+            this.txtAgentId.Location = new System.Drawing.Point(835, 86);
             this.txtAgentId.Name = "txtAgentId";
             this.txtAgentId.Size = new System.Drawing.Size(185, 24);
             this.txtAgentId.TabIndex = 40;
+            this.txtAgentId.TextChanged += new System.EventHandler(this.txtAgentId_TextChanged);
             // 
             // label2
             // 
@@ -148,7 +137,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtAgentId);
             this.Controls.Add(this.dgvAgents);
-            this.Controls.Add(this.btnGetAgent);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.label1);
@@ -167,7 +155,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnGetAgent;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label1;

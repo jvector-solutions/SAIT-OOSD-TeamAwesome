@@ -130,7 +130,6 @@
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 29);
             this.btnAdd.TabIndex = 44;
-            this.btnAdd.Text = "Add/Change";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
