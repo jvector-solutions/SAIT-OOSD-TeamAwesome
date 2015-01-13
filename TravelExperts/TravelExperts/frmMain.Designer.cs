@@ -210,6 +210,7 @@
             this.dgvMainPage.AllowUserToAddRows = false;
             this.dgvMainPage.AllowUserToDeleteRows = false;
             this.dgvMainPage.AllowUserToResizeColumns = false;
+            this.dgvMainPage.AllowUserToResizeRows = false;
             this.dgvMainPage.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvMainPage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvMainPage.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -227,7 +228,7 @@
             this.dgvMainPage.Name = "dgvMainPage";
             this.dgvMainPage.ReadOnly = true;
             this.dgvMainPage.RowHeadersVisible = false;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMainPage.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -285,7 +286,6 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
-           // this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

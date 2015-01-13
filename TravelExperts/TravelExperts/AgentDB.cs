@@ -16,8 +16,7 @@ namespace TravelExperts
 
             //Build select statement 
             string selectStatement
-                = "SELECT * INTO  #TempTable"
-                + "FROM Agents "
+                = "SELECT * FROM Agents "
                 + "WHERE AgentId = @AgentId";  //Get the data into a temp table 
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);//Build SQL command
@@ -68,7 +67,6 @@ namespace TravelExperts
                 "VALUES (@AgtFirstName, @AgtMiddleInitial, @AgtLastName, @AgtBusPhone, @AgtEmail, @AgtPosition, @AgencyId, @AgtPassword)";
 
             SqlCommand insertCommand = new SqlCommand(insertStatement, connection);
-            //insertCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
             insertCommand.Parameters.AddWithValue("@AgtFirstName", agent.AgtFirstName);
             insertCommand.Parameters.AddWithValue("@AgtMiddleInitial", agent.AgtMiddleInitial);
             insertCommand.Parameters.AddWithValue("@AgtLastName", agent.AgtLastName);
@@ -106,7 +104,6 @@ namespace TravelExperts
             string updateStatement =
 
                 "UPDATE Agents SET " +
-                //"AgentId = @NewAgentId, " +
                 "AgtFirstName = @NewAgtFirstName, " +
                 "AgtMiddleInitial = @NewAgtMiddleInitial, " +
                 "AgtLastName = @NewAgtLastName, " +
@@ -115,19 +112,9 @@ namespace TravelExperts
                 "AgtPosition = @NewAgtPosition, " +
                 "AgencyId = @NewAgencyId, " +
                 "AgtPassword = @NewAgtPassword " +
-
                 "WHERE AgentId = @NewAgentId ";
-                /*"AND AgtFirstName = @OldAgtFirstName " +
-                "AND AgtMiddleInitial = @OldAgtMiddleInitial " +
-                "AND AgtLastName = @OldAgtLastName " +
-                "AND AgtBusPhone = @OldAgtBusPhone " +
-                "AND AgtEmail = @OldAgtEmail " +
-                "AND AgtPosition = @OldAgtPosition " +
-                "AND AgencyId = @OldAgencyId " +
-                "AND AgtPassword = @OldAgtPassword ";*/
 
             SqlCommand updateCommand = new SqlCommand(updateStatement, connection);
-
             updateCommand.Parameters.AddWithValue("@NewAgentId", newAgent.AgentId);
             updateCommand.Parameters.AddWithValue("@NewAgtFirstName", newAgent.AgtFirstName);
             updateCommand.Parameters.AddWithValue("@NewAgtMiddleInitial", newAgent.AgtMiddleInitial);
@@ -137,8 +124,6 @@ namespace TravelExperts
             updateCommand.Parameters.AddWithValue("@NewAgtPosition", newAgent.AgtPosition);
             updateCommand.Parameters.AddWithValue("@NewAgencyId", newAgent.AgencyId);
             updateCommand.Parameters.AddWithValue("@NewAgtPassword", newAgent.AgtPassword);
-
-
 
             //Exception handling
             try
@@ -164,19 +149,14 @@ namespace TravelExperts
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string deleteStatement =
-                "DELETE FROM Agents " +
-                "WHERE AgentId = @AgentId " +
-                "AND AgtFirstName = @AgtFirstName " +
-                "AND AgtMiddleInitial = @AgtMiddleInitial " +
-                "AND AgtLastName = @AgtLastName " +
-                "AND AgtBusPhone = @AgtBusPhone " +
-                "AND AgtEmail = @AgtEmail " +
-                "AND AgtPosition = @AgtPosition " +
-                "AND AgencyId = @AgencyId " +
-                "AND AgtPassword = @AgtPassword ";
+               "DELETE FROM Agents " +
+               "WHERE AgtFirstName = @AgtFirstName " + "AND AgtMiddleInitial = @AgtMiddleInitial " +
+               "AND AgtLastName = @AgtLastName " + "AND AgtBusPhone = @AgtBusPhone " +
+               "AND AgtEmail = @AgtEmail " + "AND AgtPosition = @AgtPosition " +
+               "AND AgencyId = @AgencyId " + "AND AgtPassword = @AgtPassword ";
+
 
             SqlCommand deleteCommand = new SqlCommand(deleteStatement, connection);
-            deleteCommand.Parameters.AddWithValue("@AgentId", agent.AgentId);
             deleteCommand.Parameters.AddWithValue("@AgtFirstName", agent.AgtFirstName);
             deleteCommand.Parameters.AddWithValue("@AgtMiddleInitial", agent.AgtMiddleInitial);
             deleteCommand.Parameters.AddWithValue("@AgtLastName", agent.AgtLastName);
@@ -204,6 +184,7 @@ namespace TravelExperts
             {
                 connection.Close();
             }
+
         }
 
         public static List<Agent> SearchAgents(string agentId)

@@ -23,7 +23,7 @@ namespace TravelExperts
         //Form Methods --------------------------------
         private void frmAgents_Load(object sender, EventArgs e)
         {
-            fillDataTable();//fills table with current information
+            SearchFor();//fills table with current information
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -41,69 +41,38 @@ namespace TravelExperts
         private void btnModify_Click(object sender, EventArgs e)
         {
             //Get agent from selection
-            this.GetAgent(Convert.ToInt32(dgvAgents.SelectedRows[0].Cells[0].Value));
+            int agentId = Convert.ToInt32(dgvAgents.SelectedRows[0].Cells[0].Value);
+            try
+            {
+                agent = AgentDB.GetAgent(agentId);
 
-            frmAgentModify modifyAgentForm = new frmAgentModify();
-            modifyAgentForm.addAgent = false;
-            modifyAgentForm.agent = agent;
-            
-            DialogResult result = modifyAgentForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                agent = modifyAgentForm.agent;
-                this.fillDataTable();
+                frmAgentModify modifyAgentForm = new frmAgentModify();
+                modifyAgentForm.addAgent = false;
+                modifyAgentForm.agent = agent;
+
+                DialogResult result = modifyAgentForm.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    agent = modifyAgentForm.agent;
+                    SearchFor();
+                }
+                else if (result == DialogResult.Retry)
+                {
+                    //this.GetAgent(agent.AgentId);
+                    SearchFor();
+                }
             }
-            else if (result == DialogResult.Retry)
+            catch (Exception ex)
             {
-                this.GetAgent(agent.AgentId);
-                this.fillDataTable();
-                /*
-                if (agent != null)
-                    this.fillDataTable();
-                else
-                    this.ClearControls();
-                 * */
+                MessageBox.Show(ex.Message, ex.GetType().ToString());
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
- 
-            DialogResult result =
-                MessageBox.Show("Do you want to delete "
-                + dgvAgents.SelectedRows[0].Cells[1].Value.ToString() + " "
-                + dgvAgents.SelectedRows[0].Cells[3].Value.ToString() + "?",
-                "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    //Get agent from selection
-                    this.GetAgent(Convert.ToInt32(dgvAgents.SelectedRows[0].Cells[0].Value));
-
-                    if (!AgentDB.DeleteAgent(agent))
-                    {
-                        MessageBox.Show("Another user has updated or deleted that agent", "Database Error");
-                        this.GetAgent(agent.AgentId);
-
-                        if (agent != null)
-                            this.fillDataTable();///check this exception later//this.DisplayProduct();
-                        else
-                        { 
-                            ReloadGridView();//reload gridView 
-                        }
-                    }
-                    else
-                    {
-                        ReloadGridView();//reload gridView
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, ex.GetType().ToString());
-                }
-            }
+            MessageBox.Show("Deleting Agents' information its not supported at this moment",
+            "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
         }
 
         private void txtAgentId_TextChanged(object sender, EventArgs e)
@@ -119,63 +88,14 @@ namespace TravelExperts
 
 
         //Supporting methods --------------------------------
-        private void fillDataTable()
+        private void SearchFor()
         {
-            //Connect to database and populate the list
-            SqlConnection connection = TravelExpertsDB.GetConnection();
-            string selectStatement = "SELECT * FROM Agents";
-            
-            /*string selectStatement = "SELECT AgentId AS ID, AgtFirstName AS Name, AgtMiddleInitial AS [Middle Initial], "
-                + "AgtLastName AS [Last Name], AgtBusPhone AS Phone, AgtEmail AS Email, AgtPosition AS Position, "
-                + "AgencyId AS Agency ID "
-                + "FROM Agents";*/
-             
+            dgvAgents.DataSource = AgentDB.SearchAgents(txtAgentId.Text);
+            dgvAgents.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(selectStatement, connection); //c.con is the connection string
-            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-
-            try
-            {
-                connection.Open();
-
-                DataSet ds = new DataSet();
-                dataAdapter.Fill(ds);
-                dgvAgents.ReadOnly = true;
-                dgvAgents.DataSource = ds.Tables[0];
-                var agentTable = new DataTable();
-                dataAdapter.Fill(agentTable);
-                dgvAgents.DataSource = agentTable;
-
-                /*dgvAgents.Columns[0].FillWeight = 6;//Define the width for each column
-                dgvAgents.Columns[1].FillWeight = 100;
-                dgvAgents.Columns[2].FillWeight = 60;
-                dgvAgents.Columns[3].FillWeight = 100;
-                dgvAgents.Columns[4].FillWeight = 100;
-                dgvAgents.Columns[5].FillWeight = 100;
-                dgvAgents.Columns[6].FillWeight = 100;
-                dgvAgents.Columns[7].FillWeight = 60;
-                dgvAgents.Columns[8].FillWeight = 100;*/
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                connection.Close();
-            }
-        } //Method to fill data table
-
-        private void GetAgent(int agentId)
-        {
-            try
-            {
-                agent = AgentDB.GetAgent(agentId);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, ex.GetType().ToString());
-            }
+            //not visible for column with password 
+            dgvAgents.Columns[8].Visible = false;
+            this.Refresh();
         }
 
         private void ReloadGridView()
@@ -185,6 +105,5 @@ namespace TravelExperts
         }
 
         //Reload the GridView after updates
-
     }
 }

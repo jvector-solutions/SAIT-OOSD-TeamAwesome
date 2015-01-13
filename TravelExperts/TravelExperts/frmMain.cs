@@ -197,6 +197,8 @@ namespace TravelExperts
             chbIncludeExpiredPackages.Enabled = isIncludeExpiredPackagesEnabled;//enable 'IncludeExpiredPackages' box or not
             this.Refresh();
             EnableDisableEditButton();
+
+            //dgvMainPage.Columns[columNo].Visible = false;
         }
 
         private void FocusSelectAllSearchBox()

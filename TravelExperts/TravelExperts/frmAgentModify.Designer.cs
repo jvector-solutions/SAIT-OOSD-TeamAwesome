@@ -245,6 +245,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Name = "frmAgentModify";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAgentModify";
             this.Load += new System.EventHandler(this.frmAgentModify_Load);
             this.ResumeLayout(false);
