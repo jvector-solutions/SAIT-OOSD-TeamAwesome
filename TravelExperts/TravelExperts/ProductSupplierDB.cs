@@ -53,8 +53,8 @@ namespace TravelExperts
                 "Select ProductSupplierId AS ID,ProdName AS Product,SupName AS Supplier " +
                 "FROM Products p,Suppliers s,Products_Suppliers ps " +
                 "WHERE (p.ProductId = ps.ProductId AND s.SupplierId = ps.SupplierId) AND " +
-                "(ProdName LIKE '" + searchString.Trim() + "%' " +
-                "OR SupName LIKE '" + searchString.Trim() + "%'" +
+                "(ProdName LIKE '%" + searchString.Trim() + "%' " +
+                "OR SupName LIKE '%" + searchString.Trim() + "%'" +
                 "OR ProductSupplierId LIKE '" + searchString.Trim() + "%')";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);

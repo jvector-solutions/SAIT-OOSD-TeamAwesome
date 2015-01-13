@@ -22,6 +22,7 @@ namespace TravelExperts
         {
             package = newPackage;
             InitializeComponent();
+            this.AcceptButton = btnSubmit;
         }
 
         private void frmPackage_Load(object sender, EventArgs e)
@@ -104,7 +105,7 @@ namespace TravelExperts
             foreach (DataGridViewRow row in dgvProductSuppliers.Rows)
             {
                 if ((row.Cells[1].Value.ToString().Equals(pName)) &&
-                    (row.Cells[2].Value.ToString().Equals(sName)))
+                    (row.Cells[2].Value.ToString().Equals(sName.ToUpper())))
                 {
                     return false;
                 }
@@ -140,7 +141,7 @@ namespace TravelExperts
                 MessageBox.Show("Invalid Input: " + msg);
                 return false;
         }
-        private void btbSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
             //create package
             if (package == null)

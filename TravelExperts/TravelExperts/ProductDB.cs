@@ -129,7 +129,7 @@ namespace TravelExperts
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 MessageBox.Show("Sorry, you cannot delete that product.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }

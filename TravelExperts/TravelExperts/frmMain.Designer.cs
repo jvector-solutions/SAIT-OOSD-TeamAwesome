@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblAgentInfo = new System.Windows.Forms.Label();
             this.rdbPackage = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.rdbProduct = new System.Windows.Forms.RadioButton();
@@ -55,16 +55,15 @@
             this.grpListOf.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblAgentInfo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(71, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(288, 51);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "To display information for logged agent after\r\nhe or she logged into the system. " +
-    "\r\n(To be implemented)";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAgentInfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAgentInfo.Location = new System.Drawing.Point(42, 47);
+            this.lblAgentInfo.Name = "lblAgentInfo";
+            this.lblAgentInfo.Size = new System.Drawing.Size(390, 87);
+            this.lblAgentInfo.TabIndex = 2;
+            this.lblAgentInfo.Text = "Agent logged";
+            this.lblAgentInfo.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // rdbPackage
             // 
@@ -157,7 +156,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblAgentInfo);
             this.groupBox2.Location = new System.Drawing.Point(540, 26);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(466, 165);
@@ -181,7 +180,7 @@
             this.btnProductSuppliers.Name = "btnProductSuppliers";
             this.btnProductSuppliers.Size = new System.Drawing.Size(250, 38);
             this.btnProductSuppliers.TabIndex = 48;
-            this.btnProductSuppliers.Text = "Product and &Suppliers";
+            this.btnProductSuppliers.Text = "&Product and &Suppliers";
             this.btnProductSuppliers.UseVisualStyleBackColor = true;
             this.btnProductSuppliers.Click += new System.EventHandler(this.btnProductSuppliers_Click);
             // 
@@ -191,7 +190,7 @@
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 38);
             this.btnExit.TabIndex = 49;
-            this.btnExit.Text = "&Exit";
+            this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -201,7 +200,7 @@
             this.btnAddPackage.Name = "btnAddPackage";
             this.btnAddPackage.Size = new System.Drawing.Size(139, 38);
             this.btnAddPackage.TabIndex = 50;
-            this.btnAddPackage.Text = "A&dd Package";
+            this.btnAddPackage.Text = "Add &Package";
             this.btnAddPackage.UseVisualStyleBackColor = true;
             this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click);
             // 
@@ -232,7 +231,7 @@
             this.dgvMainPage.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMainPage.Size = new System.Drawing.Size(932, 255);
+            this.dgvMainPage.Size = new System.Drawing.Size(932, 262);
             this.dgvMainPage.TabIndex = 51;
             this.dgvMainPage.Click += new System.EventHandler(this.dgvMainPage_Click);
             // 
@@ -243,7 +242,7 @@
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 30);
             this.btnDelete.TabIndex = 52;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -254,7 +253,7 @@
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(103, 30);
             this.btnEdit.TabIndex = 53;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
@@ -286,12 +285,12 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Experts";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMainPage)).EndInit();
             this.grpListOf.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -300,7 +299,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblAgentInfo;
         private System.Windows.Forms.RadioButton rdbPackage;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.RadioButton rdbProduct;

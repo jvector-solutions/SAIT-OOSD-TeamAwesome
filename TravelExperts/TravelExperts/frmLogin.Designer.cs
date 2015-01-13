@@ -54,17 +54,17 @@
             this.txtAgentId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtAgentId.Name = "txtAgentId";
             this.txtAgentId.Size = new System.Drawing.Size(208, 27);
-            this.txtAgentId.TabIndex = 42;
+            this.txtAgentId.TabIndex = 2;
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(168, 369);
+            this.btnExit.Location = new System.Drawing.Point(168, 394);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(132, 40);
-            this.btnExit.TabIndex = 41;
-            this.btnExit.Text = "Exit";
+            this.btnExit.TabIndex = 5;
+            this.btnExit.Text = "&Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -74,7 +74,7 @@
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(208, 27);
-            this.txtPassword.TabIndex = 43;
+            this.txtPassword.TabIndex = 3;
             // 
             // label2
             // 
@@ -88,12 +88,12 @@
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Location = new System.Drawing.Point(168, 321);
+            this.btnLogin.Location = new System.Drawing.Point(168, 346);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(132, 40);
-            this.btnLogin.TabIndex = 45;
-            this.btnLogin.Text = "Login";
+            this.btnLogin.TabIndex = 4;
+            this.btnLogin.Text = "&Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
@@ -119,11 +119,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(96, 434);
+            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(137, 302);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(290, 19);
+            this.label5.Size = new System.Drawing.Size(189, 17);
             this.label5.TabIndex = 48;
-            this.label5.Text = "(AgentId = 10  and Password = Admin)";
+            this.label5.Text = "(AgentID=10 Password=123)";
             // 
             // frmLogin
             // 

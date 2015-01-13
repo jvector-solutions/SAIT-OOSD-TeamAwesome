@@ -128,6 +128,7 @@
             // txtModifyProduct
             // 
             this.txtModifyProduct.Location = new System.Drawing.Point(3, 173);
+            this.txtModifyProduct.MaxLength = 50;
             this.txtModifyProduct.Name = "txtModifyProduct";
             this.txtModifyProduct.Size = new System.Drawing.Size(253, 22);
             this.txtModifyProduct.TabIndex = 1;
@@ -185,6 +186,7 @@
             // txtModifySupplier
             // 
             this.txtModifySupplier.Location = new System.Drawing.Point(3, 173);
+            this.txtModifySupplier.MaxLength = 50;
             this.txtModifySupplier.Name = "txtModifySupplier";
             this.txtModifySupplier.Size = new System.Drawing.Size(253, 22);
             this.txtModifySupplier.TabIndex = 2;

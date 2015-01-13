@@ -62,7 +62,7 @@ namespace TravelExperts
                 "SupName = @NewSupplierName " +
                 "WHERE SupName = @OldSupplierName";
             SqlCommand modifyCommand = new SqlCommand(modifyStatement, connection);
-            modifyCommand.Parameters.AddWithValue("@NewSupplierName", newSup);
+            modifyCommand.Parameters.AddWithValue("@NewSupplierName", newSup.ToUpper());
             modifyCommand.Parameters.AddWithValue("@OldSupplierName", oldSup);
 
             try
@@ -92,7 +92,7 @@ namespace TravelExperts
             // because the ProductID in the Suppliers table was created without the auto increment property
             Random randInt = new Random();
             insertCommand.Parameters.AddWithValue("@randID", randInt.Next(14000,99999).ToString());
-            insertCommand.Parameters.AddWithValue("@newSup", newSup);
+            insertCommand.Parameters.AddWithValue("@newSup", newSup.ToUpper());
             try
             {
                 connection.Open();
@@ -168,7 +168,7 @@ namespace TravelExperts
                 connection.Open();
                 insertCommand.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
                 MessageBox.Show("Sorry, you cannot delete that supplier.","Delete Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }

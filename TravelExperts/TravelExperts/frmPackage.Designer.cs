@@ -41,7 +41,7 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.btbSubmit = new System.Windows.Forms.Button();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -147,6 +147,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(166, 48);
+            this.txtDescription.MaxLength = 250;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(382, 61);
@@ -164,19 +165,20 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(166, 20);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(275, 22);
             this.txtName.TabIndex = 26;
             // 
-            // btbSubmit
+            // btnSubmit
             // 
-            this.btbSubmit.Location = new System.Drawing.Point(323, 743);
-            this.btbSubmit.Name = "btbSubmit";
-            this.btbSubmit.Size = new System.Drawing.Size(139, 38);
-            this.btbSubmit.TabIndex = 39;
-            this.btbSubmit.Text = "Submit";
-            this.btbSubmit.UseVisualStyleBackColor = true;
-            this.btbSubmit.Click += new System.EventHandler(this.btbSubmit_Click);
+            this.btnSubmit.Location = new System.Drawing.Point(323, 743);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(139, 38);
+            this.btnSubmit.TabIndex = 39;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnCancel
             // 
@@ -360,7 +362,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btbSubmit);
+            this.Controls.Add(this.btnSubmit);
             this.Name = "frmPackage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Packages";
@@ -392,7 +394,7 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.Button btbSubmit;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;

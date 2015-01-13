@@ -29,6 +29,17 @@ namespace TravelExperts
             //    "WHERE PkgName like '%" + findMe.Trim() + "%' OR " +
             //    "PkgDesc like '%" + findMe.Trim() + "%'";
 
+            string forPackageID = "";
+            
+            //search for something
+            if (findMe.Trim().Length != 0)
+            {
+                string msg = "";
+                if (Validator.inputIsInteger(findMe, out msg))
+                {
+                    forPackageID = " OR PackageId ='" + findMe + "' ";
+                }
+            }
             string selectStatement = "select PackageId, pkgName, pkgStartDate, pkgEndDate, pkgDesc, pkgBasePrice, PkgAgencyCommission, " +
                 "stuff((select ', '+ [prodName] " +
                 "from Products, Products_Suppliers, Packages_Products_Suppliers " +
@@ -37,16 +48,8 @@ namespace TravelExperts
                 "Packages_Products_Suppliers.PackageId=t.PackageId for XML path('')),1,1,'') as Products " +
                 "from (select distinct * from Packages " +
                 "WHERE PkgName like '%" + findMe.Trim() + "%' OR " +
-                "PkgDesc like '%" + findMe.Trim() + "%')t";
-            //search for something
-            if (findMe.Trim().Length != 0)
-            {
-                string msg = "";
-                if (Validator.inputIsInteger(findMe, out msg))
-                {
-                    selectStatement += " OR PackageId ='" + findMe + "'";
-                }
-            }
+                "PkgDesc like '%" + findMe.Trim() + "%'" +
+                forPackageID + ")t";
             if (!showAll)
             {
                 selectStatement = "SELECT * FROM (" + selectStatement + ")as x " +

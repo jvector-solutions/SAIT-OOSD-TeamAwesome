@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* CMPP248 Part 2 Workshop 2
+ * Login Form
+ * Created By: Leisy Moliner
+ * December 9, 2014
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +19,12 @@ namespace TravelExperts
 {
     public partial class frmLogin : Form
     {
-        private Agent agent;
         bool agentExists;
 
         public frmLogin()
         {
             InitializeComponent();
+            this.AcceptButton = btnLogin;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

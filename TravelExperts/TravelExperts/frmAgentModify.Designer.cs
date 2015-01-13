@@ -52,6 +52,7 @@
             // 
             this.txtAgtBusPhone.BackColor = System.Drawing.SystemColors.Window;
             this.txtAgtBusPhone.Location = new System.Drawing.Point(182, 133);
+            this.txtAgtBusPhone.MaxLength = 20;
             this.txtAgtBusPhone.Name = "txtAgtBusPhone";
             this.txtAgtBusPhone.Size = new System.Drawing.Size(142, 22);
             this.txtAgtBusPhone.TabIndex = 52;
@@ -61,6 +62,7 @@
             // 
             this.txtAgtLastName.BackColor = System.Drawing.SystemColors.Window;
             this.txtAgtLastName.Location = new System.Drawing.Point(182, 105);
+            this.txtAgtLastName.MaxLength = 20;
             this.txtAgtLastName.Name = "txtAgtLastName";
             this.txtAgtLastName.Size = new System.Drawing.Size(235, 22);
             this.txtAgtLastName.TabIndex = 51;
@@ -70,6 +72,7 @@
             // 
             this.txtAgtMiddleInitial.BackColor = System.Drawing.SystemColors.Window;
             this.txtAgtMiddleInitial.Location = new System.Drawing.Point(182, 76);
+            this.txtAgtMiddleInitial.MaxLength = 5;
             this.txtAgtMiddleInitial.Name = "txtAgtMiddleInitial";
             this.txtAgtMiddleInitial.Size = new System.Drawing.Size(235, 22);
             this.txtAgtMiddleInitial.TabIndex = 50;
@@ -78,6 +81,7 @@
             // txtAgtFirstName
             // 
             this.txtAgtFirstName.Location = new System.Drawing.Point(182, 48);
+            this.txtAgtFirstName.MaxLength = 20;
             this.txtAgtFirstName.Name = "txtAgtFirstName";
             this.txtAgtFirstName.Size = new System.Drawing.Size(142, 22);
             this.txtAgtFirstName.TabIndex = 49;
@@ -150,6 +154,7 @@
             // 
             this.txtAgtEmail.BackColor = System.Drawing.SystemColors.Window;
             this.txtAgtEmail.Location = new System.Drawing.Point(182, 162);
+            this.txtAgtEmail.MaxLength = 50;
             this.txtAgtEmail.Name = "txtAgtEmail";
             this.txtAgtEmail.Size = new System.Drawing.Size(235, 22);
             this.txtAgtEmail.TabIndex = 54;
@@ -224,6 +229,7 @@
             // 
             this.txtAgtPassword.BackColor = System.Drawing.SystemColors.Window;
             this.txtAgtPassword.Location = new System.Drawing.Point(182, 246);
+            this.txtAgtPassword.MaxLength = 20;
             this.txtAgtPassword.Name = "txtAgtPassword";
             this.txtAgtPassword.Size = new System.Drawing.Size(235, 22);
             this.txtAgtPassword.TabIndex = 60;

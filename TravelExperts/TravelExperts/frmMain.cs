@@ -23,6 +23,7 @@ namespace TravelExperts
             InitializeComponent();
         }
         private Package package;
+        public Agent agent;
 
 
         //Display individual forms according to button pressed --------------------------------
@@ -247,7 +248,8 @@ namespace TravelExperts
         private void frmMain_Load(object sender, EventArgs e)
         {
             SearchFor();
+            lblAgentInfo.Text = "Welcome " + agent.AgtFirstName + " " + agent.AgtLastName +
+                "\nPhone: " + agent.AgtBusPhone + "\nEmail: " + agent.AgtEmail + "\nPosition: " + agent.AgtPosition;
         }
-   
     }
 }
