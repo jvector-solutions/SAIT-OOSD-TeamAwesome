@@ -111,6 +111,11 @@ namespace TravelExperts
                 "(SELECT pps.ProductSupplierId FROM Packages_Products_Suppliers pps, Products_Suppliers ps,Products p " +
                 "WHERE pps.ProductSupplierId = ps.ProductSupplierId AND ps.ProductId = p.ProductId AND p.ProdName = @delprod); " +
                 
+                "DELETE FROM BookingDetails " +
+                "WHERE ProductSupplierId IN " +
+                "(SELECT DISTINCT bd.ProductSupplierId FROM BookingDetails bd, Products_Suppliers ps,Products p " +
+                "WHERE bd.ProductSupplierId = ps.ProductSupplierId AND ps.ProductId = p.ProductId AND p.ProdName = @delProd); " +
+
                 "DELETE FROM Products_Suppliers " +
                 "WHERE ProductId IN " +
                 "(SELECT ProductId FROM Products WHERE ProdName = @delProd); " +
@@ -126,7 +131,7 @@ namespace TravelExperts
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show("Sorry, you cannot delete that product.", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             finally
             {

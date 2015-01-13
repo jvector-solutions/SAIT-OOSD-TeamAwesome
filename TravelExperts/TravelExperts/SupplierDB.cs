@@ -170,7 +170,7 @@ namespace TravelExperts
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Sorry, you cannot delete that supplier.\n\nError: " + ex,"Delete Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
+                MessageBox.Show("Sorry, you cannot delete that supplier.","Delete Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }
             finally
             {

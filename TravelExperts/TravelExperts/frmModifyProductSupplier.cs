@@ -265,8 +265,8 @@ namespace TravelExperts
             {
                 string selectedProd = lstProductList.GetItemText(lstProductList.SelectedItem);
                 var deleteList = string.Join("\n", ProductDB.GetDeleteList(selectedProd));
-                DialogResult delProd = MessageBox.Show("Are you sure you want to delete '" + selectedProd +"'?\n" +
-                    "You will also be deleting the following links to this product:\n\n" + deleteList,
+                DialogResult delProd = MessageBox.Show("Are you sure you want to delete '" + selectedProd +"'?\n\n" +
+                    "You will also be deleting the following links to this product:\n" + deleteList,
                     "Confirm Delete",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
                 if (delProd == DialogResult.OK)     // Delete if dialog result is OK
                 {
@@ -278,8 +278,8 @@ namespace TravelExperts
             {
                 string selectedSup = lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
                 var deleteList = string.Join("\n", SupplierDB.GetDeleteList(selectedSup));
-                DialogResult delProd = MessageBox.Show("Are you sure you want to delete '" + selectedSup + "'?\n" +
-                    "You will also be deleting the following links to this supplier:\n\n" + deleteList,
+                DialogResult delProd = MessageBox.Show("Are you sure you want to delete '" + selectedSup + "'?\n\n" +
+                    "You will also be deleting the following links to this supplier:\n" + deleteList,
                     "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (delProd == DialogResult.OK)     // Delete if dialog result is OK
                 {
