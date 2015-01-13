@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * Database Class for Products_Suppliers table
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 10, 2004
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,7 +17,7 @@ namespace TravelExperts
 {
     public class ProductSupplierDB
     {
-        // Get Product_SupplierID, Product Name, and Supplier Name table information from the database
+        // Get ProductSupplierID, Product Name, and Supplier Name table information from the database
         public static DataTable GetProducts()
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
@@ -22,7 +28,7 @@ namespace TravelExperts
                 "ORDER BY Product,Supplier";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
-            DataTable itemTable = new DataTable();
+            DataTable itemTable = new DataTable();  // Store the information in a Data Table
             try
             {
                 connection.Open();
@@ -52,7 +58,7 @@ namespace TravelExperts
                 "OR ProductSupplierId LIKE '" + searchString.Trim() + "%')";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             SqlDataAdapter adapter = new SqlDataAdapter(selectCommand);
-            DataTable searchTable = new DataTable();
+            DataTable searchTable = new DataTable();    // Return the search string in a data table
             try
             {
                 connection.Open();

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * Class for the Modify Products & Suppliers Windows Form
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 9, 2004
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,8 +52,6 @@ namespace TravelExperts
             this.Close();
         }
 
-        // Products Tab
-
         // Display the selected product in the text box
         private void lstProductList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -57,6 +61,7 @@ namespace TravelExperts
             btnDelete.Enabled = true;
         }
 
+        // Save button for the products tab
         private void btnSaveProduct_Click(object sender, EventArgs e)
         {
             string selectedProd = lstProductList.GetItemText(lstProductList.SelectedItem);
@@ -64,7 +69,7 @@ namespace TravelExperts
 
             // Validation to see if the typed product is already in the list
             int index = lstProductList.FindString(editedProd, -1);
-            if (index != -1)
+            if (editedProd != "" && index != -1)
             {
                 MessageBox.Show("Warning: Product already exists.","Duplicate Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
@@ -114,8 +119,6 @@ namespace TravelExperts
             }
         }
 
-        // Supplier Tab
-
         // Display the selected supplier in the text box
         private void lstSupplierList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -125,6 +128,7 @@ namespace TravelExperts
             btnDelete.Enabled = true;
         }
 
+        // Save button for the suppliers tab
         private void btnSaveSupplier_Click(object sender, EventArgs e)
         {
             string selectedSup = lstSupplierList.GetItemText(lstSupplierList.SelectedItem);
@@ -132,7 +136,7 @@ namespace TravelExperts
 
             // Validation to see if the typed item is already in the list
             int index = lstSupplierList.FindString(editedSup, -1);
-            if (index != -1)
+            if (editedSup != "" && index != -1)
             {
                 MessageBox.Show("Warning: Supplier already exists.", "Duplicate Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -183,9 +187,10 @@ namespace TravelExperts
             }
         }
 
+        // Declare a variable to determine which tab the user has selected
         public bool productTab;
 
-        // Create and Delete functions for both Products and Supplier
+        // Create and Delete functions for both Products and Suppliers
         private void tabModifyProductSupplier_Selected(object sender, TabControlEventArgs e)
         {
             if (e.TabPage.Name == tabProduct.Name)  // Trigger when Product tab is selected
@@ -208,51 +213,52 @@ namespace TravelExperts
             }
         }
 
+        // Create button for both Products and Suppliers
         private void btnCreate_Click(object sender, EventArgs e)
         {
             if (tabModifyProductSupplier.SelectedTab == tabProduct) // Create object for product
             {
-                lstProductList.ClearSelected();
+                ResetForm();
                 lstProductList.Enabled = false;
                 txtModifyProduct.Enabled = true;
-                txtModifyProduct.Clear();
                 txtModifyProduct.Focus();
                 btnAdd.Enabled = false;
                 btnCancel.Enabled = true;
-                btnDelete.Enabled = false;
             }
             else if (tabModifyProductSupplier.SelectedTab == tabSupplier)
             {
-                lstSupplierList.ClearSelected();
+                ResetForm();
                 lstSupplierList.Enabled = false;
                 txtModifySupplier.Enabled = true;
-                txtModifySupplier.Clear();
                 txtModifySupplier.Focus();
                 btnAdd.Enabled = false;
-                btnCancel.Enabled = true;
-                btnDelete.Enabled = false;
+                btnCancel.Enabled = true;   
             }
         }
 
         // The cancel button will clear all selections and reset the form
         private void btnCancel_Click(object sender, EventArgs e)
         {
-                lstProductList.Enabled = true;
-                lstProductList.ClearSelected();
-                txtModifyProduct.Enabled = false;
-                txtModifyProduct.Clear();
-
-                lstSupplierList.Enabled = true;
-                lstSupplierList.ClearSelected();
-                txtModifySupplier.Enabled = false;
-                txtModifySupplier.Clear();
-
-                btnAdd.Enabled = true;
-                btnCancel.Enabled = false;
-                btnDelete.Enabled = false;
+            ResetForm();
+            txtModifyProduct.Enabled = false;
+            txtModifySupplier.Enabled = false;
+            btnAdd.Enabled = true;
+            btnCancel.Enabled = false;
         }
 
-        // Delete
+        // Reset the form when the Add, Delete, or Cancel buttons are pressed
+        private void ResetForm()
+        {
+            lstProductList.ClearSelected();
+            lstSupplierList.ClearSelected();
+            lstProductList.Enabled = true;
+            lstSupplierList.Enabled = true;
+            txtModifySupplier.Clear();
+            txtModifyProduct.Clear();
+            btnDelete.Enabled = false;
+        }
+
+        // Delete a selected item for both the products and suppliers tab
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (tabModifyProductSupplier.SelectedTab == tabProduct) // Delete objects for the product tab
@@ -262,10 +268,10 @@ namespace TravelExperts
                 DialogResult delProd = MessageBox.Show("Are you sure you want to delete '" + selectedProd +"'?\n" +
                     "You will also be deleting the following links to this product:\n\n" + deleteList,
                     "Confirm Delete",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
-                if (delProd == DialogResult.OK)
+                if (delProd == DialogResult.OK)     // Delete if dialog result is OK
                 {
-                    ProductDB.DeleteProductName(selectedProd);
-                    this.frmModifyProductSupplier_Load(this, null);
+                    ProductDB.DeleteProductName(selectedProd);      // Delete the product
+                    this.frmModifyProductSupplier_Load(this, null); // Refresh the page
                 }
             }
             else if (tabModifyProductSupplier.SelectedTab == tabSupplier) // Delete objects for the supplier tab
@@ -275,11 +281,10 @@ namespace TravelExperts
                 DialogResult delProd = MessageBox.Show("Are you sure you want to delete '" + selectedSup + "'?\n" +
                     "You will also be deleting the following links to this supplier:\n\n" + deleteList,
                     "Confirm Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (delProd == DialogResult.OK)
+                if (delProd == DialogResult.OK)     // Delete if dialog result is OK
                 {
-                    // Check the string and make sure not to delete linked supplier in the database
-                    SupplierDB.DeleteSupplierName(selectedSup);
-                    this.frmModifyProductSupplier_Load(this, null);
+                    SupplierDB.DeleteSupplierName(selectedSup);     // Delete the selected supplier
+                    this.frmModifyProductSupplier_Load(this, null); // Refresh the page
                 }
             }
         }

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * Class for Suppliers
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 9, 2004
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

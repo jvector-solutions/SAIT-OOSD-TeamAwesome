@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * Database Class for Products
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 9, 2004
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,8 +17,6 @@ namespace TravelExperts
 {
     public class ProductDB
     {
-        
-
         // Change the name of a single product in the database
         public static void UpdateProduct(string oldProd, string newProd)
         {
@@ -39,7 +43,7 @@ namespace TravelExperts
             }
         }
 
-        // Add a new single product to the database
+        // Add a single product to the database
         public static void AddProductName(string newProd)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
@@ -100,7 +104,8 @@ namespace TravelExperts
         public static void DeleteProductName(string delProduct)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
-            string deleteStatement = 
+            string deleteStatement =
+                // Delete the Product from the Packages_Products_Suppliers table, then the Products_Suppliers table, then the Products table
                 "DELETE FROM Packages_Products_Suppliers " +
                 "WHERE ProductSupplierId IN " +
                 "(SELECT pps.ProductSupplierId FROM Packages_Products_Suppliers pps, Products_Suppliers ps,Products p " +
@@ -129,10 +134,9 @@ namespace TravelExperts
             }
         }
 
-        /////Performs search on main page////
+        // Performs search on main page
         public static List<Product> SearchProducts(string charactersToSearch)
         {
-
             List<Product> productList = new List<Product>();
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement = "SELECT * FROM Products " +

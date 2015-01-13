@@ -1,7 +1,8 @@
 ﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
  * Class for Products
- * Created By: John Nguyen
- * December 9, 2004
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 9, 2004
  */
 using System;
 using System.Collections.Generic;

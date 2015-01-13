@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * Database Class for Suppliers
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 9, 2004
+ */
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -29,6 +35,7 @@ namespace TravelExperts
                 {
                     Supplier s = new Supplier();
                     var supRead = reader["SupName"].ToString();
+                    // Changes the word string to title case
                     s.SupName = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(supRead.ToLower());
                     s.SupplierId = (int)reader["SupplierId"];
                     supList.Add(s);
@@ -46,7 +53,7 @@ namespace TravelExperts
             return supList;
         }
 
-        // Change the name of the supplier in the database
+        // Change the name of a single supplier in the database
         public static void UpdateSupplier(string oldSup, string newSup)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
@@ -73,7 +80,7 @@ namespace TravelExperts
             }
         }
 
-        // Add a new single supplier to the database
+        // Add a single supplier to the database
         public static void AddSupplierName(string newSup)
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
@@ -138,11 +145,16 @@ namespace TravelExperts
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string deleteStatement =
+                // Delete the Supplier from the Packages_Products_Suppliers table, then the Products_Suppliers table, then the Suppliers table
                 "DELETE FROM Packages_Products_Suppliers " +
                 "WHERE ProductSupplierId IN " +
                 "(SELECT pps.ProductSupplierId FROM Packages_Products_Suppliers pps, Products_Suppliers ps,Suppliers s " +
                 "WHERE pps.ProductSupplierId = ps.ProductSupplierId AND ps.SupplierId = s.SupplierId AND s.SupName = @delSup); " +
                 
+                "DELETE FROM SupplierContacts " +
+                "WHERE SupplierId IN " +
+                "(SELECT SupplierId FROM Suppliers WHERE SupName = @delSup); " +
+
                 "DELETE FROM Products_Suppliers " +
                 "WHERE SupplierId IN " +
                 "(SELECT SupplierId FROM Suppliers WHERE SupName = @delSup); " +
@@ -158,7 +170,7 @@ namespace TravelExperts
             }
             catch (SqlException ex)
             {
-                throw ex;
+                MessageBox.Show("Sorry, you cannot delete that supplier.\n\nError: " + ex,"Delete Error",MessageBoxButtons.OK,MessageBoxIcon.Stop);
             }
             finally
             {
@@ -169,7 +181,6 @@ namespace TravelExperts
         // Performs search on main page
         public static List<Supplier> SearchSuppliers(string charactersToSearch)
         {
-
             List<Supplier> supplierList = new List<Supplier>();
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement = "SELECT * FROM Suppliers " +

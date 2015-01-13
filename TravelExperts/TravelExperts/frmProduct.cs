@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * Class for the Products Windows Form
+ * Created By: John Nguyen (Team 3)
+ * Created On: December 9, 2004
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,12 +24,13 @@ namespace TravelExperts
             InitializeComponent();
         }
 
+        // Menu Bar: Closes the form
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        // Open the modify product tab in a new form from the menu bar
+        // Menu Bar: Open the modify product tab in a new form
         private void productToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
@@ -32,7 +39,7 @@ namespace TravelExperts
                 this.frmProduct_Load(this, null);
             }
 
-        // Open the modify supplier tab in a new form from the menu bar
+        // Menu Bar: Open the modify supplier tab in a new form
         private void supplierToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
@@ -44,6 +51,7 @@ namespace TravelExperts
             }
         }
 
+        // Triggers when the form loads
         private void frmProduct_Load(object sender, EventArgs e)
         {
             // Fills the dataviewgrid with table data pulled from the database
@@ -60,6 +68,7 @@ namespace TravelExperts
             this.LoadSupplierComboBox();
         }
 
+        // Triggers the search box when the user types a search string
         private void txtProductSupplierSearch_TextChanged(object sender, EventArgs e)
         {
             string searchBoxText = txtProductSupplierSearch.Text;
@@ -115,6 +124,7 @@ namespace TravelExperts
             }
         }
 
+        // Button to open a new form where the user can update the products and suppliers
         private void btnModifyProductSupplier_Click(object sender, EventArgs e)
         {
             frmModifyProductSupplier modifyPSForm = new frmModifyProductSupplier();
@@ -123,6 +133,7 @@ namespace TravelExperts
                 this.frmProduct_Load(this, null);
         }
 
+        // Deletes the selected product + supplier combination shown in the datagridview
         private void btnDelete_Click(object sender, EventArgs e)
         {
             string prodValue = dgvProducts.SelectedRows[0].Cells[1].Value.ToString();   // Gets the product of the selected row
@@ -148,6 +159,7 @@ namespace TravelExperts
             }
         }
 
+        // Close the form
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
