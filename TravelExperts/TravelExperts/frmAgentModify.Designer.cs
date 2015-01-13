@@ -40,12 +40,12 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtAgtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtAgtPosition = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtAgencyId = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtAgtPassword = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cmbAgentId = new System.Windows.Forms.ComboBox();
+            this.cmbAgtPosition = new System.Windows.Forms.ComboBox();
+            this.txtAgtPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtAgtBusPhone
@@ -126,10 +126,11 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(448, 55);
+            this.btnAdd.Location = new System.Drawing.Point(450, 185);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(129, 29);
+            this.btnAdd.Size = new System.Drawing.Size(129, 37);
             this.btnAdd.TabIndex = 44;
+            this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -137,9 +138,9 @@
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(448, 93);
+            this.btnCancel.Location = new System.Drawing.Point(450, 230);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(129, 32);
+            this.btnCancel.Size = new System.Drawing.Size(129, 37);
             this.btnCancel.TabIndex = 43;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -164,15 +165,6 @@
             this.label5.Text = "Email";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtAgtPosition
-            // 
-            this.txtAgtPosition.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAgtPosition.Location = new System.Drawing.Point(182, 190);
-            this.txtAgtPosition.Name = "txtAgtPosition";
-            this.txtAgtPosition.Size = new System.Drawing.Size(235, 22);
-            this.txtAgtPosition.TabIndex = 56;
-            this.txtAgtPosition.Tag = "Position";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -182,15 +174,6 @@
             this.label6.TabIndex = 55;
             this.label6.Text = "Position";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtAgencyId
-            // 
-            this.txtAgencyId.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAgencyId.Location = new System.Drawing.Point(182, 218);
-            this.txtAgencyId.Name = "txtAgencyId";
-            this.txtAgencyId.Size = new System.Drawing.Size(142, 22);
-            this.txtAgencyId.TabIndex = 58;
-            this.txtAgencyId.Tag = "Agency ID";
             // 
             // label7
             // 
@@ -202,15 +185,6 @@
             this.label7.Text = "Agency ID";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // txtAgtPassword
-            // 
-            this.txtAgtPassword.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAgtPassword.Location = new System.Drawing.Point(182, 246);
-            this.txtAgtPassword.Name = "txtAgtPassword";
-            this.txtAgtPassword.Size = new System.Drawing.Size(235, 22);
-            this.txtAgtPassword.TabIndex = 60;
-            this.txtAgtPassword.Tag = "Password";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -221,16 +195,50 @@
             this.label8.Text = "Password";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cmbAgentId
+            // 
+            this.cmbAgentId.FormattingEnabled = true;
+            this.cmbAgentId.Items.AddRange(new object[] {
+            "1",
+            "2"});
+            this.cmbAgentId.Location = new System.Drawing.Point(182, 218);
+            this.cmbAgentId.Name = "cmbAgentId";
+            this.cmbAgentId.Size = new System.Drawing.Size(142, 24);
+            this.cmbAgentId.TabIndex = 61;
+            this.cmbAgentId.Tag = "Agency ID";
+            // 
+            // cmbAgtPosition
+            // 
+            this.cmbAgtPosition.FormattingEnabled = true;
+            this.cmbAgtPosition.Items.AddRange(new object[] {
+            "Junior Agent",
+            "Senior Agent",
+            "Intermediate Agent"});
+            this.cmbAgtPosition.Location = new System.Drawing.Point(182, 190);
+            this.cmbAgtPosition.Name = "cmbAgtPosition";
+            this.cmbAgtPosition.Size = new System.Drawing.Size(142, 24);
+            this.cmbAgtPosition.TabIndex = 62;
+            this.cmbAgtPosition.Tag = "Agent Position ";
+            // 
+            // txtAgtPassword
+            // 
+            this.txtAgtPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.txtAgtPassword.Location = new System.Drawing.Point(182, 246);
+            this.txtAgtPassword.Name = "txtAgtPassword";
+            this.txtAgtPassword.Size = new System.Drawing.Size(235, 22);
+            this.txtAgtPassword.TabIndex = 60;
+            this.txtAgtPassword.Tag = "Password";
+            // 
             // frmAgentModify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 315);
+            this.Controls.Add(this.cmbAgtPosition);
+            this.Controls.Add(this.cmbAgentId);
             this.Controls.Add(this.txtAgtPassword);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtAgencyId);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtAgtPosition);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtAgtEmail);
             this.Controls.Add(this.label5);
@@ -267,11 +275,11 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtAgtEmail;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtAgtPosition;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtAgencyId;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtAgtPassword;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cmbAgentId;
+        private System.Windows.Forms.ComboBox cmbAgtPosition;
+        private System.Windows.Forms.TextBox txtAgtPassword;
     }
 }

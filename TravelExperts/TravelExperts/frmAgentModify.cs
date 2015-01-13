@@ -94,8 +94,8 @@ namespace TravelExperts
             txtAgtLastName.Text = agent.AgtLastName;
             txtAgtBusPhone.Text = agent.AgtBusPhone;
             txtAgtEmail.Text = agent.AgtEmail;
-            txtAgtPosition.Text = agent.AgtPosition;
-            txtAgencyId.Text = Convert.ToString(agent.AgencyId);
+            cmbAgtPosition.Text = agent.AgtPosition;
+            cmbAgentId.Text = Convert.ToString(agent.AgencyId);
             txtAgtPassword.Text = agent.AgtPassword;
         }
 
@@ -109,10 +109,10 @@ namespace TravelExperts
                 Validator.IsPresent(txtAgtLastName) &&
                 Validator.IsPresent(txtAgtBusPhone) &&
                 Validator.IsPresent(txtAgtEmail) &&
-                Validator.IsPresent(txtAgtPosition) &&
-                Validator.IsPresent(txtAgencyId) &&
-                Validator.inputIsInteger(txtAgencyId.Text, out msg) &&
-                Validator.inputRangeIsValid(txtAgencyId, 1, 3, out msg) &&
+                Validator.IsPresent(cmbAgtPosition) &&
+                Validator.IsPresent(cmbAgentId) &&
+                //Validator.inputIsInteger(txtAgencyId.Text, out msg) &&
+                //Validator.inputRangeIsValid(txtAgencyId, 1, 3, out msg) &&
                 Validator.IsPresent(txtAgtPassword);
         }
 
@@ -123,8 +123,8 @@ namespace TravelExperts
             agent.AgtLastName = txtAgtLastName.Text;
             agent.AgtBusPhone = txtAgtBusPhone.Text;
             agent.AgtEmail = txtAgtEmail.Text;
-            agent.AgtPosition = txtAgtPosition.Text;
-            agent.AgencyId = Convert.ToInt32(txtAgencyId.Text);
+            agent.AgtPosition = cmbAgtPosition.Text;
+            agent.AgencyId = Convert.ToInt32(cmbAgentId.Text);
             agent.AgtPassword = txtAgtPassword.Text;
         }
     }

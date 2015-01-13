@@ -5,10 +5,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TravelExperts
 {
-    class AgentDB
+    public class AgentDB
     {
         public static Agent GetAgent(int agentId)
         {
@@ -252,5 +253,43 @@ namespace TravelExperts
           
             return agentList;
         }
+
+        //to be linked with get agent
+        public static bool CheckPassword (string enteredAgentId, string enteredPassword)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();//Define conection
+            connection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT ISNULL(AgentId, '') AS AgentId, "
+                + "ISNULL(AgtPassword,'') AS AgtPassword "
+                + "FROM Agents WHERE AgentId = @AgentId and AgtPassword = @AgtPassword", connection);
+
+            command.Parameters.Add(new SqlParameter("AgentId", enteredAgentId));
+            command.Parameters.Add(new SqlParameter("AgtPassword", enteredPassword));
+
+            SqlDataReader dataReader = command.ExecuteReader();
+
+            try
+            {
+                dataReader.Read();
+                if (dataReader["AgentId"].ToString().Trim() == enteredAgentId &&
+                    dataReader["AgtPassword"].ToString().Trim() == enteredPassword)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+                dataReader.Close();
+            }
+        }
+               
     }
 }
