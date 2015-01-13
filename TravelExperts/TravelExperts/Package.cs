@@ -24,22 +24,27 @@ namespace TravelExperts
         public string Description { get; set; }//max of 50 char
         public decimal Base_Price { get; set; } //19.4
         public decimal Agency_Commission { get; set; } //19.4
+        public string Products { get; set; }
 
 
         private string price;
         public string Price
         {
-            get {
+            get
+            {
                 price = Base_Price.ToString("c");
-                return price; }
+                return price;
+            }
         }
 
         private string commission;
         public string Commission
         {
-            get {
+            get
+            {
                 commission = Agency_Commission.ToString("c");
-                return commission; }
+                return commission;
+            }
         }
 
         //constructors
@@ -148,7 +153,7 @@ namespace TravelExperts
             }
         }
         */
-        
+
         //methods
         public override string ToString()
         {

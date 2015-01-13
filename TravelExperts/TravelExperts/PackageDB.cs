@@ -16,7 +16,8 @@ namespace TravelExperts
     public static class PackageDB
     {
         //find packages that has the findMe string
-        public static List<Package> GetPackages(string findMe, bool showAll) {
+        public static List<Package> GetPackages(string findMe, bool showAll)
+        {
 
             List<Package> listOfPackages = new List<Package>();
 
@@ -24,10 +25,19 @@ namespace TravelExperts
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
             //create sql command
-            string selectStatement = "SELECT * FROM Packages "+
+            //string selectStatement = "SELECT * FROM Packages "+
+            //    "WHERE PkgName like '%" + findMe.Trim() + "%' OR " +
+            //    "PkgDesc like '%" + findMe.Trim() + "%'";
+
+            string selectStatement = "select PackageId, pkgName, pkgStartDate, pkgEndDate, pkgDesc, pkgBasePrice, PkgAgencyCommission, " +
+                "stuff((select ', '+ [prodName] " +
+                "from Products, Products_Suppliers, Packages_Products_Suppliers " +
+                "where Products.ProductId=Products_Suppliers.ProductId and " +
+                "Products_Suppliers.ProductSupplierId=Packages_Products_Suppliers.ProductSupplierId and " +
+                "Packages_Products_Suppliers.PackageId=t.PackageId for XML path('')),1,1,'') as Products " +
+                "from (select distinct * from Packages " +
                 "WHERE PkgName like '%" + findMe.Trim() + "%' OR " +
-                "PkgDesc like '%" + findMe.Trim() + "%'";
-               
+                "PkgDesc like '%" + findMe.Trim() + "%')t";
             //search for something
             if (findMe.Trim().Length != 0)
             {
@@ -39,7 +49,7 @@ namespace TravelExperts
             }
             if (!showAll)
             {
-                selectStatement = "SELECT * FROM ("+selectStatement+")as x "+
+                selectStatement = "SELECT * FROM (" + selectStatement + ")as x " +
                     "WHERE PkgEndDate > GETDATE()";
             }
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -70,7 +80,8 @@ namespace TravelExperts
                     newPackage.Description = reader["PkgDesc"].ToString();
                     newPackage.Base_Price = (decimal)reader["PkgBasePrice"];
                     newPackage.Agency_Commission = (decimal)reader["PkgAgencyCommission"];
-                    
+                    newPackage.Products = reader["Products"].ToString();
+
                     //add book to list
                     listOfPackages.Add(newPackage);
                 }
@@ -107,7 +118,7 @@ namespace TravelExperts
             //search for something
             if (findMe.Trim().Length != 0)
             {
-                selectStatement += " OR ProductID='"+findMe+"'";
+                selectStatement += " OR ProductID='" + findMe + "'";
 
             }
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
@@ -133,7 +144,7 @@ namespace TravelExperts
                     //add product details
                     newProduct.prodID = (int)reader["ProductID"];
                     newProduct.prodName = reader["ProdName"].ToString();
-                    
+
 
                     //add product to list
                     listOfProducts.Add(newProduct);
@@ -170,7 +181,7 @@ namespace TravelExperts
             {
                 selectStatement = "SELECT * FROM Suppliers " +
                     "WHERE SupplierId in " +
-                        "(SELECT SupplierId FROM Products_Suppliers "+
+                        "(SELECT SupplierId FROM Products_Suppliers " +
                         "WHERE ProductId=" + findMe + ")";
             }
             else
@@ -326,10 +337,10 @@ namespace TravelExperts
 
             //create sql command
             string insertStatement =
-                "IF NOT EXISTS (SELECT * FROM Packages_Products_Suppliers "+
-                "WHERE PackageId = "+pkgID.ToString()+" AND ProductSupplierId = "+
-                    ProductsSuppliers.ToString()+") "+
-                    "INSERT INTO Packages_Products_Suppliers (PackageId, ProductSupplierId) "+
+                "IF NOT EXISTS (SELECT * FROM Packages_Products_Suppliers " +
+                "WHERE PackageId = " + pkgID.ToString() + " AND ProductSupplierId = " +
+                    ProductsSuppliers.ToString() + ") " +
+                    "INSERT INTO Packages_Products_Suppliers (PackageId, ProductSupplierId) " +
                     "VALUES (" + pkgID.ToString() + "," + ProductsSuppliers.ToString() + ")";
 
             SqlCommand insertCommand =
@@ -355,12 +366,12 @@ namespace TravelExperts
         {
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
-            string deleteLinkingTableStatement=
-                "delete from Packages_Products_Suppliers "+
-                "where PackageId= "+pkgID.ToString();
+            string deleteLinkingTableStatement =
+                "delete from Packages_Products_Suppliers " +
+                "where PackageId= " + pkgID.ToString();
             string deletePkgStatement =
                 "DELETE FROM Packages " +
-                "WHERE PackageId = "+pkgID.ToString();
+                "WHERE PackageId = " + pkgID.ToString();
 
             SqlCommand deleteLinkingTableCommand =
                 new SqlCommand(deleteLinkingTableStatement, connection);
@@ -379,7 +390,7 @@ namespace TravelExperts
             }
             catch (SqlException)
             {
-                MessageBox.Show("You do not have enough permission to delete this product", 
+                MessageBox.Show("You do not have enough permission to delete this product",
                     "Error Deleting",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation,
@@ -451,18 +462,18 @@ namespace TravelExperts
         public static List<string[]> GetPackageProductSupplier(int pkgID)
         {
             List<string[]> records = new List<string[]>();
-            
+
 
             //create connection
             SqlConnection connection = TravelExpertsDB.GetConnection();
 
-            string selectStatement = "select Packages_Products_Suppliers.productsupplierid, "+
-                "prodname, supname "+
-                "from Packages_Products_Suppliers, Products_Suppliers, Products, Suppliers "+
-                "where Packages_Products_Suppliers.ProductSupplierId=Products_Suppliers.ProductSupplierId and "+
-                "Products.ProductId=Products_Suppliers.ProductId and "+
-                "Suppliers.SupplierId=Products_Suppliers.SupplierId and "+
-                "Packages_Products_Suppliers.PackageId="+pkgID.ToString();
+            string selectStatement = "select Packages_Products_Suppliers.productsupplierid, " +
+                "prodname, supname " +
+                "from Packages_Products_Suppliers, Products_Suppliers, Products, Suppliers " +
+                "where Packages_Products_Suppliers.ProductSupplierId=Products_Suppliers.ProductSupplierId and " +
+                "Products.ProductId=Products_Suppliers.ProductId and " +
+                "Suppliers.SupplierId=Products_Suppliers.SupplierId and " +
+                "Packages_Products_Suppliers.PackageId=" + pkgID.ToString();
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
 
             //open connection
@@ -482,7 +493,7 @@ namespace TravelExperts
                 while (reader.Read())
                 {
                     string[] record = new string[3];
-                    
+
                     record[0] = reader["ProductSupplierId"].ToString();
                     record[1] = reader["ProdName"].ToString();
                     record[2] = reader["SupName"].ToString();
@@ -560,17 +571,17 @@ namespace TravelExperts
             string stringProdSupId = "";
             foreach (int n in prodSupID)
             {
-                stringProdSupId += n.ToString()+",";
+                stringProdSupId += n.ToString() + ",";
             }
             if (stringProdSupId.Length > 0)
             {
                 stringProdSupId = stringProdSupId.Remove(stringProdSupId.Length - 1);
             }
             string deleteStatement =
-                "IF EXISTS (SELECT * FROM Packages_Products_Suppliers "+
-                "WHERE PackageId = "+pkgID.ToString()+" AND ProductSupplierId NOT in "+
-                "("+stringProdSupId+")) "+
-                "delete from Packages_Products_Suppliers "+
+                "IF EXISTS (SELECT * FROM Packages_Products_Suppliers " +
+                "WHERE PackageId = " + pkgID.ToString() + " AND ProductSupplierId NOT in " +
+                "(" + stringProdSupId + ")) " +
+                "delete from Packages_Products_Suppliers " +
                 "where PackageID=" + pkgID.ToString() + " AND ProductSupplierId NOT in " +
                 "(" + stringProdSupId + ")";
             SqlCommand deleteCommand =
@@ -615,7 +626,7 @@ namespace TravelExperts
 
             try
             {
-                id = (int) selectCommand.ExecuteScalar();
+                id = (int)selectCommand.ExecuteScalar();
             }
             catch (Exception ex)
             {
