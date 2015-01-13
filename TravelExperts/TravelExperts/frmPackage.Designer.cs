@@ -147,6 +147,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(166, 48);
+            this.txtDescription.MaxLength = 50;
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(382, 61);
@@ -164,6 +165,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(166, 20);
+            this.txtName.MaxLength = 50;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(275, 22);
             this.txtName.TabIndex = 26;
