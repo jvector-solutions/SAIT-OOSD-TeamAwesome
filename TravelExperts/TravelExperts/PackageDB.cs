@@ -377,9 +377,14 @@ namespace TravelExperts
                 else
                     return false;
             }
-            catch (SqlException ex)
+            catch (SqlException)
             {
-                throw ex;
+                MessageBox.Show("You do not have enough permission to delete this product", 
+                    "Error Deleting",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1);
+                return false;
             }
             finally
             {
