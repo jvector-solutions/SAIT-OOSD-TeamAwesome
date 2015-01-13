@@ -73,11 +73,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(72, 202);
+            this.label9.Location = new System.Drawing.Point(19, 202);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 17);
+            this.label9.Size = new System.Drawing.Size(141, 17);
             this.label9.TabIndex = 37;
-            this.label9.Text = "Commission";
+            this.label9.Text = "Commission(Amount)";
             // 
             // txtCommission
             // 
@@ -227,7 +227,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(513, 377);
+            this.btnRemove.Location = new System.Drawing.Point(413, 379);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 25);
             this.btnRemove.TabIndex = 6;
@@ -240,17 +240,20 @@
             this.dgvProductSuppliers.AllowUserToAddRows = false;
             this.dgvProductSuppliers.AllowUserToDeleteRows = false;
             this.dgvProductSuppliers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvProductSuppliers.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvProductSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductSuppliers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductSuppliers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductSupplierId,
             this.ProductId,
             this.SupplierId});
-            this.dgvProductSuppliers.Location = new System.Drawing.Point(9, 104);
+            this.dgvProductSuppliers.Location = new System.Drawing.Point(89, 106);
             this.dgvProductSuppliers.Name = "dgvProductSuppliers";
             this.dgvProductSuppliers.ReadOnly = true;
+            this.dgvProductSuppliers.RowHeadersVisible = false;
             this.dgvProductSuppliers.RowTemplate.Height = 24;
             this.dgvProductSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductSuppliers.Size = new System.Drawing.Size(579, 267);
+            this.dgvProductSuppliers.Size = new System.Drawing.Size(399, 267);
             this.dgvProductSuppliers.TabIndex = 5;
             // 
             // ProductSupplierId

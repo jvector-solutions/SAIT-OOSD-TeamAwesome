@@ -38,12 +38,14 @@ namespace TravelExperts
         {
             frmAgents callAgentForm = new frmAgents();
             callAgentForm.ShowDialog();
+            SearchFor();
         }
 
         private void btnProductSuppliers_Click(object sender, EventArgs e)
         {
             frmProduct newForm = new frmProduct();
             DialogResult result = newForm.ShowDialog();
+            SearchFor();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
