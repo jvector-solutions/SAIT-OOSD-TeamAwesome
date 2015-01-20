@@ -1,0 +1,35 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Travel Experts</title>
+    <asp:ContentPlaceHolder id="headPlaceHolder" runat="server">
+
+    </asp:ContentPlaceHolder>
+    <link href="Styles/Main.css" rel="stylesheet" />
+    <style type="text/css">
+        .auto-style1 {
+            width: 375px;
+            height: 84px;
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Travel Experts</h1>
+        <img alt="" class="auto-style1" src="Images/logo2.png" />
+    </header>
+    <section>
+        <asp:ContentPlaceHolder id="formPlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </section>
+    <footer>
+        <p>&copy; 2015, Travel Experts Inc.</p>
+    </footer>
+</body>
+</html>
