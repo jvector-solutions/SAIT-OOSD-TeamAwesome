@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Request" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
 
-<asp:Content id="Content1" ContentPlaceHolderID="headPlaceHolder" runat="server">
+<asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server">
 
 </asp:Content>
 
-<asp:Content id="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
+<asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <!-- Insert Content Below -->
     <form id="form1" runat="server">
         <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="CustLastName" DataValueField="CustomerId">
