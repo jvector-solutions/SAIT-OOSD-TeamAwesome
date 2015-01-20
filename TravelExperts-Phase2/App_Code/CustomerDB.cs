@@ -13,16 +13,14 @@ namespace TravelExperts
     public static class CustomerDB
     {
         [DataObjectMethod(DataObjectMethodType.Select)]
-        public static List<Customer> GetCustomerByState(string stateCode)
+        public static List<Customer> GetCustomers()
         {
             List<Customer> customers = new List<Customer>();
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement =
                 "SELECT CustomerID, Name, Address, City, State, ZipCode " +
-                "FROM Customers " +
-                "WHERE State = @State";
+                "FROM Customers order by Name";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
-            selectCommand.Parameters.AddWithValue("@State", stateCode);
             try
             {
                 connection.Open();
