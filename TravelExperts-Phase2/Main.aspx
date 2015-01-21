@@ -8,7 +8,7 @@
     <!-- Insert Content Below -->
     <form id="form1" runat="server">
         Select Customer<br />
-        <asp:DropDownList ID="ddlCustomers" runat="server" DataSourceID="GetCustomers" DataTextField="CustFirstName" DataValueField="CustomerID" AutoPostBack="True">
+        <asp:DropDownList ID="ddlCustomers" runat="server" DataSourceID="GetCustomers" DataTextField="CustFirstName" DataValueField="CustomerID" AutoPostBack="True" OnSelectedIndexChanged="ddlCustomers_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:ObjectDataSource ID="GetCustomers" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomers" TypeName="TravelExperts.CustomerDB"></asp:ObjectDataSource>
         <br />
@@ -65,9 +65,9 @@
             </UpdateParameters>
         </asp:ObjectDataSource>
         <br />
-        Customer&#39;s Packages<asp:ListView ID="lsvCustomerPackages" runat="server" DataKeyNames="PackageID,PkgName,PkgStartDate,PkgEndDate,PkgDesc,PkgBasePrice,PkgAgencyCommission" DataSourceID="GetPackagesByCustomer">
+        Customer&#39;s Packages<asp:ListView ID="lsvCustomerPackages" runat="server" DataSourceID="GetPackagesByCustomer">
             <AlternatingItemTemplate>
-                <tr style="background-color:#FFF8DC;">
+                <tr style="background-color: #FFFFFF;color: #284775;">
                     <td>
                         <asp:Label ID="PackageIDLabel" runat="server" Text='<%# Eval("PackageID") %>' />
                     </td>
@@ -92,7 +92,7 @@
                 </tr>
             </AlternatingItemTemplate>
             <EditItemTemplate>
-                <tr style="background-color:#008A8C;color: #FFFFFF;">
+                <tr style="background-color: #999999;">
                     <td>
                         <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
                         <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
@@ -157,27 +157,12 @@
                 </tr>
             </InsertItemTemplate>
             <ItemTemplate>
-                <tr style="background-color:#DCDCDC;color: #000000;">
+                <tr style="background-color: #E0FFFF;color: #333333;">
                     <td>
                         <asp:Label ID="PackageIDLabel" runat="server" Text='<%# Eval("PackageID") %>' />
                     </td>
                     <td>
                         <asp:Label ID="PkgNameLabel" runat="server" Text='<%# Eval("PkgName") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="PkgStartDateLabel" runat="server" Text='<%# Eval("PkgStartDate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="PkgEndDateLabel" runat="server" Text='<%# Eval("PkgEndDate") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="PkgDescLabel" runat="server" Text='<%# Eval("PkgDesc") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="PkgBasePriceLabel" runat="server" Text='<%# Eval("PkgBasePrice") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="PkgAgencyCommissionLabel" runat="server" Text='<%# Eval("PkgAgencyCommission") %>' />
                     </td>
                 </tr>
             </ItemTemplate>
@@ -186,14 +171,9 @@
                     <tr runat="server">
                         <td runat="server">
                             <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
+                                <tr runat="server" style="background-color: #E0FFFF;color: #333333;">
                                     <th runat="server">PackageID</th>
                                     <th runat="server">PkgName</th>
-                                    <th runat="server">PkgStartDate</th>
-                                    <th runat="server">PkgEndDate</th>
-                                    <th runat="server">PkgDesc</th>
-                                    <th runat="server">PkgBasePrice</th>
-                                    <th runat="server">PkgAgencyCommission</th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
@@ -201,12 +181,12 @@
                         </td>
                     </tr>
                     <tr runat="server">
-                        <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;"></td>
+                        <td runat="server" style="text-align: center;background-color: #5D7B9D;font-family: Verdana, Arial, Helvetica, sans-serif;color: #FFFFFF"></td>
                     </tr>
                 </table>
             </LayoutTemplate>
             <SelectedItemTemplate>
-                <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
+                <tr style="background-color: #E2DED6;font-weight: bold;color: #333333;">
                     <td>
                         <asp:Label ID="PackageIDLabel" runat="server" Text='<%# Eval("PackageID") %>' />
                     </td>
