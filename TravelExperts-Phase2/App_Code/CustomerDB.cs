@@ -18,8 +18,8 @@ namespace TravelExperts
             List<Customer> customers = new List<Customer>();
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement =
-                "SELECT CustomerID, Name, Address, City, State, ZipCode " +
-                "FROM Customers order by Name";
+                "SELECT * " +
+                "FROM Customers ORDER BY CustFirstName, CustLastName";
             SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             try
             {
@@ -27,14 +27,21 @@ namespace TravelExperts
                 SqlDataReader custReader = selectCommand.ExecuteReader();
                 while (custReader.Read())
                 {
-                    Customer cust = new Customer();
-                    cust.CustomerID = (int)custReader["CustomerID"];
-                    cust.Name = custReader["Name"].ToString();
-                    cust.Address = custReader["Address"].ToString();
-                    cust.City = custReader["City"].ToString();
-                    cust.State = custReader["State"].ToString();
-                    cust.ZipCode = custReader["ZipCode"].ToString();
-                    customers.Add(cust);
+                    Customer customer = new Customer();
+                    customer.CustomerID = (int)custReader["CustomerID"];
+                    customer.CustFirstName = (string)custReader["CustFirstName"];
+                    customer.CustLastName = (string)custReader["CustLastName"];
+                    customer.CustAddress = (string)custReader["CustAddress"];
+                    customer.CustCity = (string)custReader["CustCity"];
+                    customer.CustProv = (string)custReader["CustProv"];
+                    customer.CustPostal = (string)custReader["CustPostal"];
+                    customer.CustCountry = (string)custReader["CustCountry"];
+                    customer.CustHomePhone = (string)custReader["CustHomePhone"];
+                    customer.CustBusPhone = (string)custReader["CustBusPhone"];
+                    customer.CustEmail = (string)custReader["CustEmail"];
+                    customer.AgentID = (int)custReader["AgentID"];
+
+                    customers.Add(customer);
                 }
             }
             catch (SqlException ex)
@@ -51,9 +58,11 @@ namespace TravelExperts
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static Customer GetCustomer(int customerID)
         {
+            Customer customer = null;
+
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string selectStatement
-                = "SELECT CustomerID, Name, Address, City, State, ZipCode "
+                = "SELECT * "
                 + "FROM Customers "
                 + "WHERE CustomerID = @CustomerID";
             SqlCommand selectCommand =
@@ -65,13 +74,19 @@ namespace TravelExperts
                 SqlDataReader custReader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
                 if (custReader.Read())
                 {
-                    Customer customer = new Customer();
+                    customer = new Customer();
                     customer.CustomerID = (int)custReader["CustomerID"];
-                    customer.Name = custReader["Name"].ToString();
-                    customer.Address = custReader["Address"].ToString();
-                    customer.City = custReader["City"].ToString();
-                    customer.State = custReader["State"].ToString();
-                    customer.ZipCode = custReader["ZipCode"].ToString();
+                    customer.CustFirstName = (string)custReader["CustFirstName"];
+                    customer.CustLastName = (string)custReader["CustLastName"];
+                    customer.CustAddress = (string)custReader["CustAddress"];
+                    customer.CustCity = (string)custReader["CustCity"];
+                    customer.CustProv = (string)custReader["CustProv"];
+                    customer.CustPostal = (string)custReader["CustPostal"];
+                    customer.CustCountry = (string)custReader["CustCountry"];
+                    customer.CustHomePhone = (string)custReader["CustHomePhone"];
+                    customer.CustBusPhone = (string)custReader["CustBusPhone"];
+                    customer.CustEmail = (string)custReader["CustEmail"];
+                    customer.AgentID = (int)custReader["AgentID"];
                     return customer;
                 }
                 else
@@ -107,16 +122,16 @@ namespace TravelExperts
                 "AND ZipCode = @OldZipCode";
             SqlCommand updateCommand =
                 new SqlCommand(updateStatement, connection);
-            updateCommand.Parameters.AddWithValue("@NewName", customer.Name);
-            updateCommand.Parameters.AddWithValue("@NewAddress", customer.Address);
-            updateCommand.Parameters.AddWithValue("@NewCity", customer.City);
-            updateCommand.Parameters.AddWithValue("@NewState", customer.State);
-            updateCommand.Parameters.AddWithValue("@NewZipCode", customer.ZipCode);
-            updateCommand.Parameters.AddWithValue("@OldName", original_customer.Name);
-            updateCommand.Parameters.AddWithValue("@OldAddress", original_customer.Address);
-            updateCommand.Parameters.AddWithValue("@OldCity", original_customer.City);
-            updateCommand.Parameters.AddWithValue("@OldState", original_customer.State);
-            updateCommand.Parameters.AddWithValue("@OldZipCode", original_customer.ZipCode);
+            updateCommand.Parameters.AddWithValue("@NewName", customer.CustFirstName);
+            updateCommand.Parameters.AddWithValue("@NewAddress", customer.CustAddress);
+            updateCommand.Parameters.AddWithValue("@NewCity", customer.CustCity);
+            updateCommand.Parameters.AddWithValue("@NewState", customer.CustProv);
+            updateCommand.Parameters.AddWithValue("@NewZipCode", customer.CustPostal);
+            updateCommand.Parameters.AddWithValue("@OldName", original_customer.CustFirstName);
+            updateCommand.Parameters.AddWithValue("@OldAddress", original_customer.CustAddress);
+            updateCommand.Parameters.AddWithValue("@OldCity", original_customer.CustCity);
+            updateCommand.Parameters.AddWithValue("@OldState", original_customer.CustProv);
+            updateCommand.Parameters.AddWithValue("@OldZipCode", original_customer.CustPostal);
             try
             {
                 connection.Open();

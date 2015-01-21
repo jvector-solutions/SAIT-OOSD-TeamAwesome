@@ -9,13 +9,59 @@ using System.ComponentModel;
 
 namespace TravelExperts
 {
-    public class PackageDB
+    [DataObject(true)]
+    public static class PackageDB
     {
-        public PackageDB()
-        {
-            //
-            // TODO: Add constructor logic here
-            //
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static List<Package> GetPackagesByCustomerID(int id){
+            List<Package> packages = new List<Package>();
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement = 
+                "SELECT "
+                + "Packages.PackageId, Packages.PkgName, "
+                + "Packages.PkgStartDate, Packages.PkgEndDate, "
+                + "Packages.PkgDesc, Packages.PkgBasePrice, "
+                + "Packages.PkgAgencyCommission "
+                + "FROM Packages, Bookings "
+                + "WHERE Packages.PackageID=Bookings.PackageID "
+                + "AND Bookings.CustomerId=@CustomerId";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@CustomerId", id);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader();
+                if (reader.Read())
+                {
+                    Package package = new Package();
+                    package.PackageID = (int)reader["PackageID"];
+                    package.PkgName = (string)reader["PkgName"];
+                    package.PkgStartDate = (DateTime)reader["PkgStartDate"];
+                    package.PkgEndDate = (DateTime)reader["PkgEndDate"];
+                    package.PkgDesc = (string)reader["PkgDesc"];
+                    package.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+                    package.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+
+                    packages.Add(package);
+
+                    return packages;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
+
     }
 }
