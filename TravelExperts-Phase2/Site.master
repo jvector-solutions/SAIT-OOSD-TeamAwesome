@@ -12,8 +12,13 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to the Travel Experts</h1>
         <img alt="" src="Images/logo2.png" />
+        <div class="nav">
+          <ul>
+            <li class="home"><a href="Main.aspx">Home</a></li>
+            <li class="about"><a href="About.aspx">About</a></li>
+          </ul>
+        </div>
     </header>
     <section>
         <asp:ContentPlaceHolder id="formPlaceHolder" runat="server">
@@ -21,7 +26,7 @@
         </asp:ContentPlaceHolder>
     </section>
     <footer>
-        <p>&copy; 2015, Travel Experts Inc.</p>
+        <p><strong>&copy; 2015, Travel Experts Inc.</strong></p>
     </footer>
 </body>
 </html>

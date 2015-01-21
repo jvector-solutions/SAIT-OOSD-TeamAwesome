@@ -7,46 +7,33 @@
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <!-- Insert Content Below -->
     <form id="form1" runat="server">
-        Select Customer<br />
-        <asp:DropDownList ID="ddlCustomers" runat="server" DataSourceID="GetCustomers" DataTextField="CustFirstName" DataValueField="CustomerID" AutoPostBack="True">
+        <h2>Select Customer</h2><br />
+        <asp:DropDownList ID="ddlCustomers" runat="server" DataSourceID="GetCustomers" DataTextField="CustFirstName" DataValueField="CustomerID" AutoPostBack="True" Height="36px" style="font-size: large" Width="238px">
         </asp:DropDownList>
         <asp:ObjectDataSource ID="GetCustomers" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomers" TypeName="TravelExperts.CustomerDB"></asp:ObjectDataSource>
-        <asp:Label ID="lblIndex" runat="server"></asp:Label>
         <br />
-        <br />
-        Customer Details<br />
+        <h2>Customer Details</h2><br />
         <asp:DetailsView ID="DetailsView1" 
             runat="server" 
             AutoGenerateRows="False" 
             DataSourceID="GetCustomerbyID" 
-            Height="50px" Width="125px" 
-            BackColor="White" 
-            BorderColor="#E7E7FF" 
-            BorderStyle="None" 
-            BorderWidth="1px" 
-            CellPadding="3" 
-            GridLines="Horizontal">
-            <AlternatingRowStyle BackColor="#F7F7F7" />
-            <EditRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+            Height="50px" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="2" CellSpacing="1" style="margin-top: 0px">
+            <EditRowStyle BackColor="White" />
             <Fields>
-                <asp:BoundField DataField="CustomerID" HeaderText="CustomerID" SortExpression="CustomerID" />
-                <asp:BoundField DataField="CustFirstName" HeaderText="CustFirstName" SortExpression="CustFirstName" />
-                <asp:BoundField DataField="CustLastName" HeaderText="CustLastName" SortExpression="CustLastName" />
-                <asp:BoundField DataField="CustAddress" HeaderText="CustAddress" SortExpression="CustAddress" />
-                <asp:BoundField DataField="CustCity" HeaderText="CustCity" SortExpression="CustCity" />
-                <asp:BoundField DataField="CustProv" HeaderText="CustProv" SortExpression="CustProv" />
-                <asp:BoundField DataField="CustPostal" HeaderText="CustPostal" SortExpression="CustPostal" />
-                <asp:BoundField DataField="CustCountry" HeaderText="CustCountry" SortExpression="CustCountry" />
-                <asp:BoundField DataField="CustHomePhone" HeaderText="CustHomePhone" SortExpression="CustHomePhone" />
-                <asp:BoundField DataField="CustBusPhone" HeaderText="CustBusPhone" SortExpression="CustBusPhone" />
-                <asp:BoundField DataField="CustEmail" HeaderText="CustEmail" SortExpression="CustEmail" />
-                <asp:BoundField DataField="AgentID" HeaderText="AgentID" SortExpression="AgentID" />
+                <asp:BoundField DataField="CustFirstName" HeaderText="First Name" SortExpression="CustFirstName" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustLastName" HeaderText="Last Name" SortExpression="CustLastName" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustAddress" HeaderText="Address" SortExpression="CustAddress" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustCity" HeaderText="City" SortExpression="CustCity" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustProv" HeaderText="Province" SortExpression="CustProv" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustPostal" HeaderText="Postal Code" SortExpression="CustPostal" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustCountry" HeaderText="Country" SortExpression="CustCountry" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustHomePhone" HeaderText="Home Phone" SortExpression="CustHomePhone" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustBusPhone" HeaderText="Business Phone" SortExpression="CustBusPhone" HeaderStyle-CssClass="custdetails" />
+                <asp:BoundField DataField="CustEmail" HeaderText="Email" SortExpression="CustEmail" HeaderStyle-CssClass="custdetails" />
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
+
             </Fields>
-            <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-            <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-            <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-            <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+            <HeaderStyle HorizontalAlign="Right" BackColor="#2F73C1" ForeColor="White" Width="160px" Font-Bold="True" />
         </asp:DetailsView>
         <asp:ObjectDataSource ID="GetCustomerbyID" runat="server" 
             OldValuesParameterFormatString="original_{0}" 
@@ -67,13 +54,16 @@
         </asp:ObjectDataSource>
         
         <br />
-        Customer&#39;s Packages<br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+        <h2>Customer&#39;s Packages</h2><br />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="2" CellSpacing="1">
             <Columns>
-                <asp:CommandField ShowSelectButton="True" />
-                <asp:BoundField DataField="PackageID" HeaderText="PackageID" SortExpression="PackageID" />
-                <asp:BoundField DataField="PkgName" HeaderText="PkgName" SortExpression="PkgName" />
+                <asp:CommandField ShowSelectButton="True" >
+                <ItemStyle BackColor="#2F73C1" ForeColor="White" />
+                </asp:CommandField>
+                <asp:BoundField DataField="PackageID" HeaderText="Package ID" SortExpression="PackageID" />
+                <asp:BoundField DataField="PkgName" HeaderText="Package Name" SortExpression="PkgName" />
             </Columns>
+            <RowStyle HorizontalAlign="Center" />
         </asp:GridView>
         <asp:ObjectDataSource ID="GetPackagesByCustomerID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetPackagesByCustomerID" TypeName="TravelExperts.PackageDB">
             <SelectParameters>
