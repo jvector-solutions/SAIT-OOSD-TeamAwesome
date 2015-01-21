@@ -24,21 +24,11 @@
             BorderStyle="None" 
             BorderWidth="1px" 
             CellPadding="3" 
-            GridLines="Horizontal" DataKeyNames="CustomerID">
+            GridLines="Horizontal">
             <AlternatingRowStyle BackColor="#F7F7F7" />
             <EditRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
             <Fields>
-                <asp:TemplateField HeaderText="CustomerID" SortExpression="CustomerID">
-                    <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("CustomerID") %>'></asp:TextBox>
-                    </EditItemTemplate>
-                    <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("CustomerID") %>'></asp:TextBox>
-                    </InsertItemTemplate>
-                    <ItemTemplate>
-                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CustomerID") %>'></asp:Label>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="CustomerID" HeaderText="CustomerID" SortExpression="CustomerID" />
                 <asp:BoundField DataField="CustFirstName" HeaderText="CustFirstName" SortExpression="CustFirstName" />
                 <asp:BoundField DataField="CustLastName" HeaderText="CustLastName" SortExpression="CustLastName" />
                 <asp:BoundField DataField="CustAddress" HeaderText="CustAddress" SortExpression="CustAddress" />
@@ -50,16 +40,29 @@
                 <asp:BoundField DataField="CustBusPhone" HeaderText="CustBusPhone" SortExpression="CustBusPhone" />
                 <asp:BoundField DataField="CustEmail" HeaderText="CustEmail" SortExpression="CustEmail" />
                 <asp:BoundField DataField="AgentID" HeaderText="AgentID" SortExpression="AgentID" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
             </Fields>
             <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
             <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
             <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
             <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
         </asp:DetailsView>
-        <asp:ObjectDataSource ID="GetCustomerbyID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomer" TypeName="TravelExperts.CustomerDB" ConflictDetection="CompareAllValues">
+        <asp:ObjectDataSource ID="GetCustomerbyID" runat="server" 
+            OldValuesParameterFormatString="original_{0}" 
+            SelectMethod="GetCustomer" 
+            TypeName="TravelExperts.CustomerDB" 
+            ConflictDetection="CompareAllValues" 
+            DataObjectTypeName="TravelExperts.Customer" 
+            DeleteMethod="DeleteCustomer" 
+            InsertMethod="AddCustomer" 
+            UpdateMethod="UpdateCustomer">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlCustomers" Name="customerID" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="original_customer" Type="Object" />
+                <asp:ControlParameter ControlID="DetailsView1" Name="customer" PropertyName="SelectedValue" Type="Object" />
+            </UpdateParameters>
         </asp:ObjectDataSource>
         <br />
         Customer&#39;s Packages<asp:ListView ID="lsvCustomerPackages" runat="server" DataKeyNames="PackageID,PkgName,PkgStartDate,PkgEndDate,PkgDesc,PkgBasePrice,PkgAgencyCommission" DataSourceID="GetPackagesByCustomer">
