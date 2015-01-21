@@ -63,5 +63,48 @@ namespace TravelExperts
             }
         }
 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static Package GetPackagesByID(int id)
+        {
+            Package package = null;
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement =
+                "SELECT * "
+                + "FROM Packages "
+                + "WHERE PackageID='"+id+"'";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (reader.Read())
+                {
+                    package = new Package();
+                    package.PackageID = (int)reader["PackageID"];
+                    package.PkgName = (string)reader["PkgName"];
+                    package.PkgStartDate = (DateTime)reader["PkgStartDate"];
+                    package.PkgEndDate = (DateTime)reader["PkgEndDate"];
+                    package.PkgDesc = (string)reader["PkgDesc"];
+                    package.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+                    package.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+                    
+                    return package;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
     }
 }

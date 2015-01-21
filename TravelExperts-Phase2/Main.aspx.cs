@@ -7,17 +7,23 @@ using System.Web.UI.WebControls;
 
 public partial class Main : System.Web.UI.Page
 {
-    int custID = -1;
+    int custID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["CustomerID"] != null)
-        {
-            custID = (int)Session["CustomerID"];
-            ddlCustomers.SelectedValue = custID.ToString();
-        }
+        custID = ddlCustomers.SelectedIndex;
     }
-    protected void ddlCustomers_SelectedIndexChanged(object sender, EventArgs e)
+    protected void GoToPackages(object sender, EventArgs e)
     {
-        Session["CustomerID"] = Convert.ToInt32(ddlCustomers.SelectedValue);
+        //Session["PackageID"] = lsvCustomerPackages.SelectedDataKey;
+        //Session["PackageID"] = lsvCustomerPackages.Items[lsvCustomerPackages];
+            //.FindControl("Label2") as Label).Text;
+        //Session["PackageID"] = GridView1.SelectedIndex;
+        //Response.Redirect("Package.aspx");
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        GridViewRow row = GridView1.SelectedRow;
+        Session["PackageID"] = row.Cells[1].Text;
+        Response.Redirect("Package.aspx");
     }
 }
