@@ -10,6 +10,7 @@ public partial class Main : System.Web.UI.Page
     int custID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
         custID = ddlCustomers.SelectedIndex;
     }
     protected void GoToPackages(object sender, EventArgs e)

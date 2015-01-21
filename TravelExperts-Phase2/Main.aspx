@@ -13,6 +13,7 @@
         <asp:ObjectDataSource ID="GetCustomers" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomers" TypeName="TravelExperts.CustomerDB"></asp:ObjectDataSource>
         <br />
         <h2>Customer Details</h2><br />
+       
         <asp:DetailsView ID="DetailsView1" 
             runat="server" 
             AutoGenerateRows="False" 
@@ -20,16 +21,237 @@
             Height="50px" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="2" CellSpacing="1" style="margin-top: 0px">
             <EditRowStyle BackColor="White" />
             <Fields>
-                <asp:BoundField DataField="CustFirstName" HeaderText="First Name" SortExpression="CustFirstName" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustLastName" HeaderText="Last Name" SortExpression="CustLastName" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustAddress" HeaderText="Address" SortExpression="CustAddress" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustCity" HeaderText="City" SortExpression="CustCity" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustProv" HeaderText="Province" SortExpression="CustProv" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustPostal" HeaderText="Postal Code" SortExpression="CustPostal" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustCountry" HeaderText="Country" SortExpression="CustCountry" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustHomePhone" HeaderText="Home Phone" SortExpression="CustHomePhone" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustBusPhone" HeaderText="Business Phone" SortExpression="CustBusPhone" HeaderStyle-CssClass="custdetails" />
-                <asp:BoundField DataField="CustEmail" HeaderText="Email" SortExpression="CustEmail" HeaderStyle-CssClass="custdetails" />
+                <asp:TemplateField HeaderText="First Name" SortExpression="CustFirstName">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("CustFirstName") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                             ErrorMessage="First Name is Required"
+                             ControlToValidate="TextBox1">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("CustFirstName") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                             ErrorMessage="First Name is Required"
+                             ControlToValidate="TextBox1">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CustFirstName") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Last Name" SortExpression="CustLastName">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CustLastName") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                             ErrorMessage="Last Name is Required"
+                             ControlToValidate="TextBox2">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("CustLastName") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" 
+                             ErrorMessage="Last Name is Required"
+                             ControlToValidate="TextBox2">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("CustLastName") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Address" SortExpression="CustAddress">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("CustAddress") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                             ErrorMessage="Address is Required"
+                             ControlToValidate="TextBox3">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("CustAddress") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                             ErrorMessage="Address is Required"
+                             ControlToValidate="TextBox3">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("CustAddress") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="City" SortExpression="CustCity">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("CustCity") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                             ErrorMessage="City is Required"
+                             ControlToValidate="TextBox4">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("CustCity") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" 
+                             ErrorMessage="City is Required"
+                             ControlToValidate="TextBox4">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("CustCity") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Province" SortExpression="CustProv">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("CustProv") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                             ErrorMessage="Province is Required"
+                             ControlToValidate="TextBox5">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("CustProv") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
+                             ErrorMessage="Province is Required"
+                             ControlToValidate="TextBox5">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("CustProv") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Postal Code" SortExpression="CustPostal">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("CustPostal") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                             ErrorMessage="PostalCode is Required"
+                             ControlToValidate="TextBox6">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("CustPostal") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" 
+                             ErrorMessage="PostalCode is Required"
+                             ControlToValidate="TextBox6">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("CustPostal") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Country" SortExpression="CustCountry">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("CustCountry") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                             ErrorMessage="Country is Required"
+                             ControlToValidate="TextBox7">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("CustCountry") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+                             ErrorMessage="Country is Required"
+                             ControlToValidate="TextBox7">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("CustCountry") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Home Phone" SortExpression="CustHomePhone">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("CustHomePhone") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                             ErrorMessage="Phone is Required"
+                             ControlToValidate="TextBox8">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("CustHomePhone") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+                             ErrorMessage="Phone is Required"
+                             ControlToValidate="TextBox8">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("CustHomePhone") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Business Phone" SortExpression="CustBusPhone">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("CustBusPhone") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                             ErrorMessage="Phone is Required"
+                             ControlToValidate="TextBox9">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox9" runat="server" Text='<%# Bind("CustBusPhone") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+                             ErrorMessage="Phone is Required"
+                             ControlToValidate="TextBox9">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("CustBusPhone") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
+                <asp:TemplateField HeaderText="Email" SortExpression="CustEmail">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("CustEmail") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                             ErrorMessage="Email is Required"
+                             ControlToValidate="TextBox10">
+                         </asp:RequiredFieldValidator>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox10" runat="server" Text='<%# Bind("CustEmail") %>'></asp:TextBox>
+                        <!--Validator-->
+                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+                             ErrorMessage="Email is Required"
+                             ControlToValidate="TextBox10">
+                         </asp:RequiredFieldValidator>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label10" runat="server" Text='<%# Bind("CustEmail") %>'></asp:Label>
+                    </ItemTemplate>
+                    <HeaderStyle CssClass="custdetails" />
+                </asp:TemplateField>
+
                 <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
 
             </Fields>
