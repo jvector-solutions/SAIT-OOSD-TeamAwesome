@@ -1,10 +1,18 @@
-﻿body {
+﻿html {
+    min-height: 100%;
+    background-image:url("http://localhost:40987/Images/wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body {
     font-family: Calibri,Corbel,sans-serif;
     margin: 0 auto;
     padding: 0;
-    background: #fff;
+    background: rgba(255, 255, 255,0.9);
     width: 700px;
+    min-height: 100%;
     border: 2px solid #2F73C1;
+    height: 203px;
 }
 .nav ul {
     list-style: none;
@@ -37,6 +45,7 @@
 }
 section {
     padding: 10px;
+    height: 752px;
 }
 h2 {
     font-size: 1.5em;

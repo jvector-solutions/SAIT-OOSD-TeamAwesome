@@ -10,7 +10,7 @@
     </asp:ContentPlaceHolder>
     <link href="Styles/Main.css" rel="stylesheet" />
 </head>
-<body>
+<body style="height: 100%;">
     <header>
         <img alt="" src="Images/logo2.png" />
         <div class="nav">

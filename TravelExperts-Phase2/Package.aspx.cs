@@ -11,6 +11,5 @@ public partial class Package : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         pkgID = (string)Session["PackageID"];
-        lblPackageID.Text = pkgID;
     }
 }

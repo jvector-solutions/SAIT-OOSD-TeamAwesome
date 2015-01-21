@@ -8,22 +8,14 @@
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <form id="form1" runat="server">
         <!-- Insert Content Below -->
-
-
-
-        <br />
-        <asp:Label ID="lblPackageID" runat="server"></asp:Label>
-        <br />
-        <br />
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="125px">
+        <h2>Customer&#39;s Packages</h2><br />
+        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="100%">
             <Fields>
-                <asp:BoundField DataField="PackageID" HeaderText="PackageID" SortExpression="PackageID" />
-                <asp:BoundField DataField="PkgName" HeaderText="PkgName" SortExpression="PkgName" />
-                <asp:BoundField DataField="PkgStartDate" HeaderText="PkgStartDate" SortExpression="PkgStartDate" />
-                <asp:BoundField DataField="PkgEndDate" HeaderText="PkgEndDate" SortExpression="PkgEndDate" />
-                <asp:BoundField DataField="PkgDesc" HeaderText="PkgDesc" SortExpression="PkgDesc" />
-                <asp:BoundField DataField="PkgBasePrice" HeaderText="PkgBasePrice" SortExpression="PkgBasePrice" />
-                <asp:BoundField DataField="PkgAgencyCommission" HeaderText="PkgAgencyCommission" SortExpression="PkgAgencyCommission" />
+                <asp:BoundField DataField="PkgName" HeaderText="Package Name" SortExpression="PkgName" />
+                <asp:BoundField DataField="PkgStartDate" HeaderText="Start Date" SortExpression="PkgStartDate" />
+                <asp:BoundField DataField="PkgEndDate" HeaderText="End Date" SortExpression="PkgEndDate" />
+                <asp:BoundField DataField="PkgDesc" HeaderText="Description" SortExpression="PkgDesc" />
+                <asp:BoundField DataField="PkgBasePrice" HeaderText="Base Price" SortExpression="PkgBasePrice" />
             </Fields>
         </asp:DetailsView>
         <asp:ObjectDataSource ID="GetPackageByID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetPackagesByID" TypeName="TravelExperts.PackageDB">
