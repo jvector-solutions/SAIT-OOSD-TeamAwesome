@@ -23,6 +23,10 @@
                 <asp:SessionParameter Name="id" SessionField="PackageID" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
+        <br />
+        Products<br />
+        <asp:GridView ID="dgvProducts" runat="server">
+        </asp:GridView>
     </form>
 
 
