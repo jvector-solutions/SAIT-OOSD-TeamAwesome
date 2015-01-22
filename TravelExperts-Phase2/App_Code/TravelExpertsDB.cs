@@ -17,6 +17,7 @@ namespace TravelExperts
 {
     public class TravelExpertsDB
     {
+        // Get connection to the database (connected)
         public static SqlConnection GetConnection()
         {
             string connectionString =

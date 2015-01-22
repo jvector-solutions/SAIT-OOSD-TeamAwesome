@@ -52,9 +52,13 @@ public partial class Main : System.Web.UI.Page
                     GridView1.Visible = true;
                     lblSelectCustomer.Visible = true;
                     lblCustomerPackages.Visible = true;
-                    Response.Redirect("Main.aspx");
+                    Response.Redirect("~/Main.aspx");
                 }
                 break;
         }
+    }
+    protected void DetailsView1_ItemDeleted(object sender, DetailsViewDeletedEventArgs e)
+    {
+        Response.Redirect("~/Main.aspx");
     }
 }

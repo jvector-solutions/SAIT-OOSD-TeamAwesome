@@ -44,7 +44,7 @@
             CellPadding="5" 
             CellSpacing="1" 
             style="margin-top: 0px" 
-            CssClass="custdetailsview" OnModeChanged="DetailsView1_ModeChanged" DataKeyNames="CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentID">
+            CssClass="custdetailsview" OnModeChanged="DetailsView1_ModeChanged" DataKeyNames="CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentID" OnItemDeleted="DetailsView1_ItemDeleted">
             <EditRowStyle BackColor="White" />
             <Fields>
                 <asp:TemplateField HeaderText="First Name" SortExpression="CustFirstName">
@@ -141,7 +141,7 @@
 
                 <asp:TemplateField HeaderText="Province" SortExpression="CustProv">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("CustProv") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("CustProv") %>' MaxLength="2"></asp:TextBox>
                         <!--Validator-->
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                              ErrorMessage="Province is Required"
@@ -149,7 +149,7 @@
                          </asp:RequiredFieldValidator>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("CustProv") %>'></asp:TextBox>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("CustProv") %>' MaxLength="2"></asp:TextBox>
                         <!--Validator-->
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" 
                              ErrorMessage="Province is Required"
@@ -157,7 +157,7 @@
                          </asp:RequiredFieldValidator>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("CustProv") %>'></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("CustProv") %>' MaxLength="2"></asp:Label>
                     </ItemTemplate>
                     <HeaderStyle CssClass="custdetails" />
                 </asp:TemplateField>
@@ -332,4 +332,3 @@
     </form>
 
 </asp:Content>
-
