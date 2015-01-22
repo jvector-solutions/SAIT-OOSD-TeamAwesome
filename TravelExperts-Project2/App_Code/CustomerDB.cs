@@ -110,7 +110,7 @@ namespace TravelExperts
             }
         }
 
-        //adds a customer to database
+        // Adds a customer to database
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static int AddCustomer(Customer customer)
         {
@@ -120,31 +120,20 @@ namespace TravelExperts
                 "(CustFirstName, CustLastName, CustAddress, CustCity, CustProv, "+
                 "CustPostal, CustCountry, CustHomePhone, CustBusPhone, CustEmail, AgentID) " +
                 "VALUES (@CustFirstName, @CustLastName, @CustAddress, @CustCity, @CustProv, " +
-                "@CustPostal, @CustCountry, @CustHomePhone, @CustBusPhone, @CustEmail, 1 )";
+                "@CustPostal, @CustCountry, @CustHomePhone, @CustBusPhone, @CustEmail, @AgentID)";
             SqlCommand insertCommand =
                 new SqlCommand(insertStatement, connection);
-            insertCommand.Parameters.AddWithValue(
-                "@CustFirstName", customer.CustFirstName);
-            insertCommand.Parameters.AddWithValue(
-                "@CustLastName", customer.CustLastName);
-            insertCommand.Parameters.AddWithValue(
-                "@CustAddress", customer.CustAddress);
-            insertCommand.Parameters.AddWithValue(
-                "@CustCity", customer.CustCity);
-            insertCommand.Parameters.AddWithValue(
-                "@CustProv", customer.CustProv);
-            insertCommand.Parameters.AddWithValue(
-                "@CustPostal", customer.CustPostal);
-            insertCommand.Parameters.AddWithValue(
-                "@CustCountry", customer.CustCountry);
-            insertCommand.Parameters.AddWithValue(
-                "@CustHomePhone", customer.CustHomePhone);
-            insertCommand.Parameters.AddWithValue(
-                "@CustBusPhone", customer.CustBusPhone);
-            insertCommand.Parameters.AddWithValue(
-                "@CustEmail", customer.CustEmail);
-            insertCommand.Parameters.AddWithValue(
-                "@AgentId", customer.AgentID);
+            insertCommand.Parameters.AddWithValue("@CustFirstName", customer.CustFirstName);
+            insertCommand.Parameters.AddWithValue("@CustLastName", customer.CustLastName);
+            insertCommand.Parameters.AddWithValue("@CustAddress", customer.CustAddress);
+            insertCommand.Parameters.AddWithValue("@CustCity", customer.CustCity);
+            insertCommand.Parameters.AddWithValue("@CustProv", customer.CustProv);
+            insertCommand.Parameters.AddWithValue("@CustPostal", customer.CustPostal);
+            insertCommand.Parameters.AddWithValue("@CustCountry", customer.CustCountry);
+            insertCommand.Parameters.AddWithValue("@CustHomePhone", customer.CustHomePhone);
+            insertCommand.Parameters.AddWithValue("@CustBusPhone", customer.CustBusPhone);
+            insertCommand.Parameters.AddWithValue("@CustEmail", customer.CustEmail);
+            insertCommand.Parameters.AddWithValue("@AgentID", customer.AgentID);
             try
             {
                 connection.Open();
@@ -194,7 +183,7 @@ namespace TravelExperts
                 "CustHomePhone = @OldCustHomePhone AND " +
                 "CustBusPhone = @OldCustBusPhone AND " +
                 "CustEmail = @OldCustEmail AND " +
-                "AgentId = @OldAgentId ";
+                "AgentID = @OldAgentID ";
 
             SqlCommand updateCommand =
                 new SqlCommand(updateStatement, connection);
@@ -220,7 +209,7 @@ namespace TravelExperts
             updateCommand.Parameters.AddWithValue("@OldCustHomePhone", original_customer.CustHomePhone);
             updateCommand.Parameters.AddWithValue("@OldCustBusPhone", original_customer.CustBusPhone);
             updateCommand.Parameters.AddWithValue("@OldCustEmail", original_customer.CustEmail);
-            updateCommand.Parameters.AddWithValue("@OldAgentId", original_customer.AgentID);
+            updateCommand.Parameters.AddWithValue("@OldAgentID", original_customer.AgentID);
             
             try
             {
@@ -260,34 +249,22 @@ namespace TravelExperts
                 "CustHomePhone = @CustHomePhone AND " +
                 "CustBusPhone = @CustBusPhone AND " +
                 "CustEmail = @CustEmail AND " +
-                "AgentId = @AgentId ";
+                "AgentID = @AgentID ";
 
             SqlCommand deleteCommand =
                 new SqlCommand(deleteStatement, connection);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustomerID", customer.CustomerID);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustFirstName", customer.CustFirstName);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustLastName", customer.CustLastName);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustAddress", customer.CustAddress);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustCity", customer.CustCity);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustProv", customer.CustProv);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustPostal", customer.CustPostal);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustCountry", customer.CustCountry);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustHomePhone", customer.CustHomePhone);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustBusPhone", customer.CustBusPhone);
-            deleteCommand.Parameters.AddWithValue(
-                "@CustEmail", customer.CustEmail);
-            deleteCommand.Parameters.AddWithValue(
-                "@AgentId", customer.AgentID);
+            deleteCommand.Parameters.AddWithValue("@CustomerID", customer.CustomerID);
+            deleteCommand.Parameters.AddWithValue("@CustFirstName", customer.CustFirstName);
+            deleteCommand.Parameters.AddWithValue("@CustLastName", customer.CustLastName);
+            deleteCommand.Parameters.AddWithValue("@CustAddress", customer.CustAddress);
+            deleteCommand.Parameters.AddWithValue("@CustCity", customer.CustCity);
+            deleteCommand.Parameters.AddWithValue("@CustProv", customer.CustProv);
+            deleteCommand.Parameters.AddWithValue("@CustPostal", customer.CustPostal);
+            deleteCommand.Parameters.AddWithValue("@CustCountry", customer.CustCountry);
+            deleteCommand.Parameters.AddWithValue("@CustHomePhone", customer.CustHomePhone);
+            deleteCommand.Parameters.AddWithValue("@CustBusPhone", customer.CustBusPhone);
+            deleteCommand.Parameters.AddWithValue("@CustEmail", customer.CustEmail);
+            deleteCommand.Parameters.AddWithValue("@AgentID", customer.AgentID);
             try
             {
                 connection.Open();
@@ -306,7 +283,5 @@ namespace TravelExperts
             }
             return -1;
         }
-
-
     }
 }

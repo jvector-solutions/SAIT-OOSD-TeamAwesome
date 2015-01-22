@@ -5,35 +5,6 @@
  * Created On: January 20, 2015
  -->
 
-<!-- 
-
-    Here is a flower for you, Yolanta.
-
-         .'  `...'  `.
-   __|     |     |__
- .'    \   .   /    `.
- |      ./###\.      |
-  >---- |#####| ----<
- |      `\###/'      |
- `.__ /    .    \ __.'
-    /|     |     |
-   / `.___.^.___.'
-  |
-  |
-   \
-    \             )\
-     `.          /' |
-       \       /'   )
-        \    /'    /'
-         \  /'    /'
-          \(    /'
-           )  /'
-           | /'
-           |(  Team 3
-           ||
-
-    -->
-
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
 
 <!DOCTYPE html>
@@ -52,6 +23,7 @@
         <div class="nav">
           <ul>
             <li class="home"><a href="Main.aspx">Home</a></li>
+            <li class="about"><a href="Registration.aspx">Register</a></li>
             <li class="about"><a href="About.aspx">About</a></li>
           </ul>
         </div>

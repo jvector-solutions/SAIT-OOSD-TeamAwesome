@@ -278,7 +278,7 @@
                     <HeaderStyle CssClass="custdetails" />
                 </asp:TemplateField>
 
-                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowInsertButton="True" />
+                <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
 
             </Fields>
             <HeaderStyle HorizontalAlign="Right" BackColor="#2F73C1" ForeColor="White" Width="160px" Font-Bold="True" />
