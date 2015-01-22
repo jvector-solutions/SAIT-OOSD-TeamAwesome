@@ -1,24 +1,46 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
+﻿
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
 
-<asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server">
-
-</asp:Content>
+<asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server"></asp:Content>
 
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <p>Welcome to the Travel Experts! Please select a customer by their first name to view their details below:</p>
-    <!-- Insert Content Below -->
+
     <form id="form1" runat="server">
+
         <h2>Select Customer</h2><br />
-        <asp:DropDownList ID="ddlCustomers" runat="server" DataSourceID="GetCustomers" DataTextField="CustFirstName" DataValueField="CustomerID" AutoPostBack="True" Height="36px" style="font-size: large" Width="238px">
+
+        <asp:DropDownList ID="ddlCustomers" runat="server" 
+            DataSourceID="GetCustomers" 
+            DataTextField="CustFirstName" 
+            DataValueField="CustomerID" 
+            AutoPostBack="True" 
+            Height="36px" 
+            style="font-size: large" 
+            Width="238px">
         </asp:DropDownList>
-        <asp:ObjectDataSource ID="GetCustomers" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomers" TypeName="TravelExperts.CustomerDB"></asp:ObjectDataSource>
+        <asp:ObjectDataSource ID="GetCustomers" 
+            runat="server" 
+            OldValuesParameterFormatString="original_{0}" 
+            SelectMethod="GetCustomers" 
+            TypeName="TravelExperts.CustomerDB">
+
+        </asp:ObjectDataSource>
+        
         <h2>Customer Details</h2><br />
        
         <asp:DetailsView ID="DetailsView1" 
             runat="server" 
             AutoGenerateRows="False" 
             DataSourceID="GetCustomerbyID" 
-            Height="50px" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="5" CellSpacing="1" style="margin-top: 0px" CssClass="custdetailsview">
+            Height="50px" 
+            Width="100%" 
+            BorderColor="#2F73C1" 
+            BorderStyle="Solid" BorderWidth="1px" 
+            CellPadding="5" 
+            CellSpacing="1" 
+            style="margin-top: 0px" 
+            CssClass="custdetailsview" OnModeChanged="DetailsView1_ModeChanged">
             <EditRowStyle BackColor="White" />
             <Fields>
                 <asp:TemplateField HeaderText="First Name" SortExpression="CustFirstName">
@@ -275,7 +297,9 @@
                 <asp:ControlParameter ControlID="DetailsView1" Name="customer" PropertyName="SelectedValue" Type="Object" />
             </UpdateParameters>
         </asp:ObjectDataSource>
+        
         <h2>Customer&#39;s Packages</h2><br />
+       
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" CellPadding="1" CellSpacing="1" CssClass="pkgborder">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" >
@@ -297,8 +321,8 @@
                 <asp:ControlParameter ControlID="ddlCustomers" Name="id" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <br />
-        <br />
+
     </form>
 
 </asp:Content>
+

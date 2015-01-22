@@ -24,4 +24,27 @@ public partial class Main : System.Web.UI.Page
         Session["PackageID"] = row.Cells[1].Text;
         Response.Redirect("Package.aspx");
     }
+    protected void DetailsView1_ModeChanged(object sender, EventArgs e)
+    {
+        // Display the current mode in the header row.
+        switch (DetailsView1.CurrentMode)
+        {
+            case DetailsViewMode.Edit:
+                ddlCustomers.Enabled = false;
+                GridView1.Enabled = false;
+                ddlCustomers.Visible = true;
+                GridView1.Visible = true;
+                break;
+            case DetailsViewMode.Insert:
+                ddlCustomers.Visible = false;
+                GridView1.Visible = false;
+                break;
+            default:
+                ddlCustomers.Enabled = true;
+                GridView1.Enabled = true;
+                ddlCustomers.Visible = true;
+                GridView1.Visible = true;
+                break;
+        }
+    }
 }
