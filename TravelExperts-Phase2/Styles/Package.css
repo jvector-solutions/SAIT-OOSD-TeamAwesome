@@ -14,3 +14,9 @@ body {
     padding: 0 15px;
     font-weight: bold;
 }
+.h2 {
+    font-size: 1.5em;
+    font-weight:100 bold;
+    margin-bottom: -14px;
+    padding: 0;
+}

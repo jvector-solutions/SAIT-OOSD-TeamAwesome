@@ -24,7 +24,8 @@
                 <asp:SessionParameter Name="id" SessionField="PackageID" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <h2>Products</h2><br />
+       
+         <h2>Products</h2><br />
         <asp:GridView ID="dgvProducts" runat="server" AutoGenerateColumns="False" DataSourceID="GetProductsSuppliersByPackageId" CellPadding="5" CellSpacing="1" HorizontalAlign="Center" Width="100%">
             <Columns>
                 <asp:BoundField DataField="ProductSupplierId" HeaderText="ID" SortExpression="ProductSupplierId" >

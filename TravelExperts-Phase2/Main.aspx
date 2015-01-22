@@ -8,7 +8,9 @@
 
     <form id="form1" runat="server">
 
-        <h2>Select Customer</h2><br />
+        <h2>
+            <asp:Label ID="lblSelectCustomer" runat="server" CssClass="h2" Text="Select Customer"></asp:Label>
+        </h2><br />
 
         <asp:DropDownList ID="ddlCustomers" runat="server" 
             DataSourceID="GetCustomers" 
@@ -27,8 +29,10 @@
 
         </asp:ObjectDataSource>
         
-        <h2>Customer Details</h2><br />
-       
+        <h2>
+            <asp:Label ID="lblCustomerDetail" runat="server" CssClass="h2" Text="Customer Details"></asp:Label>
+        </h2><br />
+
         <asp:DetailsView ID="DetailsView1" 
             runat="server" 
             AutoGenerateRows="False" 
@@ -40,7 +44,7 @@
             CellPadding="5" 
             CellSpacing="1" 
             style="margin-top: 0px" 
-            CssClass="custdetailsview" OnModeChanged="DetailsView1_ModeChanged">
+            CssClass="custdetailsview" OnModeChanged="DetailsView1_ModeChanged" DataKeyNames="CustomerId,CustFirstName,CustLastName,CustAddress,CustCity,CustProv,CustPostal,CustCountry,CustHomePhone,CustBusPhone,CustEmail,AgentID">
             <EditRowStyle BackColor="White" />
             <Fields>
                 <asp:TemplateField HeaderText="First Name" SortExpression="CustFirstName">
@@ -298,7 +302,9 @@
             </UpdateParameters>
         </asp:ObjectDataSource>
         
-        <h2>Customer&#39;s Packages</h2><br />
+        <h2>
+            <asp:Label ID="lblCustomerPackages" runat="server" CssClass="h2" Text="Customer's Packages"></asp:Label>
+        </h2><br />
        
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" CellPadding="1" CellSpacing="1" CssClass="pkgborder">
             <Columns>
@@ -321,6 +327,7 @@
                 <asp:ControlParameter ControlID="ddlCustomers" Name="id" PropertyName="SelectedValue" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
+
 
     </form>
 
