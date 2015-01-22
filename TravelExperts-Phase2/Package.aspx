@@ -8,7 +8,7 @@
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <form id="form1" runat="server">
         <!-- Insert Content Below -->
-        <h2>Customer&#39;s Packages</h2><br />
+        <h2>Customer&#39;s Package</h2><br />
         <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="100%" CellPadding="5" CellSpacing="1">
             <FieldHeaderStyle CssClass="custdetails" />
             <Fields>
@@ -24,14 +24,29 @@
                 <asp:SessionParameter Name="id" SessionField="PackageID" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
+        <h2>Products</h2><br />
+        <asp:GridView ID="dgvProducts" runat="server" AutoGenerateColumns="False" DataSourceID="GetProductsSuppliersByPackageId" CellPadding="5" CellSpacing="1" HorizontalAlign="Center" Width="100%">
+            <Columns>
+                <asp:BoundField DataField="ProductSupplierId" HeaderText="ID" SortExpression="ProductSupplierId" >
+                <HeaderStyle Width="90px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="ProdName" HeaderText="Product Name" SortExpression="ProdName" >
+                <HeaderStyle Width="250px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="SupName" HeaderText="Supplier Name" SortExpression="SupName" />
+            </Columns>
+            <HeaderStyle CssClass="pkgheader" />
+            <RowStyle CssClass="pkgborder" HorizontalAlign="Center" />
+        </asp:GridView>
+        <asp:ObjectDataSource ID="GetProductsSuppliersByPackageId" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetProductSupplierByPackageID" TypeName="TravelExperts.ProductSupplierDB">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="PackageID" Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
+    </form>
         <br />
         <asp:Image ID="Image" runat="server" style="width: 100%; margin: 0 auto; display: block;" />
         <br />
-        <h2>Products</h2><br />
-        <asp:GridView ID="dgvProducts" runat="server">
-        </asp:GridView>
-    </form>
-
 
 
 </asp:Content>

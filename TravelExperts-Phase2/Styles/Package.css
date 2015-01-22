@@ -1,2 +1,10 @@
 ﻿body {
+    padding-bottom: 40px;
+}
+.pkgheader {
+    background-color: #2F73C1;
+    color: white;
+    text-align: center;
+    padding: 0 15px;
+    font-weight: bold;
 }
