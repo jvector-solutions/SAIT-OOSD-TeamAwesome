@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* CPRG214 ASP Workshop 2
+ * Created By: MB
+ * January 22, 2015
+ */
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
@@ -10,6 +14,7 @@ namespace TravelExperts
     [DataObject(true)]
     public static class ProductSupplierDB
     {
+        //get products and suppliers of a package. requires package ID
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<ProductSupplier> GetProductSupplierByPackageID(int id)
         {

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* CPRG214 ASP Workshop 2
+ * Created By: Leisy, and MB
+ * January 22, 2015
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,14 +17,7 @@ public partial class Main : System.Web.UI.Page
         UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
         custID = ddlCustomers.SelectedIndex;
     }
-    protected void GoToPackages(object sender, EventArgs e)
-    {
-        //Session["PackageID"] = lsvCustomerPackages.SelectedDataKey;
-        //Session["PackageID"] = lsvCustomerPackages.Items[lsvCustomerPackages];
-            //.FindControl("Label2") as Label).Text;
-        //Session["PackageID"] = GridView1.SelectedIndex;
-        //Response.Redirect("Package.aspx");
-    }
+    //save package product to session variable and goes to Package.aspx
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         GridViewRow row = GridView1.SelectedRow;

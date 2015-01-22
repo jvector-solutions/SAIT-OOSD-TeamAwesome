@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* CPRG214 ASP Workshop 2
+ * Created By: John, and MB
+ * January 22, 2015
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +16,7 @@ namespace TravelExperts
     [DataObject(true)]
     public static class CustomerDB
     {
+        //get customers from the database
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<Customer> GetCustomers()
         {
@@ -55,6 +60,7 @@ namespace TravelExperts
             return customers;
         }
 
+        //get a customer from database based on customer id 
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static Customer GetCustomer(int customerID)
         {
@@ -104,6 +110,7 @@ namespace TravelExperts
             }
         }
 
+        //adds a customer to database
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static int AddCustomer(Customer customer)
         {
@@ -157,6 +164,7 @@ namespace TravelExperts
             }
         }
 
+        //updates customer
         [DataObjectMethod(DataObjectMethodType.Update)]
         public static bool UpdateCustomer(Customer original_customer, Customer customer)
         {
@@ -233,6 +241,7 @@ namespace TravelExperts
             }
         }
 
+        //deletes customer
         [DataObjectMethod(DataObjectMethodType.Delete)]
         public static int DeleteCustomer(Customer customer)
         {

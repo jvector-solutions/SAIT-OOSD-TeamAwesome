@@ -1,4 +1,8 @@
-﻿using System;
+﻿/* CPRG214 ASP Workshop 2
+ * Created By: MB
+ * January 22, 2015
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +16,7 @@ namespace TravelExperts
     [DataObject(true)]
     public static class PackageDB
     {
+        //get packages of a customer from database. requires customers ID
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static List<Package> GetPackagesByCustomerID(int id){
             List<Package> packages = new List<Package>();
@@ -63,6 +68,7 @@ namespace TravelExperts
             }
         }
 
+        //get a package from database based on id
         [DataObjectMethod(DataObjectMethodType.Select)]
         public static Package GetPackagesByID(int id)
         {
