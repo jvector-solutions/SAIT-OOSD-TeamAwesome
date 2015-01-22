@@ -1,4 +1,10 @@
-﻿html {
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * CSS Theme - Summer
+ * Created By: John Nguyen (Team 3)
+ * Created On: January 21, 2015
+ */
+html {
     background-image:url("/Images/wallpaper2.jpg");
 }
 header {

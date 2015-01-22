@@ -1,4 +1,10 @@
-﻿body {
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * CSS Stylesheet - Package
+ * Created By: John Nguyen (Team 3)
+ * Created On: January 20, 2015
+ */
+body {
     padding-bottom: 40px;
 }
 .pkgheader {

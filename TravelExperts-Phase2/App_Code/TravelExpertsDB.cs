@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * TravelExpertsDB Class
+ * Created By: John Nguyen (Team 3)
+ * Created On: January 20, 2015
+ */
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.SqlClient;
