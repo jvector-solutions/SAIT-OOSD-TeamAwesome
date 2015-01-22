@@ -43,10 +43,8 @@
                 <asp:SessionParameter Name="id" SessionField="PackageID" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
+                <br />
+        <asp:Image ID="Image" runat="server" style="margin: 0 auto; display: block;" Width="550px" />
+        <br /><br /><br />
     </form>
-        <br />
-        <asp:Image ID="Image" runat="server" style="width: 100%; margin: 0 auto; display: block;" />
-        <br />
-
-
 </asp:Content>

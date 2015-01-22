@@ -12,7 +12,6 @@
         <asp:DropDownList ID="ddlCustomers" runat="server" DataSourceID="GetCustomers" DataTextField="CustFirstName" DataValueField="CustomerID" AutoPostBack="True" Height="36px" style="font-size: large" Width="238px">
         </asp:DropDownList>
         <asp:ObjectDataSource ID="GetCustomers" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetCustomers" TypeName="TravelExperts.CustomerDB"></asp:ObjectDataSource>
-        <br />
         <h2>Customer Details</h2><br />
        
         <asp:DetailsView ID="DetailsView1" 
@@ -276,8 +275,6 @@
                 <asp:ControlParameter ControlID="DetailsView1" Name="customer" PropertyName="SelectedValue" Type="Object" />
             </UpdateParameters>
         </asp:ObjectDataSource>
-        
-        <br />
         <h2>Customer&#39;s Packages</h2><br />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" CellPadding="1" CellSpacing="1" CssClass="pkgborder">
             <Columns>
