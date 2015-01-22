@@ -1,7 +1,10 @@
 ﻿html {
     background-image:url("/Images/wallpaper2.jpg");
 }
-body {
+header {
+    border: 2px solid #D14545;
+}
+section {
     border: 2px solid #D14545;
 }
 .nav ul {
