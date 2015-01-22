@@ -25,8 +25,18 @@
         </asp:ObjectDataSource>
         <br />
         Products<br />
-        <asp:GridView ID="dgvProducts" runat="server">
+        <asp:GridView ID="dgvProducts" runat="server" AutoGenerateColumns="False" DataSourceID="GetProductsSuppliersByPackageId">
+            <Columns>
+                <asp:BoundField DataField="ProductSupplierId" HeaderText="ProductSupplierId" SortExpression="ProductSupplierId" />
+                <asp:BoundField DataField="ProdName" HeaderText="ProdName" SortExpression="ProdName" />
+                <asp:BoundField DataField="SupName" HeaderText="SupName" SortExpression="SupName" />
+            </Columns>
         </asp:GridView>
+        <asp:ObjectDataSource ID="GetProductsSuppliersByPackageId" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetProductSupplierByPackageID" TypeName="TravelExperts.ProductSupplierDB">
+            <SelectParameters>
+                <asp:SessionParameter Name="id" SessionField="PackageID" Type="Int32" />
+            </SelectParameters>
+        </asp:ObjectDataSource>
     </form>
 
 
