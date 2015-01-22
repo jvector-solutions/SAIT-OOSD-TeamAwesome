@@ -1,19 +1,19 @@
 ﻿html {
-    min-height: 100%;
-    background-image:url("http://localhost:10869/Images/wallpaper.jpg");
+    height: 100%;
+    background-image:url("/Images/wallpaper.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
 }
 body {
     font-family: Calibri,Corbel,sans-serif;
     margin: 0 auto;
     padding: 0;
     background: rgba(255, 255, 255,0.9);
-    width: 700px;
-    min-height: 100%;
+    width: 800px;
     border: 2px solid #2F73C1;
-    height: 203px;
+    height: 100%;
 }
+
 .nav ul {
     list-style: none;
     background-color: #2F73C1;
@@ -45,15 +45,14 @@ body {
 }
 section {
     padding: 10px;
-    height: 752px;
+    display:block;
 }
 h2 {
     font-size: 1.5em;
     font-weight:100 bold;
-    margin-bottom: -20px;
+    margin-bottom: -14px;
     padding: 0;
 }
-
 .custdetails {
     background-color: #2F73C1;
     color: white;
@@ -63,18 +62,35 @@ h2 {
     width: 140px;
     border-bottom: 1px solid white;
 }
-
+.custinfo {
+    padding-left: 20px;
+    border: 1px solid #2F73C1;
+}
+.pkgheader {
+    background-color: #2F73C1;
+    color: white;
+    text-decoration:none;
+    font-weight: bold;
+    padding: 0 10px;
+}
+.pkgborder {
+    border: 1px solid #2F73C1;
+}
 a {
     text-decoration: none;
 }
 
 footer {
     background-color: #2F73C1;
+    display:block;
+    position:fixed;
+    bottom: 0;
+    width: 800px;
+    margin-bottom: -2px;
     height: 30px;
 }
 footer p {
     text-align: center;
-    padding-top: 10px;
-    font-size: 0.8em;
     color: white;
+    margin-top: 4px;
 }

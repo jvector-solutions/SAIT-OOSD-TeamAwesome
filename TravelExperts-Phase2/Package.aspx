@@ -9,13 +9,14 @@
     <form id="form1" runat="server">
         <!-- Insert Content Below -->
         <h2>Customer&#39;s Packages</h2><br />
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="100%">
+        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="100%" CellPadding="5" CellSpacing="1">
+            <FieldHeaderStyle CssClass="custdetails" />
             <Fields>
                 <asp:BoundField DataField="PkgName" HeaderText="Package Name" SortExpression="PkgName" />
-                <asp:BoundField DataField="PkgStartDate" HeaderText="Start Date" SortExpression="PkgStartDate" />
-                <asp:BoundField DataField="PkgEndDate" HeaderText="End Date" SortExpression="PkgEndDate" />
                 <asp:BoundField DataField="PkgDesc" HeaderText="Description" SortExpression="PkgDesc" />
-                <asp:BoundField DataField="PkgBasePrice" HeaderText="Base Price" SortExpression="PkgBasePrice" />
+                <asp:BoundField DataField="PkgStartDate" HeaderText="Start Date" SortExpression="PkgStartDate" DataFormatString=" {0:D}" />
+                <asp:BoundField DataField="PkgEndDate" HeaderText="End Date" SortExpression="PkgEndDate" DataFormatString=" {0:D}" />
+                <asp:BoundField DataField="PkgBasePrice" HeaderText="Base Price" SortExpression="PkgBasePrice" DataFormatString="{0:C}" />
             </Fields>
         </asp:DetailsView>
         <asp:ObjectDataSource ID="GetPackageByID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetPackagesByID" TypeName="TravelExperts.PackageDB">
@@ -24,7 +25,9 @@
             </SelectParameters>
         </asp:ObjectDataSource>
         <br />
-        Products<br />
+        <asp:Image ID="Image" runat="server" style="width: 100%; margin: 0 auto; display: block;" />
+        <br />
+        <h2>Products</h2><br />
         <asp:GridView ID="dgvProducts" runat="server">
         </asp:GridView>
     </form>

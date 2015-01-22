@@ -1,2 +1,7 @@
 ﻿body {
+    margin-bottom: -2px;
+}
+section {
+    margin-bottom: -2px;
+    font-size: 1.1em;
 }

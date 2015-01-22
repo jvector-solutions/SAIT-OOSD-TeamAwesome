@@ -5,6 +5,7 @@
 </asp:Content>
 
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
+    <p>Welcome to the Travel Experts! Please select a customer by their first name to view their details below:</p>
     <!-- Insert Content Below -->
     <form id="form1" runat="server">
         <h2>Select Customer</h2><br />
@@ -18,7 +19,7 @@
             runat="server" 
             AutoGenerateRows="False" 
             DataSourceID="GetCustomerbyID" 
-            Height="50px" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="2" CellSpacing="1" style="margin-top: 0px">
+            Height="50px" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="5" CellSpacing="1" style="margin-top: 0px" CssClass="custdetailsview">
             <EditRowStyle BackColor="White" />
             <Fields>
                 <asp:TemplateField HeaderText="First Name" SortExpression="CustFirstName">
@@ -256,6 +257,7 @@
 
             </Fields>
             <HeaderStyle HorizontalAlign="Right" BackColor="#2F73C1" ForeColor="White" Width="160px" Font-Bold="True" />
+            <RowStyle CssClass="custinfo" />
         </asp:DetailsView>
         <asp:ObjectDataSource ID="GetCustomerbyID" runat="server" 
             OldValuesParameterFormatString="original_{0}" 
@@ -277,15 +279,21 @@
         
         <br />
         <h2>Customer&#39;s Packages</h2><br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" BorderColor="#2F73C1" BorderStyle="Solid" BorderWidth="1px" CellPadding="2" CellSpacing="1">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" CellPadding="1" CellSpacing="1" CssClass="pkgborder">
             <Columns>
                 <asp:CommandField ShowSelectButton="True" >
-                <ItemStyle BackColor="#2F73C1" ForeColor="White" />
+                <HeaderStyle Width="90px" />
                 </asp:CommandField>
-                <asp:BoundField DataField="PackageID" HeaderText="Package ID" SortExpression="PackageID" />
-                <asp:BoundField DataField="PkgName" HeaderText="Package Name" SortExpression="PkgName" />
+                <asp:BoundField DataField="PackageID" HeaderText="Package ID" SortExpression="PackageID" >
+                <HeaderStyle Width="90px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="PkgName" HeaderText="Package Name" SortExpression="PkgName" >
+                <HeaderStyle Width="180px" />
+                </asp:BoundField>
+                <asp:BoundField DataField="PkgDesc" HeaderText="Package Description" SortExpression="PkgDesc" />
             </Columns>
-            <RowStyle HorizontalAlign="Center" />
+            <HeaderStyle CssClass="pkgheader" />
+            <RowStyle HorizontalAlign="Center" CssClass="custinfo" />
         </asp:GridView>
         <asp:ObjectDataSource ID="GetPackagesByCustomerID" runat="server" OldValuesParameterFormatString="original_{0}" SelectMethod="GetPackagesByCustomerID" TypeName="TravelExperts.PackageDB">
             <SelectParameters>

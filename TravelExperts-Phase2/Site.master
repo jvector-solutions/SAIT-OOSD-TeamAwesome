@@ -5,10 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Travel Experts</title>
+    <link href="Styles/Main.css" rel="stylesheet" />
     <asp:ContentPlaceHolder id="headPlaceHolder" runat="server">
 
     </asp:ContentPlaceHolder>
-    <link href="Styles/Main.css" rel="stylesheet" />
 </head>
 <body style="height: 100%;">
     <header>
