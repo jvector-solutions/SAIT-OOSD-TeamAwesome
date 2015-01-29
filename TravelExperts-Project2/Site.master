@@ -19,7 +19,8 @@
 </head>
 <body style="height: 100%;">
     <header>
-        <img alt="" src="Images/logo2.png" />
+        <div class="login_panel"><a href="Login.aspx"><u>Login</u></a> | Welcome <asp:LoginName ID="LoginName1" runat="server" />[name]</div>
+        <img alt="" src="Images/logo2.png"/>
         <div class="nav">
           <ul>
             <li class="home"><a href="Main.aspx">Home</a></li>
