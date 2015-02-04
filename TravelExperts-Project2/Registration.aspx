@@ -47,20 +47,20 @@
             <tr>
                 <td>Province</td>
                 <td>
-                    <asp:DropDownList ID="ddlProvince" runat="server">
-                        <asp:ListItem>AB</asp:ListItem>
-                        <asp:ListItem>BC</asp:ListItem>
-                        <asp:ListItem>MB</asp:ListItem>
-                        <asp:ListItem>NB</asp:ListItem>
-                        <asp:ListItem>NL</asp:ListItem>
-                        <asp:ListItem>NS</asp:ListItem>
-                        <asp:ListItem>ON</asp:ListItem>
-                        <asp:ListItem>PE</asp:ListItem>
-                        <asp:ListItem>QC</asp:ListItem>
-                        <asp:ListItem>SK</asp:ListItem>
-                        <asp:ListItem>NT</asp:ListItem>
-                        <asp:ListItem>NU</asp:ListItem>
-                        <asp:ListItem>YT</asp:ListItem>
+                    <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="True">
+                        <asp:ListItem Value="AB">Alberta</asp:ListItem>
+                        <asp:ListItem Value="BC">British Columbia</asp:ListItem>
+                        <asp:ListItem Value="MB">Manitoba</asp:ListItem>
+                        <asp:ListItem Value="NB">New Brunswick</asp:ListItem>
+                        <asp:ListItem Value="NL">Newfoundland and Labrador</asp:ListItem>
+                        <asp:ListItem Value="NT">Nortwest Territories</asp:ListItem>
+                        <asp:ListItem Value="NS">Nova Scotia</asp:ListItem>
+                        <asp:ListItem Value="NU">Nunavut</asp:ListItem>
+                        <asp:ListItem Value="ON">Ontario</asp:ListItem>
+                        <asp:ListItem Value="PE">Prince Edward Island</asp:ListItem>
+                        <asp:ListItem Value="QC">Quebec</asp:ListItem>
+                        <asp:ListItem Value="SK">Saskatchewan</asp:ListItem>
+                        <asp:ListItem Value="YT">Yukon</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -71,7 +71,8 @@
                     <asp:TextBox ID="txtPostalCode" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="Ex. A1A 1A1" ValidationExpression="/^[A-Z]{1}[0-9]{1}[A-Z]{1}\s[0-9]{1}[A-Z]{1}[0-9]{1}$/i"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -89,7 +90,8 @@
                     <asp:TextBox ID="txtHomePhone" runat="server"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -129,6 +131,15 @@
         </table>
     
     </div>
+        <br />
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+        <br />
+        <br />
+        <asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" />
+        <br />
+        <br />
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" />
+        <br />
         <br />
     </form>
 </asp:Content>
