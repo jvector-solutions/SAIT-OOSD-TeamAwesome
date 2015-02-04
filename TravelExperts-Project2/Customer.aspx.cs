@@ -12,24 +12,24 @@ public partial class Customer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
-        //custID = Convert.ToInt32(ddlCustomers.SelectedValue);
-        if (Session["userID"] != null)
-        {
-            custID = (int)Session["userID"];
-            lblTotal.Text = PackageDB.GetSum(custID);
-        }
-        else
-        {
-            custID = 104;
-            lblTotal.Text = PackageDB.GetSum(custID);
+        //if (Session["userID"] != null)
+        //{
+        //    custID = (int)Session["userID"];
+        //    lblTotal.Text = PackageDB.GetSum(custID);
+        //}
+        //else
+        //{
+            Session["userID"] = 104;
+            custID = Convert.ToInt32(Session["userID"]);
+            lblTotal.Text = String.Format(": {0:C}",Convert.ToDecimal(PackageDB.GetSum(custID)));
             //Response.Redirect("Login.aspx");
-        }
+    //    }
     }
     //save package product to session variable and goes to Package.aspx
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
     {
         GridViewRow row = GridView1.SelectedRow;
-        Session["PackageID"] = row.Cells[1].Text;
+        Session["PackageID"] = row.Cells[4].Text;
         Response.Redirect("Package.aspx");
     }
 
@@ -39,34 +39,28 @@ public partial class Customer : System.Web.UI.Page
         switch (DetailsView1.CurrentMode)
         {
             case DetailsViewMode.Edit:
-                {
-                    ddlCustomers.Enabled = false;
-                    GridView1.Enabled = false;
-                }
-                break;
+            {
+                GridView1.Enabled = false;
+            }
+            break;
             case DetailsViewMode.Insert:
-                {
-                    ddlCustomers.Visible = false;
-                    GridView1.Visible = false;
-                    lblSelectCustomer.Visible = false;
-                    lblCustomerPackages.Visible = false;
-                }
-                break;
+            {
+                GridView1.Visible = false;
+                lblCustomerPackages.Visible = false;
+            }
+            break;
             default:
-                {
-                    ddlCustomers.Enabled = true;
-                    GridView1.Enabled = true;
-                    ddlCustomers.Visible = true;
-                    GridView1.Visible = true;
-                    lblSelectCustomer.Visible = true;
-                    lblCustomerPackages.Visible = true;
-                    Response.Redirect("~/Main.aspx");
-                }
-                break;
+            {
+                GridView1.Enabled = true;
+                GridView1.Visible = true;
+                lblCustomerPackages.Visible = true;
+                Response.Redirect("~/Customer.aspx");
+            }
+            break;
         }
     }
     protected void DetailsView1_ItemDeleted(object sender, DetailsViewDeletedEventArgs e)
     {
-        Response.Redirect("~/Main.aspx");
+        Response.Redirect("~/Customer.aspx");
     }
 }

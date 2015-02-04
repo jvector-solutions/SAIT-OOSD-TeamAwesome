@@ -8,7 +8,7 @@
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <form id="form1" runat="server">
         <!-- Insert Content Below -->
-        <h2>Customer&#39;s Package</h2><br />
+        <h2>Package Details</h2><br />
         <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="100%" CellPadding="5" CellSpacing="1">
             <FieldHeaderStyle CssClass="custdetails" />
             <Fields>
@@ -35,6 +35,9 @@
                 <HeaderStyle Width="250px" />
                 </asp:BoundField>
                 <asp:BoundField DataField="SupName" HeaderText="Supplier Name" SortExpression="SupName" />
+                <asp:BoundField DataField="BasePrice" DataFormatString="{0:C}" HeaderText="Price" SortExpression="BasePrice">
+                <HeaderStyle Width="100px" />
+                </asp:BoundField>
             </Columns>
             <HeaderStyle CssClass="pkgheader" />
             <RowStyle CssClass="pkgborder" HorizontalAlign="Center" />

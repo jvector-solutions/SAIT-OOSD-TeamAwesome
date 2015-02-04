@@ -21,13 +21,15 @@ namespace TravelExperts
             List<ProductSupplier> productsSuppliers = new List<ProductSupplier>();
 
             SqlConnection connection = TravelExpertsDB.GetConnection();
-            string selectStatement = "select Products_Suppliers.ProductSupplierId, Products.ProdName, Suppliers.SupName " +
-                "from Packages, Packages_Products_Suppliers, Products_Suppliers, " +
-                "Products, Suppliers " +
-                "where Packages.PackageId='" + id + "' and Packages.PackageId=Packages_Products_Suppliers.PackageId and " +
-                "Packages_Products_Suppliers.ProductSupplierId=Products_Suppliers.ProductSupplierId and " +
-                "Products_Suppliers.ProductId=Products.ProductId and " +
-                "Products_Suppliers.SupplierId=Suppliers.SupplierId";
+            string selectStatement = "SELECT ps.ProductSupplierId, pro.ProdName, s.SupName, bd.BasePrice " +
+                "FROM Packages pac, Packages_Products_Suppliers pps, Products_Suppliers ps, " +
+                "Products pro, Suppliers s, BookingDetails bd " +
+                "WHERE pac.PackageId='" + id + "' " + 
+                "AND pac.PackageId=pps.PackageId " +
+                "AND pps.ProductSupplierId=ps.ProductSupplierId " +
+                "AND ps.ProductId=pro.ProductId " +
+                "AND ps.SupplierId=s.SupplierId " +
+                "AND bd.ProductSupplierId=ps.ProductSupplierId";
 
             SqlCommand selectCommand =
                 new SqlCommand(selectStatement, connection);
@@ -42,6 +44,7 @@ namespace TravelExperts
                     productSupplier.ProductSupplierId = (int)reader["ProductSupplierId"];
                     productSupplier.ProdName = (string)reader["ProdName"];
                     productSupplier.SupName = (string)reader["SupName"];
+                    productSupplier.BasePrice = (decimal)reader["BasePrice"];
 
                     productsSuppliers.Add(productSupplier);
                     

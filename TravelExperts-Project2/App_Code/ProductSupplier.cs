@@ -20,5 +20,7 @@ namespace TravelExperts
         public string ProdName { get; set; }
 
         public string SupName { get; set; }
+
+        public decimal BasePrice { get; set; }
     }
 }
