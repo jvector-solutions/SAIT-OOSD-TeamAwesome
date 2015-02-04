@@ -27,7 +27,8 @@ namespace TravelExperts
                 + "Packages.PackageId, Packages.PkgName, "
                 + "Packages.PkgStartDate, Packages.PkgEndDate, "
                 + "Packages.PkgDesc, Packages.PkgBasePrice, "
-                + "Packages.PkgAgencyCommission "
+                + "Packages.PkgAgencyCommission, "
+                + "Bookings.BookingDate, Bookings.BookingNo "
                 + "FROM Packages, Bookings "
                 + "WHERE Packages.PackageID=Bookings.PackageID "
                 + "AND Bookings.CustomerId=@CustomerId";
@@ -38,19 +39,22 @@ namespace TravelExperts
             {
                 connection.Open();
                 SqlDataReader reader = selectCommand.ExecuteReader();
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    Package package = new Package();
-                    package.PackageID = (int)reader["PackageID"];
-                    package.PkgName = (string)reader["PkgName"];
-                    package.PkgStartDate = (DateTime)reader["PkgStartDate"];
-                    package.PkgEndDate = (DateTime)reader["PkgEndDate"];
-                    package.PkgDesc = (string)reader["PkgDesc"];
-                    package.PkgBasePrice = (decimal)reader["PkgBasePrice"];
-                    package.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+                    while (reader.Read()) { 
+                        Package package = new Package();
+                        package.PackageID = (int)reader["PackageID"];
+                        package.PkgName = (string)reader["PkgName"];
+                        package.PkgStartDate = (DateTime)reader["PkgStartDate"];
+                        package.PkgEndDate = (DateTime)reader["PkgEndDate"];
+                        package.PkgDesc = (string)reader["PkgDesc"];
+                        package.PkgBasePrice = (decimal)reader["PkgBasePrice"];
+                        package.PkgAgencyCommission = (decimal)reader["PkgAgencyCommission"];
+                        package.BookingNo = (string)reader["BookingNo"];
+                        package.BookingDate = (DateTime)reader["BookingDate"];
 
-                    packages.Add(package);
-
+                        packages.Add(package);
+                    }
                     return packages;
                 }
                 else

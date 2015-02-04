@@ -28,5 +28,9 @@ namespace TravelExperts
         public decimal PkgBasePrice { get; set; }
 
         public decimal PkgAgencyCommission { get; set; }
+
+        public string BookingNo { get; set; }
+
+        public DateTime BookingDate { get; set; }
     }
 }
