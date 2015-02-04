@@ -336,6 +336,9 @@
         <br />
 
 
+        <asp:Label ID="lblTotal" runat="server" style="font-weight: 700; font-size: x-large; font-family: Calibri"></asp:Label>
+
+
     </form>
 
 </asp:Content>

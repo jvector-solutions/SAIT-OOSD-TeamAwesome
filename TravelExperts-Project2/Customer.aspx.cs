@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TravelExperts;
 
 public partial class Customer : System.Web.UI.Page
 {
@@ -11,7 +12,18 @@ public partial class Customer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
-        custID = ddlCustomers.SelectedIndex;
+        //custID = Convert.ToInt32(ddlCustomers.SelectedValue);
+        if (Session["userID"] != null)
+        {
+            custID = (int)Session["userID"];
+            lblTotal.Text = PackageDB.GetSum(custID);
+        }
+        else
+        {
+            custID = 104;
+            lblTotal.Text = PackageDB.GetSum(custID);
+            //Response.Redirect("Login.aspx");
+        }
     }
     //save package product to session variable and goes to Package.aspx
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)

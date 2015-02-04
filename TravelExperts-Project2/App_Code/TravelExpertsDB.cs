@@ -21,9 +21,8 @@ namespace TravelExperts
         public static SqlConnection GetConnection()
         {
             string connectionString =
-                "Data Source=localhost\\sqlexpress;Initial Catalog=TravelExperts;Integrated Security=True";
-                //"Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\TravelExperts.mdf;" +
-                //    "Integrated Security=True";
+                //"Data Source=localhost\\sqlexpress;Initial Catalog=TravelExperts;Integrated Security=True";
+                "Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\TravelExperts.mdf;Integrated Security=True";
             SqlConnection connection = new SqlConnection(connectionString);
             return connection;
         }

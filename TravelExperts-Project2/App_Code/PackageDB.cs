@@ -32,8 +32,7 @@ namespace TravelExperts
                 + "FROM Packages, Bookings "
                 + "WHERE Packages.PackageID=Bookings.PackageID "
                 + "AND Bookings.CustomerId=@CustomerId";
-            SqlCommand selectCommand =
-                new SqlCommand(selectStatement, connection);
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
             selectCommand.Parameters.AddWithValue("@CustomerId", id);
             try
             {
@@ -105,6 +104,44 @@ namespace TravelExperts
                 else
                 {
                     return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+        public static string GetSum(int id)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement =
+                "SELECT SUM(Price) "
+                + "FROM ( "
+                + "   SELECT b.BookingNo, b.BookingDate, "
+                + "    p.PkgName, p.PkgBasePrice AS Price, p.PackageId "
+                + "    FROM Packages p, Bookings b "
+                + "    WHERE p.PackageID=b.PackageID "
+                + "    AND b.CustomerId=@CustomerId "
+                + ") AS Total";
+            SqlCommand selectCommand = new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@CustomerId", id);
+            try
+            {
+                connection.Open();
+                string sum = selectCommand.ExecuteScalar().ToString();
+                if (sum != null)
+                {
+                    return sum;
+                }
+                else
+                {
+                    return "0";
                 }
             }
             catch (SqlException ex)
