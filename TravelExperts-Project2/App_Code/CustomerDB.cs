@@ -1,6 +1,6 @@
-﻿/* CPRG214 ASP Workshop 2
- * Created By: John, and MB
- * January 22, 2015
+﻿/* CPRG214 ASP Workshop 5
+ * Created/Modified By: John, Leisy and MB
+ * February 2, 2015
  */
 using System;
 using System.Collections.Generic;
@@ -110,6 +110,58 @@ namespace TravelExperts
             }
         }
 
+        //get a customer from database based on customer email 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static Customer GetCustomerByEmail(string custEmail)
+        {
+            Customer customer = null;
+
+            SqlConnection connection = TravelExpertsDB.GetConnection();
+            string selectStatement
+                = "SELECT * "
+                + "FROM Customers "
+                + "WHERE CustEmail = @CustEmail";
+            SqlCommand selectCommand =
+                new SqlCommand(selectStatement, connection);
+            selectCommand.Parameters.AddWithValue("@CustEmail", custEmail);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader custReader = selectCommand.ExecuteReader(CommandBehavior.SingleRow);
+                if (custReader.Read())
+                {
+                    customer = new Customer();
+                    customer.CustomerID = (int)custReader["CustomerID"];
+                    customer.CustFirstName = (string)custReader["CustFirstName"];
+                    customer.CustLastName = (string)custReader["CustLastName"];
+                    customer.CustAddress = (string)custReader["CustAddress"];
+                    customer.CustCity = (string)custReader["CustCity"];
+                    customer.CustProv = (string)custReader["CustProv"];
+                    customer.CustPostal = (string)custReader["CustPostal"];
+                    customer.CustCountry = (string)custReader["CustCountry"];
+                    customer.CustHomePhone = (string)custReader["CustHomePhone"];
+                    customer.CustBusPhone = (string)custReader["CustBusPhone"];
+                    customer.CustEmail = (string)custReader["CustEmail"];
+                    customer.AgentID = (int)custReader["AgentID"];
+                    customer.CustPassword = (string)custReader["CustPassword"];
+                    return customer;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
         // Adds a customer to database
         [DataObjectMethod(DataObjectMethodType.Insert)]
         public static int AddCustomer(Customer customer)
@@ -117,7 +169,7 @@ namespace TravelExperts
             SqlConnection connection = TravelExpertsDB.GetConnection();
             string insertStatement =
                 "INSERT Customers " +
-                "(CustFirstName, CustLastName, CustAddress, CustCity, CustProv, "+
+                "(CustFirstName, CustLastName, CustAddress, CustCity, CustProv, " +
                 "CustPostal, CustCountry, CustHomePhone, CustBusPhone, CustEmail, AgentID) " +
                 "VALUES (@CustFirstName, @CustLastName, @CustAddress, @CustCity, @CustProv, " +
                 "@CustPostal, @CustCountry, @CustHomePhone, @CustBusPhone, @CustEmail, @AgentID)";
@@ -140,7 +192,7 @@ namespace TravelExperts
                 int count = insertCommand.ExecuteNonQuery();
                 if (count > 0)
                     return customer.CustomerID;
-                    
+
             }
             catch (SqlException ex)
             {
@@ -171,7 +223,7 @@ namespace TravelExperts
                 "CustBusPhone = @NewCustBusPhone, " +
                 "CustEmail = @NewCustEmail " +
 
-                "WHERE "+
+                "WHERE " +
                 "CustomerID = @OldCustomerID AND " +
                 "CustFirstName = @OldCustFirstName AND " +
                 "CustLastName = @OldCustLastName AND " +
@@ -210,7 +262,7 @@ namespace TravelExperts
             updateCommand.Parameters.AddWithValue("@OldCustBusPhone", original_customer.CustBusPhone);
             updateCommand.Parameters.AddWithValue("@OldCustEmail", original_customer.CustEmail);
             updateCommand.Parameters.AddWithValue("@OldAgentID", original_customer.AgentID);
-            
+
             try
             {
                 connection.Open();
@@ -271,7 +323,7 @@ namespace TravelExperts
                 int count = deleteCommand.ExecuteNonQuery();
                 if (count > 0)
                     return customer.CustomerID;
-                    
+
             }
             catch (SqlException ex)
             {
@@ -282,6 +334,44 @@ namespace TravelExperts
                 connection.Close();
             }
             return -1;
+        }
+
+        //checks password before login
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public static bool CheckPassword(string enteredCustEmail, string enteredCustPassword)
+        {
+            SqlConnection connection = TravelExpertsDB.GetConnection();//Define conection
+            connection.Open();
+
+            SqlCommand command = new SqlCommand("SELECT ISNULL(CustEmail, '') AS CustEmail, "
+                + "ISNULL(CustPassword,'') AS CustPassword "
+                + "FROM Customers WHERE CustEmail = @CustEmail and CustPassword = @CustPassword", connection);
+
+            command.Parameters.Add(new SqlParameter("CustEmail", enteredCustEmail));
+            command.Parameters.Add(new SqlParameter("CustPassword", enteredCustPassword));
+
+            SqlDataReader dataReader = command.ExecuteReader();
+
+            try
+            {
+                dataReader.Read();
+                if (dataReader["CustEmail"].ToString().Trim() == enteredCustEmail &&
+                    dataReader["CustPassword"].ToString().Trim() == enteredCustPassword)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                connection.Close();
+                dataReader.Close();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿/* CPRG214 ASP Workshop 2
- * Created By: John, and MB
- * January 22, 2015
+﻿/* CPRG214 ASP Workshop 5
+ * Created/Modified By: John, Leisy and MB
+ * February 2, 2015
  */
 using System;
 using System.Collections.Generic;
@@ -38,5 +38,8 @@ namespace TravelExperts
         public string CustEmail { get; set; }
 
         public int AgentID { get; set; }
+
+        public string CustPassword { get; set; }
+
     }
 }
