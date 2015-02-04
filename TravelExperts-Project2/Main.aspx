@@ -157,7 +157,7 @@
                          </asp:RequiredFieldValidator>
                     </InsertItemTemplate>
                     <ItemTemplate>
-                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("CustProv") %>' MaxLength="2"></asp:Label>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("CustProv") %>' MaxLength="25"></asp:Label>
                     </ItemTemplate>
                     <HeaderStyle CssClass="custdetails" />
                 </asp:TemplateField>

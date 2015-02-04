@@ -1,6 +1,16 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" %>
 
-<asp:Content id="Content1" ContentPlaceHolderID="headPlaceHolder" runat="server"></asp:Content>
+<asp:Content id="Content1" ContentPlaceHolderID="headPlaceHolder" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            height: 29px;
+        }
+        .auto-style2 {
+            font-family: Calibri;
+            color: #FF0000;
+        }
+    </style>
+</asp:Content>
 
 <asp:Content id="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <!-- Enter content below -->
@@ -72,7 +82,7 @@
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="Ex. A1A 1A1" ValidationExpression="/^[A-Z]{1}[0-9]{1}[A-Z]{1}\s[0-9]{1}[A-Z]{1}[0-9]{1}$/i"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="e.g. A1A 1A1" ValidationExpression="/^[A-Z]{1}[0-9]{1}[A-Z]{1}\s[0-9]{1}[A-Z]{1}[0-9]{1}$/i" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -91,16 +101,18 @@
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="/^[0-9]{10,14}$/" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
-                <td>Business Phone</td>
-                <td>
+                <td class="auto-style1">Business Phone</td>
+                <td class="auto-style1">
                     <asp:TextBox ID="txtBusinessPhone" runat="server"></asp:TextBox>
                 </td>
-                <td>
+                <td class="auto-style1">
                     &nbsp;
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBusinessPhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="/^[0-9]{10,14}$/" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -110,6 +122,8 @@
                 </td>
                 <td>
                     &nbsp;
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="e.g. text@gmail.com" ValidationExpression="/^[a-z]+([a-z0-9._+$-]*[a-z0-9].)?[@]{1}[a-z0-9]{2,}([.]{1}[a-z]{2,}){1,2}$/i" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -118,7 +132,11 @@
                     <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
                 </td>
                 <td rowspan="2">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtConfirmPassword" ErrorMessage="Your passwords do not match." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password is too short" ValidationExpression="/^[A-Za-z0-9]{6,20}$/"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password should contain atleast 1 uppercase letter" ValidationExpression="/[A-Z]+/"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password should contain atleast 1 lowercase letter" ValidationExpression="/[a-z]+/"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password should contain atleast 1 number" ValidationExpression="/[0-9]+/"></asp:RegularExpressionValidator>
 
                 </td>
             </tr>
