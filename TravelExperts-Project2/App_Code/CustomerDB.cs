@@ -44,7 +44,7 @@ namespace TravelExperts
                     customer.CustHomePhone = (string)custReader["CustHomePhone"];
                     customer.CustBusPhone = (string)custReader["CustBusPhone"];
                     customer.CustEmail = (string)custReader["CustEmail"];
-                    customer.AgentID = (int)custReader["AgentID"];
+                    customer.AgentId = (int)custReader["AgentID"];
 
                     customers.Add(customer);
                 }
@@ -92,7 +92,7 @@ namespace TravelExperts
                     customer.CustHomePhone = (string)custReader["CustHomePhone"];
                     customer.CustBusPhone = (string)custReader["CustBusPhone"];
                     customer.CustEmail = (string)custReader["CustEmail"];
-                    customer.AgentID = (int)custReader["AgentID"];
+                    customer.AgentId = (int)custReader["AgentID"];
                     return customer;
                 }
                 else
@@ -143,7 +143,7 @@ namespace TravelExperts
                     customer.CustHomePhone = (string)custReader["CustHomePhone"];
                     customer.CustBusPhone = (string)custReader["CustBusPhone"];
                     customer.CustEmail = (string)custReader["CustEmail"];
-                    customer.AgentID = (int)custReader["AgentID"];
+                    customer.AgentId = (int)custReader["AgentId"];
                     customer.CustPassword = (string)custReader["CustPassword"];
                     return customer;
                 }
@@ -185,7 +185,7 @@ namespace TravelExperts
             insertCommand.Parameters.AddWithValue("@CustHomePhone", customer.CustHomePhone);
             insertCommand.Parameters.AddWithValue("@CustBusPhone", customer.CustBusPhone);
             insertCommand.Parameters.AddWithValue("@CustEmail", customer.CustEmail);
-            insertCommand.Parameters.AddWithValue("@AgentID", customer.AgentID);
+            insertCommand.Parameters.AddWithValue("@AgentID", customer.AgentId);
             try
             {
                 connection.Open();
@@ -261,7 +261,7 @@ namespace TravelExperts
             updateCommand.Parameters.AddWithValue("@OldCustHomePhone", original_customer.CustHomePhone);
             updateCommand.Parameters.AddWithValue("@OldCustBusPhone", original_customer.CustBusPhone);
             updateCommand.Parameters.AddWithValue("@OldCustEmail", original_customer.CustEmail);
-            updateCommand.Parameters.AddWithValue("@OldAgentID", original_customer.AgentID);
+            updateCommand.Parameters.AddWithValue("@OldAgentID", original_customer.AgentId);
 
             try
             {
@@ -316,7 +316,7 @@ namespace TravelExperts
             deleteCommand.Parameters.AddWithValue("@CustHomePhone", customer.CustHomePhone);
             deleteCommand.Parameters.AddWithValue("@CustBusPhone", customer.CustBusPhone);
             deleteCommand.Parameters.AddWithValue("@CustEmail", customer.CustEmail);
-            deleteCommand.Parameters.AddWithValue("@AgentID", customer.AgentID);
+            deleteCommand.Parameters.AddWithValue("@AgentID", customer.AgentId);
             try
             {
                 connection.Open();

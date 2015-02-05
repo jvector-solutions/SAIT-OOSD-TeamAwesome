@@ -37,7 +37,7 @@ namespace TravelExperts
 
         public string CustEmail { get; set; }
 
-        public int AgentID { get; set; }
+        public int AgentId { get; set; }
 
         public string CustPassword { get; set; }
 
