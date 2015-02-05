@@ -192,7 +192,7 @@ namespace TravelExperts
                 connection.Open();
                 int count = insertCommand.ExecuteNonQuery();
                 if (count > 0)
-                    return customer.CustomerID;
+                    return 1;
 
             }
             catch (SqlException ex)

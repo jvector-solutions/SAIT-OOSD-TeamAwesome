@@ -43,7 +43,7 @@ public partial class Registration : System.Web.UI.Page
                 Session["userName"] = newCustomer.CustFirstName + " " + newCustomer.CustLastName;
                 Session["userID"] = newCustomer.CustomerID;
 
-                Response.Redirect("Customer.aspx");
+                Response.Redirect("Customer.aspx");//Redirecting user to main page after loggin
             }
             else //customer wasnt added to db
             { 
