@@ -19,13 +19,12 @@
 </head>
 <body style="height: 100%;">
     <header>
-        <div class="login_panel"><a href="Login.aspx"><u>Login</u></a> | Welcome <asp:LoginName ID="LoginName1" runat="server" />[name]</div>
+        <div class="login_panel"><a href="Login.aspx"><u>Login</u></a> | <a href="Customer.aspx"><u>Account</u></a></div>
         <img alt="" src="Images/logo2.png"/>
         <div class="nav">
           <ul>
             <li class="home"><a href="Main.aspx">Home</a></li>
             <li class="register"><a href="Registration.aspx">Register</a></li>
-            <li class="customer"><a href="Customer.aspx">Customer</a></li>
             <li class="about"><a href="About.aspx">About</a></li>
           </ul>
         </div>

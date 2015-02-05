@@ -12,18 +12,18 @@ public partial class Customer : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
-        //if (Session["userID"] != null)
-        //{
-        //    custID = (int)Session["userID"];
-        //    lblTotal.Text = PackageDB.GetSum(custID);
-        //}
-        //else
-        //{
-            Session["userID"] = 104;
-            custID = Convert.ToInt32(Session["userID"]);
-            lblTotal.Text = String.Format(": {0:C}",Convert.ToDecimal(PackageDB.GetSum(custID)));
-            //Response.Redirect("Login.aspx");
-    //    }
+        if (Session["userID"] != null)
+        {
+            custID = (int)Session["userID"];
+            lblTotal.Text = PackageDB.GetSum(custID);
+        }
+        else
+        {
+            //Session["userID"] = 104;
+            //custID = Convert.ToInt32(Session["userID"]);
+            //lblTotal.Text = String.Format(": {0:C}",Convert.ToDecimal(PackageDB.GetSum(custID)));
+            Response.Redirect("Login.aspx");
+        }
     }
     //save package product to session variable and goes to Package.aspx
     protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
