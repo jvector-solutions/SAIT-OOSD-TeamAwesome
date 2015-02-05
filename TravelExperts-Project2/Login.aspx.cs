@@ -26,11 +26,9 @@ public partial class Login : System.Web.UI.Page
         if (customerExists)
         {
             Session["user"] = CustomerDB.GetCustomerByEmail(custEmail);
+            Session["userID"] = CustomerDB.GetCustomerByEmail(custEmail).CustomerID;
+            Session["userName"] = CustomerDB.GetCustomerByEmail(custEmail).CustFirstName;
 
-            if (Session["user"] != null)
-            {
-                customer = (Customer)Session["user"];
-            }
             Response.Redirect("Main.aspx");//Redirecting user to main page after loggin
         }
         else
