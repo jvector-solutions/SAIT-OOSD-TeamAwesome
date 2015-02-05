@@ -143,3 +143,85 @@ footer p {
     color: white;
     margin-top: 4px;
 }
+
+.textbox {
+    width: 245px;
+    border: solid 1px #ccc;
+    height: 20px;
+    padding: 4px 10px;
+    margin: 3px 5px;
+    background: #fff;
+    background: -moz-linear-gradient(top, #ccc 0%, #fff 10%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(6%, #fff));
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 #f2f2f2;
+    -webkit-box-shadow: 0 1px 0 #F2F2F2;
+    font-family: sans-serif;
+    font-size: 0.9em;
+    color: #222;
+}
+
+.textbox:focus {
+    background: #ddd;
+    background: -moz-linear-gradient(top, #ddd 0%, #eee 15%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd), color-stop(15%, #eee));
+    outline: 0;
+}
+
+.dropdown {
+    width: 205px;
+    border: solid 1px #ccc;
+    height: 30px;
+    padding: 4px 0px 4px 10px;
+    margin: 3px 5px;
+    background: #fff;
+    background: -moz-linear-gradient(top, #ccc 0%, #fff 6%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(6%, #fff));
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 #f2f2f2;
+    -webkit-box-shadow: 0 1px 0 #F2F2F2;
+    color: #222;
+}
+
+.button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background-color:#ededed;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#555;
+	font-size:15px;
+	font-weight:bold;
+	height:40px;
+	line-height:40px;
+	width:100px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.button:hover {
+	background-color:#dfdfdf;
+    cursor: pointer;
+}
+ .button:active {
+	position:relative;
+	top:1px;
+}
