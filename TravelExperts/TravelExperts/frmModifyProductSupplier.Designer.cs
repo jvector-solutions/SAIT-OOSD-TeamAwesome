@@ -51,6 +51,7 @@
             this.productsTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.ProductsTableAdapter();
             this.suppliersTableAdapter = new TravelExperts.TravelExpertsDataSetTableAdapters.SuppliersTableAdapter();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabModifyProductSupplier.SuspendLayout();
             this.tabProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
@@ -214,8 +215,10 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(369, 28);
@@ -263,6 +266,12 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.editToolStripMenuItem.Text = "Edit";
             // 
             // frmModifyProductSupplier
             // 
@@ -321,5 +330,6 @@
         private System.Windows.Forms.Button btnSaveSupplier;
         private System.Windows.Forms.TextBox txtModifySupplier;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

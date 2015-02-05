@@ -5,9 +5,13 @@
         .auto-style1 {
             height: 29px;
         }
-        .auto-style2 {
+        .auto-style3 {
             font-family: Calibri;
             color: #FF0000;
+            font-style: italic;
+        }
+        .auto-style4 {
+            font-style: italic;
         }
     </style>
 </asp:Content>
@@ -27,7 +31,7 @@
                     <asp:TextBox ID="txtFirstName" runat="server" MaxLength="25" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirstName" ErrorMessage="Please enter your first name." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirstName" ErrorMessage="Please enter your first name." style="color: #FF0000" CssClass="auto-style4"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -36,7 +40,7 @@
                     <asp:TextBox ID="txtLastName" runat="server" MaxLength="25" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLastName" ErrorMessage="Please enter your last name." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLastName" ErrorMessage="Please enter your last name." style="color: #FF0000" CssClass="auto-style4"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -45,7 +49,7 @@
                     <asp:TextBox ID="txtAddress" runat="server" MaxLength="75" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAddress" ErrorMessage="Please enter your address." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAddress" ErrorMessage="Please enter your address." style="color: #FF0000" CssClass="auto-style4"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -54,7 +58,7 @@
                     <asp:TextBox ID="txtCity" runat="server" MaxLength="50" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCity" ErrorMessage="Please enter your city." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCity" ErrorMessage="Please enter your city." style="color: #FF0000" CssClass="auto-style4"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -84,8 +88,8 @@
                     <asp:TextBox ID="txtPostalCode" runat="server" MaxLength="7" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="e.g. A1A 1A1" ValidationExpression="^[A-Za-z]{1}[0-9]{1}[A-Za-z]{1}\s[0-9]{1}[A-Za-z]{1}[0-9]{1}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic" CssClass="auto-style4"></asp:RequiredFieldValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="e.g. A1A 1A1" ValidationExpression="^[A-Za-z]{1}[0-9]{1}[A-Za-z]{1}\s[0-9]{1}[A-Za-z]{1}[0-9]{1}$" CssClass="auto-style3"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -94,7 +98,7 @@
                     <asp:TextBox ID="txtCountry" runat="server" MaxLength="25" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCountry" ErrorMessage="Please enter your country." style="color: #FF0000"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCountry" ErrorMessage="Please enter your country." style="color: #FF0000" CssClass="auto-style4"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -103,8 +107,8 @@
                     <asp:TextBox ID="txtHomePhone" runat="server" MaxLength="10" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="^[0-9]{10,14}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic" CssClass="auto-style4"></asp:RequiredFieldValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="^[0-9]{10,14}$" CssClass="auto-style3"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -113,8 +117,8 @@
                     <asp:TextBox ID="txtBusinessPhone" runat="server" MaxLength="20" CssClass="textbox" Height="25px"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
-                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBusinessPhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="^[0-9]{10,14}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic" CssClass="auto-style4"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBusinessPhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="^[0-9]{10,14}$" CssClass="auto-style3"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -123,8 +127,8 @@
                     <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="e.g. text@gmail.com (Should start with a letter)" ValidationExpression="^[A-Za-z]+([A-Za-z0-9._+$-]*[A-Za-z0-9].)?[@]{1}[A-Za-z0-9]{2,}([.]{1}[A-Za-z]{2,}){1,2}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address." style="color: #FF0000" Display="Dynamic" CssClass="auto-style4"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="e.g. text@gmail.com (Should start with a letter)" ValidationExpression="^[A-Za-z]+([A-Za-z0-9._+$-]*[A-Za-z0-9].)?[@]{1}[A-Za-z0-9]{2,}([.]{1}[A-Za-z]{2,}){1,2}$" CssClass="auto-style3"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -133,11 +137,11 @@
                     <asp:TextBox ID="txtPassword" runat="server" MaxLength="50" TextMode="Password" CssClass="textbox"></asp:TextBox>
                 </td>
                 <td rowspan="2">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password must be between 8 and 50 characters, contain at least one digit and one alphabetic character, and must not contain special characters." ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,50})$"></asp:RegularExpressionValidator>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password." style="color: #FF0000" Display="Dynamic" CssClass="auto-style4"></asp:RequiredFieldValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style3" Display="Dynamic" ErrorMessage="Password must be between 8 and 50 characters, contain at least one digit and one alphabetic character, and must not contain special characters." ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,50})$"></asp:RegularExpressionValidator>
                   
                     <br />
-                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Password mismatch" style="color: #FF0000; font-family: Calibri"></asp:CompareValidator>
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="The passwords do not match." style="color: #FF0000; font-family: Calibri; font-style: italic;"></asp:CompareValidator>
                   
                 </td>
             </tr>
@@ -147,8 +151,13 @@
                     <asp:TextBox ID="txtConfirmPassword" runat="server" MaxLength="50" TextMode="Password" CssClass="textbox"></asp:TextBox>
                 </td>
             </tr>
+            <tr>
+                <td colspan="3" aria-autocomplete="none">
+                    <asp:Label ID="lblErrorMsg" runat="server" style="color: #FF0000; font-family: Calibri"></asp:Label>
+                </td>
+            </tr>
         </table>
-        <asp:Label ID="lblErrorMsg" runat="server" style="color: #FF0000; font-family: Calibri"></asp:Label>
+
         <br />
             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
             &nbsp;<asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" CssClass="button" />

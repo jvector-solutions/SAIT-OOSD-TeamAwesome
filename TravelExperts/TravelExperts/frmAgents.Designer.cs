@@ -38,8 +38,12 @@
             this.dgvAgents = new System.Windows.Forms.DataGridView();
             this.txtAgentId = new System.Windows.Forms.TextBox();
             this.grpListOf = new System.Windows.Forms.GroupBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).BeginInit();
             this.grpListOf.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -139,6 +143,30 @@
             this.grpListOf.TabStop = false;
             this.grpListOf.Text = "List Of Agents";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1044, 28);
+            this.menuStrip1.TabIndex = 56;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(47, 24);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
             // frmAgents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -151,13 +179,17 @@
             this.Controls.Add(this.btnModify);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.grpListOf);
+            this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmAgents";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Agents";
             this.Load += new System.EventHandler(this.frmAgents_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgents)).EndInit();
             this.grpListOf.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,5 +205,8 @@
         private System.Windows.Forms.DataGridView dgvAgents;
         private System.Windows.Forms.TextBox txtAgentId;
         private System.Windows.Forms.GroupBox grpListOf;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

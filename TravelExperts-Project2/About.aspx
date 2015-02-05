@@ -14,5 +14,5 @@
         <br /><br />You will discover that <strong>TRAVEL EXPERTS</strong> Agency is quite diverse. We use our diversity in and out of the travel industry to address various global concerns. By planning and organizing events, we address current issues such as the environment and international relations.We narrow the gap of misunderstanding between people by promoting international business and cultural exchanges and by serving as a major source of information.
         <br /><br />Continually providing a vast array of innovative ideas and quality services, <strong>TRAVEL EXPERTS</strong> commits itself as a leader in promoting the enrichment of mankind and the globalization of the world as we embark on the journey into this twenty first century.
         <br /><br /><img src="Images/office.jpg" style="width: 550px; display: block; margin: 0 auto;"/><br /><br />
-    </form>
+    </form><br /><br /><br />
 </asp:Content>

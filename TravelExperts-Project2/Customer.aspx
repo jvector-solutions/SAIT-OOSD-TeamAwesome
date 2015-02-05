@@ -253,7 +253,7 @@
         <asp:Label ID="lblTotal0" runat="server" style="font-weight: 700; font-size: x-large; float: right;">Order Total to Date</asp:Label>
 
 
-        <br /><br /><br />
+        <div style="display: block; height: 300px;"></div>
 
 
     </form>

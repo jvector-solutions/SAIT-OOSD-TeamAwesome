@@ -164,5 +164,10 @@ namespace TravelExperts
         {
             this.Close();
         }
+
+        private void productsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

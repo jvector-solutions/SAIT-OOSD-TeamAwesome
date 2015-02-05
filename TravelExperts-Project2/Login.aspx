@@ -54,11 +54,18 @@
                                     <td class="auto-style2"></td>
                                 </tr>
                                 <tr>
-                                    <td align="right" colspan="2">
-                                        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Create Account" width="150px" PostBackUrl="~/Registration.aspx" OnClick="Button1_Click" />
-                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" width="150px" ValidationGroup="Login1" CssClass="button" />
+                                    <td style="text-align: center;" colspan="2">
+                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" width="130px" ValidationGroup="Login1" CssClass="button" />
                                     </td>
-                                    <td></td>
+                                    <td rowspan="3"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" style="text-align:center; height: 40px;">- or -</td>
+                                </tr>
+                                <tr> 
+                                    <td colspan="2" style="text-align:center;">
+                                        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Create Account" width="180px" PostBackUrl="~/Registration.aspx" OnClick="Button1_Click" />
+                                    </td>
                                 </tr>
                             </table>
                         </td>
