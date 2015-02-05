@@ -78,11 +78,11 @@
             <tr>
                 <td>Postal Code</td>
                 <td>
-                    <asp:TextBox ID="txtPostalCode" runat="server" MaxLength="6"></asp:TextBox>
+                    <asp:TextBox ID="txtPostalCode" runat="server" MaxLength="7"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="e.g. A1A 1A1" ValidationExpression="/^[A-Z]{1}[0-9]{1}[A-Z]{1}\s[0-9]{1}[A-Z]{1}[0-9]{1}$/i" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPostalCode" Display="Dynamic" ErrorMessage="e.g. A1A 1A1" ValidationExpression="^[A-Za-z]{1}[0-9]{1}[A-Za-z]{1}\s[0-9]{1}[A-Za-z]{1}[0-9]{1}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -101,7 +101,7 @@
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="/^[0-9]{10,14}$/" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtHomePhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="^[0-9]{10,14}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -111,7 +111,7 @@
                 </td>
                 <td class="auto-style1">
                     &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBusinessPhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="/^[0-9]{10,14}$/" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBusinessPhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="^[0-9]{10,14}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -121,7 +121,7 @@
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="e.g. text@gmail.com" ValidationExpression="/^[a-z]+([a-z0-9._+$-]*[a-z0-9].)?[@]{1}[a-z0-9]{2,}([.]{1}[a-z]{2,}){1,2}$/i" CssClass="auto-style2"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="e.g. text@gmail.com (Should start with a letter)" ValidationExpression="^[A-Za-z]+([A-Za-z0-9._+$-]*[A-Za-z0-9].)?[@]{1}[A-Za-z0-9]{2,}([.]{1}[A-Za-z]{2,}){1,2}$" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
@@ -131,10 +131,10 @@
                 </td>
                 <td rowspan="2">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password is too short. " ValidationExpression="^[A-Za-z0-9]{6,20}$"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Should contain atleast one uppercase letter. " ValidationExpression="[A-Z]+"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Should contain atleast one lowercase letter. " ValidationExpression="[a-z]+"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Should contain atleast one number. " ValidationExpression="[0-9]+"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password must be between 8 and 50 characters, contain at least one digit and one alphabetic character, and must not contain special characters." ValidationExpression="(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,50})$"></asp:RegularExpressionValidator>
+                  
+                    <br />
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Password mismatch" style="color: #FF0000; font-family: Calibri"></asp:CompareValidator>
                   
                 </td>
             </tr>
@@ -148,13 +148,13 @@
     
     </div>
         <br />
-        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
         <br />
         <br />
-        <asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" />
+        <asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" CssClass="button" />
         <br />
         <br />
-        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" CssClass="button" />
         <br />
         <br />
     </form>
