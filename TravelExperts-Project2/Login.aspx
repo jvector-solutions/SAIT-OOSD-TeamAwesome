@@ -7,7 +7,7 @@
             height: 36px;
         }
         .auto-style2 {
-            height: 32px;
+            height: 47px;
         }
     </style>
 
@@ -16,16 +16,15 @@
 <asp:Content id="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <form id="formLogin" runat="server">
     <div style="position:relative; left: 220px; margin: 20px 0; width: 550px;">
+        <h2>
+            <asp:Label ID="lblLogin" runat="server" CssClass="h2" Text="Login"></asp:Label>
+        </h2><br />
         <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate">
             <LayoutTemplate>
                 <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
                     <tr>
                         <td>
                             <table cellpadding="0">
-                                <tr>
-                                    <td align="center" colspan="2">Log In</td>
-                                    <td>&nbsp;</td>
-                                </tr>
                                 <tr>
                                     <td align="right">
                                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Username:</asp:Label>
@@ -49,10 +48,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" class="auto-style1">
+                                    <td colspan="2" class="auto-style2">
                                         <asp:CheckBox ID="RememberMe" runat="server" Text="Remember me next time." />
                                     </td>
-                                    <td class="auto-style1"></td>
+                                    <td class="auto-style2"></td>
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="2">
@@ -71,6 +70,6 @@
    
         <a href="Registration.aspx">Register</a>
     </div>
-        <div style="height: 500px; display:block;"></div>
+        <div style="height: 470px; display:block;"></div>
     </form>
 </asp:Content>

@@ -1,5 +1,4 @@
-﻿
-<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
 
 <asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server">
     <style type="text/css">
@@ -21,21 +20,17 @@
         <h1>
             Welcome to the Travel Experts!
         </h1>
-        <br />
 
         <table>
             <tr>
                 <td class="auto-style2">
+                    <div style="height: 570px; width: 100%; display: block; margin: 24px; background-color: rgba(255,255,255,0.4); border: 1px solid #fff;">
 
-
+                    </div>
                 </td>
                 <td><img src="Images/sidebar.png"/></td>
             </tr>
         </table>
-
-        
-
-        <br /><br /><br /><br />
     </form>
 
 </asp:Content>

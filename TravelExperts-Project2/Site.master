@@ -20,11 +20,13 @@
 <body style="height: 100%;">
     <header>
         <div class="login_panel"><a href="Login.aspx"><u>Login</u></a> | <a href="Customer.aspx"><u>Account</u></a></div>
-        <img alt="" src="Images/logo2.png"/>
+        <a href="Main.aspx"><img alt="" src="Images/logo2.png"/></a>
         <div class="nav">
           <ul>
             <li class="home"><a href="Main.aspx">Home</a></li>
             <li class="about"><a href="About.aspx">About</a></li>
+            <li class="blog"><a href="#">Blog</a></li>
+            <li class="contact"><a href="Contact.aspx">Contact</a></li>
           </ul>
         </div>
     </header>

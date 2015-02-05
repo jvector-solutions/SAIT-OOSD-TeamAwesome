@@ -16,6 +16,7 @@ html {
 body {
     font-family: Calibri,Corbel,sans-serif;
     margin: 0 auto;
+    padding: 0;
     width: 800px;
     height: 100%;
     display: block;
@@ -100,10 +101,11 @@ h1 {
     color: #fff;
     text-shadow: 1px 1px 5px #000;
 }
-.h2 {
-    font-size: 1.5em;
-    font-weight:100 bold;
+h2 {
+    font-size: 2.5em;
+    font-weight: 100 bold;
     margin-bottom: -14px;
+    margin-top: 5px;
     padding: 0;
 }
 .custdetails {
@@ -173,7 +175,29 @@ footer p {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd), color-stop(15%, #eee));
     outline: 0;
 }
-
+.textarea {
+    border: solid 1px #ccc;
+    padding: 4px 10px;
+    margin: 9px 5px;
+    background: #fff;
+    background: -moz-linear-gradient(top, #ccc 0%, #fff 1%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccc), color-stop(1%, #fff));
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 0 #f2f2f2;
+    -webkit-box-shadow: 0 1px 0 #F2F2F2;
+    font-family: sans-serif;
+    font-size: 0.9em;
+    color: #222;
+    resize: none;
+}
+.textarea:focus {
+    background: #fff;
+    background: -moz-linear-gradient(top, #ddd 0%, #eee 3%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ddd), color-stop(3%, #eee));
+    outline: 0;
+}
 .dropdown {
     width: 205px;
     border: solid 1px #ccc;
@@ -218,6 +242,7 @@ footer p {
 	text-decoration:none;
 	text-align:center;
 	text-shadow:1px 1px 0px #ffffff;
+    padding: 0 20px;
 }
 .button:hover {
 	background-color:#dfdfdf;

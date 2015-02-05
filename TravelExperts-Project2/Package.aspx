@@ -7,7 +7,6 @@
 
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <form id="form1" runat="server">
-        <!-- Insert Content Below -->
         <h2>Package Details</h2><br />
         <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataSourceID="GetPackageByID" Height="50px" Width="100%" CellPadding="5" CellSpacing="1">
             <FieldHeaderStyle CssClass="custdetails" />
@@ -49,6 +48,6 @@
         </asp:ObjectDataSource>
                 <br />
         <asp:Image ID="Image" runat="server" style="margin: 0 auto; display: block;" Width="550px" />
-        <br /><br /><br />
+        <br /><br />
     </form>
 </asp:Content>

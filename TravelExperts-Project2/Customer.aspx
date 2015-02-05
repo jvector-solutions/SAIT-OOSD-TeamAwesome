@@ -8,7 +8,8 @@
 
         <h2>
             <asp:Label ID="lblCustomerDetail" runat="server" CssClass="h2" Text="Personal Information"></asp:Label>
-        </h2><br />
+        </h2>
+        <br />
 
         <asp:DetailsView ID="DetailsView1" 
             runat="server" 
@@ -209,7 +210,8 @@
         
         <h2>
             <asp:Label ID="lblCustomerPackages" runat="server" CssClass="h2" Text="Package Orders"></asp:Label>
-        </h2><br />
+        </h2>
+        <br />
        
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GetPackagesByCustomerID" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" Width="100%" CellPadding="1" CellSpacing="1" CssClass="pkgborder">
             <Columns>
@@ -251,7 +253,7 @@
         <asp:Label ID="lblTotal0" runat="server" style="font-weight: 700; font-size: x-large; float: right;">Order Total to Date</asp:Label>
 
 
-        <br />
+        <br /><br /><br />
 
 
     </form>

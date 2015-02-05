@@ -21,7 +21,7 @@ namespace TravelExperts
             List<ProductSupplier> productsSuppliers = new List<ProductSupplier>();
 
             SqlConnection connection = TravelExpertsDB.GetConnection();
-            string selectStatement = "SELECT ps.ProductSupplierId, pro.ProdName, s.SupName, bd.BasePrice " +
+            string selectStatement = "SELECT DISTINCT ps.ProductSupplierId, pro.ProdName, s.SupName, bd.BasePrice " +
                 "FROM Packages pac, Packages_Products_Suppliers pps, Products_Suppliers ps, " +
                 "Products pro, Suppliers s, BookingDetails bd " +
                 "WHERE pac.PackageId='" + id + "' " + 
