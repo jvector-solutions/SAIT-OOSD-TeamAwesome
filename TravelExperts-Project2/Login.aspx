@@ -56,7 +56,7 @@
                                 <tr>
                                     <td align="right" colspan="2">
                                         <asp:Button ID="Button1" runat="server" CssClass="button" Text="Create Account" width="150px" PostBackUrl="~/Registration.aspx" />
-                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" CssClass="button" />
+                                        <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" width="150px" ValidationGroup="Login1" CssClass="button" />
                                     </td>
                                     <td></td>
                                 </tr>
@@ -66,9 +66,6 @@
                 </table>
             </LayoutTemplate>
         </asp:Login>
-        <br />
-   
-        <a href="Registration.aspx">Register</a>
     </div>
         <div style="height: 470px; display:block;"></div>
     </form>

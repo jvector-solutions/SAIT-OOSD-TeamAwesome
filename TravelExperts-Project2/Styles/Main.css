@@ -55,6 +55,15 @@ header {
 .login_panel a:hover {
     color: lightgrey;
 }
+#login {
+    display: inline;
+    visibility:visible;
+}
+#logout {
+    display: none;
+    visibility:hidden;
+}
+
 .nav ul {
     list-style: none;
     background-color: #2F73C1;

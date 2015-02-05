@@ -19,11 +19,12 @@
 </head>
 <body style="height: 100%;">
     <header>
-        <div class="login_panel"><a href="Login.aspx"><u>Login</u></a> | <a href="Customer.aspx"><u>Account</u></a></div>
+        <div class="login_panel"><span id="login"><a href="Login.aspx"><u>Login</u></a></span><span id="logout"><a href="#"><u>Logout</u></a></span> | <a href="Customer.aspx"><u>Account</u></a></div>
         <a href="Main.aspx"><img alt="" src="Images/logo2.png"/></a>
         <div class="nav">
           <ul>
             <li class="home"><a href="Main.aspx">Home</a></li>
+            <li><a href="#">Packages</a></li>
             <li class="about"><a href="About.aspx">About</a></li>
             <li class="blog"><a href="#">Blog</a></li>
             <li class="contact"><a href="Contact.aspx">Contact</a></li>
