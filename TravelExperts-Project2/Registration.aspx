@@ -21,7 +21,7 @@
             <tr>
                 <td>First Name</td>
                 <td>
-                    <asp:TextBox ID="txtFirstName" runat="server" MaxLength="25" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtFirstName" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirstName" ErrorMessage="Please enter your first name." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -30,7 +30,7 @@
             <tr>
                 <td>Last Name</td>
                 <td>
-                    <asp:TextBox ID="txtLastName" runat="server" MaxLength="25" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtLastName" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLastName" ErrorMessage="Please enter your last name." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -39,7 +39,7 @@
             <tr>
                 <td>Address</td>
                 <td>
-                    <asp:TextBox ID="txtAddress" runat="server" MaxLength="75" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtAddress" runat="server" MaxLength="75"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAddress" ErrorMessage="Please enter your address." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -48,7 +48,7 @@
             <tr>
                 <td>City</td>
                 <td>
-                    <asp:TextBox ID="txtCity" runat="server" MaxLength="50" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtCity" runat="server" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCity" ErrorMessage="Please enter your city." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -57,7 +57,7 @@
             <tr>
                 <td>Province</td>
                 <td>
-                    <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="True" CssClass="dropdown">
+                    <asp:DropDownList ID="ddlProvince" runat="server" AutoPostBack="True">
                         <asp:ListItem Value="AB">Alberta</asp:ListItem>
                         <asp:ListItem Value="BC">British Columbia</asp:ListItem>
                         <asp:ListItem Value="MB">Manitoba</asp:ListItem>
@@ -78,7 +78,7 @@
             <tr>
                 <td>Postal Code</td>
                 <td>
-                    <asp:TextBox ID="txtPostalCode" runat="server" MaxLength="6" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtPostalCode" runat="server" MaxLength="6"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -88,7 +88,7 @@
             <tr>
                 <td>Country</td>
                 <td>
-                    <asp:TextBox ID="txtCountry" runat="server" MaxLength="25" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtCountry" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCountry" ErrorMessage="Please enter your country." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -97,7 +97,7 @@
             <tr>
                 <td>Home Phone</td>
                 <td>
-                    <asp:TextBox ID="txtHomePhone" runat="server" MaxLength="10" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtHomePhone" runat="server" MaxLength="10"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -107,7 +107,7 @@
             <tr>
                 <td class="auto-style1">Business Phone</td>
                 <td class="auto-style1">
-                    <asp:TextBox ID="txtBusinessPhone" runat="server" MaxLength="20" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtBusinessPhone" runat="server" MaxLength="20"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
                     &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -117,7 +117,7 @@
             <tr>
                 <td>Email Address</td>
                 <td>
-                    <asp:TextBox ID="txtEmail" runat="server" MaxLength="50" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -127,7 +127,7 @@
             <tr>
                 <td>Password</td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server" MaxLength="50" TextMode="Password" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" MaxLength="50" TextMode="Password"></asp:TextBox>
                 </td>
                 <td rowspan="2">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -141,20 +141,20 @@
             <tr>
                 <td>Confirm Password</td>
                 <td>
-                    <asp:TextBox ID="txtConfirmPassword" runat="server" MaxLength="50" TextMode="Password" CssClass="textbox"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmPassword" runat="server" MaxLength="50" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
         </table>
     
     </div>
         <br />
-        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
         <br />
         <br />
-        <asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" CssClass="button" />
+        <asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" />
         <br />
         <br />
-        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" CssClass="button" />
+        <asp:Button ID="btnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" />
         <br />
         <br />
     </form>
