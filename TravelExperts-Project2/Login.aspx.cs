@@ -29,7 +29,7 @@ public partial class Login : System.Web.UI.Page
             Session["userID"] = CustomerDB.GetCustomerByEmail(custEmail).CustomerID;
             Session["userName"] = CustomerDB.GetCustomerByEmail(custEmail).CustFirstName;
 
-            Response.Redirect("Main.aspx");//Redirecting user to main page after loggin
+            Response.Redirect("Customer.aspx");//Redirecting user to main page after loggin
         }
         else
         {
