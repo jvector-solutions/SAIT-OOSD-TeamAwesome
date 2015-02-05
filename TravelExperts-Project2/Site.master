@@ -24,7 +24,6 @@
         <div class="nav">
           <ul>
             <li class="home"><a href="Main.aspx">Home</a></li>
-            <li class="register"><a href="Registration.aspx">Register</a></li>
             <li class="about"><a href="About.aspx">About</a></li>
           </ul>
         </div>

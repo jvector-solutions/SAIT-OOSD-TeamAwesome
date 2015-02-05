@@ -14,9 +14,8 @@
 </asp:Content>
 
 <asp:Content id="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
-    <!-- Enter content below -->
     <form id="formLogin" runat="server">
-    <div style="position:relative; left: 220px; margin: 20px 0;">
+    <div style="position:relative; left: 220px; margin: 20px 0; width: 550px;">
         <asp:Login ID="Login1" runat="server" OnAuthenticate="Login1_Authenticate">
             <LayoutTemplate>
                 <table cellpadding="1" cellspacing="0" style="border-collapse:collapse;">
@@ -56,12 +55,11 @@
                                     <td class="auto-style1"></td>
                                 </tr>
                                 <tr>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
                                     <td align="right" colspan="2">
+                                        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Create Account" width="150px" PostBackUrl="~/Registration.aspx" />
                                         <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" ValidationGroup="Login1" CssClass="button" />
                                     </td>
+                                    <td></td>
                                 </tr>
                             </table>
                         </td>
@@ -73,5 +71,6 @@
    
         <a href="Registration.aspx">Register</a>
     </div>
+        <div style="height: 500px; display:block;"></div>
     </form>
 </asp:Content>
