@@ -170,9 +170,9 @@ namespace TravelExperts
             string insertStatement =
                 "INSERT Customers " +
                 "(CustFirstName, CustLastName, CustAddress, CustCity, CustProv, " +
-                "CustPostal, CustCountry, CustHomePhone, CustBusPhone, CustEmail, AgentID) " +
+                "CustPostal, CustCountry, CustHomePhone, CustBusPhone, CustEmail, AgentID, CustPassword) " +
                 "VALUES (@CustFirstName, @CustLastName, @CustAddress, @CustCity, @CustProv, " +
-                "@CustPostal, @CustCountry, @CustHomePhone, @CustBusPhone, @CustEmail, @AgentID)";
+                "@CustPostal, @CustCountry, @CustHomePhone, @CustBusPhone, @CustEmail, @AgentID, @CustPassword)";
             SqlCommand insertCommand =
                 new SqlCommand(insertStatement, connection);
             insertCommand.Parameters.AddWithValue("@CustFirstName", customer.CustFirstName);
@@ -185,7 +185,8 @@ namespace TravelExperts
             insertCommand.Parameters.AddWithValue("@CustHomePhone", customer.CustHomePhone);
             insertCommand.Parameters.AddWithValue("@CustBusPhone", customer.CustBusPhone);
             insertCommand.Parameters.AddWithValue("@CustEmail", customer.CustEmail);
-            insertCommand.Parameters.AddWithValue("@AgentID", customer.AgentId);
+            insertCommand.Parameters.AddWithValue("@AgentID", 4);
+            insertCommand.Parameters.AddWithValue("@CustPassword", customer.CustPassword);
             try
             {
                 connection.Open();

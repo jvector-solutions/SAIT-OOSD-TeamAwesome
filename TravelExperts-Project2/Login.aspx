@@ -55,7 +55,7 @@
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="2">
-                                        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Create Account" width="150px" PostBackUrl="~/Registration.aspx" />
+                                        <asp:Button ID="Button1" runat="server" CssClass="button" Text="Create Account" width="150px" PostBackUrl="~/Registration.aspx" OnClick="Button1_Click" />
                                         <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" width="150px" ValidationGroup="Login1" CssClass="button" />
                                     </td>
                                     <td></td>

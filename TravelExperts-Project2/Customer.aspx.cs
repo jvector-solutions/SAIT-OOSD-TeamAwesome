@@ -15,7 +15,10 @@ public partial class Customer : System.Web.UI.Page
         if (Session["userID"] != null)
         {
             custID = (int)Session["userID"];
-            lblTotal.Text = String.Format(": {0:C}", Convert.ToDecimal(PackageDB.GetSum(custID)));
+            if (PackageDB.GetSum(custID) != "")
+                lblTotal.Text = String.Format(": {0:C}", Convert.ToDecimal(PackageDB.GetSum(custID)));
+            else
+                lblTotal.Text = ": $0.00";
         }
         else
         {

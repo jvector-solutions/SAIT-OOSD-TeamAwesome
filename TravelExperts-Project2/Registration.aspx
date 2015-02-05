@@ -148,6 +148,7 @@
                 </td>
             </tr>
         </table>
+        <asp:Label ID="lblErrorMsg" runat="server" style="color: #FF0000; font-family: Calibri"></asp:Label>
         <br />
             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" CssClass="button" />
             &nbsp;<asp:Button ID="btnClear" runat="server" CausesValidation="False" OnClick="btnClear_Click" Text="Clear" CssClass="button" />

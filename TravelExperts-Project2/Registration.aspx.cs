@@ -14,6 +14,7 @@ public partial class Registration : System.Web.UI.Page
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
     {
+        lblErrorMsg.Text = "";
         newCustomer = null;
         //validate
 
@@ -49,6 +50,10 @@ public partial class Registration : System.Web.UI.Page
             { 
 
             }
+        }
+        else
+        {
+            lblErrorMsg.Text = "The email is already used by another customer";
         }
     }
     protected bool EmailIsNotUsed(string email)
@@ -89,5 +94,7 @@ public partial class Registration : System.Web.UI.Page
         txtEmail.Text = "";
         txtPassword.Text = "";
         txtConfirmPassword.Text = "";
+
+        lblErrorMsg.Text = "";
     }
 }
