@@ -21,7 +21,7 @@
             <tr>
                 <td>First Name</td>
                 <td>
-                    <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtFirstName" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFirstName" ErrorMessage="Please enter your first name." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -30,7 +30,7 @@
             <tr>
                 <td>Last Name</td>
                 <td>
-                    <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtLastName" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtLastName" ErrorMessage="Please enter your last name." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -39,7 +39,7 @@
             <tr>
                 <td>Address</td>
                 <td>
-                    <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAddress" runat="server" MaxLength="75"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAddress" ErrorMessage="Please enter your address." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -48,7 +48,7 @@
             <tr>
                 <td>City</td>
                 <td>
-                    <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtCity" runat="server" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtCity" ErrorMessage="Please enter your city." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -78,7 +78,7 @@
             <tr>
                 <td>Postal Code</td>
                 <td>
-                    <asp:TextBox ID="txtPostalCode" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtPostalCode" runat="server" MaxLength="6"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtPostalCode" ErrorMessage="Please enter your postal code." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -88,7 +88,7 @@
             <tr>
                 <td>Country</td>
                 <td>
-                    <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtCountry" runat="server" MaxLength="25"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtCountry" ErrorMessage="Please enter your country." style="color: #FF0000"></asp:RequiredFieldValidator>
@@ -97,7 +97,7 @@
             <tr>
                 <td>Home Phone</td>
                 <td>
-                    <asp:TextBox ID="txtHomePhone" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtHomePhone" runat="server" MaxLength="10"></asp:TextBox>
                 </td>
                 <td>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtHomePhone" ErrorMessage="Please enter your home phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -107,21 +107,19 @@
             <tr>
                 <td class="auto-style1">Business Phone</td>
                 <td class="auto-style1">
-                    <asp:TextBox ID="txtBusinessPhone" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtBusinessPhone" runat="server" MaxLength="20"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
-                    &nbsp;
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
+                    &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtBusinessPhone" ErrorMessage="Please enter your business phone number." style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ControlToValidate="txtBusinessPhone" Display="Dynamic" ErrorMessage="e.g. 1112223344" ValidationExpression="/^[0-9]{10,14}$/" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
             </tr>
             <tr>
                 <td>Email Address</td>
                 <td>
-                    <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" MaxLength="50"></asp:TextBox>
                 </td>
                 <td>
-                    &nbsp;
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtEmail" ErrorMessage="Please enter your email address" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ControlToValidate="txtEmail" Display="Dynamic" ErrorMessage="e.g. text@gmail.com" ValidationExpression="/^[a-z]+([a-z0-9._+$-]*[a-z0-9].)?[@]{1}[a-z0-9]{2,}([.]{1}[a-z]{2,}){1,2}$/i" CssClass="auto-style2"></asp:RegularExpressionValidator>
                 </td>
@@ -129,21 +127,21 @@
             <tr>
                 <td>Password</td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" MaxLength="50" TextMode="Password"></asp:TextBox>
                 </td>
                 <td rowspan="2">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtPassword" ErrorMessage="Please enter your password" style="color: #FF0000" Display="Dynamic"></asp:RequiredFieldValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password is too short" ValidationExpression="/^[A-Za-z0-9]{6,20}$/"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password should contain atleast 1 uppercase letter" ValidationExpression="/[A-Z]+/"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password should contain atleast 1 lowercase letter" ValidationExpression="/[a-z]+/"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password should contain atleast 1 number" ValidationExpression="/[0-9]+/"></asp:RegularExpressionValidator>
-
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Password is too short. " ValidationExpression="^[A-Za-z0-9]{6,20}$"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Should contain atleast one uppercase letter. " ValidationExpression="[A-Z]+"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator7" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Should contain atleast one lowercase letter. " ValidationExpression="[a-z]+"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator8" runat="server" ControlToValidate="txtPassword" CssClass="auto-style2" Display="Dynamic" ErrorMessage="Should contain atleast one number. " ValidationExpression="[0-9]+"></asp:RegularExpressionValidator>
+                  
                 </td>
             </tr>
             <tr>
                 <td>Confirm Password</td>
                 <td>
-                    <asp:TextBox ID="txtConfirmPassword" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmPassword" runat="server" MaxLength="50" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
         </table>
