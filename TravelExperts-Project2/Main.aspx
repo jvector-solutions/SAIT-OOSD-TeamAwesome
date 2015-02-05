@@ -17,19 +17,19 @@
     
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
 
-    <form id="form1" runat="server" style="text-align:center;">
+    <form id="form1" runat="server" class="auto-style1" style="text-align:center; padding-top: 0;">
         <h1>
             Welcome to the Travel Experts!
         </h1>
         <br />
 
-        <table class="auto-style1">
+        <table>
             <tr>
                 <td class="auto-style2">
 
 
                 </td>
-                <td class="auto-style2"><img src="Images/sidebar.png"/></td>
+                <td><img src="Images/sidebar.png"/></td>
             </tr>
         </table>
 
