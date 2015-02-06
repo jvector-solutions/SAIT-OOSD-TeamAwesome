@@ -1,4 +1,4 @@
-﻿/* CPRG214 ASP Workshop 5
+﻿/* CPRG214 Project 2 Website
  * Created/Modified By: John, Leisy and MB
  * February 2, 2015
  */

@@ -1,4 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Package.aspx.cs" Inherits="Package"%>
+﻿<%-- * CMPP248 Project 2 Website
+     * Web Form for Packages
+     * Created By: MB Jae
+     * January 23rd, 2015
+     * --%>
+
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Package.aspx.cs" Inherits="Package"%>
 
 <asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server">
     <link href="Styles/Package.css" rel="stylesheet" />

@@ -1,4 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
+﻿<%-- * CMPP248 Project 2 Website
+     * Web Form for Main
+     * Created By: John
+     * January 23rd, 2015
+     * --%>
+
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Main.aspx.cs" Inherits="Main" %>
 
 <asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server">
     <style type="text/css">

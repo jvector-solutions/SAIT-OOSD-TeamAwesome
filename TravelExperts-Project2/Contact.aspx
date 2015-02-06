@@ -1,4 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="Contact" %>
+﻿<%-- * CMPP248 Project 2 Website
+     * Web Form for Contact
+     * Created By: John Nguyen
+     * February 4th, 2015
+     * --%>
+
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Contact.aspx.cs" Inherits="Contact" %>
 
 <asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server"></asp:Content>
 

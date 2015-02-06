@@ -1,8 +1,6 @@
-﻿/*
- * Travel Experts Project #2 - C#, ASP.NET, SQL Server
- * TravelExpertsDB Class
- * Created By: John Nguyen (Team 3)
- * Created On: January 20, 2015
+﻿/* CPRG214 Project 2 Website
+ * Created/Modified By: John
+ * January 20th, 2015
  */
 
 using System;

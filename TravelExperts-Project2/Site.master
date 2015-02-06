@@ -1,9 +1,8 @@
-﻿<!--
- * Travel Experts Project #2 - C#, ASP.NET, SQL Server
- * Site.master Page
- * Created By: John Nguyen (Team 3)
- * Created On: January 20, 2015
- -->
+﻿<%-- * CMPP248 Project 2 Website
+     * Site.master Page
+     * Created By: John
+     * January 20th, 2015
+     * --%>
 
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="Site" %>
 

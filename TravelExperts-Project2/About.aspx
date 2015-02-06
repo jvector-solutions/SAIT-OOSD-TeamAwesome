@@ -1,4 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
+﻿<%-- * CMPP248 Project 2 Website
+     * Web Form for About
+     * Created By: Leisy Moliner
+     * January 23rd, 2015
+     * --%>
+
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="About" %>
 
 <asp:Content id="headContent" ContentPlaceHolderID="headPlaceHolder" runat="server">
     <link href="Styles/About.css" rel="stylesheet" />
@@ -6,8 +12,6 @@
 
 <asp:Content id="formContent" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <form id="form1" runat="server">
-        <!-- Insert Content Below -->
-
         At <strong>TRAVEL EXPERTS</strong> we strive to provide our customers with the very best service in the industry today.
         <br /><br />We are committed to offering travel services of the highest quality, combining our energy and enthusiasm, with our years of experience. Our greatest satisfaction comes in serving large numbers of satisfied clients who have experienced the joys and inspiration of travel.
         <br /><br />Ever since the company was established in 1905, <strong>TRAVEL EXPERTS</strong> Agency has concentrated its efforts in producing quality travel, responding to the needs of the times while anticipating the demands of the future.

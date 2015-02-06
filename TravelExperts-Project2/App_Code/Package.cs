@@ -1,6 +1,6 @@
-﻿/* CPRG214 ASP Workshop 2
- * Created By: John, and MB
- * January 22, 2015
+﻿/* CPRG214 Project 2 Website
+ * Created/Modified By: John and MB
+ * January 22nd, 2015
  */
 using System;
 using System.Collections.Generic;

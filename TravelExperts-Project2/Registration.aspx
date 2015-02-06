@@ -1,4 +1,10 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" %>
+﻿<%-- * CMPP248 Project 2 Website
+     * Web Form for Registration
+     * Created By: John, MB Jae
+     * January 23rd, 2015
+     * --%>
+
+<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" %>
 
 <asp:Content id="Content1" ContentPlaceHolderID="headPlaceHolder" runat="server">
     <style type="text/css">

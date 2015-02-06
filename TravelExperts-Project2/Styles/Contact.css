@@ -1,4 +1,10 @@
-﻿.form-label-left{
+﻿/*
+ * Travel Experts Project #2 - C#, ASP.NET, SQL Server
+ * CSS Stylesheet - Contact
+ * Created By: John Nguyen (Team 3)
+ * Created On: February 4, 2015
+ */
+.form-label-left{
     width:150px !important;
 }
 .form-line{
