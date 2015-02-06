@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblAgentInfo = new System.Windows.Forms.Label();
             this.rdbPackage = new System.Windows.Forms.RadioButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -62,9 +62,9 @@
             // lblAgentInfo
             // 
             this.lblAgentInfo.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgentInfo.Location = new System.Drawing.Point(42, 47);
+            this.lblAgentInfo.Location = new System.Drawing.Point(23, 29);
             this.lblAgentInfo.Name = "lblAgentInfo";
-            this.lblAgentInfo.Size = new System.Drawing.Size(390, 87);
+            this.lblAgentInfo.Size = new System.Drawing.Size(421, 87);
             this.lblAgentInfo.TabIndex = 2;
             this.lblAgentInfo.Text = "Agent logged";
             this.lblAgentInfo.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -84,7 +84,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(19, 35);
+            this.txtSearch.Location = new System.Drawing.Point(19, 29);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(429, 22);
             this.txtSearch.TabIndex = 40;
@@ -117,9 +117,9 @@
             this.groupBox1.Controls.Add(this.chbIncludeExpiredPackages);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.txtSearch);
-            this.groupBox1.Location = new System.Drawing.Point(31, 40);
+            this.groupBox1.Location = new System.Drawing.Point(12, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(478, 165);
+            this.groupBox1.Size = new System.Drawing.Size(478, 147);
             this.groupBox1.TabIndex = 44;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
@@ -127,7 +127,7 @@
             // chbIncludeExpiredPackages
             // 
             this.chbIncludeExpiredPackages.AutoSize = true;
-            this.chbIncludeExpiredPackages.Location = new System.Drawing.Point(19, 129);
+            this.chbIncludeExpiredPackages.Location = new System.Drawing.Point(19, 113);
             this.chbIncludeExpiredPackages.Name = "chbIncludeExpiredPackages";
             this.chbIncludeExpiredPackages.Size = new System.Drawing.Size(192, 21);
             this.chbIncludeExpiredPackages.TabIndex = 45;
@@ -142,7 +142,7 @@
             this.panel1.Controls.Add(this.rdbSupplier);
             this.panel1.Controls.Add(this.rdbPackage);
             this.panel1.Controls.Add(this.rdbProduct);
-            this.panel1.Location = new System.Drawing.Point(19, 77);
+            this.panel1.Location = new System.Drawing.Point(19, 57);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(429, 45);
             this.panel1.TabIndex = 44;
@@ -161,16 +161,16 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lblAgentInfo);
-            this.groupBox2.Location = new System.Drawing.Point(540, 40);
+            this.groupBox2.Location = new System.Drawing.Point(521, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(466, 165);
+            this.groupBox2.Size = new System.Drawing.Size(466, 147);
             this.groupBox2.TabIndex = 45;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Agent";
             // 
             // btnAgent
             // 
-            this.btnAgent.Location = new System.Drawing.Point(466, 623);
+            this.btnAgent.Location = new System.Drawing.Point(447, 567);
             this.btnAgent.Name = "btnAgent";
             this.btnAgent.Size = new System.Drawing.Size(139, 38);
             this.btnAgent.TabIndex = 47;
@@ -180,7 +180,7 @@
             // 
             // btnProductSuppliers
             // 
-            this.btnProductSuppliers.Location = new System.Drawing.Point(611, 623);
+            this.btnProductSuppliers.Location = new System.Drawing.Point(592, 567);
             this.btnProductSuppliers.Name = "btnProductSuppliers";
             this.btnProductSuppliers.Size = new System.Drawing.Size(250, 38);
             this.btnProductSuppliers.TabIndex = 48;
@@ -190,7 +190,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(867, 623);
+            this.btnExit.Location = new System.Drawing.Point(848, 567);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 38);
             this.btnExit.TabIndex = 49;
@@ -200,7 +200,7 @@
             // 
             // btnAddPackage
             // 
-            this.btnAddPackage.Location = new System.Drawing.Point(316, 623);
+            this.btnAddPackage.Location = new System.Drawing.Point(297, 567);
             this.btnAddPackage.Name = "btnAddPackage";
             this.btnAddPackage.Size = new System.Drawing.Size(139, 38);
             this.btnAddPackage.TabIndex = 50;
@@ -219,20 +219,20 @@
             this.dgvMainPage.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvMainPage.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMainPage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvMainPage.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMainPage.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMainPage.Location = new System.Drawing.Point(21, 35);
             this.dgvMainPage.Name = "dgvMainPage";
             this.dgvMainPage.ReadOnly = true;
             this.dgvMainPage.RowHeadersVisible = false;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMainPage.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMainPage.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvMainPage.RowTemplate.Height = 24;
             this.dgvMainPage.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMainPage.Size = new System.Drawing.Size(932, 262);
@@ -242,7 +242,7 @@
             // btnDelete
             // 
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(905, 554);
+            this.btnDelete.Location = new System.Drawing.Point(884, 509);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(103, 30);
             this.btnDelete.TabIndex = 52;
@@ -253,7 +253,7 @@
             // btnEdit
             // 
             this.btnEdit.Enabled = false;
-            this.btnEdit.Location = new System.Drawing.Point(796, 554);
+            this.btnEdit.Location = new System.Drawing.Point(775, 509);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(103, 30);
             this.btnEdit.TabIndex = 53;
@@ -264,7 +264,7 @@
             // grpListOf
             // 
             this.grpListOf.Controls.Add(this.dgvMainPage);
-            this.grpListOf.Location = new System.Drawing.Point(31, 222);
+            this.grpListOf.Location = new System.Drawing.Point(12, 193);
             this.grpListOf.Name = "grpListOf";
             this.grpListOf.Size = new System.Drawing.Size(975, 310);
             this.grpListOf.TabIndex = 54;
@@ -279,7 +279,7 @@
             this.editToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1039, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1003, 28);
             this.menuStrip1.TabIndex = 55;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -300,7 +300,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1039, 692);
+            this.ClientSize = new System.Drawing.Size(1003, 619);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAddPackage);
             this.Controls.Add(this.btnDelete);

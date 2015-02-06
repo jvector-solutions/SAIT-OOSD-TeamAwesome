@@ -176,7 +176,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(323, 743);
+            this.btnSubmit.Location = new System.Drawing.Point(324, 592);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(139, 38);
             this.btnSubmit.TabIndex = 39;
@@ -186,7 +186,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(468, 743);
+            this.btnCancel.Location = new System.Drawing.Point(469, 592);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(139, 38);
             this.btnCancel.TabIndex = 41;
@@ -210,7 +210,7 @@
             this.groupBox1.Controls.Add(this.dtpEnd);
             this.groupBox1.Location = new System.Drawing.Point(10, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(595, 245);
+            this.groupBox1.Size = new System.Drawing.Size(595, 234);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Package Details";
@@ -224,16 +224,16 @@
             this.groupBox2.Controls.Add(this.cbxProductList);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 299);
+            this.groupBox2.Location = new System.Drawing.Point(13, 282);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(594, 421);
+            this.groupBox2.Size = new System.Drawing.Size(594, 304);
             this.groupBox2.TabIndex = 43;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products";
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(413, 379);
+            this.btnRemove.Location = new System.Drawing.Point(513, 106);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 25);
             this.btnRemove.TabIndex = 6;
@@ -253,13 +253,13 @@
             this.ProductSupplierId,
             this.ProductId,
             this.SupplierId});
-            this.dgvProductSuppliers.Location = new System.Drawing.Point(89, 106);
+            this.dgvProductSuppliers.Location = new System.Drawing.Point(20, 106);
             this.dgvProductSuppliers.Name = "dgvProductSuppliers";
             this.dgvProductSuppliers.ReadOnly = true;
             this.dgvProductSuppliers.RowHeadersVisible = false;
             this.dgvProductSuppliers.RowTemplate.Height = 24;
             this.dgvProductSuppliers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductSuppliers.Size = new System.Drawing.Size(399, 267);
+            this.dgvProductSuppliers.Size = new System.Drawing.Size(468, 176);
             this.dgvProductSuppliers.TabIndex = 5;
             // 
             // ProductSupplierId
@@ -386,7 +386,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(619, 793);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(619, 639);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
