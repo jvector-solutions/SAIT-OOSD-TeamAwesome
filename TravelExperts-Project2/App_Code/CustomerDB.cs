@@ -356,10 +356,15 @@ namespace TravelExperts
             try
             {
                 dataReader.Read();
-                if (dataReader["CustEmail"].ToString().Trim() == enteredCustEmail &&
-                    dataReader["CustPassword"].ToString().Trim() == enteredCustPassword)
+                if (dataReader.HasRows)
                 {
-                    return true;
+                    if (dataReader["CustEmail"].ToString().Trim() == enteredCustEmail &&
+                        dataReader["CustPassword"].ToString().Trim() == enteredCustPassword)
+                    {
+                        return true;
+                    }
+                    else
+                        return false;
                 }
                 else
                     return false;

@@ -3,11 +3,11 @@
 <asp:Content id="Content1" ContentPlaceHolderID="headPlaceHolder" runat="server">
 
     <style type="text/css">
-        .auto-style1 {
-            height: 36px;
-        }
         .auto-style2 {
             height: 47px;
+        }
+        .auto-style3 {
+            height: 38px;
         }
     </style>
 
@@ -54,10 +54,15 @@
                                     <td class="auto-style2"></td>
                                 </tr>
                                 <tr>
+                                    <td colspan="2" style="text-align: center" class="auto-style3"> <asp:Label ID="FailureText" runat="server" style="color: #FF0000; font-family: Calibri; font-style: italic; text-align: center;"></asp:Label></td>
+                                    <td class="auto-style3"></td>
+                                </tr>
+                                <tr>
                                     <td style="text-align: center;" colspan="2">
                                         <asp:Button ID="LoginButton" runat="server" CommandName="Login" Text="Log In" width="130px" ValidationGroup="Login1" CssClass="button" />
                                     </td>
-                                    <td rowspan="3"></td>
+                                    <td rowspan="3">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2" style="text-align:center; height: 40px;">- or -</td>

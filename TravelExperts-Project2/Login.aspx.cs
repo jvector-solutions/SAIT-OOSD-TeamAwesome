@@ -8,7 +8,7 @@ using TravelExperts;
 
 public partial class Login : System.Web.UI.Page
 {
-    bool customerExists;
+
     Customer customer = new Customer();
 
     protected void Page_Load(object sender, EventArgs e)
@@ -17,6 +17,7 @@ public partial class Login : System.Web.UI.Page
     }
     protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
     {
+        bool customerExists = false;
         string custEmail = Login1.UserName;
         string custPassword = Login1.Password;
 
@@ -33,8 +34,7 @@ public partial class Login : System.Web.UI.Page
         }
         else
         {
-            //FailureText.Text = "Invalid username or password.";
-            //ErrorMessage.Visible = true;
+            Login1.FailureText = "Invalid username or password.";
         }
     }
     protected void Button1_Click(object sender, EventArgs e)
